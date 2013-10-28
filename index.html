@@ -238,10 +238,31 @@ isNaN();//use it
 					</section>
 					<section>
 						<section>
-							<h1>Equality Checking</h1>
+							<h1>Equality overkill</h1>
 						</section>
 						<section>
-							<h2>== and !=</h2>
+							<h2></h2>
+							<pre><code>
+//unnecessary
+if (typeof myVar === "function");
+ 
+//better
+if (typeof myVar == "function");
+							</code></pre>
+							<pre class="fragment"><code>
+//unnecessary
+var missing =  (myVar === undefined ||  myVar === null);
+ 
+//better
+var missing = (myVar == null);
+							</code></pre>
+							<pre class="fragment"><code>
+//unnecessary
+if (myArray.length === 3) {//..}
+ 
+//better
+if (myArray.length == 3) {//..}
+							</code></pre>
 						</section>
 						<section>
 							<h2>=== and !==</h2>
