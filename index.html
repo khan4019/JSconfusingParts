@@ -97,13 +97,13 @@
 					</section>
 					<section>
 						<h3>Good</h3>
-<li class="">Awesomely dynamic (basically you can do anything you want, type safety and common sense be damned)
-<li class="fragment">Top-notch functional programming
-<li class="fragment">Largest community of developers
-<li class="fragment">Largest install base on the planet
-<li class="fragment">No corporate ownership of the standard
-<li class="fragment">Sophisticated javascript runtimes (most modern browsers, node.js etc)
- <a href="http://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani: Namespacing patterns</a> </li>
+<li class="">Awesomely dynamic (basically you can do anything you want, type safety and common sense be damned) </li>
+<li class="fragment">Top-notch functional programming </li>
+<li class="fragment">Largest community of developers </li>
+<li class="fragment">Largest install base on the planet </li>
+<li class="fragment">No corporate ownership of the standard </li>
+<li class="fragment">Sophisticated javascript runtimes (most modern browsers, node.js etc) </li>
+ <a href="http://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani: Namespacing patterns</a>
 					</section>
 					<section>
 						<section>
@@ -198,8 +198,19 @@ typeof NaN
 						<section>
 							<h2></h2>
 							<pre><code>
+// Set up a simple object to use as "context"
+var context = { foo: "bar" };
 
+// A function that uses a reference to a variable called "foo"
+// on the "this" context.
+function returnFoo () {
+  return this.foo;
+}
+
+// This variable does not exist on scope, so is undefined.
+returnFoo(); // => undefined
 							</code></pre>
+							<a href="https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html"></a>
 						</section>
 						<section>
 							<h2></h2>
