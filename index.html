@@ -411,6 +411,20 @@ eval("2 + 2");             // returns 4
 							</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">MDN: eval</a>
 						</section>
+						<section>
+							<h2>Don't use Eval</h2>
+							<pre class="fragment"><code>
+var obj = { a: 20, b: 30 };
+var propname = getPropName();  //returns "a" or "b"
+
+eval( "var result = obj." + propname );
+							</code></pre>
+							<pre class="fragment"><code>
+var obj = { a: 20, b: 30 };
+var propname = getPropName();  //returns "a" or "b"
+var result = obj[ propname ];  //  obj[ "a" ] is the same as obj.a
+							</code></pre>
+						</section>
 					</section>
 					
 					<section>
