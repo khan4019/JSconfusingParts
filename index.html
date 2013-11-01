@@ -443,6 +443,18 @@ read perf pros cons
 							<br/>
 							<a href="http://stackoverflow.com/questions/61552/are-there-legitimate-uses-for-javascripts-with-statement">Ligitimate use of With</a>
 						</section>
+						<section>
+							<pre><code>
+var a, x, y;
+var r = 10;
+
+with (Math) {
+  a = PI * r * r;
+  x = r * cos(PI);
+  y = r * sin(PI / 2);
+}
+							</code></pre>
+						</section>
 					</section>
 					<section>
 						<section>
