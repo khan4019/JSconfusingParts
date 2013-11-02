@@ -40,6 +40,10 @@
 				.reveal code.largeCode {
 					max-height: 600px;
 				}
+				
+				pre.widerCode{
+					width: 100%;
+				}
 
 				.greenBold{
 					color: green;
@@ -85,6 +89,10 @@
 					</section>
 					<section>
 						<h2 style="color:red; font-weight: bold">This is work in process presentation</h2>
+					</section>
+					<section>
+						<h2>Must read this article</h2>
+						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS concepts</a>
 					</section>
 					<section>
 						<section>
@@ -228,6 +236,10 @@ isNaN();//use it
 						</section>
 						<section>
 							<h2>double !!</h2>
+						</section>
+						<section>
+							<h2>History of typeof null</h2>
+							<a href="http://www.2ality.com/2013/10/typeof-null.html">typeof null</a>
 						</section>
 					</section>
 					<section>
@@ -377,11 +389,11 @@ returnFoo(); // => undefined
 							<h1>hoisting</h1>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Give graphical example here</h2>
 							<pre><code></code></pre>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Add ES6 let</h2>
 							<pre><code></code></pre>
 						</section>
 					</section>
@@ -403,7 +415,70 @@ returnFoo(); // => undefined
 						<section>
 							<h1>Eval</h1>
 						</section>
-						
+						<section>
+							<h1>Eval is Evil</h1>
+							<p>Add a evil picture</p>
+						</section>
+						<section>
+							<h2>Why Eval is called Evil</h2>
+							<ul>
+								<li class="fragment">Code injection: could execute malicious code</li>
+								<li class="fragment">third party code can see scope of eval</li>
+								<li class="fragment">Hard to debug</li>
+								<li class="fragment">Usually Slow as Interpreter need to invoke. other as optimized by JS engine</li>
+								<li class="fragment">Maintainability</li>
+							</ul>
+							<a href="http://www.nczonline.net/blog/2013/06/25/eval-isnt-evil-just-misunderstood/">Eval</a>
+							<br/>
+							<a href="http://stackoverflow.com/questions/197769/when-is-javascripts-eval-not-evil">Eval: code injection</a>
+						</section>
+						<section>
+							<h2>Alternative to Evil eval()</h2>
+							<ul></ul>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+							<a href="http://dominoyesmaybe.blogspot.com/2012/11/alternates-to-evil-eval-in-javascript.html">eval()</a>
+						</section>
+
+						<section>
+							<h2></h2>
+							<pre class="widerCode"><code>
+eval(new String("2 + 2")); // returns a String object containing "2 + 2"
+eval("2 + 2");             // returns 4
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">MDN: eval</a>
+						</section>
+						<section>
+							<h2>Don't use Eval</h2>
+							<pre class="fragment"><code>
+var obj = { a: 20, b: 30 };
+var propname = getPropName();  //returns "a" or "b"
+
+eval( "var result = obj." + propname );
+							</code></pre>
+							<pre class="fragment"><code>
+var obj = { a: 20, b: 30 };
+var propname = getPropName();  //returns "a" or "b"
+var result = obj[ propname ];  //  obj[ "a" ] is the same as obj.a
+							</code></pre>
+						</section>
+						<section>
+							<h2>Add example when Eval is good</h2>
+						</section>
+						<section>
+							<h2>Wait a second!</h2>
+							<h3 class="fragment"> if eval() is evil. What about reflection, file/network IO, threading, and IPC.</h3>
+						</section>
+						<section>
+							<h2>Power of Eval</h2>
+							<pre class="fragment"><code></code></pre>
+							<pre class="fragment"><code></code></pre>
+							<a href="http://www.bennadel.com/blog/1926-Exploring-Javascript-s-eval-Capabilities-And-Closure-Scoping.htm">Ben Nadel: capabilities of Eval</a>
+							<br/>
+							<a href="http://stackoverflow.com/questions/197769/when-is-javascripts-eval-not-evil">use of eval</a>
+						</section>
 					</section>
 					
 					<section>
@@ -418,6 +493,21 @@ read perf pros cons
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with">MDN: with</a> 
 							<br/>
 							<a href="http://stackoverflow.com/questions/61552/are-there-legitimate-uses-for-javascripts-with-statement">Ligitimate use of With</a>
+						</section>
+						<section>
+							<pre><code>
+var a, x, y;
+var r = 10;
+
+with (Math) {
+  a = PI * r * r;
+  x = r * cos(PI);
+  y = r * sin(PI / 2);
+}
+							</code></pre>
+						</section>
+						<section>
+							<h2>Add example when With is awesome</h2>
 						</section>
 					</section>
 					<section>
@@ -442,6 +532,22 @@ read perf pros cons
 							<h2></h2>
 							<pre><code></code></pre>
 						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Event loop</h1>
+							<h2>read and understand it</h2>
+							<a href="http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained">JS Event loop</a>
+						</section>
+					</section>
+					<section>
+						<h1>Date object</h1>
+					</section>
+					<section>
+						<h1>SetTimeOut</h1>
+					</section>
+					<section>
+						<h1>Function</h1>
 					</section>
 					<section>
 						<section>
