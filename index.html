@@ -422,12 +422,15 @@ returnFoo(); // => undefined
 						<section>
 							<h2>Why Eval is called Evil</h2>
 							<ul>
-								<li class="fragment">could execute malicious code</li>
+								<li class="fragment">Code injection: could execute malicious code</li>
 								<li class="fragment">third party code can see scope of eval</li>
 								<li class="fragment">Hard to debug</li>
 								<li class="fragment">Usually Slow as Interpreter need to invoke. other as optimized by JS engine</li>
+								<li class="fragment">Maintainability</li>
 							</ul>
 							<a href="http://www.nczonline.net/blog/2013/06/25/eval-isnt-evil-just-misunderstood/">Eval</a>
+							<br/>
+							<a href="http://stackoverflow.com/questions/197769/when-is-javascripts-eval-not-evil">Eval: code injection</a>
 						</section>
 						<section>
 							<h2>Alternative to Evil eval()</h2>
@@ -464,7 +467,15 @@ var result = obj[ propname ];  //  obj[ "a" ] is the same as obj.a
 						<section>
 							<h2>Add example when Eval is good</h2>
 						</section>
-						
+						<section>
+							<h2>Wait a second!</h2>
+							<h3 class="fragment"> if eval() is evil. What about reflection, file/network IO, threading, and IPC.</h3>
+						</section>
+						<section>
+							<h2>Power of Eval</h2>
+							<pre class="fragment"><code></code></pre>
+							<pre class="fragment"><code></code></pre>
+						</section>
 					</section>
 					
 					<section>
