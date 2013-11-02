@@ -420,6 +420,14 @@ returnFoo(); // => undefined
 							<p>Add a evil picture</p>
 						</section>
 						<section>
+							<h2>Why Eval is called Evil</h2>
+							<ul>
+								<li class="fragment">could execute malicious code</li>
+								<li class="fragment">third party code can see scope of eval</li>
+								<li class="fragment">Usually Slow as Interpreter need to invoke. other as optimized by JS engine</li>
+							</ul>
+						</section>
+						<section>
 							<h2></h2>
 							<pre class="widerCode"><code>
 eval(new String("2 + 2")); // returns a String object containing "2 + 2"
