@@ -40,6 +40,10 @@
 				.reveal code.largeCode {
 					max-height: 600px;
 				}
+				
+				pre.widerCode{
+					width: 100%;
+				}
 
 				.greenBold{
 					color: green;
@@ -412,8 +416,12 @@ returnFoo(); // => undefined
 							<h1>Eval</h1>
 						</section>
 						<section>
+							<h1>Eval is Evil</h1>
+							<p>Add a evil picture</p>
+						</section>
+						<section>
 							<h2></h2>
-							<pre><code>
+							<pre class="widerCode"><code>
 eval(new String("2 + 2")); // returns a String object containing "2 + 2"
 eval("2 + 2");             // returns 4
 							</code></pre>
