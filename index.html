@@ -98,13 +98,19 @@
 						<section>
 							<h1>Check lists</h1>
 						</section>
-						<section>
-									<h2>Bad</h2>
-								<li class="">Strange type coercision and overloading of +
-								<li class="fragment">Strange results for equality testing == or ===, != and !==
-								<li class="fragment">Noisy syntax, lots of curly braces, function keywords, and semicolons
-								<li class="fragment">Prototypal inheritance vs. class based object orientation
-								<li class="fragment">Hundreds of implementations for every browser, version and other javascript dependent platform (and yes, some of them are buggy)
+						<section>							
+							<ul>
+								<li>scope, hoisting</li>
+								<li>this</li>
+								<li>closure</li>
+								<li>inheritance</li>
+								<li>Bind, call apply</li>
+								<li>Eval, with, global</li>
+								<li>Date, Function, Object</li>
+								<li>Timers</li>
+								<li>truthy and falsy</li>								
+								<li>Number, Equality Overkill: N2H</li>
+							</ul>
 						</section>					
 					</section>
 					<section>
@@ -134,7 +140,7 @@
 							<ul>
 								<li>true</li>
 								<li>'false'</li>
-								<li></li>
+								<li>Everything not false</li>
 								<li></li>
 								<li></li>
 							</ul>
@@ -522,6 +528,59 @@ with (Math) {
 					</section>
 					<section>
 						<section>
+							<h1>Closure</h1>
+						</section>
+						<section>
+							<h2>inner function has access to outer function</h2>
+							<pre class="fragment"><code>
+function foo(x) {
+  var tmp = 3;
+  function bar(y) {
+    alert(x + y + (++tmp));
+  }
+  bar(10);
+}
+foo(2)
+							</code></pre>
+							<ul>
+								<li class="fragment">alert 16</li>
+								<li class="fragment">bar can acess x</li>
+								<li class="fragment">bar can access tmp</li>
+							</ul>
+							<h4 class="fragment">That is a closure. A function doesn't have to return in order to be called a closure. Simply accessing variables outside of your immediate lexical scope creates a closure.</h4>
+							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">how closures works</a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code>
+function foo(x) {
+  var tmp = 3;
+  return function (y) {
+    alert(x + y + (++tmp));
+  }
+}
+var bar = foo(2); // bar is now a closure.
+bar(10);
+							</code></pre>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2>References</h2>							
+							<a href="http://nathansjslessons.appspot.com/lesson?id=1000">What is a closure</a>
+							<br/>
+							<a href="http://jessecravens.com/blog/2008/04/09/understanding-javascript-closures/">Understanding Closures</a>
+							<br/>
+							<a href="http://javascript-reference.info/javascript-closures-for-dummies.htm">Closure for dummies</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN: Closure</a>
+							<br/>
+							<a href="http://lostechies.com/derekgreer/2012/02/17/javascript-closures-explained/">Very good explained: Closure</a>
+							<br/>
+							<a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Understanding Closure at ease</a>
+						</section>
+					</section>
+					<section>
+						<section>
 							<h1>Dynamic types</h1>
 						</section>
 						<section>
@@ -544,10 +603,33 @@ with (Math) {
 						<h1>Date object</h1>
 					</section>
 					<section>
-						<h1>SetTimeOut</h1>
+						<h2>SetTimeOut</h2>
+						<a href="http://javascript.info/tutorial/settimeout-setinterval">Understanding timer: very good</a>
+						<br/>
+						<a href="http://ejohn.org/blog/how-javascript-timers-work/">Jon Resig: How Timers works</a>
+						<br/>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setTimeout">MDN: setTimeOut</a>
+						<br/>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setInterval">MDN: setInterval</a>
+						<br/>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearTimeout">MDN: clearTimeout</a>
+						<br/>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearInterval">MDN:clearInterval</a>
+						<br/>
+						<a href="http://stackoverflow.com/questions/5855803/how-to-pause-timer-or-freeze-it-and-resume-javascript">resume timer</a>
+						<br/>
+						<a href="http://stackoverflow.com/questions/13994910/javascript-timer-delay">JS timer delay</a>
 					</section>
 					<section>
 						<h1>Function</h1>
+					</section>
+					<section>
+						<h1>Expression vs Statement</h1>
+						<a href="http://www.2ality.com/2012/09/expressions-vs-statements.html">2ality</a>
+					</section>
+					<section>
+						<h2>Sorting in js</h2>
+						<a href="http://zhangwenli.com/blog/2013/11/02/sorting-in-javascript/">random link</a>
 					</section>
 					<section>
 						<section>
