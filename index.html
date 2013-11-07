@@ -134,7 +134,7 @@
 							<ul>
 								<li>true</li>
 								<li>'false'</li>
-								<li></li>
+								<li>Everything not false</li>
 								<li></li>
 								<li></li>
 							</ul>
@@ -525,13 +525,37 @@ with (Math) {
 							<h1>Closure</h1>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<pre><code></code></pre>
+							<h2>inner function has access to outer function</h2>
+							<pre class="fragment"><code>
+function foo(x) {
+  var tmp = 3;
+  function bar(y) {
+    alert(x + y + (++tmp));
+  }
+  bar(10);
+}
+foo(2)
+							</code></pre>
+							<ul>
+								<li class="fragment">alert 16</li>
+								<li class="fragment">bar can acess x</li>
+								<li class="fragment">bar can access tmp</li>
+							</ul>
+							<h4 class="fragment">That is a closure. A function doesn't have to return in order to be called a closure. Simply accessing variables outside of your immediate lexical scope creates a closure.</h4>
+							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">how closures works</a>
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+function foo(x) {
+  var tmp = 3;
+  return function (y) {
+    alert(x + y + (++tmp));
+  }
+}
+var bar = foo(2); // bar is now a closure.
+bar(10);
+							</code></pre>
 							<pre><code></code></pre>
 						</section>
 						<section>
