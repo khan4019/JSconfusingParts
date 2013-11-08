@@ -377,7 +377,15 @@ whatisThis(); //window
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+var myObject = {	
+	
+	myMethod: function() {
+		console.debug(this);
+	}	
+};
+myObject.myMethod(); // console.debugs a reference to myObject
+							</code></pre>
 						</section>
 						<section>
 							<h2></h2>
