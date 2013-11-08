@@ -351,6 +351,9 @@ returnFoo(); // => undefined
 							<h1>this</h1>
 						</section>
 						<section>
+							<h2> this keyword to get a reference to the current execution context</h2>
+						</section>
+						<section>
 							<h2>Set this</h2>
 							<ul>
 								<li>method call</li>
@@ -362,19 +365,132 @@ returnFoo(); // => undefined
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+function whatisThis() { 
+   console.debug(this); 
+}
+
+whatisThis(); //window
+							</code></pre>
+							<p>in JavaScript, even functions are objects and can be passed around in variables</p>
+							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+var myObject = {	
+	
+	myMethod: function() {
+		console.debug(this);
+	}	
+};
+myObject.myMethod(); // console.debugs a reference to myObject
+							</code></pre>
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+function MyClass() {
+	this.myMethod = function() {
+		console.debug(this);
+	}
+}
+
+var my1 = new MyClass();
+var my2 = new MyClass();
+
+my1.myMethod(); // reference to the MyClass instance1
+my2.myMethod(); // reference to the MyClass instance2
+							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Make this better. rename</h2>
+							<pre><code>
+window.WhoAmI = "I'm the window object";
+
+function Test() {
+
+	this.WhoAmI = "I'm the Test object";
+
+	this.Check1 = function() {
+		alert(this.WhoAmI); // I'm the Test object
+	};
+
+}
+
+Test.prototype.Check2 = function() {
+	alert(this.WhoAmI); // I'm the Test object
+};
+
+var t = new Test();
+t.Check1();
+t.Check2();
+							</code></pre>
+							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
+						</section>
+						<section>
+							<h2>Make this better and rename</h2>
+							<pre><code>
+function SetType(type) {
+	this.WhoAmI = "I'm the "+type+" object";
+}
+
+var newObject = {};
+SetType.call(newObject, "newObject");
+alert(newObject.WhoAmI); // I'm the newObject object
+
+var new2 = {};
+SetType.apply(new2, ["new2"]);
+alert(new2.WhoAmI); // I'm the new2 object
+							</code></pre>
+						</section>
+						<section>
+							<h2>move it before</h2>
+							<pre><code>
+function simple(name) {
+  this.name = name;
+}
+
+simple("Adam");
+console.log(window.name); // Adam
+
+							</code></pre>
+							<a href=""></a>
+						</section>
+						<section>
+							<h2>Move this one before as well</h2>
+							<pre><code>
+simple_obj = {
+  simple: function(name) {
+    this.name = name;
+  };
+}
+
+simple_obj.simple("Adam");
+console.log(simple_obj.name);
+=> "Adam"
+							</code></pre>
+						</section>
+						<section>
+							<h2>Add couple more from this link</h2>
 							<pre><code></code></pre>
+							<a href="http://stantona.github.io/blog/2013/01/02/what-is-this-in-javascript/">what is this in JS</a>
+						</section>
+						<section>
+							<h2>bind</h2>
+							<pre><code>
+var person = {
+  name: "Brendan Eich",
+  hello: function(thing) {
+    console.log(this.name + " says hello " + thing);
+  }
+}
+ 
+var boundHello = function(thing) { return person.hello.call(person, thing); }
+ 
+boundHello("world");
+							</code></pre>
+							<a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">Understanding this</a>
 						</section>
 					</section>
 					<section>
