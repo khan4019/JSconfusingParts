@@ -444,6 +444,18 @@ SetType.apply(new2, ["new2"]);
 alert(new2.WhoAmI); // I'm the new2 object
 							</code></pre>
 						</section>
+						<section>
+							<h2>move it before</h2>
+							<pre><code>
+function simple(name) {
+  this.name = name;
+}
+
+simple("Adam");
+console.log(window.name); // Adam
+
+							</code></pre>
+						</section>
 					</section>
 					<section>
 						<section>
