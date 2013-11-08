@@ -365,7 +365,15 @@ returnFoo(); // => undefined
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+function whatisThis() { 
+   console.debug(this); 
+}
+
+whatisThis(); //window
+							</code></pre>
+							<p>in JavaScript, even functions are objects and can be passed around in variables</p>
+							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
 						<section>
 							<h2></h2>
