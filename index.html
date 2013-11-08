@@ -404,7 +404,7 @@ my2.myMethod(); // reference to the MyClass instance2
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Make this better. rename</h2>
 							<pre><code>
 window.WhoAmI = "I'm the window object";
 
@@ -427,6 +427,22 @@ t.Check1();
 t.Check2();
 							</code></pre>
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
+						</section>
+						<section>
+							<h2>Make this better and rename</h2>
+							<pre><code>
+function SetType(type) {
+	this.WhoAmI = "I'm the "+type+" object";
+}
+
+var newObject = {};
+SetType.call(newObject, "newObject");
+alert(newObject.WhoAmI); // I'm the newObject object
+
+var new2 = {};
+SetType.apply(new2, ["new2"]);
+alert(new2.WhoAmI); // I'm the new2 object
+							</code></pre>
 						</section>
 					</section>
 					<section>
