@@ -405,7 +405,28 @@ my2.myMethod(); // reference to the MyClass instance2
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+window.WhoAmI = "I'm the window object";
+
+function Test() {
+
+	this.WhoAmI = "I'm the Test object";
+
+	this.Check1 = function() {
+		alert(this.WhoAmI); // I'm the Test object
+	};
+
+}
+
+Test.prototype.Check2 = function() {
+	alert(this.WhoAmI); // I'm the Test object
+};
+
+var t = new Test();
+t.Check1();
+t.Check2();
+							</code></pre>
+							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
 					</section>
 					<section>
