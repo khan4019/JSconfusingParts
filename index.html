@@ -389,7 +389,19 @@ myObject.myMethod(); // console.debugs a reference to myObject
 						</section>
 						<section>
 							<h2></h2>
-							<pre><code></code></pre>
+							<pre><code>
+function MyClass() {
+	this.myMethod = function() {
+		console.debug(this);
+	}
+}
+
+var my1 = new MyClass();
+var my2 = new MyClass();
+
+my1.myMethod(); // reference to the MyClass instance1
+my2.myMethod(); // reference to the MyClass instance2
+							</code></pre>
 						</section>
 						<section>
 							<h2></h2>
