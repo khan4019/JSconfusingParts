@@ -476,6 +476,22 @@ console.log(simple_obj.name);
 							<pre><code></code></pre>
 							<a href="http://stantona.github.io/blog/2013/01/02/what-is-this-in-javascript/">what is this in JS</a>
 						</section>
+						<section>
+							<h2>bind</h2>
+							<pre><code>
+var person = {
+  name: "Brendan Eich",
+  hello: function(thing) {
+    console.log(this.name + " says hello " + thing);
+  }
+}
+ 
+var boundHello = function(thing) { return person.hello.call(person, thing); }
+ 
+boundHello("world");
+							</code></pre>
+							<a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">Understanding this</a>
+						</section>
 					</section>
 					<section>
 						<section>
