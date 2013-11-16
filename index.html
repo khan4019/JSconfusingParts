@@ -837,6 +837,26 @@ var idx1 = myArray.indexOf('2'); //-1
 							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">intro to DOM Event</a>
 							<br/>
 							<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow">W3C: Event flow</a>
+							<br/>
+							<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-types">W3C: summary of Event types</a>
+						</section>
+						<section>
+							<h2>Event Delegation</h2>
+							<pre><code>
+var list = document.querySelector('ul');
+
+list.addEventListener('click', function(event) {
+  var target = event.target;
+ 
+  while (target.tagName !== 'LI') {
+    target = target.parentNode;
+    if (target === list) return;
+  }
+
+  // Do stuff here
+});
+							</code></pre>
+							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">In the middle look for "Delegate Event"</a>
 						</section>
 					</section>
 					<section>
