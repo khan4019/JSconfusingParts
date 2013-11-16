@@ -365,7 +365,27 @@ var num5 = '6' / 9; //0.6666
 						</section>
 						<section>
 							<h2>NaN, isNaN, isFinite</h2>
-							<pre><code></code></pre>
+							<pre><code>
+isNaN(2); //false
+isNaN('2'); //false
+isNaN(1/0); //false, use isFinite
+
+isNaN('2mrw'); //true
+isNaN(''); //true
+							</code></pre>
+							<pre class="fragment"><code>
+NaN === NaN; //false
+isNaN(NaN); //true
+isNaN(undefined); //true
+							</code></pre>
+							<pre class="fragment"><code>
+function reallyNaN(x) {
+  return x !== x;
+}
+
+reallyNaN(undefined); //false
+reallyNaN(NaN); //true
+							</code></pre>
 						</section>
 						<section>
 							<h2>parseInt, parseFloat</h2>
