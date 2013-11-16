@@ -306,7 +306,6 @@ if (myArray.length == 3) {//..}
 9809987889988777 + 1 = 9809987889988777
 							</code></pre>
 							<pre class="fragment"><code>
-
 //toFixed to generate string result
 (.1+.2).toFixed(1); //'0.3'
 
@@ -365,12 +364,13 @@ var num5 = '6' / 9; //0.6666
 							<a href="http://zero.milosz.ca/">zeros in JS</a>
 						</section>
 						<section>
-							<h2>NaN, isNumber</h2>
+							<h2>NaN, isNaN, isFinite</h2>
 							<pre><code></code></pre>
 						</section>
 						<section>
 							<h2>parseInt, parseFloat</h2>
 							<pre><code>
+//var num = parseInt(string, radix); 
 parseInt('12px'); //12
 parseInt('0xFF'); // 255
 parseInt('a123'); //NaN
@@ -379,12 +379,14 @@ parseInt('a123'); //NaN
 parseInt('010');  // in some browsers 8, because 0 means octal
 parseInt('010', 10); //10
 
-
+//parseFloat(string)
 parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							</code></pre>
 							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
 							<br/>
 							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
 						</section>
 					</section>					
 					<section>
