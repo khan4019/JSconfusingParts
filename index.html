@@ -318,17 +318,22 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
-							<h2>+ primitive type</h2>
+							<h2>Unary + and -</h2>
 							<pre><code>
 +"20.14"; //20.14
 +" \n20.14      \n"; //20.14, ignores whitspace, line break
 
++true; //1
++null; //0
++''; //0
++'abc'; //NaN
+
+-'34'+10; //-24
+							</code></pre>
+							<pre class="fragment"><code>
 +" \n20  .14\n"; // NaN, not everything
 +"20.14Here"; //NaN
 +'md khan'; //NaN
-
-
-+true; //1
 							</code></pre>
 							<pre class="fragment"><code>
 //to get a number use +
@@ -378,6 +383,8 @@ parseInt('010', 10); //10
 parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							</code></pre>
 							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
+							<br/>
+							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
 						</section>
 					</section>					
 					<section>
