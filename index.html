@@ -313,6 +313,20 @@ typeof NaN
 							</code></pre>
 						</section>
 						<section>
+							<h2>Implicit Coercion</h2>
+							<pre><code>
+var num = 2 + 3; //5
+var txt = 'hello' + 'World'; //helloWorld
+							</code></pre>
+							<pre class="fragment"><code>
+//Forgive type error
+var num = 2 + true; //3
+
+//favor string for tie break
+var num2 = '2' + 3; //23
+							</code></pre>
+						</section>
+						<section>
 							<h2>zeros in JavaScript</h2>
 							<a href="http://zero.milosz.ca/">zeros in JS</a>
 						</section>
