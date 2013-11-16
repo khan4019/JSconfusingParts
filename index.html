@@ -323,6 +323,10 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 +'md khan'; //NaN
 +true; //1
 							</code></pre>
+							<pre class="fragment"><code>
+//to get a number use +
++(.1+.2).toPrecision(1); //0.3
+							</code></pre>
 						</section>
 						<section>
 							<h2>Implicit Coercion</h2>
@@ -351,6 +355,21 @@ var num5 = '6' / 9; //0.6666
 						<section>
 							<h2>NaN, isNumber</h2>
 							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2>parseInt, parseFloat</h2>
+							<pre><code>
+parseInt('12px'); //12
+parseInt('0xFF'); // 255
+parseInt('a123'); //NaN
+
+
+parseInt('010');  // in some browsers 8, because 0 means octal
+parseInt('010', 10); //10
+
+
+parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
+							</code></pre>
 						</section>
 					</section>					
 					<section>
