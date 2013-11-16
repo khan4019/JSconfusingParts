@@ -320,7 +320,14 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 						<section>
 							<h2>+ primitive type</h2>
 							<pre><code>
++"20.14"; //20.14
++" \n20.14      \n"; //20.14, ignores whitspace, line break
+
++" \n20  .14\n"; // NaN, not everything
++"20.14Here"; //NaN
 +'md khan'; //NaN
+
+
 +true; //1
 							</code></pre>
 							<pre class="fragment"><code>
@@ -370,6 +377,7 @@ parseInt('010', 10); //10
 
 parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							</code></pre>
+							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
 						</section>
 					</section>					
 					<section>
