@@ -856,6 +856,14 @@ list.addEventListener('click', function(event) {
   // Do stuff here
 });
 							</code></pre>
+							<h2 class="fragment">Use this</h2>
+							<pre class="fragment"><code>
+// Not using event delegation
+$('li').on('click', function(){});
+
+// Using event delegation
+$('ul').on('click', 'li', function(){});
+							</code></pre>
 							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">In the middle look for "Delegate Event"</a>
 						</section>
 					</section>
