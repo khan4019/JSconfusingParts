@@ -297,19 +297,31 @@ if (myArray.length == 3) {//..}
 							<h1>Number</h1>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Arithmatic in JS</h2>
 							<pre><code>
-.1+.2 
-9809987889988777+1 = 9809987889988777
+//lowerside
+0.1 + 0.2; //0.30000000000000004 
 
+//upperside
+9809987889988777 + 1 = 9809987889988777
+							</code></pre>
+							<pre class="fragment"><code>
+
+//toFixed to generate string result
+(.1+.2).toFixed(1); //'0.3'
+
+//to get a number parseFloat
+parseFloat((.1+.2).toFixed(1)); //0.3
 							</code></pre>
 							<a href="http://www.youtube.com/watch?v=MqHDDtVYJRI">Everything u never wanted to know about JS Number</a>
+							<br/>
+							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>+ primitive type</h2>
 							<pre><code>
-+'md khan'
-typeof NaN
++'md khan'; //NaN
++true; //1
 							</code></pre>
 						</section>
 						<section>
@@ -337,7 +349,7 @@ var num5 = '6' / 9; //0.6666
 							<a href="http://zero.milosz.ca/">zeros in JS</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>NaN, isNumber</h2>
 							<pre><code></code></pre>
 						</section>
 					</section>					
