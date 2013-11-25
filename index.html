@@ -660,12 +660,10 @@ boundHello("world");
 							<h1>For in </h1>
 						</section>
 						<section>
-							<h2>
+							<h2>What is the sum?</h2>
 								<pre><code>
 var numbers = [10, 20, 30];
-
 var sum = 0;
-
 for(var num in numbers){
 	sum+=num;	
 }
@@ -673,13 +671,14 @@ for(var num in numbers){
 console.log(sum); //?
 								</code></pre>
 								<pre class="fragment"><code>
-console.log(sum); //0012									
+console.log(sum); //0012				
 								</code></pre>
-							</h2>
+							<ul class="fragment">
+								<li>Always enumerates the keys</li>
+								<li>Keys always string</li>
+							</ul>
 						</section>
-						<section>
-							<li>Always enumerates the keys</li>
-							<li>Keys always string</li>
+						<section>							
 							<li>Enumerates object's inherited properties as well</li>
 							<li>Dont modify object while enumerting it by using for in loop</li>
 							<li>in such case use while loop</li>
