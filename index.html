@@ -705,13 +705,68 @@ function foo(){
 
 foo(); //[]
 foo('js', 'is', 'fun'); //['js', 'is', 'fun']
-							</code></pre>							
-							<h3 class="fragment">Like an Array</h3>			
+							</code></pre>
+						</section>							
+						<section>
+							<h3>Like an Array</h3>			
 							<pre class="fragment"><code>
 arguments.length; //3
 arguments[2]; //fun
 							</code></pre>				
 							<h2 class="fragment redBoldText">Not an Array</h2>
+							<pre class="fragment"><code>
+arguments.indexOf('is');
+//TypeError: Object has no method 'indexOf'
+							</code></pre>
+							<ul>
+								<li class="fragment">list things arguments can do</li>
+								<li class="fragment"></li>
+								<li class="fragment"></li>
+								<li class="fragment"></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Give me next</h2>
+							<pre><code>
+function createStore(){
+  var i=0;
+
+  return {
+    next:function(){
+		return arguments[i++];
+   }
+ }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myStore = createStore(10, 15, 17, 19, 31, 27);
+
+myStore.next(); //undefined
+myStore.next(); //undefined
+							</code></pre>
+							<h3 class="fragment">Currently executing functions</h3>
+						</section>
+						<section>
+							<h2>Give me next</h2>
+							<pre><code>
+function createStore(){
+  var i=0, store = arguments;
+
+  return {
+    next:function(){
+		return store[i++];
+   }
+ }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myStore = createStore(10, 15, 17, 19, 31, 27);
+
+myStore.next(); //10
+myStore.next(); //15
+myStore.next(); //17
+							</code></pre>
+							<h3 class="fragment">Currently executing functions</h3>
 						</section>
 						<section>
 							<h2>nodelist</h2>
