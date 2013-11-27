@@ -697,7 +697,8 @@ console.log(sum); //0012
 						<section>
 							<h1>arguments</h1>							
 						</section>
-						<section>							
+						<section>		
+							<h4>Local variable, availalbe to all functions</h4>					
 							<pre><code>
 function foo(){
   return arguments;
@@ -718,6 +719,11 @@ arguments[2]; //fun
 arguments.indexOf('is');
 //TypeError: Object has no method 'indexOf'
 							</code></pre>
+							<h2>Convert to Array</h2>
+							<pre class="fragment"><code>
+var args = Array.prototype.slice.call(arguments);
+args.map();
+							</code></pre>
 							<ul>
 								<li class="fragment">can't explicity created</li>
 								<li class="fragment">available only when function begin execution</li>
@@ -733,7 +739,7 @@ function createStore(){
 
   return {
     next:function(){
-		return arguments[i++];
+	 return arguments[i++];
    }
  }
 }
@@ -744,7 +750,7 @@ var myStore = createStore(10, 15, 17, 19, 31, 27);
 myStore.next(); //undefined
 myStore.next(); //undefined
 							</code></pre>
-							<h3 class="fragment">Currently executing functions</h3>
+							<h3 class="fragment">What's worng!!</h3>
 						</section>
 						<section>
 							<h2>Give me next</h2>
@@ -754,7 +760,7 @@ function createStore(){
 
   return {
     next:function(){
-		return store[i++];
+	 return store[i++];
    }
  }
 }
