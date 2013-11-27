@@ -832,6 +832,7 @@ with (Math) {
 					<section>
 						<section>
 							<h1>Closure</h1>
+							<h4>Refer to variables outside of current function</h4>
 						</section>
 						<section>
 							<h2>function in a function</h2>
@@ -850,48 +851,49 @@ function generateGreet(greet){
 var hiTo = generateGreet('Hi');
 hiTo('JavaScript'); // Hi, Javascript
 hiTo('Angular'); // Hi, Angular
-							</code></pre>
-							<pre class="fragment"><code>pre>
+							</code></pre>							
 							<pre class="fragment"><code>
 var booTo = generateGreet('Boo');
 hiTo('Java'); // Boo, Java
 hiTo('XML'); // Boo, XML
 							</code></pre>
-							</code></pre>
+							
 						</section>
 						<section>
-							<h2>inner function has access to outer function</h2>
-							<pre class="fragment"><code>
-function foo(x) {
-  var tmp = 3;
-  function bar(y) {
-    alert(x + y + (++tmp));
+							
+							<pre><code>
+function generateGreet(greet){
+  var greet = greet || 'Hello';
+
+  function sayHelloTo (name){
+      return greet + ', ' + name;
   }
-  bar(10);
+
+  return sayHelloTo;
 }
-foo(2)
 							</code></pre>
-							<ul>
-								<li class="fragment">alert 16</li>
-								<li class="fragment">bar can acess x</li>
-								<li class="fragment">bar can access tmp</li>
-							</ul>
-							<h4 class="fragment">That is a closure. A function doesn't have to return in order to be called a closure. Simply accessing variables outside of your immediate lexical scope creates a closure.</h4>
+							<pre class="fragment"><code>
+function generateGreet(greet){
+  var greet = greet || 'Hello';
+
+  //return anonymous function	
+  return function (name){
+      return greet + ', ' + name;
+  }
+}
+							</code></pre>		
 							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">how closures works</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code>
-function foo(x) {
-  var tmp = 3;
-  return function (y) {
-    alert(x + y + (++tmp));
-  }
-}
-var bar = foo(2); // bar is now a closure.
-bar(10);
-							</code></pre>
-							<pre><code></code></pre>
+							<h2>closure</h2>
+							<ul>
+								<li>Refer to variables outside of current scope</li>
+								<li class="fragment">doesn't have to return anything</li>
+								<li class="fragment">read and write outer scope variable</li>
+								<li class="fragment">store outer variables by reference not by value (add an example for this)</li>
+								<li class="fragment"></li>								
+							</ul>
+							<a href="">Effective Javascript (item -13)</a>
 						</section>
 						<section>
 							<h2>References</h2>							
