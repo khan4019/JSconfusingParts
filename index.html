@@ -695,20 +695,23 @@ console.log(sum); //0012
 					</section>
 					<section>
 						<section>
-							<h2>Array Like Objects</h2>
-							<p>source: Effective JS p-138</p>
+							<h1>arguments</h1>							
 						</section>
-						<section>
-							<h2>arguments</h2>
+						<section>							
 							<pre><code>
 function foo(){
-	return arguments;
+  return arguments;
 }
 
 foo(); //[]
 foo('js', 'is', 'fun'); //['js', 'is', 'fun']
-							</code></pre>
-							<p>ggl for more</p>
+							</code></pre>							
+							<h3 class="fragment">Like an Array</h3>			
+							<pre class="fragment"><code>
+arguments.length; //3
+arguments[2]; //fun
+							</code></pre>				
+							<h2 class="fragment redBoldText">Not an Array</h2>
 						</section>
 						<section>
 							<h2>nodelist</h2>
