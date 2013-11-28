@@ -44,17 +44,17 @@
 				pre.widerCode{
 					width: 100%;
 				}
-
-				.greenBold{
-					color: green;
-					font-weight: bold !important;
-				}
+				
 				.lineThrough{
 					text-decoration: line-through;					
 				}
-				.redBoldText{
-					font-weight: bold;
-					color: red;
+				.greenBold{
+					color: green !important;
+					font-weight: bold !important;
+				}
+				.redBold{
+					font-weight: bold !important;
+					color: red !important;
 				}
 				.purpleBold{
 					font-weight: bold;
@@ -86,7 +86,7 @@
 						<p>
 							<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
 						</p>
-					</section>
+						</section>
 					<section>
 						<h2 style="color:red; font-weight: bold">This is work in process presentation</h2>
 					</section>
@@ -100,26 +100,35 @@
 						</section>
 						<section>							
 							<ul>
-								<li>scope, hoisting</li>
+								<li class="lineThrough">scope, hoisting</li>
 								<li>this</li>
 								<li>closure</li>
 								<li>inheritance</li>
 								<li>Bind, call apply</li>
 								<li>Eval, with, global</li>
 								<li>Date, Function, Object</li>
-								<li>Timers</li>
+								<li class="lineThrough">Timers</li>
 								<li>truthy and falsy</li>								
 								<li>Number, Equality Overkill: N2H</li>
 							</ul>
-						</section>					
+						</section>
+						<section>
+						<h2></h2>
+						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">21 JS i struggle to remember</a>
+						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
+						<a href=""></a>
+						<a href=""></a>
+						<a href=""></a>
+						<a href=""></a>
+					</section>					
 					</section>
 					<section>
 						<section>
 							<h2>Truth is very subjective</h2>
 						</section>
 						<section>
-							<h2>You don't get what you deserve.</h2>
-							<h2>You only get what you negotiate.</h2>
+							<h2>You don't get what you <span class="greenBold">deserve</span></h2>
+							<h2 class="fragment">You only get what you <span class="redBold">negotiate</span></h2>
 						</section>
 						<section>
 							<h2>You are as good as your imagination</h2>
@@ -141,8 +150,6 @@
 								<li>true</li>
 								<li>'false'</li>
 								<li>Everything not false</li>
-								<li></li>
-								<li></li>
 							</ul>
 						</section>
 						<section>
@@ -288,28 +295,116 @@ if (myArray.length == 3) {//..}
 							<h1>Number</h1>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Arithmatic in JS</h2>
 							<pre><code>
-.1+.2 
-9809987889988777+1 = 9809987889988777
+//lowerside
+0.1 + 0.2; //0.30000000000000004 
 
+//upperside
+9809987889988777 + 1 = 9809987889988777
+							</code></pre>
+							<pre class="fragment"><code>
+//toFixed to generate string result
+(.1+.2).toFixed(1); //'0.3'
+
+//to get a number parseFloat
+parseFloat((.1+.2).toFixed(1)); //0.3
 							</code></pre>
 							<a href="http://www.youtube.com/watch?v=MqHDDtVYJRI">Everything u never wanted to know about JS Number</a>
+							<br/>
+							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Unary + and -</h2>
 							<pre><code>
-+'md khan'
-typeof NaN
++"20.14"; //20.14
++" \n20.14      \n"; //20.14, ignores whitspace, line break
+
++true; //1
++null; //0
++''; //0
++'abc'; //NaN
+
+-'34'+10; //-24
+							</code></pre>
+							<pre class="fragment"><code>
++" \n20  .14\n"; // NaN, not everything
++"20.14Here"; //NaN
++'md khan'; //NaN
+							</code></pre>
+							<pre class="fragment"><code>
+//to get a number use +
++(.1+.2).toPrecision(1); //0.3
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>Implicit Coercion</h2>
+							<pre><code>
+var num = 2 + 3; //5
+var txt = 'hello' + 'World'; //helloWorld
+							</code></pre>
+							<pre class="fragment"><code>
+//Forgive type error
+var num = 2 + true; //3
+
+//favor string for tie break
+var num2 = '6' + 9; //69
+							</code></pre>
+							<pre class="fragment"><code>
+var num3 = '6' - 9; //-3
+var num4 = '6' * 9; //54
+var num5 = '6' / 9; //0.6666
+							</code></pre>
+							<a href="http://www.amazon.com/Effective-JavaScript-Specific-Software-Development/dp/0321812182">Effective Javascript: Item 3: implicit coercion</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>zeros in JavaScript</h2>
+							<a href="http://zero.milosz.ca/">zeros in JS</a>
+						</section>
+						<section>
+							<h2>NaN, isNaN, isFinite</h2>
+							<pre><code>
+isNaN(2); //false
+isNaN('2'); //false
+isNaN(1/0); //false, use isFinite
+
+isNaN('2mrw'); //true
+isNaN(''); //true
+							</code></pre>
+							<pre class="fragment"><code>
+NaN === NaN; //false
+isNaN(NaN); //true
+isNaN(undefined); //true
+							</code></pre>
+							<pre class="fragment"><code>
+function reallyNaN(x) {
+  return x !== x;
+}
+
+reallyNaN(undefined); //false
+reallyNaN(NaN); //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>parseInt, parseFloat</h2>
+							<pre><code>
+//var num = parseInt(string, radix); 
+parseInt('12px'); //12
+parseInt('0xFF'); // 255
+parseInt('a123'); //NaN
+
+
+parseInt('010');  // in some browsers 8, because 0 means octal
+parseInt('010', 10); //10
+
+//parseFloat(string)
+parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
+							</code></pre>
+							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
+							<br/>
+							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
 						</section>
 					</section>					
 					<section>
@@ -334,8 +429,30 @@ returnFoo(); // => undefined
 							<a href="https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html"></a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>Bind</h2>
+							<p>Creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.</p>
+							<pre><code>
+// Define the original function.
+var checkNumericRange = function (value) {
+    if (typeof value !== 'number')
+        return false;
+    else
+        return value >= this.minimum && value <= this.maximum;
+}
+
+// The range object will become the this value in the callback function.
+var range = { minimum: 10, maximum: 20 };
+
+// Bind the checkNumericRange function.
+var boundCheckNumericRange = checkNumericRange.bind(range);
+
+// Use the new function to check whether 12 is in the numeric range.
+var result = boundCheckNumericRange (12);
+document.write(result);
+
+// Output: true
+							</code></pre>
+							<a href="http://msdn.microsoft.com/en-us/library/ie/ff841995(v=vs.94).aspx">JS bind method</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -380,9 +497,9 @@ whatisThis(); //window
 							<pre><code>
 var myObject = {	
 	
-	myMethod: function() {
-		console.debug(this);
-	}	
+  myMethod: function() {
+   console.debug(this);
+  }	
 };
 myObject.myMethod(); // console.debugs a reference to myObject
 							</code></pre>
@@ -391,9 +508,9 @@ myObject.myMethod(); // console.debugs a reference to myObject
 							<h2></h2>
 							<pre><code>
 function MyClass() {
-	this.myMethod = function() {
-		console.debug(this);
-	}
+  this.myMethod = function() {
+ 	console.debug(this);
+  }
 }
 
 var my1 = new MyClass();
@@ -409,17 +526,14 @@ my2.myMethod(); // reference to the MyClass instance2
 window.WhoAmI = "I'm the window object";
 
 function Test() {
-
-	this.WhoAmI = "I'm the Test object";
-
-	this.Check1 = function() {
-		alert(this.WhoAmI); // I'm the Test object
-	};
-
+  this.WhoAmI = "I'm the Test object";
+  this.Check1 = function() {
+   alert(this.WhoAmI); // I'm the Test object
+  };
 }
 
 Test.prototype.Check2 = function() {
-	alert(this.WhoAmI); // I'm the Test object
+  alert(this.WhoAmI); // I'm the Test object
 };
 
 var t = new Test();
@@ -495,20 +609,245 @@ boundHello("world");
 					</section>
 					<section>
 						<section>
-							<h1>Prototypal Inheritance</h1>
+							<h1>Inheritance</h1>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h3></h3>
+							<ul class="">
+								<li>Only one construct in JS: object</li>
+								<li class="fragment">Each object has an internatl link (prototype) to another object</li>
+								<li class="fragment">Prototype itself is an object</li>
+								<li class="fragment">Prototype object has its own prototype</li>
+								<li class="fragment">this link goes until it hits null</li>
+								<li class="fragment">null has no prototype.</li>
+								<li class="fragment">null is the final end of prototype chain</li>
+							</ul>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance and prototype chain</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>Interesting Drawing to explain inheritance</h2>
 							<pre><code></code></pre>
+							<p>create one: do some work</p>
+						</section>
+						<section>
+							<h2>constructor</h2>
+							<pre><code>
+function Friend(name) {
+  this.name = name;
+  this.libraries = [];
+}
+
+Friend.prototype = {
+  addLibrary: function(newLib){
+    this.libraries.push(newLib);
+  }
+};
+
+var frnd = new Friend('Angular Ember');
+frnd.addLibrary('asm.js');
+							</code></pre>
+							<pre class="fragment"><code>
+function CloseFriend(name){
+ this.name = name;
+}
+
+CloseFriend.prototype = new Friend();
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
+						</section>
+						<section>
+							<h2>object.create</h2>
+							<pre><code>
+var Friend = {name: 'Geek smith'}; 
+Friend.prototype; //undefined
+
+var JSFriend = Object.create(Friend);
+// JSFriend => Friend => Object.prototype => null
+console.log(JSFriend.name); // Geek Smith
+							</code></pre>
+							<pre class="fragment"><code>
+var AngularFriend = Object.create(JSFriend);
+// AngularFriend => JSFriend => Friend => Object.prototype => null
+console.log(AngularFriend.name); //Geek Smith
+
+var RandomGuy = Object.create(null);
+// RandomGuy => null
+console.log(RandomGuy.hasOwnProperty); // undefined
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance</a>
+						</section>
+						<section>
+							<h3>New / update prototype property</h3>
+							<pre><code>
+function Friend(name){
+  this.name = name;
+}
+
+Friend.prototype ={
+  knowJS:true
+}
+
+var frnd = new Friend('Scala Guy');
+frnd.city = 'Chicago';
+console.log(frnd);
+//Friend {name: "Scala Guy", city: 'chicago', knowJS: true}
+frnd.hasOwnProperty('city'); //true
+							</code></pre>
+							<pre class="fragment"><code>
+var frnd = new Friend('Scala Guy');
+frnd.knowJS = false;
+console.log(frnd);
+//Friend {name: "Scala Guy", knowJS: false, knowJS: true}
+							</code></pre>
+							<a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">JS Prototype</a>
+						</section>
+						<section>
+							<h2>Lookup for properties</h2>
+							<ul>
+								<li>negative impact when have to traverse prototype chain</li>
+								<li class="fragment">monkey patching (extend build in object.prototype)</li>
+								<li class="fragment"></li>
+								<li class="fragment"></li>								
+							</ul>
+							<img src="images/lookForProperty.png" alt="">
+						</section>
+						<section>												
+							<h2>prototype, getPrototypeOf, __Proto__</h2>
+							<p>source: Effective JS p-118</p>
+						</section>
+						<section>
+							<h2>Avoid polluting protype object</h2>
 						</section>
 					</section>
 					<section>
 						<section>
-							<h1>hoisting and Scoping</h1>
+							<h1>scope</h1>
+						</section>
+						<section>
+							<p>Type these in console for live Demo</p>
+							<pre><code>
+var expertLevel = 7;
+
+function getExpertLevel(){
+  var innerExpert = 4; 
+  return expertLevel;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+getExpertLevel(); //7
+console.log(expertLevel); //7
+console.log(innerExpert); //ReferenceError: innerExpert is not defined
+							</code></pre>
+							<pre class="fragment"><code>
+var expertLevel = 3;
+function getExpertLevel(){
+  expertLevel = 4;
+  return expertLevel;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+getExpertLevel(); //4
+console.log(expertLevel); //4
+							</code></pre>
+						</section>
+						<section>							
+							<pre><code>
+var expertLevel = 3;
+
+function getExpertLevel(){
+  var expertLevel = 4;
+  return expertLevel;
+}
+
+getExpertLevel(); //4
+console.log(expertLevel); //3
+							</code></pre>
+							<pre class="fragment"><code>
+var expertLevel = 3;
+
+function getExpertLevel(){  
+  return expertLevel;
+  var expertLevel = 4;
+}
+
+getExpertLevel(); //undefined
+console.log(expertLevel); //3
+							</code></pre>
+						</section>
+						<section>
+							<h2>name conflict</h2>
+							<pre><code>
+function foo(){
+  var a = 2;
+  function bar(){
+   a = 3;
+   console.log('inside a:', a)
+ }
+ bar();
+ console.log('outside a:', a)
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo(); 
+//inside a:3 			
+//outside a:3					
+							</code></pre>
+						</section>
+												<section>
+							<h2>name conflict</h2>
+							<pre><code>
+function foo(){
+  var a = 2;
+  function bar(){
+   var a = 3;
+   console.log('inside a:', a)
+ }
+ bar();
+ console.log('outside a:', a)
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo(); 
+//inside a:3 			
+//outside a:2					
+							</code></pre>
+						</section>
+						<section>
+							<h2>closure name conflict</h2>
+							<pre><code>
+// inner function take precenden
+function getExpertLevel(){
+  var level = 4;
+  return function (level){
+    return level;
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var exLevel = getExpertLevel();
+exLevel(2); //2
+exLevel(5); //4
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
+						</section>
+												<section>
+							<h2>closure name conflict</h2>
+							<pre><code>
+// inner function take precenden
+function getExpertLevel(){
+  var level = 4;
+  return function (){
+    var level= 2;
+    return level;
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var exLevel = getExpertLevel();
+exLevel(); //2
+exLevel(5); //2
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
 						</section>
 						<section>
 							<h2>Give graphical example here</h2>
@@ -532,13 +871,252 @@ boundHello("world");
 					</section>
 					<section>
 						<section>
+							<h1>hoisting</h1>							
+						</section>						
+						<section>
+							<h2></h2>
+							<pre><code>
+function justLooping() {
+    for (var i = 0; i < 5; i++) {
+        //do something
+    } 
+    console.log(i);
+}
+							</code></pre>
+							<pre class="fragment"><code>
+justLooping();//5;
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(){
+  console.log(myVar);
+  //do something
+  var myVar = 42;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo();//undefined
+							</code></pre>
+						</section>
+						<section>							
+							<pre><code>
+var myVar = 54;
+function foo(){
+  console.log(myVar);
+  //do something
+  var myVar = 42;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo();//undefined
+							</code></pre>
+						</section>
+						<section>
+							<img src="images/hoist.png" alt="">
+						</section>
+						<section>							
+							<pre><code>
+function justLooping() {
+    var i;
+    for (i = 0; i < 5; i++) {
+        //do something
+    } 
+    console.log(i);
+}
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(){
+  var myVar;
+  console.log(myVar);
+  //do something
+  myVar = 42;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myVar = 54;
+function foo(){
+  var myVar;
+  console.log(myVar);
+  //do something
+  myVar = 42;
+}
+							</code></pre>
+						</section>
+						<section>
+							<h4>let's look into inner function</h4>
+							<pre><code>
+function outer(){
+  function inner(){
+    console.log('inside inner');
+  }
+  //do something
+  inner();
+}
+							</code></pre>
+							<pre class="fragment"><code>
+function outer(){
+  inner();
+  //do something else 	
+  function inner(){
+    console.log('inside inner');
+  }  
+}
+							</code></pre>
+							<h4 class="fragment">function declaration: name and implementation hoisted</h4>
+							<a href="http://www.kenneth-truyers.net/2013/04/20/javascript-hoisting-explained/">JS hoisting explained</a>
+						</section>
+						<section>
+							<h2>function expression</h2>
+							<pre><code>
+function outer(){
+  inner();
+  //do something else 	
+  var inner = function(){
+    console.log('inside inner');
+  }  
+}
+							</code></pre>
+							<pre class="fragment"><code>
+outer();//TypeError: undefined is not a function
+							</code></pre>
+							<pre class="fragment"><code>
+function outer(){
+  var inner;
+  inner();
+  //do something else 	
+  inner = function(){
+    console.log('inside inner');
+  }  
+}
+							</code></pre>
+						</section>
+					</section>
+					<section>
+						<section>
 							<h1>For in </h1>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>What is the sum?</h2>
+								<pre><code>
+var numbers = [10, 20, 30];
+var sum = 0;
+for(var num in numbers){
+	sum+=num;	
+}
+
+console.log(sum); //?
+								</code></pre>
+								<pre class="fragment"><code>
+console.log(sum); //0012				
+								</code></pre>
+							<ul class="fragment">
+								<li>Always enumerates the keys</li>
+								<li>Keys always string</li>
+							</ul>
+						</section>
+						<section>							
+							<li>Enumerates object's inherited properties as well</li>
+							<li>Dont modify object while enumerting it by using for in loop</li>
+							<li>in such case use while loop</li>
+							<li>Might have different order of enumeration in different environment</li>
+							<p>add example as well: effective JS p-113q</p>
 						</section>
 						<section>
 							<h2></h2>
+							<ul>
+								<li>use for loop</li>
+								<li>forEach</li>
+							</ul>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>arguments</h1>							
+						</section>
+						<section>		
+							<h4>Local variable, availalbe to all functions</h4>					
+							<pre><code>
+function foo(){
+  return arguments;
+}
+
+foo(); //[]
+foo('js', 'is', 'fun'); //['js', 'is', 'fun']
+							</code></pre>
+							
+							<li class="fragment">can't explicity created</li>
+							<li class="fragment">available only when function begin execution</li>
+							<li class="fragment">arguments & named parameters references same value</li>
+							<li class="fragment">updateing arguments[i] changes named parameters</li>
+						
+						</section>							
+						<section>
+							<h3>Like an Array</h3>			
+							<pre><code>
+arguments.length; //3
+arguments[2]; //fun
+							</code></pre>				
+							<h3 class="fragment redBold">Not an Array</h3>
+							<pre class="fragment"><code>
+arguments.indexOf('is');
+//TypeError: Object has no method 'indexOf'
+							</code></pre>
+							<h3 class="fragment">Convert to Array</h3>
+							<pre class="fragment"><code>
+var args = Array.prototype.slice.call(arguments);
+args.map();
+							</code></pre>							
+						</section>
+						<section>
+							<h2>Give me next argument</h2>
+							<pre><code>
+function createStore(){
+  var i=0;
+
+  return {
+    next:function(){
+	 return arguments[i++];
+   }
+ }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myStore = createStore(10, 15, 17, 19, 31, 27);
+
+myStore.next(); //undefined
+myStore.next(); //undefined
+							</code></pre>
+							<h3 class="fragment">What's worng!!</h3>
+						</section>
+						<section>
+							<h2>Give me next</h2>
+							<pre><code>
+function createStore(){
+  var i=0, store = arguments;
+
+  return {
+    next:function(){
+	 return store[i++];
+   }
+ }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myStore = createStore(10, 15, 17, 19, 31, 27);
+
+myStore.next(); //10
+myStore.next(); //15
+myStore.next(); //17
+							</code></pre>
+							<h3 class="fragment">Currently executing functions</h3>
+						</section>
+						<section>
+							<a href="http://javascript.info/tutorial/arguments">Last part caller calee and add even more</a>
+						</section>
+						<section>
+							<h2>nodelist</h2>
+							<pre><code>
+document.getElementByTagName('li')
+							</code></pre>
 						</section>
 						<section>
 							<h2></h2>
@@ -643,53 +1221,72 @@ with (Math) {
 							<h2>Add example when With is awesome</h2>
 						</section>
 					</section>
-					<section>
-						<section>
-							<h1>Global</h1>
-						</section>
-						<section>
-							<h2>Namespace</h2>
-							<pre><code></code></pre>
-							<a href="http://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani: Namespacing patterns</a>
-						</section>
-					</section>
+					
 					<section>
 						<section>
 							<h1>Closure</h1>
+							<h4>Refer to variables outside of current function</h4>
 						</section>
 						<section>
-							<h2>inner function has access to outer function</h2>
-							<pre class="fragment"><code>
-function foo(x) {
-  var tmp = 3;
-  function bar(y) {
-    alert(x + y + (++tmp));
+							<h2>function in a function</h2>
+							<pre><code>
+function generateGreet(greet){
+  var greet = greet || 'Hello';
+
+  function sayHelloTo (name){
+      return greet + ', ' + name;
   }
-  bar(10);
+
+  return sayHelloTo;
 }
-foo(2)
 							</code></pre>
-							<ul>
-								<li class="fragment">alert 16</li>
-								<li class="fragment">bar can acess x</li>
-								<li class="fragment">bar can access tmp</li>
-							</ul>
-							<h4 class="fragment">That is a closure. A function doesn't have to return in order to be called a closure. Simply accessing variables outside of your immediate lexical scope creates a closure.</h4>
+							<pre class="fragment"><code>
+var hiTo = generateGreet('Hi');
+hiTo('JavaScript'); // Hi, Javascript
+hiTo('Angular'); // Hi, Angular
+							</code></pre>							
+							<pre class="fragment"><code>
+var booTo = generateGreet('Boo');
+hiTo('Java'); // Boo, Java
+hiTo('XML'); // Boo, XML
+							</code></pre>
+							
+						</section>
+						<section>
+							
+							<pre><code>
+function generateGreet(greet){
+  var greet = greet || 'Hello';
+
+  function sayHelloTo (name){
+      return greet + ', ' + name;
+  }
+
+  return sayHelloTo;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+function generateGreet(greet){
+  var greet = greet || 'Hello';
+
+  //return anonymous function	
+  return function (name){
+      return greet + ', ' + name;
+  }
+}
+							</code></pre>		
 							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">how closures works</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code>
-function foo(x) {
-  var tmp = 3;
-  return function (y) {
-    alert(x + y + (++tmp));
-  }
-}
-var bar = foo(2); // bar is now a closure.
-bar(10);
-							</code></pre>
-							<pre><code></code></pre>
+							<h2>closure</h2>
+							<ul>
+								<li>Refer to variables outside of current scope</li>
+								<li class="fragment">doesn't have to return anything</li>
+								<li class="fragment">read and write outer scope variable</li>
+								<li class="fragment">store outer variables by reference not by value (add an example for this)</li>
+								<li class="fragment"></li>								
+							</ul>
+							<a href="">Effective Javascript (item -13)</a>
 						</section>
 						<section>
 							<h2>References</h2>							
@@ -709,20 +1306,7 @@ bar(10);
 							<br/>
 							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">Nettuts: closure</a>
 						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Dynamic types</h1>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-					</section>
+					</section>					
 					<section>
 						<section>
 							<h1>Event loop</h1>
@@ -734,33 +1318,69 @@ bar(10);
 						<h1>Date object</h1>
 					</section>
 					<section>
-						<h2>SetTimeOut</h2>
-						<a href="http://javascript.info/tutorial/settimeout-setinterval">Understanding timer: very good</a>
-						<br/>
-						<a href="http://ejohn.org/blog/how-javascript-timers-work/">Jon Resig: How Timers works</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setTimeout">MDN: setTimeOut</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setInterval">MDN: setInterval</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearTimeout">MDN: clearTimeout</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearInterval">MDN:clearInterval</a>
-						<br/>
-						<a href="http://stackoverflow.com/questions/5855803/how-to-pause-timer-or-freeze-it-and-resume-javascript">resume timer</a>
-						<br/>
-						<a href="http://stackoverflow.com/questions/13994910/javascript-timer-delay">JS timer delay</a>
-					</section>
-					<section>
-						<h1>Function</h1>
-					</section>
-					<section>
-						<h1>Expression vs Statement</h1>
-						<a href="http://www.2ality.com/2012/09/expressions-vs-statements.html">2ality</a>
-					</section>
-					<section>
-						<h2>Sorting in js</h2>
-						<a href="http://zhangwenli.com/blog/2013/11/02/sorting-in-javascript/">random link</a>
+						<section>
+							<h1>Timer</h1>
+						</section>
+						<section>
+							<h2>setTimeout</h2>
+							<pre><code>
+function foo(){
+ console.log('foo ed');
+}
+//pass named function
+setTimeout(foo, 1000);
+
+//anonymous function
+setTimeout(function(){
+  console.log('foooo anonymous')
+}, 1000);
+
+//pass expression
+setTimeout("console.log('direct fooo')",1000);
+							</code></pre>
+							<pre class="fragment"><code>
+var timeId = setTimeout("console.log('direct fooo')",5000);
+//cancel execution
+clearTimeout(timeId);
+							</code></pre>
+						</section>
+						<section>
+							<h2>setInterval</h2>
+							<pre><code>
+var timeId = setInterval("console.log('irritating fooo')",2000);
+//cancel execution
+clearInterval(timeId);
+							</code></pre>
+							<h4>timer delay is not guranteed</h4>
+							<a href="http://javascript.info/tutorial/settimeout-setinterval">understanding setInterval</a>
+						</section>
+						<section>
+							<h2></h2>
+							<img src="images/Timers.png" alt="">
+							<a href="http://ejohn.org/files/Timers.png">John Resig: How Timers work</a>
+						</section>
+						<section>
+							<img src="images/interval1.png" alt="">
+							<img src="images/interval2.png" alt="" class="fragment">
+							<img src="images/interval3.png" alt="" class="fragment">
+							<img src="images/interval3.png" alt="" class="fragment">
+							<br/>
+							<a href="http://javascript.info/tutorial/settimeout-setinterval">setTimout-setInterval</a>
+						</section>
+						<section>
+							<h2>How timers executes</h2>
+							<li>JS engines (single thread), force asynchronous events to queue waiting for execution.</li>
+							<li class="fragment">setTimeout and setInterval are fundamentally different in how they execute asynchronous code.</li>
+							<li class="fragment">If a timer is blocked from immediately executing it will be delayed until the next possible point of execution (which will be longer than the desired delay).</li>
+							<li class="fragment">Intervals may execute back-to-back with no delay if they take long enough to execute (longer than the specified delay).</li>
+							<br/>
+							<p>Note: Could different for different browser</p>
+							<a href="http://ejohn.org/blog/how-javascript-timers-work/">John Resig: How Timers work</a>
+						</section>
+						<section>
+							<h2>Debounce and Throttle</h2>
+							<a href="http://jhankarmahbub.com/presentations/debounce.html">click: debounce & throttle</a>
+						</section>
 					</section>
 					<section>
 						<section>
@@ -769,6 +1389,7 @@ bar(10);
 						<section>
 							<h2></h2>
 							<pre><code></code></pre>
+							<a href="https://developers.google.com/octane/">Octane.js check it</a>
 						</section>
 					</section>
 					<section>
@@ -784,9 +1405,112 @@ some other cool feature that JS have
 							</code></pre>
 						</section>
 						<section>
+							<h2>indexOf search start parameter</h2>
+							<pre><code>
+var myArray = [1,2,3,4,5];
+
+var idx1 = myArray.indexOf(2); //1
+
+var idx2 = myArray.indexOf(2, 3); //-1
+							</code></pre>
+							<h2 class="fragment">indexOf matches ====</h2>
+							<pre class="fragment"><code>
+var myArray = [1,2,3,4,5];
+
+var idx1 = myArray.indexOf('2'); //-1
+							</code></pre>
+							<a href="http://designpepper.com/blog/drips/finding-array-elements-with-array-indexof"></a>
+						</section>
+						<section>
+							<h2>Very nice article about DOM Events and Bubbles</h2>
+							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">intro to DOM Event</a>
+							<br/>
+							<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow">W3C: Event flow</a>
+							<br/>
+							<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-types">W3C: summary of Event types</a>
+						</section>
+						<section>
+							<h2>Event Delegation</h2>
+							<pre><code>
+var list = document.querySelector('ul');
+
+list.addEventListener('click', function(event) {
+  var target = event.target;
+ 
+  while (target.tagName !== 'LI') {
+    target = target.parentNode;
+    if (target === list) return;
+  }
+
+  // Do stuff here
+});
+							</code></pre>
+							<h2 class="fragment">Use this</h2>
+							<pre class="fragment"><code>
+// Not using event delegation
+$('li').on('click', function(){});
+
+// Using event delegation
+$('ul').on('click', 'li', function(){});
+							</code></pre>
+							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">In the middle look for "Delegate Event"</a>
+							<br/>
+							<a href="http://www.quirksmode.org/dom/events/">Event Compatibility Table</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en/docs/Web/API/Event">MDN: DOM Events</a>
+							<br/>
+							<a href="http://www.w3.org/TR/DOM-Level-3-Events/">W3C: Event Spec</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Others</h1>
+						</section>
+						<section>
+							<h1>Reduce Global</h1>
+							<h2>Namespace</h2>
+							<pre><code></code></pre>
+							<a href="http://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani: Namespacing patterns</a>
+						</section>
+						<section>
+							<h2>Function constructor vs. function declaration vs. function expression</h2>
+							<pre><code></code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">MDN: compare function creation</a>
+						</section>
+						<section>
+							<h1>Expression vs Statement</h1>
+							<h2>semicolon</h2>
+							<a href="http://www.2ality.com/2012/09/expressions-vs-statements.html">2ality</a>
+						</section>
+						<section>
+							<h2>Sorting in js</h2>
+							<a href="http://zhangwenli.com/blog/2013/11/02/sorting-in-javascript/">random link</a>
+						</section>
+						<section>
+							<h1>Dynamic types</h1>
+						</section>
+						<section>
 							<h2></h2>
 							<pre><code></code></pre>
 						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+					</section>
+					<section>
+						<h2>Need more !!!</h2>
+						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS Concepts</a>
+						<br/>
+						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">JS parts i struggled to remember</a>
 					</section>
 					<section>
 						<h1>Thank You</h1>
