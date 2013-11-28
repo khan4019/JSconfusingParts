@@ -1253,8 +1253,32 @@ setTimeout("console.log('direct fooo')",1000);
 							<pre class="fragment"><code>
 var timeId = setTimeout("console.log('direct fooo')",5000);
 //cancel execution
+clearTimeout(timeId);
+							</code></pre>
+						</section>
+						<section>
+							<h2>setInterval</h2>
+							<pre><code>
+var timeId = setInterval("console.log('irritating fooo')",2000);
+//cancel execution
 clearInterval(timeId);
 							</code></pre>
+							<h4>timer delay is not guranteed</h4>
+							<a href="http://javascript.info/tutorial/settimeout-setinterval">understanding setInterval</a>
+						</section>
+						<section>
+							<h2></h2>
+							<img src="images/Timers.png" alt="">
+							<a href="http://ejohn.org/files/Timers.png">John Resig: How Timers work</a>
+						</section>
+						<section>
+							<h2>How timers executes</h2>
+							<li>JS engines (single thread), force asynchronous events to queue waiting for execution.</li>
+							<li class="fragment">setTimeout and setInterval are fundamentally different in how they execute asynchronous code.</li>
+							<li class="fragment">If a timer is blocked from immediately executing it will be delayed until the next possible point of execution (which will be longer than the desired delay).</li>
+							<li class="fragment">Intervals may execute back-to-back with no delay if they take long enough to execute (longer than the specified delay).</li>
+							<br/>
+							<p>Note: Could different for different browser</p>
 						</section>
 						<section>
 							<h2>Debounce and Throttle</h2>
