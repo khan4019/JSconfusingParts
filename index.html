@@ -684,9 +684,20 @@ console.log(expertLevel); //3
 							</code></pre>
 						</section>
 						<section>
-							<h2>name conflict</h2>
+							<h2>closure name conflict</h2>
 							<pre><code>
 // inner function take precenden
+function getExpertLevel(){
+  var level = 4;
+  return function (level){
+    return level;
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var exLevel = getExpertLevel();
+exLevel(2); //2
+exLevel(5); //2
 							</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
 						</section>
