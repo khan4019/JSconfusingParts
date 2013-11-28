@@ -825,9 +825,33 @@ foo();//undefined
 						<section>
 							<img src="images/hoist.png" alt="">
 						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+						<section>							
+							<pre><code>
+function justLooping() {
+    var i;
+    for (i = 0; i < 5; i++) {
+        //do something
+    } 
+    console.log(i);
+}
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(){
+  var myVar;
+  console.log(myVar);
+  //do something
+  myVar = 42;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myVar = 54;
+function foo(){
+  var myVar;
+  console.log(myVar);
+  //do something
+  myVar = 42;
+}
+							</code></pre>
 						</section>
 					</section>
 					<section>
