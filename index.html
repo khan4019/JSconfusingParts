@@ -853,6 +853,30 @@ function foo(){
 }
 							</code></pre>
 						</section>
+						<section>
+							<h4>let's look into inner function</h4>
+							<pre><code>
+function outer(){
+  function inner(){
+    console.log('inside inner');
+  }
+  inner();
+}
+							</code></pre>
+							<pre class="fragment"><code>
+function outer(){
+  inner();
+  function inner(){
+    console.log('inside inner');
+  }  
+}
+							</code></pre>
+							<h4 class="fragment">second code block becomes like first one</h4>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
 					</section>
 					<section>
 						<section>
