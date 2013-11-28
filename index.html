@@ -635,7 +635,21 @@ boundHello("world");
 						</section>
 						<section>
 							<h2>constructor</h2>
-							<pre><code></code></pre>
+							<pre><code>
+function Friend(name) {
+  this.name = name;
+  this.libraries = [];
+}
+
+Friend.prototype = {
+  addLibrary: function(newLib){
+    this.libraries.push(newLib);
+  }
+};
+
+var frnd = new Friend('Angular Ember');
+frnd.addLibrary('asm.js');
+							</code></pre>
 						</section>
 						<section>
 							<h2>object.create</h2>
