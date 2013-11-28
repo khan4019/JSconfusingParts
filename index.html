@@ -633,7 +633,45 @@ boundHello("world");
 					</section>
 					<section>
 						<section>
-							<h1>hoisting and Scoping</h1>
+							<h1>scope</h1>
+						</section>
+						<section>
+							
+							<pre><code>
+var expertLevel = 3;
+
+function getExpertLevel(){
+  return expertLevel;
+}
+
+getExpertLevel(); //3
+console.log(expertLevel); //3
+							</code></pre>
+							<pre class="fragment"><code>
+var expertLevel = 3;
+
+function getExpertLevel(){
+  expertLevel = 4;
+  return expertLevel;
+}
+
+getExpertLevel(); //4
+console.log(expertLevel); //4
+							</code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code>
+var expertLevel = 3;
+
+function getExpertLevel(){
+  var expertLevel = 4;
+  return expertLevel;
+}
+
+getExpertLevel(); //4
+console.log(expertLevel); //3
+							</code></pre>
 						</section>
 						<section>
 							<h2>Give graphical example here</h2>
@@ -732,7 +770,7 @@ args.map();
 							</ul>
 						</section>
 						<section>
-							<h2>Give me next</h2>
+							<h2>Give me next argument</h2>
 							<pre><code>
 function createStore(){
   var i=0;
