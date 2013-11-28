@@ -44,17 +44,17 @@
 				pre.widerCode{
 					width: 100%;
 				}
-
-				.greenBold{
-					color: green;
-					font-weight: bold !important;
-				}
+				
 				.lineThrough{
 					text-decoration: line-through;					
 				}
-				.redBoldText{
-					font-weight: bold;
-					color: red;
+				.greenBold{
+					color: green !important;
+					font-weight: bold !important;
+				}
+				.redBold{
+					font-weight: bold !important;
+					color: red !important;
 				}
 				.purpleBold{
 					font-weight: bold;
@@ -100,7 +100,7 @@
 						</section>
 						<section>							
 							<ul>
-								<li>scope, hoisting</li>
+								<li class="lineThrough">scope, hoisting</li>
 								<li>this</li>
 								<li>closure</li>
 								<li>inheritance</li>
@@ -127,8 +127,8 @@
 							<h2>Truth is very subjective</h2>
 						</section>
 						<section>
-							<h2>You don't get what you deserve.</h2>
-							<h2>You only get what you negotiate.</h2>
+							<h2>You don't get what you <span class="greenBold">deserve</span></h2>
+							<h2 class="fragment">You only get what you <span class="redBold">negotiate</span></h2>
 						</section>
 						<section>
 							<h2>You are as good as your imagination</h2>
@@ -874,6 +874,7 @@ function outer(){
 }
 							</code></pre>
 							<h4 class="fragment">function declaration: name and implementation hoisted</h4>
+							<a href="http://www.kenneth-truyers.net/2013/04/20/javascript-hoisting-explained/">JS hoisting explained</a>
 						</section>
 						<section>
 							<h2>function expression</h2>
@@ -953,29 +954,29 @@ function foo(){
 foo(); //[]
 foo('js', 'is', 'fun'); //['js', 'is', 'fun']
 							</code></pre>
+							
+							<li class="fragment">can't explicity created</li>
+							<li class="fragment">available only when function begin execution</li>
+							<li class="fragment">arguments & named parameters references same value</li>
+							<li class="fragment">updateing arguments[i] changes named parameters</li>
+						
 						</section>							
 						<section>
 							<h3>Like an Array</h3>			
-							<pre class="fragment"><code>
+							<pre><code>
 arguments.length; //3
 arguments[2]; //fun
 							</code></pre>				
-							<h2 class="fragment redBoldText">Not an Array</h2>
+							<h3 class="fragment redBold">Not an Array</h3>
 							<pre class="fragment"><code>
 arguments.indexOf('is');
 //TypeError: Object has no method 'indexOf'
 							</code></pre>
-							<h2>Convert to Array</h2>
+							<h3 class="fragment">Convert to Array</h3>
 							<pre class="fragment"><code>
 var args = Array.prototype.slice.call(arguments);
 args.map();
-							</code></pre>
-							<ul>
-								<li class="fragment">can't explicity created</li>
-								<li class="fragment">available only when function begin execution</li>
-								<li class="fragment">arguments and named parameters references same value</li>
-								<li class="fragment">updateing arguments[i] changes named parameters</li>
-							</ul>
+							</code></pre>							
 						</section>
 						<section>
 							<h2>Give me next argument</h2>
