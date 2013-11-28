@@ -627,13 +627,42 @@ boundHello("world");
 						<section>
 							<h2>Interesting Drawing to explain inheritance</h2>
 							<pre><code></code></pre>
-							<p>ggl it</p>
+							<p>create one: do some work</p>
 						</section>
 						<section>
-							<h2>Performance</h2>
+							<h2>syntax construct</h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2>constructor</h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2>object.create</h2>
+							<pre><code>
+var Friend = {name: 'Geek smith'}; 
+Friend.prototype; //undefined
+
+var JSFriend = Object.create(Friend);
+// JSFriend => Friend => Object.prototype => null
+console.log(JSFriend.name); // Geek Smith
+							</code></pre>
+							<pre class="fragment"><code>
+var AngularFriend = Object.create(JSFriend);
+// AngularFriend => JSFriend => Friend => Object.prototype => null
+console.log(AngularFriend.name); //Geek Smith
+
+var RandomGuy = Object.create(null);
+// RandomGuy => null
+console.log(RandomGuy.hasOwnProperty); // undefined
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance</a>
+						</section>
+						<section>
+							<h2>Lookup for properties</h2>
 							<ul>
-								<li></li>
-								<li class="fragment"></li>
+								<li>negative impact when have to traverse prototype chain</li>
+								<li class="fragment">monkey patching (extend build in object.prototype)</li>
 								<li class="fragment"></li>
 								<li class="fragment"></li>
 								<li class="fragment"></li>
