@@ -673,6 +673,31 @@ console.log(RandomGuy.hasOwnProperty); // undefined
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance</a>
 						</section>
 						<section>
+							<h3>New / update prototype property</h3>
+							<pre><code>
+function Friend(name){
+  this.name = name;
+}
+
+Friend.prototype ={
+  knowJS:true
+}
+
+var frnd = new Friend('Scala Guy');
+frnd.city = 'Chicago';
+console.log(frnd);
+//Friend {name: "Scala Guy", city: 'chicago', knowJS: true}
+frnd.hasOwnProperty('city'); //true
+							</code></pre>
+							<pre class="fragment"><code>
+var frnd = new Friend('Scala Guy');
+frnd.knowJS = false;
+console.log(frnd);
+//Friend {name: "Scala Guy", knowJS: false, knowJS: true}
+							</code></pre>
+							<a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">JS Prototype</a>
+						</section>
+						<section>
 							<h2>Lookup for properties</h2>
 							<ul>
 								<li>negative impact when have to traverse prototype chain</li>
