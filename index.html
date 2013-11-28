@@ -784,28 +784,46 @@ exLevel(5); //2
 					<section>
 						<section>
 							<h1>hoisting</h1>							
-						</section>
-						<section>
-							<img src="images/hoist.png" alt="">
-						</section>
+						</section>						
 						<section>
 							<h2></h2>
 							<pre><code>
 function justLooping() {
- 
     for (var i = 0; i < 5; i++) {
-        //doing nothing
-    }
- 
+        //do something
+    } 
     console.log(i);
 }
- 
-mymethod();
+							</code></pre>
+							<pre class="fragment"><code>
+justLooping();//5;
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(){
+  console.log(myVar);
+  //do something
+  var myVar = 42;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo();//undefined
+							</code></pre>
+						</section>
+						<section>							
+							<pre><code>
+var myVar = 54;
+function foo(){
+  console.log(myVar);
+  //do something
+  var myVar = 42;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo();//undefined
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<img src="images/hoist.png" alt="">
 						</section>
 						<section>
 							<h2></h2>
