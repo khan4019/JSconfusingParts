@@ -659,8 +659,7 @@ getExpertLevel(); //4
 console.log(expertLevel); //4
 							</code></pre>
 						</section>
-						<section>
-							<h2></h2>
+						<section>							
 							<pre><code>
 var expertLevel = 3;
 
@@ -672,6 +671,24 @@ function getExpertLevel(){
 getExpertLevel(); //4
 console.log(expertLevel); //3
 							</code></pre>
+							<pre class="fragment"><code>
+var expertLevel = 3;
+
+function getExpertLevel(){  
+  return expertLevel;
+  var expertLevel = 4;
+}
+
+getExpertLevel(); //undefined
+console.log(expertLevel); //3
+							</code></pre>
+						</section>
+						<section>
+							<h2>name conflict</h2>
+							<pre><code>
+// inner function take precenden
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
 						</section>
 						<section>
 							<h2>Give graphical example here</h2>
