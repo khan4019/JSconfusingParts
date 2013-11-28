@@ -1230,22 +1230,45 @@ function generateGreet(greet){
 						<h1>Date object</h1>
 					</section>
 					<section>
-						<h2>SetTimeOut</h2>
-						<a href="http://javascript.info/tutorial/settimeout-setinterval">Understanding timer: very good</a>
-						<br/>
-						<a href="http://ejohn.org/blog/how-javascript-timers-work/">Jon Resig: How Timers works</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setTimeout">MDN: setTimeOut</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setInterval">MDN: setInterval</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearTimeout">MDN: clearTimeout</a>
-						<br/>
-						<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearInterval">MDN:clearInterval</a>
-						<br/>
-						<a href="http://stackoverflow.com/questions/5855803/how-to-pause-timer-or-freeze-it-and-resume-javascript">resume timer</a>
-						<br/>
-						<a href="http://stackoverflow.com/questions/13994910/javascript-timer-delay">JS timer delay</a>
+						<section>
+							<h1>Timer</h1>
+						</section>
+						<section>
+							<h2>setTimeout</h2>
+							<pre><code>
+function foo(){
+ console.log('foo ed');
+}
+//pass named function
+setTimeout(foo, 1000);
+
+//anonymous function
+setTimeout(function(){
+  console.log('foooo anonymous')
+}, 1000);
+
+//pass expression
+setTimeout("console.log('direct fooo')",1000);
+							</code></pre>
+						</section>
+						<section>
+							<h2>SetTimeOut</h2>
+							<a href="http://javascript.info/tutorial/settimeout-setinterval">Understanding timer: very good</a>
+							<br/>
+							<a href="http://ejohn.org/blog/how-javascript-timers-work/">Jon Resig: How Timers works</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setTimeout">MDN: setTimeOut</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.setInterval">MDN: setInterval</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearTimeout">MDN: clearTimeout</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/window.clearInterval">MDN:clearInterval</a>
+							<br/>
+							<a href="http://stackoverflow.com/questions/5855803/how-to-pause-timer-or-freeze-it-and-resume-javascript">resume timer</a>
+							<br/>
+							<a href="http://stackoverflow.com/questions/13994910/javascript-timer-delay">JS timer delay</a>
+						</section>
 					</section>
 					<section>
 						<section>
