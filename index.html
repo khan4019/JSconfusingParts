@@ -636,25 +636,28 @@ boundHello("world");
 							<h1>scope</h1>
 						</section>
 						<section>
-							
+							<p>Type these in console for live Demo</p>
 							<pre><code>
-var expertLevel = 3;
+var expertLevel = 7;
 
 function getExpertLevel(){
+  var innerExpert = 4; 
   return expertLevel;
 }
-
-getExpertLevel(); //3
-console.log(expertLevel); //3
+							</code></pre>
+							<pre class="fragment"><code>
+getExpertLevel(); //7
+console.log(expertLevel); //7
+console.log(innerExpert); //ReferenceError: innerExpert is not defined
 							</code></pre>
 							<pre class="fragment"><code>
 var expertLevel = 3;
-
 function getExpertLevel(){
   expertLevel = 4;
   return expertLevel;
 }
-
+							</code></pre>
+							<pre class="fragment"><code>
 getExpertLevel(); //4
 console.log(expertLevel); //4
 							</code></pre>
@@ -681,6 +684,44 @@ function getExpertLevel(){
 
 getExpertLevel(); //undefined
 console.log(expertLevel); //3
+							</code></pre>
+						</section>
+						<section>
+							<h2>name conflict</h2>
+							<pre><code>
+function foo(){
+  var a = 2;
+  function bar(){
+   a = 3;
+   console.log('inside a:', a)
+ }
+ bar();
+ console.log('outside a:', a)
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo(); 
+//inside a:3 			
+//outside a:3					
+							</code></pre>
+						</section>
+												<section>
+							<h2>name conflict</h2>
+							<pre><code>
+function foo(){
+  var a = 2;
+  function bar(){
+   var a = 3;
+   console.log('inside a:', a)
+ }
+ bar();
+ console.log('outside a:', a)
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo(); 
+//inside a:3 			
+//outside a:2					
 							</code></pre>
 						</section>
 						<section>
