@@ -630,10 +630,6 @@ boundHello("world");
 							<p>create one: do some work</p>
 						</section>
 						<section>
-							<h2>syntax construct</h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
 							<h2>constructor</h2>
 							<pre><code>
 function Friend(name) {
@@ -650,6 +646,14 @@ Friend.prototype = {
 var frnd = new Friend('Angular Ember');
 frnd.addLibrary('asm.js');
 							</code></pre>
+							<pre class="fragment"><code>
+function CloseFriend(name){
+ this.name = name;
+}
+
+CloseFriend.prototype = new Friend();
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
 						</section>
 						<section>
 							<h2>object.create</h2>
