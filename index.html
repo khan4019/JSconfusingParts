@@ -860,22 +860,45 @@ function outer(){
   function inner(){
     console.log('inside inner');
   }
+  //do something
   inner();
 }
 							</code></pre>
 							<pre class="fragment"><code>
 function outer(){
   inner();
+  //do something else 	
   function inner(){
     console.log('inside inner');
   }  
 }
 							</code></pre>
-							<h4 class="fragment">second code block becomes like first one</h4>
+							<h4 class="fragment">function declaration: name and implementation hoisted</h4>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>function expression</h2>
+							<pre><code>
+function outer(){
+  inner();
+  //do something else 	
+  var inner = function(){
+    console.log('inside inner');
+  }  
+}
+							</code></pre>
+							<pre class="fragment"><code>
+outer();//TypeError: undefined is not a function
+							</code></pre>
+							<pre class="fragment"><code>
+function outer(){
+  var inner;
+  inner();
+  //do something else 	
+  inner = function(){
+    console.log('inside inner');
+  }  
+}
+							</code></pre>
 						</section>
 					</section>
 					<section>
