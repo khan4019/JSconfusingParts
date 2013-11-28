@@ -697,6 +697,25 @@ function getExpertLevel(){
 							<pre class="fragment"><code>
 var exLevel = getExpertLevel();
 exLevel(2); //2
+exLevel(5); //4
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
+						</section>
+												<section>
+							<h2>closure name conflict</h2>
+							<pre><code>
+// inner function take precenden
+function getExpertLevel(){
+  var level = 4;
+  return function (){
+    var level= 2;
+    return level;
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var exLevel = getExpertLevel();
+exLevel(); //2
 exLevel(5); //2
 							</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
@@ -1177,6 +1196,32 @@ $('ul').on('click', 'li', function(){});
 							<a href="https://developer.mozilla.org/en/docs/Web/API/Event">MDN: DOM Events</a>
 							<br/>
 							<a href="http://www.w3.org/TR/DOM-Level-3-Events/">W3C: Event Spec</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Others</h1>
+						</section>
+						<section>
+							<h2>Function constructor vs. function declaration vs. function expression</h2>
+							<pre><code></code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">MDN: compare function creation</a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
 						</section>
 					</section>
 					<section>
