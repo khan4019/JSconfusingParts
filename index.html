@@ -497,9 +497,9 @@ whatisThis(); //window
 							<pre><code>
 var myObject = {	
 	
-	myMethod: function() {
-		console.debug(this);
-	}	
+  myMethod: function() {
+   console.debug(this);
+  }	
 };
 myObject.myMethod(); // console.debugs a reference to myObject
 							</code></pre>
@@ -508,9 +508,9 @@ myObject.myMethod(); // console.debugs a reference to myObject
 							<h2></h2>
 							<pre><code>
 function MyClass() {
-	this.myMethod = function() {
-		console.debug(this);
-	}
+  this.myMethod = function() {
+ 	console.debug(this);
+  }
 }
 
 var my1 = new MyClass();
@@ -526,17 +526,14 @@ my2.myMethod(); // reference to the MyClass instance2
 window.WhoAmI = "I'm the window object";
 
 function Test() {
-
-	this.WhoAmI = "I'm the Test object";
-
-	this.Check1 = function() {
-		alert(this.WhoAmI); // I'm the Test object
-	};
-
+  this.WhoAmI = "I'm the Test object";
+  this.Check1 = function() {
+   alert(this.WhoAmI); // I'm the Test object
+  };
 }
 
 Test.prototype.Check2 = function() {
-	alert(this.WhoAmI); // I'm the Test object
+  alert(this.WhoAmI); // I'm the Test object
 };
 
 var t = new Test();
@@ -616,8 +613,8 @@ boundHello("world");
 						</section>
 						<section>
 							<h3></h3>
-							<ul>
-								<li>Javascript has only one construct: object</li>
+							<ul class="">
+								<li>Only one construct in JS: object</li>
 								<li class="fragment">Each object has an internatl link (prototype) to another object</li>
 								<li class="fragment">Prototype itself is an object</li>
 								<li class="fragment">Prototype object has its own prototype</li>
@@ -633,8 +630,14 @@ boundHello("world");
 							<p>ggl it</p>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>Performance</h2>
+							<ul>
+								<li></li>
+								<li class="fragment"></li>
+								<li class="fragment"></li>
+								<li class="fragment"></li>
+								<li class="fragment"></li>
+							</ul>
 						</section>
 						<section>												
 							<h2>prototype, getPrototypeOf, __Proto__</h2>
