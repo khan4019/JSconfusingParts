@@ -1452,7 +1452,7 @@ var booTo = generateGreet('Boo');
 hiTo('Java'); // Boo, Java
 hiTo('XML'); // Boo, XML
 							</code></pre>
-							
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN:closure</a>
 						</section>
 						<section>
 							<h2>Cleaner Closure</h2>							
@@ -1480,7 +1480,7 @@ function generateGreet(greet){
 						<section>
 							<h2>closure</h2>
 							<ul>
-								<li>Refer to variables outside of current scope</li>
+								<li>Refer to variables, parameters outside of current scope</li>
 								<li class="fragment">doesn't have to return anything</li>
 								<li class="fragment">read and write outer scope variable</li>
 								<li class="fragment">store outer variables by reference not by value (add an example for this)</li>
@@ -1489,19 +1489,31 @@ function generateGreet(greet){
 							<a href="">Effective Javascript (item -13)</a>
 						</section>
 						<section>
-							<h2>References</h2>							
-							<a href="http://nathansjslessons.appspot.com/lesson?id=1000">What is a closure</a>
-							<br/>
-							<a href="http://jessecravens.com/blog/2008/04/09/understanding-javascript-closures/">Understanding Closures</a>
-							<br/>
+							<h2></h2>
+							<pre><code>
+function abc (){
+  var result =[];
+  for(var i=0;i<5;i++){
+   result.push(function (){console.log(i)});
+  }
+  return result;
+}
+							</code></pre>
+						</section>
+						<section>
+							<h2>closure is used</h2>
+							<li>function inside another function</li>
+							<li>eval() inside a function. can reference/create or update local variables</li>
+							<li class="lineThrough">Function() inside a function (cannot reference the local variables)</li>
+							<li class="fragment">new set of local variables is kept every time a function with a closure is called</li>
+							<li class="fragment">no easier way to detect closure</li>
 							<a href="http://javascript-reference.info/javascript-closures-for-dummies.htm">Closure for dummies</a>
-							<br/>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN: Closure</a>
-							<br/>
-							<a href="http://lostechies.com/derekgreer/2012/02/17/javascript-closures-explained/">Very good explained: Closure</a>
-							<br/>
-							<a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Understanding Closure at ease</a>
-							<br/>
+								
+						</section>
+						<section>
+							<h3>Add graphical explanation</h3>
+							<p>both the link have some image</p>
+							<p>make something cool</p>
 							<a href="http://doctrina.org/JavaScript:Why-Understanding-Scope-And-Closures-Matter.html">Good link and image:</a>
 							<br/>
 							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">Nettuts: closure</a>
