@@ -91,7 +91,7 @@
 						<h2 style="color:red; font-weight: bold">This is work in process presentation</h2>
 					</section>
 					<section>
-						<h2>Must read this article</h2>
+						<h2>Must read</h2>
 						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS concepts</a>
 						<br/>
 						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">21 JS i struggle to remember</a>
@@ -596,17 +596,15 @@ Math.min.apply(null, [2,3,4,5]); //2
 						<section>
 							<ul>
 								<li>Every function is just an object</li>
-								<li class="fragment">just like object, have properties</li>
+								<li class="fragment">just like object, function has properties</li>
 								<li class="fragment">gets the "this" property during execution</li>
-								<li class="fragment">this ALWAYS refer to an object</li>
+								<li class="fragment">"this" ALWAYS refer to an object</li>
 							</ul>
 							<br/>
 							<br/>
 							<ul class="fragment">
-								<li>refer to current execution context</li>								
-								<li class="fragment">refers to global outside of any function</li>								
-								<li class="fragment">Mostly depend on how function is called</li>
-								<li class="fragment">undefined for global scope in strict mode</li>
+								<li>refer to current execution context</li>																
+								<li class="fragment">Mostly depend on how function is called</li>								
 								<li class="fragment">undefined for anonymous function that not bound to any object</li>
 							</ul>							
 						</section>
@@ -637,7 +635,11 @@ function justAddName(name) {
 justAddName("Adam");
 console.log(window.name); // Adam
 							</code></pre>
-							<pre class="fragment"><code>
+							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
+						</section>
+						<section>
+							<h2>strict mode</h2>
+							<pre><code>
 function whatIsThis(){
   "use strict";
   return this;
@@ -645,7 +647,13 @@ function whatIsThis(){
 
 whatIsThis(); //undefined								
 							</code></pre>
-							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
+							<pre class="fragment"><code>
+//add example for this
+(function(){return this;})();
+							</code></pre>
+							<pre class="fragment"><code>
+//add example for IIFE with object bind
+							</code></pre>
 						</section>
 						<section>
 							<h2>method of an Object</h2>
