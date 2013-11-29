@@ -202,28 +202,40 @@ NaN == 0; //false!
 							</code></pre>
 						</section>
 						<section>
-							<h2>Copied from Angus. create story</h2>
-							<pre><code>
-var trutheyTester = function(expr) {
-    return expr ? "truthey" : "falsey"; 
-}
- 
-trutheyTester({}); //truthey (an object is always true)
- 
-trutheyTester(false); //falsey
-trutheyTester(new Boolean(false)); //truthey (an object!)
- 
-trutheyTester(""); //falsey
-trutheyTester(new String("")); //truthey (an object!)
- 
-trutheyTester(NaN); //falsey
-trutheyTester(new Number(NaN)); //truthey (an object!)
+							<h2>Boolean()</h2>
+							<h4>convert anything to bool</h4>
+							<pre><code> 
+Boolean(undefined); // false
+Boolean(null); // false
+Boolean(0); // false
+Boolean(''); // false
+Boolean(NaN); // false
+							</code></pre>
+							<pre class="fragment"><code>
+Boolean(1); // true
+Boolean('false'); // true
+Boolean([]); // true
+Boolean({}); // true
+Boolean(function(){}); // true
+Boolean(/foo/); // true
 							</code></pre>
 						</section>
 						<section>
+							<h2>double bang</h2>
 							<pre><code>
-var a = !! (0); //false
-var b = !!('0'); //true
+!!undefined; // false
+!!null; // false
+!!0; // false
+!!''; // false
+!!NaN; // false
+							</code></pre>
+							<pre class="fragment"><code>
+!!1; // true
+!!'false'; // true
+!![]; // true
+!!{}; // true
+!!function(){}; // true
+!!/foo/; // true
 							</code></pre>
 							<a href="http://www.sitepoint.com/javascript-truthy-falsy/">Truthy -falsy</a>
 						</section>
