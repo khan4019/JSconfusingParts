@@ -755,14 +755,16 @@ lunch.apply(forDev, [5, 10]);
 						</section>
 						<section>
 							<h2>DOM event handler</h2>
+							<h4>this = element the event fired from</h4>
 							<pre><code>
-
-							</code></pre>
-						</section>
-						<section>
-							<h2>inline event handler</h2>
-							<pre><code></code></pre>
-							<a href="http://stantona.github.io/blog/2013/01/02/what-is-this-in-javascript/">what is this in JS</a>
+function bluify(e){
+  console.log(this === e.currentTarget); // Always true
+  console.log(this === e.target);// true when currentTarget and target are the same object
+  this.style.backgroundColor = '#A5D9F3';
+}
+							</code></pre>	
+							<h4>same for inline element this</h4>					
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
 							<h4>inside callback</h4>
