@@ -705,8 +705,25 @@ crazy.name;//get lost
 						</section>
 						<section>
 							<h2>prototype chain</h2>
+							<h4>access property, methods in the prototype chain</h4>
 							<pre><code>
+var dad = {
+  fathersName:'big Dad'
+}
 
+var child =Object.create(dad);
+
+child.whoIsYourFather:function(){
+    return this.fathersName;
+ }
+							</code></pre>
+							<pre class="fragment"><code>
+child.fathersName; //big Dad
+child.whoIsYourFather(); //big Dad
+							</code></pre>
+							<pre class="fragment"><code>
+child.hasOwnProperty('fathersName'); //false
+Object.getPrototypeOf(child); //{fathersName: "big Dad"}
 							</code></pre>
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
