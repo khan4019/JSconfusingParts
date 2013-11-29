@@ -106,7 +106,7 @@
 							<ul>
 								<li class="lineThrough">scope, hoisting</li>
 								<li class="lineThrough">this</li>
-								<li>closure</li>
+								<li class="lineThrough">closure</li>
 								<li>inheritance</li>
 								<li class="lineThrough">Bind, call apply</li>
 								<li>Eval, with, global</li>
@@ -1492,13 +1492,22 @@ function generateGreet(greet){
 							<h2></h2>
 							<pre><code>
 function abc (){
-  var result =[];
-  for(var i=0;i<5;i++){
+  var result = [];
+  for(var i=0; i<5; i++){
    result.push(function (){console.log(i)});
   }
   return result;
 }
 							</code></pre>
+							<pre class="fragment"><code>
+var kk = abc();
+kk[1]();//5
+kk[2]();//5
+							</code></pre>
+							<pre class="fragment"><code>
+//solve by IIFE								
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example">closure inside loops</a>
 						</section>
 						<section>
 							<h2>closure is used</h2>
