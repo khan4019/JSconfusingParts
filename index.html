@@ -531,16 +531,41 @@ var cssBuddy = new Designer('CSS buddy',['sass', 'bootstrap']);
 						<section>
 							<h2>apply</h2>
 							<ul>
-								<li class="fragment">similar to call</li>
+								<li>similar to call</li>
 								<li class="fragment">array-like arguments in one parameter</li>
 								<li class="fragment">can pass arguments as well</li>
 							</ul>
-							<pre><code>
+							<pre class="fragment"><code>
+//apply
 sheldon.knowLib.apply(raj, ['jquery']); //true
 
 //call
 shelod.knowLib.call(raj, 'angular'); //true
 							</code></pre>
+						</section>
+						<section>
+							<h2>apply example</h2>
+							<pre><code>
+Math.max(2,3,4,5); //5
+Math.max([2,3,4,5]); // NaN
+							</code></pre>
+							<pre class="fragment"><code>
+function getMax(numbers){
+  var max = -Infinity;
+  for (var i = 0, len = numbers.length; i<len; i++) {
+    if (numbers[i] > max)
+      max = numbers[i];  
+  }
+  return max;
+}
+
+getMax([2,3,4,5]); //5
+							</code></pre>
+							<pre class="fragment"><code>
+Math.max.apply(null, [2,3,4,5]); //5
+Math.min.apply(null, [2,3,4,5]); //2
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">MDN: apply</a>
 						</section>
 					</section>
 					<section>
