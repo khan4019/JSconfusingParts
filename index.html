@@ -104,7 +104,7 @@
 								<li>this</li>
 								<li>closure</li>
 								<li>inheritance</li>
-								<li>Bind, call apply</li>
+								<li class="lineThrough">Bind, call apply</li>
 								<li>Eval, with, global</li>
 								<li>Date, Function, Object</li>
 								<li class="lineThrough">Timers</li>
@@ -412,55 +412,185 @@ parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							<h1>Bind, call and Apply</h1>
 						</section>
 						<section>
-							<h2></h2>
+							<h3>bind specific object to "this"</h3>
+							<h4>sometimes "this" is not the object intended</h4>
 							<pre><code>
-// Set up a simple object to use as "context"
-var context = { foo: "bar" };
+function getMontlhlyFee(fee){
+  var remaining = this.total - fee;
+  this.total = remaining;
+  return this.name +' remaining balance:'+remaining;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var rachel = {name:'Rachel Green', total:500};
+//bind
+var getRachelFee = getMontlhlyFee.bind(rachel, 90);
+//deduct
+getRachelFee();//Rachel Green remaining balance:410
+getRachelFee();//Rachel Green remaining balance:320
+							</code></pre>
+							<pre class="fragment"><code>
+var ross = {name:'Ross Geller', total:250};
+//bind
+var getRossFee = getMontlhlyFee.bind(ross, 25);
+//deduct
+getRossFee(); //Ross Geller remaining balance:225
+getRossFee(); //Ross Geller remaining balance:200
+							</code></pre>							
+						</section>
+						<section>
+							<h2>Explain bind</h2>
+							
+								<li>create a robot arm</li>
+								<li>arms takes money from peoples pocket</li>
+								<li>there is a place person need to stand</li>
+								<li>like in club</li>
+								<li>now bind (change) person and money would be taken out from his pocket</li>
+							
+						</section>						
+						<section>
+							<h4>currying/ partial function application</h4>
+							<pre><code>
+function greet (favLan, name) {    
+    if (favLan === 'javascript') {
+        return "Hello, my dear" + name + ".";
+    }
+    else {
+        return "Hi, " + name + ".";
+    }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+// bind to null as "this" keyword wasn't used
+var greetJSDude = greet.bind (null, "javascript");
 
-// A function that uses a reference to a variable called "foo"
-// on the "this" context.
-function returnFoo () {
-  return this.foo;
+greetJSDude("James Kirk"); // "Hello, my dear James Kirk."
+greetJSDude("Spock"); // "Hello, my dear Spock."
+							</code></pre>
+							<pre class="fragment"><code>
+var designerBuddy = greet.bind (null, "css");
+
+designerBuddy("Alex"); // "Hi, Alex."
+designerBuddy("Emma Waterloo"); // "Hi, Emma Waterloo."
+							</code></pre>
+							<a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/">bind, call and apply</a>
+						</section>												
+						<section>
+							<h2>call</h2>							
+							<pre><code>
+function Friend(name){
+  return {
+    name:name,
+    libraries:[],
+
+    addLib:function(lib){
+      this.libraries.push(lib);
+    },
+
+    knowLib:function(lib){
+      return this.libraries.indexOf(lib) > -1;
+    }
+  }
+}</code></pre>
+							<pre class="fragment"><code>
+var sheldon = new Friend('Shelodn Cooper');
+sheldon.addLib('angular');
+sheldon.addLib('backbone');
+sheldon.addLib('ember');</code></pre>							
+						<pre class="fragment"><code>
+sheldon.knowLib('ember'); //true
+sheldon.knowLib('jquery'); //false
+						</code></pre>	
+						</section>
+						<section>							
+							<pre><code>
+var raj = {
+  name:'Raj Koothrappali', 
+  libraries:['angular', 'jquery']
+}
+							</code></pre>
+							<pre class="fragment"><code>
+shelod.knowLib.call(raj, 'angular'); //true
+shelod.knowLib.call(raj, 'ember'); //false
+							</code></pre>
+							<h4 class="fragment">call method on another object</h4>
+							<h4 class="fragment">this refers to the first parameter</h4>
+							<h4 class="fragment">reuse of method</h4>
+							<h4 class="fragment">Parameters needs to be explicity mentioned</h4>
+						</section>
+						<section>
+							<h2>more useful example</h2>
+							<pre><code>
+function Friend(name, libraries) {
+  this.name = name;
+  this.libraries = libraries;
+
+  if (libraries.length == 0)
+    throw Error('Are you a manager!');
+  return this;
+}							</code></pre>
+							<pre class="fragment"><code>
+function Developer(name, libraries) {
+  Friend.call(this, name, libraries);
+  this.category = 'developer';
+}
+Developer.prototype = new Friend();
+
+var jsDude = new Developer('JS Dude', ['jquery', 'node.js']);
+							</code></pre>
+							<pre class="fragment"><code>
+function Designer(name, libraries) {
+  Friend.call(this, name, libraries);
+  this.category = 'designer';
+}
+Designer.prototype = new Friend();
+
+var cssBuddy = new Designer('CSS buddy',['sass', 'bootstrap']);
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">MDN:call</a>
+						</section>
+						<section>
+							<h2>apply</h2>
+							<ul>
+								<li>similar to call</li>
+								<li class="fragment">array-like arguments in one parameter</li>
+								<li class="fragment">can pass arguments as well</li>
+								<li class="fragment">Pretty close in performance. but call dont need to evaluate an array</li>
+							</ul>
+							<pre class="fragment"><code>
+//apply
+sheldon.knowLib.apply(raj, ['jquery']); //true
+
+//call
+shelod.knowLib.call(raj, 'angular'); //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>Execute ariable-Arity/ Variadic Function</h2>
+							<pre><code>
+Math.max(2,3,4,5); //5
+Math.max([2,3,4,5]); // NaN
+							</code></pre>
+							<pre class="fragment"><code>
+function getMax(numbers){
+  var max = -Infinity;
+  for (var i = 0, len = numbers.length; i<len; i++) {
+    if (numbers[i] > max)
+      max = numbers[i];  
+  }
+  return max;
 }
 
-// This variable does not exist on scope, so is undefined.
-returnFoo(); // => undefined
+getMax([2,3,4,5]); //5
 							</code></pre>
-							<a href="https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html"></a>
-						</section>
-						<section>
-							<h2>Bind</h2>
-							<p>Creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.</p>
-							<pre><code>
-// Define the original function.
-var checkNumericRange = function (value) {
-    if (typeof value !== 'number')
-        return false;
-    else
-        return value >= this.minimum && value <= this.maximum;
-}
-
-// The range object will become the this value in the callback function.
-var range = { minimum: 10, maximum: 20 };
-
-// Bind the checkNumericRange function.
-var boundCheckNumericRange = checkNumericRange.bind(range);
-
-// Use the new function to check whether 12 is in the numeric range.
-var result = boundCheckNumericRange (12);
-document.write(result);
-
-// Output: true
+							<pre class="fragment"><code>
+Math.max.apply(null, [2,3,4,5]); //5
+Math.min.apply(null, [2,3,4,5]); //2
 							</code></pre>
-							<a href="http://msdn.microsoft.com/en-us/library/ie/ff841995(v=vs.94).aspx">JS bind method</a>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">MDN: apply</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>Summary and recap</h2>
 						</section>
 					</section>
 					<section>
@@ -711,8 +841,33 @@ console.log(frnd);
 							</ul>
 							<img src="images/lookForProperty.png" alt="">
 						</section>
+						<section>
+							<h2></h2>
+							<pre><code>
+function Friend(name){
+  this.name = name;
+}
+
+Friend.prototype ={
+  knowJS:true
+}
+
+var frnd = new Friend('Scala Guy');
+'knowJS' in frnd; //true
+							</code></pre>
+							<pre class="fragment"><code>
+frnd.hasOwnProperty('name'); //true
+frnd.hasOwnProperty('knowJS'); //false
+							</code></pre>
+							<pre class="fragment"><code>
+frnd.hasOwnProperty = 10;
+frnd.hasOwnProperty('name'); 
+//TypeError: Property 'hasOwnProperty' of object is not a function
+{}.hasOwnProperty.call(frnd, 'name'); //true
+							</code></pre>
+						</section>
 						<section>												
-							<h2>prototype, getPrototypeOf, __Proto__</h2>
+							<h2>getPrototypeOf, __Proto__</h2>
 							<p>source: Effective JS p-118</p>
 						</section>
 						<section>
@@ -1376,6 +1531,19 @@ clearInterval(timeId);
 							<br/>
 							<p>Note: Could different for different browser</p>
 							<a href="http://ejohn.org/blog/how-javascript-timers-work/">John Resig: How Timers work</a>
+						</section>
+						<section>
+							<h2>Send parameter to setTimeout</h2>
+							<pre><code>
+function myFunc(a, b, c){
+   console.log(arguments);
+   console.log(a,b,c);
+}
+
+setTimeout(myFunc, 1000, 2, 3, 5);
+//[2,3,5]
+//2 3 5
+							</code></pre>
 						</section>
 						<section>
 							<h2>Debounce and Throttle</h2>
