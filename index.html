@@ -907,10 +907,11 @@ console.log(frnd);
 							<ul>
 								<li>negative impact when have to traverse prototype chain</li>
 								<li class="fragment">monkey patching (extend build in object.prototype)</li>
-								<li class="fragment"></li>
+								<li class="fragment">delete wont delete inheriter properties</li>
 								<li class="fragment"></li>								
 							</ul>
 							<img src="images/lookForProperty.png" alt="">
+							<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">delete inherited property</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -1801,9 +1802,19 @@ new Boolean() instanceof Boolean; //true
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>array.length</h2>
 							<h4></h4>
-							<pre><code></code></pre>
+							<pre><code>
+var languages = ['knockout', 'backbone','meteor'];
+languages.length;//3
+
+languages.length = 5;
+languages; //["knockout", "backbone", "meteor", undefined, undefined]
+							</code></pre>
+							<pre class="fragment"><code>
+languages.length = 1;
+languages; //["knockout"]
+							</code></pre>
 						</section>
 						<section>
 							<h2></h2>
