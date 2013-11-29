@@ -737,7 +737,7 @@ frnd.hasOwnProperty('name');
 							</code></pre>
 						</section>
 						<section>												
-							<h2>prototype, getPrototypeOf, __Proto__</h2>
+							<h2>getPrototypeOf, __Proto__</h2>
 							<p>source: Effective JS p-118</p>
 						</section>
 						<section>
@@ -1401,6 +1401,19 @@ clearInterval(timeId);
 							<br/>
 							<p>Note: Could different for different browser</p>
 							<a href="http://ejohn.org/blog/how-javascript-timers-work/">John Resig: How Timers work</a>
+						</section>
+						<section>
+							<h2>Send parameter to setTimeout</h2>
+							<pre><code>
+function myFunc(a, b, c){
+   console.log(arguments);
+   console.log(a,b,c);
+}
+
+setTimeout(myFunc, 1000, 2, 3, 5);
+//[2,3,5]
+//2 3 5
+							</code></pre>
 						</section>
 						<section>
 							<h2>Debounce and Throttle</h2>
