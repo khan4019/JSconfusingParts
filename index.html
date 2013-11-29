@@ -415,7 +415,27 @@ parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							<h3>bind specific object to "this"</h3>
 							<h4>sometimes "this" is not the object intended</h4>
 							<pre><code>
-
+function getMontlhlyFee(fee){
+  var remaining = this.total - fee;
+  this.total = remaining;
+  return this.name +' remaining balance:'+remaining;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var rachel = {name:'Rachel Green', total:500};
+//bind
+var getRachelFee = getMontlhlyFee.bind(rachel, 90);
+//deduct
+getRachelFee();//Rachel Green remaining balance:410
+getRachelFee();//Rachel Green remaining balance:320
+							</code></pre>
+							<pre class="fragment"><code>
+var ross = {name:'Ross Geller', total:250};
+//bind
+var getRossFee = getMontlhlyFee.bind(ross, 25);
+//deduct
+getRossFee(); //Ross Geller remaining balance:225
+getRossFee(); //Ross Geller remaining balance:200
 							</code></pre>							
 						</section>
 						<section>
