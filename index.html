@@ -183,6 +183,7 @@ NaN == 0; //false!
 //convert string using toNumber
 0 == 1; //false!
 							</code></pre>
+							<h4>Work on this. try to explain</h4>
 						</section>
 						<section>
 							<h2>Boolean()</h2>
@@ -204,7 +205,7 @@ Boolean(/foo/); // true
 							</code></pre>
 						</section>
 						<section>
-							<h2>double bang</h2>
+							<h2>double bang(!!)</h2>
 							<pre><code>
 !!undefined; // false
 !!null; // false
@@ -223,27 +224,22 @@ Boolean(/foo/); // true
 							<a href="http://www.sitepoint.com/javascript-truthy-falsy/">Truthy -falsy</a>
 						</section>
 						<section>
+							<h2>Little More</h2>
 							<pre><code>
-var f = (null == false); // false
-var g = (null == null); // true
-var h = (undefined == undefined); // true
-var i = (undefined == null); // true
+null == false; // false
+null == null; // true
+
+undefined == undefined; // true
+undefined == null; // true
+							</code></pre>						
+							<pre class="fragment"><code>
+NaN == null; // false
+NaN == NaN; // false
+
+typeof(NaN; //number
+isNaN(;//use it
 							</code></pre>
-						</section>
-						<section>
-							<pre><code>
-var j = (NaN == null); // false
-var k = (NaN == NaN); // false
-typeof(NaN); //number
-isNaN();//use it
-							</code></pre>
-						</section>
-						<section>
-							<h2>double !!</h2>
-						</section>
-						<section>
-							<h2>History of typeof null</h2>
-							<a href="http://www.2ality.com/2013/10/typeof-null.html">typeof null</a>
+							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
 					</section>
 					<section>
