@@ -675,19 +675,32 @@ buddy.firstLib();//jquery
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>constructor</h2>
+							<h4>this= newly constructed object</h4>
 							<pre><code>
-function MyClass() {
-  this.myMethod = function() {
- 	console.debug(this);
+function Friend(name) {
+  this.name= name;  
+}
+
+var frnd1 = new Friend('nice guy');
+var frnd2 = new Friend('common guy');
+							</code></pre>
+							<pre class="fragment"><code>
+frnd1.name; //nice guy
+frnd2.name; //common guy
+
+window.name;//undefined
+							</code></pre>
+							<pre class="fragment"><code>
+function CrazyFriend(name) {
+  this.name= name;  
+  return {
+    name:'get lost'
   }
 }
 
-var my1 = new MyClass();
-var my2 = new MyClass();
-
-my1.myMethod(); // reference to the MyClass instance1
-my2.myMethod(); // reference to the MyClass instance2
+var crazy = new CrazyFriend('Simon Fisher');
+crazy.name;//get lost
 							</code></pre>
 						</section>
 						<section>
