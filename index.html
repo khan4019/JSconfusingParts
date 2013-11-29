@@ -105,14 +105,15 @@
 						<section>							
 							<ul>
 								<li class="lineThrough">scope, hoisting</li>
-								<li>this</li>
+								<li class="lineThrough">this</li>
 								<li>closure</li>
 								<li>inheritance</li>
 								<li class="lineThrough">Bind, call apply</li>
 								<li>Eval, with, global</li>
 								<li>Date, Function, Object</li>
 								<li class="lineThrough">Timers</li>
-								<li>truthy and falsy</li>								
+								<li>truthy and falsy</li>
+								<li>use strict</li>								
 								<li>Number, Equality Overkill: N2H</li>
 							</ul>
 						</section>				
@@ -607,16 +608,7 @@ Math.min.apply(null, [2,3,4,5]); //2
 								<li class="fragment">Mostly depend on how function is called</li>								
 								<li class="fragment">undefined for anonymous function that not bound to any object</li>
 							</ul>							
-						</section>
-						<section>
-							<h2>Set this</h2>
-							<ul>
-								<li>method call</li>
-								<li>baseless function call</li>
-								<li>call</li>
-								<li>apply</li>
-								<li>new </li>
-							</ul>
+							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
 							<h2>What is this?</h2>
@@ -689,16 +681,13 @@ buddy.firstLib();//jquery
 function Friend(name) {
   this.name= name;  
 }
-
 var frnd1 = new Friend('nice guy');
-var frnd2 = new Friend('common guy');
-							</code></pre>
+var frnd2 = new Friend('common guy');</code></pre>
 							<pre class="fragment"><code>
 frnd1.name; //nice guy
 frnd2.name; //common guy
 
-window.name;//undefined
-							</code></pre>
+window.name;//undefined</code></pre>
 							<pre class="fragment"><code>
 function CrazyFriend(name) {
   this.name= name;  
@@ -706,7 +695,6 @@ function CrazyFriend(name) {
     name:'get lost'
   }
 }
-
 var crazy = new CrazyFriend('Simon Fisher');
 crazy.name;//get lost
 							</code></pre>
@@ -763,8 +751,9 @@ lunch.apply(forDev, [5, 10]);
 						</section>
 						<section>
 							<h2>"this" in arguments</h2>
-							<h4>8 ES5 function allows thisArgs</h4>
+							<h4>8 ES5 function allows thisArg</h4>
 							<pre><code>
+//might consider to move this before last slide to explain better
 Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
 Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
 Function.prototype.apply( thisArg, argArray )
@@ -792,7 +781,11 @@ function bluify(e){
 						</section>
 						<section>
 							<h2>Eval</h2>
-							<pre><code></code></pre>
+							<pre><code>
+Investigate whether eval has special impact on this
+most likely dont.
+in such case remove this slide
+							</code></pre>
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
 						</section>
 						<section>
@@ -1072,7 +1065,11 @@ exLevel(5); //2
 						</section>
 						<section>
 							<h2>Give graphical example here</h2>
-							<pre><code></code></pre>
+							<pre><code>
+//create some code block
+//and apply different color 
+//highlight to explain scope
+							</code></pre>
 							<a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">JS scoping and hoisting</a>
 							<br/>
 							<a href="http://stackoverflow.com/questions/500431/javascript-variable-scope">variable scope</a>
