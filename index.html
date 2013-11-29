@@ -447,14 +447,32 @@ getRossFee(); //Ross Geller remaining balance:200
 								<li>like in club</li>
 								<li>now bind (change) person and money would be taken out from his pocket</li>
 							
-						</section>
+						</section>						
 						<section>
-							<h3>borrow method</h3>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h3>currying</h3>
-							<pre><code></code></pre>
+							<h3>currying/ partial function application</h3>
+							<pre><code>
+function greet (favLan, name) {    
+    if (favLan === 'javascript') {
+        return "Hello, my dear" + name + ".";
+    }
+    else {
+        return "Hi, " + name + ".";
+    }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+// bind to null as "this" keyword wasn't used
+var greetJSDude = greet.bind (null, "javascript");
+
+greetJSDude("James Kirk"); // "Hello, my dear James Kirk."
+greetJSDude("Spock"); // "Hello, my dear Spock."
+							</code></pre>
+							<pre class="fragment"><code>
+var designerBuddy = greet.bind (null, "css");
+designerBuddy("Alex"); // "Hi, Alex."
+designerBuddy("Emma Waterloo"); // "Hi, Emma Waterloo."
+							</code></pre>
+							<a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/">bind, call and apply</a>
 						</section>
 						<section>
 							<h3>pollyfill</h3>
