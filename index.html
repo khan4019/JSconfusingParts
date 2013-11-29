@@ -112,9 +112,9 @@
 								<li>Eval, with, global</li>
 								<li>Date, Function, Object</li>
 								<li class="lineThrough">Timers</li>
-								<li>truthy and falsy</li>
+								<li class="lineThrough">truthy and falsy</li>
 								<li>use strict</li>								
-								<li>Number, Equality Overkill: N2H</li>
+								<li class="lineThrough">Number</li>
 							</ul>
 						</section>				
 					</section>
@@ -241,42 +241,7 @@ isNaN(;//use it
 							</code></pre>
 							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Equality overkill</h1>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-//unnecessary
-if (typeof myVar === "function");
- 
-//better
-if (typeof myVar == "function");
-							</code></pre>
-							<pre class="fragment"><code>
-//unnecessary
-var missing =  (myVar === undefined ||  myVar === null);
- 
-//better
-var missing = (myVar == null);
-							</code></pre>
-							<pre class="fragment"><code>
-//unnecessary
-if (myArray.length === 3) {//..}
- 
-//better
-if (myArray.length == 3) {//..}
-							</code></pre>
-						</section>
-						<section>
-							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Read references in this link</a>
-						</section>
-						<section>
-							<h2>What to use when!!</h2>
-						</section>
-					</section>
+					</section>					
 					<section>
 						<section>
 							<h1>Number</h1>
@@ -1796,10 +1761,30 @@ languages; //["knockout"]
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
-							<h4></h4>
-							<pre><code></code></pre>
-						</section>
+							<h2>Equality overkill</h2>						
+							<pre><code>
+//unnecessary
+if (typeof myVar === "function");
+ 
+//better
+if (typeof myVar == "function");
+							</code></pre>
+							<pre class="fragment"><code>
+//unnecessary
+var missing =  (myVar === undefined ||  myVar === null);
+ 
+//better
+var missing = (myVar == null);
+							</code></pre>
+							<pre class="fragment"><code>
+//unnecessary
+if (myArray.length === 3) {//..}
+ 
+//better
+if (myArray.length == 3) {//..}
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Angus Croll: JS Equality</a>
+											</section>
 						<section>
 							<h2></h2>
 							<h4></h4>
