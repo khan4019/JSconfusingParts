@@ -497,6 +497,36 @@ shelod.knowLib.call(raj, 'ember'); //false
 							<h4 class="fragment">reuse of method</h4>
 							<h4 class="fragment">Parameters needs to be explicity mentioned</h4>
 						</section>
+						<section>
+							<h2>more useful example</h2>
+							<pre><code>
+function Friend(name, libraries) {
+  this.name = name;
+  this.libraries = libraries;
+
+  if (libraries.length == 0)
+    throw Error('Are you a manager!');
+  return this;
+}							</code></pre>
+							<pre class="fragment"><code>
+function Developer(name, libraries) {
+  Friend.call(this, name, libraries);
+  this.category = 'developer';
+}
+Developer.prototype = new Friend();
+
+var jsDude = new Developer('JS Dude', ['jquery', 'node.js']);
+							</code></pre>
+							<pre class="fragment"><code>
+function Designer(name, libraries) {
+  Friend.call(this, name, libraries);
+  this.category = 'designer';
+}
+Designer.prototype = new Friend();
+
+var cssBuddy = new Designer('CSS buddy',['sass', 'bootstrap']);
+							</code></pre>
+						</section>
 					</section>
 					<section>
 						<section>
