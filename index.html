@@ -704,24 +704,9 @@ crazy.name;//get lost
 							</code></pre>
 						</section>
 						<section>
-							<h2>Make this better. rename</h2>
+							<h2>prototype chain</h2>
 							<pre><code>
-window.WhoAmI = "I'm the window object";
 
-function Test() {
-  this.WhoAmI = "I'm the Test object";
-  this.Check1 = function() {
-   alert(this.WhoAmI); // I'm the Test object
-  };
-}
-
-Test.prototype.Check2 = function() {
-  alert(this.WhoAmI); // I'm the Test object
-};
-
-var t = new Test();
-t.Check1();
-t.Check2();
 							</code></pre>
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
@@ -742,7 +727,7 @@ alert(new2.WhoAmI); // I'm the new2 object
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>bind, call, apply</h2>
 							<pre><code>
 
 
@@ -750,13 +735,13 @@ alert(new2.WhoAmI); // I'm the new2 object
 							<a href=""></a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>DOM event handler</h2>
 							<pre><code>
 
 							</code></pre>
 						</section>
 						<section>
-							<h2>Add couple more from this link</h2>
+							<h2>inline event handler</h2>
 							<pre><code></code></pre>
 							<a href="http://stantona.github.io/blog/2013/01/02/what-is-this-in-javascript/">what is this in JS</a>
 						</section>
@@ -775,6 +760,13 @@ var boundHello = function(thing) { return person.hello.call(person, thing); }
 boundHello("world");
 							</code></pre>
 							<a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">Understanding this</a>
+						</section>
+						<section>
+							<h4>inside callback</h4>
+							<h4>inside closure</h4>
+							<h4>method assigned to a variable</h4>
+							<h4>borrowing methods</h4>
+							<a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/">understand JS this</a>
 						</section>
 					</section>
 					<section>
