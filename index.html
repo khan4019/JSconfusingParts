@@ -630,6 +630,14 @@ function whatIsThis() {
 whatIsThis(); //window
 							</code></pre>
 							<pre class="fragment"><code>
+function justAddName(name) {
+  this.name = name;
+}
+
+justAddName("Adam");
+console.log(window.name); // Adam
+							</code></pre>
+							<pre class="fragment"><code>
 function whatIsThis(){
   "use strict";
   return this;
@@ -721,30 +729,17 @@ alert(new2.WhoAmI); // I'm the new2 object
 							</code></pre>
 						</section>
 						<section>
-							<h2>move it before</h2>
+							<h2></h2>
 							<pre><code>
-function simple(name) {
-  this.name = name;
-}
 
-simple("Adam");
-console.log(window.name); // Adam
 
 							</code></pre>
 							<a href=""></a>
 						</section>
 						<section>
-							<h2>Move this one before as well</h2>
+							<h2></h2>
 							<pre><code>
-simple_obj = {
-  simple: function(name) {
-    this.name = name;
-  };
-}
 
-simple_obj.simple("Adam");
-console.log(simple_obj.name);
-=> "Adam"
 							</code></pre>
 						</section>
 						<section>
