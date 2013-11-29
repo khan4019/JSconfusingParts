@@ -736,7 +736,7 @@ Object.getPrototypeOf(child); //{fathersName: "big Dad"}
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
 						<section>
-							<h2>bind, call, apply</h2>
+							<h2>"this" in arguments</h2>
 							<pre><code>
 function getMenu(){
   return this.menu;
@@ -762,6 +762,22 @@ lunch.apply(forDev, [5, 10]);
 							</code></pre>
 						</section>
 						<section>
+							<h2>"this" in arguments</h2>
+							<h4>8 ES5 function allows thisArgs</h4>
+							<pre><code>
+Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.apply( thisArg, argArray )
+							</code></pre>
+							<pre class="fragment"><code>
+Array.prototype.every( callbackfn [ , thisArg ] )
+Array.prototype.some( callbackfn [ , thisArg ] )
+Array.prototype.forEach( callbackfn [ , thisArg ] )
+Array.prototype.map( callbackfn [ , thisArg ] )
+Array.prototype.filter( callbackfn [ , thisArg ] )
+							</code></pre>
+						</section>
+						<section>
 							<h2>DOM event handler</h2>
 							<h4>this = element the event fired from</h4>
 							<pre><code>
@@ -773,6 +789,11 @@ function bluify(e){
 							</code></pre>	
 							<h4>same for inline element this</h4>					
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+						</section>
+						<section>
+							<h2>Eval</h2>
+							<pre><code></code></pre>
+							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
 						</section>
 						<section>
 							<h4>inside callback</h4>
