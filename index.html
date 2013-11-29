@@ -91,8 +91,12 @@
 						<h2 style="color:red; font-weight: bold">This is work in process presentation</h2>
 					</section>
 					<section>
-						<h2>Must read this article</h2>
+						<h2>Must read</h2>
 						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS concepts</a>
+						<br/>
+						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">21 JS i struggle to remember</a>
+						<br/>
+						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
 					</section>
 					<section>
 						<section>
@@ -101,37 +105,28 @@
 						<section>							
 							<ul>
 								<li class="lineThrough">scope, hoisting</li>
-								<li>this</li>
-								<li>closure</li>
+								<li class="lineThrough">this</li>
+								<li class="lineThrough">closure</li>
 								<li>inheritance</li>
 								<li class="lineThrough">Bind, call apply</li>
 								<li>Eval, with, global</li>
 								<li>Date, Function, Object</li>
 								<li class="lineThrough">Timers</li>
-								<li>truthy and falsy</li>								
-								<li>Number, Equality Overkill: N2H</li>
+								<li class="lineThrough">truthy and falsy</li>
+								<li>use strict</li>								
+								<li class="lineThrough">Number</li>
 							</ul>
-						</section>
-						<section>
-						<h2></h2>
-						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">21 JS i struggle to remember</a>
-						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
-					</section>					
+						</section>				
 					</section>
 					<section>
 						<section>
-							<h2>Truth is very subjective</h2>
+							<h1>True lies</h1>
+							<h3>Truth is very subjective</h3>
+							<h4>you are right. no no. you are left</h4>
 						</section>
 						<section>
 							<h2>You don't get what you <span class="greenBold">deserve</span></h2>
 							<h2 class="fragment">You only get what you <span class="redBold">negotiate</span></h2>
-						</section>
-						<section>
-							<h2>You are as good as your imagination</h2>
 						</section>
 						<section>
 							<h2>Falsy values</h2>
@@ -155,38 +150,23 @@
 						<section>
 							<h2>potato and JS</h2>
 							<pre><code>
-if ("potato") {
-    console.log("potato" == false); //false
-    console.log("potato" == true); //false
-}
+"potato" == false; //false
+"potato" == true; //false
 							</code></pre>
-							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
-						</section>
-						<section>
-							<h2>'potato'==true</h2>
-							<pre><code>
-//EQUALITY CHECK...
-"potato" == true; 
- 
-//HOW IT WORKS...
+							<h4 class="redBold">are you kidding!!!</h4>
+							<pre class="fragment"><code>
 //convert boolean using toNumber
 "potato" == 1;
 //convert string using toNumber
 NaN == 1; //false!
 							</code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-//EQUALITY CHECK...
-"potato" == false; 
- 
-//HOW IT WORKS...
+							<pre class="fragment"><code>
 //convert boolean using toNumber
 "potato" == 0;
 //convert string using toNumber
 NaN == 0; //false!
 							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -204,92 +184,65 @@ NaN == 0; //false!
 //convert string using toNumber
 0 == 1; //false!
 							</code></pre>
+							<h4>Work on this. try to explain</h4>
 						</section>
 						<section>
-							<h2>Copied from Angus. create story</h2>
-							<pre><code>
-var trutheyTester = function(expr) {
-    return expr ? "truthey" : "falsey"; 
-}
- 
-trutheyTester({}); //truthey (an object is always true)
- 
-trutheyTester(false); //falsey
-trutheyTester(new Boolean(false)); //truthey (an object!)
- 
-trutheyTester(""); //falsey
-trutheyTester(new String("")); //truthey (an object!)
- 
-trutheyTester(NaN); //falsey
-trutheyTester(new Number(NaN)); //truthey (an object!)
+							<h2>Boolean()</h2>
+							<h4>convert anything to bool</h4>
+							<pre><code> 
+Boolean(undefined); // false
+Boolean(null); // false
+Boolean(0); // false
+Boolean(''); // false
+Boolean(NaN); // false
+							</code></pre>
+							<pre class="fragment"><code>
+Boolean(1); // true
+Boolean('false'); // true
+Boolean([]); // true
+Boolean({}); // true
+Boolean(function(){}); // true
+Boolean(/foo/); // true
 							</code></pre>
 						</section>
 						<section>
+							<h2>double bang(!!)</h2>
 							<pre><code>
-var a = !! (0); //false
-var b = !!('0'); //true
+!!undefined; // false
+!!null; // false
+!!0; // false
+!!''; // false
+!!NaN; // false
+							</code></pre>
+							<pre class="fragment"><code>
+!!1; // true
+!!'false'; // true
+!![]; // true
+!!{}; // true
+!!function(){}; // true
+!!/foo/; // true
 							</code></pre>
 							<a href="http://www.sitepoint.com/javascript-truthy-falsy/">Truthy -falsy</a>
 						</section>
 						<section>
+							<h2>Little More</h2>
 							<pre><code>
-var f = (null == false); // false
-var g = (null == null); // true
-var h = (undefined == undefined); // true
-var i = (undefined == null); // true
-							</code></pre>
-						</section>
-						<section>
-							<pre><code>
-var j = (NaN == null); // false
-var k = (NaN == NaN); // false
-typeof(NaN); //number
-isNaN();//use it
-							</code></pre>
-						</section>
-						<section>
-							<h2>double !!</h2>
-						</section>
-						<section>
-							<h2>History of typeof null</h2>
-							<a href="http://www.2ality.com/2013/10/typeof-null.html">typeof null</a>
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Equality overkill</h1>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-//unnecessary
-if (typeof myVar === "function");
- 
-//better
-if (typeof myVar == "function");
-							</code></pre>
+null == false; // false
+null == null; // true
+
+undefined == undefined; // true
+undefined == null; // true
+							</code></pre>						
 							<pre class="fragment"><code>
-//unnecessary
-var missing =  (myVar === undefined ||  myVar === null);
- 
-//better
-var missing = (myVar == null);
+NaN == null; // false
+NaN == NaN; // false
+
+typeof(NaN; //number
+isNaN(;//use it
 							</code></pre>
-							<pre class="fragment"><code>
-//unnecessary
-if (myArray.length === 3) {//..}
- 
-//better
-if (myArray.length == 3) {//..}
-							</code></pre>
+							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
-						<section>
-							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Read references in this link</a>
-						</section>
-						<section>
-							<h2>What to use when!!</h2>
-						</section>
-					</section>
+					</section>					
 					<section>
 						<section>
 							<h1>Number</h1>
@@ -410,6 +363,8 @@ parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 					<section>
 						<section>
 							<h1>Bind, call and Apply</h1>
+							<br/>
+							<h4>fun with function</h4>
 						</section>
 						<section>
 							<h3>bind specific object to "this"</h3>
@@ -596,145 +551,208 @@ Math.min.apply(null, [2,3,4,5]); //2
 					<section>
 						<section>
 							<h1>this</h1>
+							<h4>What the heck is "this"?</h4>
 						</section>
 						<section>
-							<h2> this keyword to get a reference to the current execution context</h2>
-						</section>
-						<section>
-							<h2>Set this</h2>
 							<ul>
-								<li>method call</li>
-								<li>baseless function call</li>
-								<li>call</li>
-								<li>apply</li>
-								<li>new </li>
+								<li>Every function is just an object</li>
+								<li class="fragment">just like object, function has properties</li>
+								<li class="fragment">gets the "this" property during execution</li>
+								<li class="fragment">"this" ALWAYS refer to an object</li>
 							</ul>
+							<br/>
+							<br/>
+							<ul class="fragment">
+								<li>refer to current execution context</li>																
+								<li class="fragment">Mostly depend on how function is called</li>								
+								<li class="fragment">undefined for anonymous function that not bound to any object</li>
+							</ul>							
+							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>What is this?</h2>
 							<pre><code>
-function whatisThis() { 
-   console.debug(this); 
+function whatIsThis() { 
+   return this; 
 }
 
-whatisThis(); //window
+whatIsThis(); //window
 							</code></pre>
-							<p>in JavaScript, even functions are objects and can be passed around in variables</p>
+							<pre class="fragment"><code>
+function justAddName(name) {
+  this.name = name;
+}
+
+justAddName("Adam");
+console.log(window.name); // Adam
+							</code></pre>
 							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>strict mode</h2>
 							<pre><code>
-var myObject = {	
-	
-  myMethod: function() {
-   console.debug(this);
-  }	
-};
-myObject.myMethod(); // console.debugs a reference to myObject
+function whatIsThis(){
+  "use strict";
+  return this;
+}
+
+whatIsThis(); //undefined								
+							</code></pre>
+							<pre class="fragment"><code>
+//add example for this
+(function(){return this;})();
+							</code></pre>
+							<pre class="fragment"><code>
+//add example for IIFE with object bind
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>method of an Object</h2>
+							<h4>this = object the method is called on</h4>
 							<pre><code>
-function MyClass() {
-  this.myMethod = function() {
- 	console.debug(this);
+var myObject = {
+  myMethod: function() {
+   return this;
+  }
+};
+
+myObject.myMethod(); // Object {myMethod: function}
+							</code></pre>
+							<pre class="fragment"><code>
+var buddy = {
+  name: 'Tom Hanks',
+
+  libraries:['jquery', 'ember', 'backbone'],
+
+  firstLib:function(){
+    return this.libraries[0];
+  }
+};
+
+buddy.firstLib();//jquery
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+						</section>
+						<section>
+							<h2>constructor</h2>
+							<h4>this= newly constructed object</h4>
+							<pre><code>
+function Friend(name) {
+  this.name= name;  
+}
+var frnd1 = new Friend('nice guy');
+var frnd2 = new Friend('common guy');</code></pre>
+							<pre class="fragment"><code>
+frnd1.name; //nice guy
+frnd2.name; //common guy
+
+window.name;//undefined</code></pre>
+							<pre class="fragment"><code>
+function CrazyFriend(name) {
+  this.name= name;  
+  return {
+    name:'get lost'
   }
 }
-
-var my1 = new MyClass();
-var my2 = new MyClass();
-
-my1.myMethod(); // reference to the MyClass instance1
-my2.myMethod(); // reference to the MyClass instance2
+var crazy = new CrazyFriend('Simon Fisher');
+crazy.name;//get lost
 							</code></pre>
 						</section>
 						<section>
-							<h2>Make this better. rename</h2>
+							<h2>prototype chain</h2>
+							<h4>access property, methods in the prototype chain</h4>
 							<pre><code>
-window.WhoAmI = "I'm the window object";
-
-function Test() {
-  this.WhoAmI = "I'm the Test object";
-  this.Check1 = function() {
-   alert(this.WhoAmI); // I'm the Test object
-  };
+var dad = {
+  fathersName:'big Dad'
 }
 
-Test.prototype.Check2 = function() {
-  alert(this.WhoAmI); // I'm the Test object
-};
+var child =Object.create(dad);
 
-var t = new Test();
-t.Check1();
-t.Check2();
+child.whoIsYourFather:function(){
+    return this.fathersName;
+ }
+							</code></pre>
+							<pre class="fragment"><code>
+child.fathersName; //big Dad
+child.whoIsYourFather(); //big Dad
+							</code></pre>
+							<pre class="fragment"><code>
+child.hasOwnProperty('fathersName'); //false
+Object.getPrototypeOf(child); //{fathersName: "big Dad"}
 							</code></pre>
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
 						<section>
-							<h2>Make this better and rename</h2>
+							<h2>"this" in arguments</h2>
 							<pre><code>
-function SetType(type) {
-	this.WhoAmI = "I'm the "+type+" object";
+function getMenu(){
+  return this.menu;
 }
 
-var newObject = {};
-SetType.call(newObject, "newObject");
-alert(newObject.WhoAmI); // I'm the newObject object
+var forDev = {menu: 'pizza'};
 
-var new2 = {};
-SetType.apply(new2, ["new2"]);
-alert(new2.WhoAmI); // I'm the new2 object
+var devLunch = getMenu.bind(forDev);
+devLunch(); // pizza
+							</code></pre>
+							<pre class="fragment"><code>
+function lunch(budget, time){
+  return this.menu +' for ' + budget +' within '+ time +' min.';
+}
+
+var forDev = {menu: 'pizza'};
+							</code></pre>							
+							<pre class="fragment"><code>
+lunch.call(forDev, 5, 10);
+//pizza for 5 within 10 min.
+lunch.apply(forDev, [5, 10]);
+//pizza for 5 within 10 min.
 							</code></pre>
 						</section>
 						<section>
-							<h2>move it before</h2>
+							<h2>"this" in arguments</h2>
+							<h4>8 ES5 function allows thisArg</h4>
 							<pre><code>
-function simple(name) {
-  this.name = name;
-}
-
-simple("Adam");
-console.log(window.name); // Adam
-
+//might consider to move this before last slide to explain better
+Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.apply( thisArg, argArray )
 							</code></pre>
-							<a href=""></a>
-						</section>
-						<section>
-							<h2>Move this one before as well</h2>
-							<pre><code>
-simple_obj = {
-  simple: function(name) {
-    this.name = name;
-  };
-}
-
-simple_obj.simple("Adam");
-console.log(simple_obj.name);
-=> "Adam"
+							<pre class="fragment"><code>
+Array.prototype.every( callbackfn [ , thisArg ] )
+Array.prototype.some( callbackfn [ , thisArg ] )
+Array.prototype.forEach( callbackfn [ , thisArg ] )
+Array.prototype.map( callbackfn [ , thisArg ] )
+Array.prototype.filter( callbackfn [ , thisArg ] )
 							</code></pre>
 						</section>
 						<section>
-							<h2>Add couple more from this link</h2>
-							<pre><code></code></pre>
-							<a href="http://stantona.github.io/blog/2013/01/02/what-is-this-in-javascript/">what is this in JS</a>
+							<h2>DOM event handler</h2>
+							<h4>this = element the event fired from</h4>
+							<pre><code>
+function bluify(e){
+  console.log(this === e.currentTarget); // Always true
+  console.log(this === e.target);// true when currentTarget and target are the same object
+  this.style.backgroundColor = '#A5D9F3';
+}
+							</code></pre>	
+							<h4>same for inline element this</h4>					
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
-							<h2>bind</h2>
+							<h2>Eval</h2>
 							<pre><code>
-var person = {
-  name: "Brendan Eich",
-  hello: function(thing) {
-    console.log(this.name + " says hello " + thing);
-  }
-}
- 
-var boundHello = function(thing) { return person.hello.call(person, thing); }
- 
-boundHello("world");
+Investigate whether eval has special impact on this
+most likely dont.
+in such case remove this slide
 							</code></pre>
-							<a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">Understanding this</a>
+							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
+						</section>
+						<section>
+							<h4>inside callback</h4>
+							<h4>inside closure</h4>
+							<h4>method assigned to a variable</h4>
+							<h4>borrowing methods</h4>
+							<a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/">understand JS this</a>
 						</section>
 					</section>
 					<section>
@@ -836,10 +854,11 @@ console.log(frnd);
 							<ul>
 								<li>negative impact when have to traverse prototype chain</li>
 								<li class="fragment">monkey patching (extend build in object.prototype)</li>
-								<li class="fragment"></li>
+								<li class="fragment">delete wont delete inheriter properties</li>
 								<li class="fragment"></li>								
 							</ul>
 							<img src="images/lookForProperty.png" alt="">
+							<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">delete inherited property</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -869,9 +888,6 @@ frnd.hasOwnProperty('name');
 						<section>												
 							<h2>getPrototypeOf, __Proto__</h2>
 							<p>source: Effective JS p-118</p>
-						</section>
-						<section>
-							<h2>Avoid polluting protype object</h2>
 						</section>
 					</section>
 					<section>
@@ -1006,7 +1022,11 @@ exLevel(5); //2
 						</section>
 						<section>
 							<h2>Give graphical example here</h2>
-							<pre><code></code></pre>
+							<pre><code>
+//create some code block
+//and apply different color 
+//highlight to explain scope
+							</code></pre>
 							<a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">JS scoping and hoisting</a>
 							<br/>
 							<a href="http://stackoverflow.com/questions/500431/javascript-variable-scope">variable scope</a>
@@ -1380,14 +1400,36 @@ with (Math) {
 					<section>
 						<section>
 							<h1>Closure</h1>
-							<h4>Refer to variables outside of current function</h4>
+							<p>the act or process of closing something.</p>
 						</section>
 						<section>
-							<h2>function in a function</h2>
+							<h4>Refer to variables outside of current function</h4>
+							<pre><code>
+function getCounter(){
+  var i =0;
+
+  function increment(){
+    return ++i;
+  }
+
+  return increment;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var myCounter = getCounter();
+
+myCounter();//1
+myCounter();//2
+myCounter();//3
+myCounter();//4
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">How Closure works</a>
+						</section>
+						<section>
+							<h3>maintain outside reference </h3>
 							<pre><code>
 function generateGreet(greet){
-  var greet = greet || 'Hello';
-
+  
   function sayHelloTo (name){
       return greet + ', ' + name;
   }
@@ -1397,22 +1439,23 @@ function generateGreet(greet){
 							</code></pre>
 							<pre class="fragment"><code>
 var hiTo = generateGreet('Hi');
+
 hiTo('JavaScript'); // Hi, Javascript
 hiTo('Angular'); // Hi, Angular
 							</code></pre>							
 							<pre class="fragment"><code>
 var booTo = generateGreet('Boo');
+
 hiTo('Java'); // Boo, Java
 hiTo('XML'); // Boo, XML
 							</code></pre>
-							
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN:closure</a>
 						</section>
 						<section>
-							
+							<h2>Cleaner Closure</h2>							
 							<pre><code>
 function generateGreet(greet){
-  var greet = greet || 'Hello';
-
+  
   function sayHelloTo (name){
       return greet + ', ' + name;
   }
@@ -1422,20 +1465,19 @@ function generateGreet(greet){
 							</code></pre>
 							<pre class="fragment"><code>
 function generateGreet(greet){
-  var greet = greet || 'Hello';
-
+  
   //return anonymous function	
   return function (name){
       return greet + ', ' + name;
   }
 }
 							</code></pre>		
-							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">how closures works</a>
+							<a href="http://stackoverflow.com/questions/12930272/javascript-closures-vs-anonymous-functions">closures vs anonymous function</a>
 						</section>
 						<section>
 							<h2>closure</h2>
 							<ul>
-								<li>Refer to variables outside of current scope</li>
+								<li>Refer to variables, parameters outside of current scope</li>
 								<li class="fragment">doesn't have to return anything</li>
 								<li class="fragment">read and write outer scope variable</li>
 								<li class="fragment">store outer variables by reference not by value (add an example for this)</li>
@@ -1444,19 +1486,40 @@ function generateGreet(greet){
 							<a href="">Effective Javascript (item -13)</a>
 						</section>
 						<section>
-							<h2>References</h2>							
-							<a href="http://nathansjslessons.appspot.com/lesson?id=1000">What is a closure</a>
-							<br/>
-							<a href="http://jessecravens.com/blog/2008/04/09/understanding-javascript-closures/">Understanding Closures</a>
-							<br/>
+							<h2></h2>
+							<pre><code>
+function abc (){
+  var result = [];
+  for(var i=0; i<5; i++){
+   result.push(function (){console.log(i)});
+  }
+  return result;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var kk = abc();
+kk[1]();//5
+kk[2]();//5
+							</code></pre>
+							<pre class="fragment"><code>
+//solve by IIFE								
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example">closure inside loops</a>
+						</section>
+						<section>
+							<h2>closure is used</h2>
+							<li>function inside another function</li>
+							<li>eval() inside a function. can reference/create or update local variables</li>
+							<li class="lineThrough">Function() inside a function (cannot reference the local variables)</li>
+							<li class="fragment">new set of local variables is kept every time a function with a closure is called</li>
+							<li class="fragment">no easier way to detect closure</li>
 							<a href="http://javascript-reference.info/javascript-closures-for-dummies.htm">Closure for dummies</a>
-							<br/>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN: Closure</a>
-							<br/>
-							<a href="http://lostechies.com/derekgreer/2012/02/17/javascript-closures-explained/">Very good explained: Closure</a>
-							<br/>
-							<a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/">Understanding Closure at ease</a>
-							<br/>
+								
+						</section>
+						<section>
+							<h3>Add graphical explanation</h3>
+							<p>both the link have some image</p>
+							<p>make something cool</p>
 							<a href="http://doctrina.org/JavaScript:Why-Understanding-Scope-And-Closures-Matter.html">Good link and image:</a>
 							<br/>
 							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">Nettuts: closure</a>
@@ -1549,17 +1612,7 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 							<h2>Debounce and Throttle</h2>
 							<a href="http://jhankarmahbub.com/presentations/debounce.html">click: debounce & throttle</a>
 						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Browser Issues</h1>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<a href="https://developers.google.com/octane/">Octane.js check it</a>
-						</section>
-					</section>
+					</section>				
 					<section>
 						<section>
 							<h1>Oh! that's in Javascript</h1>
@@ -1581,7 +1634,7 @@ var idx1 = myArray.indexOf(2); //1
 
 var idx2 = myArray.indexOf(2, 3); //-1
 							</code></pre>
-							<h2 class="fragment">indexOf matches ====</h2>
+							<h2 class="fragment">indexOf matches ===</h2>
 							<pre class="fragment"><code>
 var myArray = [1,2,3,4,5];
 
@@ -1632,6 +1685,30 @@ $('ul').on('click', 'li', function(){});
 					</section>
 					<section>
 						<section>
+							<h1>Strict Mode</h1>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">MDN: strict mode</a>
+							<br/>
+							<a href="http://msdn.microsoft.com/en-us/library/br230269(v=vs.94).aspx">Restrictions on Strict mode</a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+					</section>
+					<section>
+						<section>
 							<h1>Others</h1>
 						</section>
 						<section>
@@ -1671,6 +1748,84 @@ $('ul').on('click', 'li', function(){});
 						</section>
 						<section>
 							<h2></h2>
+							<pre><code></code></pre>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Free Caveats</h1>
+						</section>
+						<section>
+							<h2>instanceof</h2>
+							<h4>doesn't work on primitive values</h4>
+							<pre><code>
+//does not work on primtive values
+"" instanceof String; //false
+3 instanceof Number; //false
+false instanceof Boolean; //false
+							</code></pre>
+							<pre class="fragment"><code>
+//works on objects
+new String() instanceof String; //true
+new Number() instanceof Number; //true
+new Boolean() instanceof Boolean; //true
+[] instanceof Array; //true
+{} instanceof Object; //true
+/foo/ instanceof RegExp; //true
+							</code></pre>
+							<pre class="fragment"><code>
+//be aware
+[] instanceof Object; //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>array.length</h2>
+							<h4></h4>
+							<pre><code>
+var languages = ['knockout', 'backbone','meteor'];
+languages.length;//3
+
+languages.length = 5;
+languages; //["knockout", "backbone", "meteor", undefined, undefined]
+							</code></pre>
+							<pre class="fragment"><code>
+languages.length = 1;
+languages; //["knockout"]
+							</code></pre>
+						</section>
+						<section>
+							<h2>Equality overkill</h2>						
+							<pre><code>
+//unnecessary
+if (typeof myVar === "function");
+ 
+//better
+if (typeof myVar == "function");
+							</code></pre>
+							<pre class="fragment"><code>
+//unnecessary
+var missing =  (myVar === undefined ||  myVar === null);
+ 
+//better
+var missing = (myVar == null);
+							</code></pre>
+							<pre class="fragment"><code>
+//unnecessary
+if (myArray.length === 3) {//..}
+ 
+//better
+if (myArray.length == 3) {//..}
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Angus Croll: JS Equality</a>
+											</section>
+						<section>
+							<h2></h2>
+							<h4></h4>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h2></h2>
+							<h4></h4>
 							<pre><code></code></pre>
 						</section>
 					</section>
