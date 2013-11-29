@@ -455,12 +455,47 @@ document.write(result);
 							<a href="http://msdn.microsoft.com/en-us/library/ie/ff841995(v=vs.94).aspx">JS bind method</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>call</h2>							
+							<pre><code>
+function Friend(name){
+  return {
+    name:name,
+    libraries:[],
+
+    addLib:function(lib){
+      this.libraries.push(lib);
+    },
+
+    knowLib:function(lib){
+      return this.libraries.indexOf(lib) > -1;
+    }
+  }
+}</code></pre>
+							<pre class="fragment"><code>
+var sheldon = new Friend('Shelodn Cooper');
+sheldon.addLib('angular');
+sheldon.addLib('backbone');
+sheldon.addLib('ember');</code></pre>							
+						<pre class="fragment"><code>
+sheldon.knowLib('ember'); //true
+sheldon.knowLib('jquery'); //false
+						</code></pre>	
 						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+						<section>							
+							<pre><code>
+var raj = {
+  name:'Raj Koothrappali', 
+  libraries:['angular', 'jquery']
+}
+							</code></pre>
+							<pre class="fragment"><code>
+shelod.knowLib.call(raj, 'angular'); //true
+shelod.knowLib.call(raj, 'ember'); //false
+							</code></pre>
+							<h4 class="fragment">call method on another object</h4>
+							<h4 class="fragment">this refers to the first parameter</h4>
+							<h4 class="fragment">reuse of method</h4>
+							<h4 class="fragment">Parameters needs to be explicity mentioned</h4>
 						</section>
 					</section>
 					<section>
