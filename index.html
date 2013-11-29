@@ -449,7 +449,7 @@ getRossFee(); //Ross Geller remaining balance:200
 							
 						</section>						
 						<section>
-							<h3>currying/ partial function application</h3>
+							<h4>currying/ partial function application</h4>
 							<pre><code>
 function greet (favLan, name) {    
     if (favLan === 'javascript') {
@@ -469,41 +469,12 @@ greetJSDude("Spock"); // "Hello, my dear Spock."
 							</code></pre>
 							<pre class="fragment"><code>
 var designerBuddy = greet.bind (null, "css");
+
 designerBuddy("Alex"); // "Hi, Alex."
 designerBuddy("Emma Waterloo"); // "Hi, Emma Waterloo."
 							</code></pre>
 							<a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/">bind, call and apply</a>
-						</section>
-						<section>
-							<h3>pollyfill</h3>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2>Bind</h2>
-							<p>Creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.</p>
-							<pre><code>
-// Define the original function.
-var checkNumericRange = function (value) {
-    if (typeof value !== 'number')
-        return false;
-    else
-        return value >= this.minimum && value <= this.maximum;
-}
-
-// The range object will become the this value in the callback function.
-var range = { minimum: 10, maximum: 20 };
-
-// Bind the checkNumericRange function.
-var boundCheckNumericRange = checkNumericRange.bind(range);
-
-// Use the new function to check whether 12 is in the numeric range.
-var result = boundCheckNumericRange (12);
-document.write(result);
-
-// Output: true
-							</code></pre>
-							<a href="http://msdn.microsoft.com/en-us/library/ie/ff841995(v=vs.94).aspx">JS bind method</a>
-						</section>
+						</section>												
 						<section>
 							<h2>call</h2>							
 							<pre><code>
@@ -617,6 +588,9 @@ Math.max.apply(null, [2,3,4,5]); //5
 Math.min.apply(null, [2,3,4,5]); //2
 							</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">MDN: apply</a>
+						</section>
+						<section>
+							<h2>Summary and recap</h2>
 						</section>
 					</section>
 					<section>
