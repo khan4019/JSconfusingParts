@@ -412,21 +412,23 @@ parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							<h1>Bind, call and Apply</h1>
 						</section>
 						<section>
-							<h2></h2>
+							<h3>bind specific object to "this"</h3>
+							<h4>sometimes "this" is not the object intended</h4>
 							<pre><code>
-// Set up a simple object to use as "context"
-var context = { foo: "bar" };
 
-// A function that uses a reference to a variable called "foo"
-// on the "this" context.
-function returnFoo () {
-  return this.foo;
-}
-
-// This variable does not exist on scope, so is undefined.
-returnFoo(); // => undefined
-							</code></pre>
-							<a href="https://variadic.me/posts/2013-10-22-bind-call-and-apply-in-javascript.html"></a>
+							</code></pre>							
+						</section>
+						<section>
+							<h3>borrow method</h3>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h3>currying</h3>
+							<pre><code></code></pre>
+						</section>
+						<section>
+							<h3>pollyfill</h3>
+							<pre><code></code></pre>
 						</section>
 						<section>
 							<h2>Bind</h2>
@@ -534,6 +536,7 @@ var cssBuddy = new Designer('CSS buddy',['sass', 'bootstrap']);
 								<li>similar to call</li>
 								<li class="fragment">array-like arguments in one parameter</li>
 								<li class="fragment">can pass arguments as well</li>
+								<li class="fragment">Pretty close in performance. but call dont need to evaluate an array</li>
 							</ul>
 							<pre class="fragment"><code>
 //apply
@@ -544,7 +547,7 @@ shelod.knowLib.call(raj, 'angular'); //true
 							</code></pre>
 						</section>
 						<section>
-							<h2>apply example</h2>
+							<h2>Execute ariable-Arity/ Variadic Function</h2>
 							<pre><code>
 Math.max(2,3,4,5); //5
 Math.max([2,3,4,5]); // NaN
