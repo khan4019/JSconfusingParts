@@ -621,28 +621,50 @@ Math.min.apply(null, [2,3,4,5]); //2
 							</ul>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>What is this?</h2>
 							<pre><code>
-function whatisThis() { 
-   console.debug(this); 
+function whatIsThis() { 
+   return this; 
 }
 
-whatisThis(); //window
+whatIsThis(); //window
 							</code></pre>
-							<p>in JavaScript, even functions are objects and can be passed around in variables</p>
+							<pre class="fragment"><code>
+function whatIsThis(){
+  "use strict";
+  return this;
+}
+
+whatIsThis(); //undefined								
+							</code></pre>
 							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
 						<section>
-							<h2></h2>
+							<h2>method of an Object</h2>
+							<h4>this = object the method is called on</h4>
 							<pre><code>
-var myObject = {	
-	
+var myObject = {
   myMethod: function() {
-   console.debug(this);
-  }	
+   return this;
+  }
 };
-myObject.myMethod(); // console.debugs a reference to myObject
+
+myObject.myMethod(); // Object {myMethod: function}
 							</code></pre>
+							<pre class="fragment"><code>
+var buddy = {
+  name: 'Tom Hanks',
+
+  libraries:['jquery', 'ember', 'backbone'],
+
+  firstLib:function(){
+    return this.libraries[0];
+  }
+};
+
+buddy.firstLib();//jquery
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
 							<h2></h2>
