@@ -711,6 +711,31 @@ console.log(frnd);
 							</ul>
 							<img src="images/lookForProperty.png" alt="">
 						</section>
+						<section>
+							<h2></h2>
+							<pre><code>
+function Friend(name){
+  this.name = name;
+}
+
+Friend.prototype ={
+  knowJS:true
+}
+
+var frnd = new Friend('Scala Guy');
+'knowJS' in frnd; //true
+							</code></pre>
+							<pre class="fragment"><code>
+frnd.hasOwnProperty('name'); //true
+frnd.hasOwnProperty('knowJS'); //false
+							</code></pre>
+							<pre class="fragment"><code>
+frnd.hasOwnProperty = 10;
+frnd.hasOwnProperty('name'); 
+//TypeError: Property 'hasOwnProperty' of object is not a function
+{}.hasOwnProperty.call(frnd, 'name'); //true
+							</code></pre>
+						</section>
 						<section>												
 							<h2>prototype, getPrototypeOf, __Proto__</h2>
 							<p>source: Effective JS p-118</p>
