@@ -553,13 +553,12 @@ Math.min.apply(null, [2,3,4,5]); //2
 							<h4>in JavaScript</h4>
 							<ul>
 								<li class="fragment oneFragmentAtaTime">functions are like objects</li>
-								<li class="fragment oneFragmentAtaTime">function has properties</li>
+								<li class="fragment oneFragmentAtaTime">function could have properties</li>
 								<li class="fragment oneFragmentAtaTime">gets "this" property during execution</li>
 								<li class="fragment oneFragmentAtaTime">"this" ALWAYS refer to an object</li>
 								<li class="fragment oneFragmentAtaTime">refer to current execution context</li>
 								<li class="fragment oneFragmentAtaTime">depend on how function is called</li>
-							</ul>							
-							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
+							</ul>														
 						</section>
 						<section>
 							<h2>What is this?</h2>
@@ -568,16 +567,19 @@ function whatIsThis() {
    return this; 
 }
 
-whatIsThis(); //window
-							</code></pre>
+whatIsThis(); //window</code></pre>
 							<pre class="fragment"><code>
 function justAddName(name) {
   this.name = name;
 }
 
 justAddName("Adam");
-console.log(window.name); // Adam
-							</code></pre>
+console.log(window.name); // Adam</code></pre>
+				  			<pre class="fragment"><code>
+(function(){
+   return this;
+})();
+//window</code></pre>
 							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
 						<section>
@@ -587,16 +589,20 @@ function whatIsThis(){
   "use strict";
   return this;
 }
-
-whatIsThis(); //undefined								
-							</code></pre>
+//Doesn't work in chrom test this
+whatIsThis(); //undefined</code></pre>
 							<pre class="fragment"><code>
-//add example for this
-(function(){return this;})();
-							</code></pre>
+(function(){
+   'use strict';
+   return this;
+})(); //undefined</code></pre>
 							<pre class="fragment"><code>
-//add example for IIFE with object bind
-							</code></pre>
+(function(self){
+  'use strict';
+  return self;
+})(this);
+//window</code></pre>
+							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
 							<h2>method of an Object</h2>
@@ -608,12 +614,10 @@ var myObject = {
   }
 };
 
-myObject.myMethod(); // Object {myMethod: function}
-							</code></pre>
+myObject.myMethod(); // Object {myMethod: function}</code></pre>
 							<pre class="fragment"><code>
 var buddy = {
   name: 'Tom Hanks',
-
   libraries:['jquery', 'ember', 'backbone'],
 
   firstLib:function(){
@@ -621,8 +625,7 @@ var buddy = {
   }
 };
 
-buddy.firstLib();//jquery
-							</code></pre>
+buddy.firstLib();//jquery</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
@@ -1742,6 +1745,8 @@ $('ul').on('click', 'li', function(){});
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">MDN: strict mode</a>
 							<br/>
 							<a href="http://msdn.microsoft.com/en-us/library/br230269(v=vs.94).aspx">Restrictions on Strict mode</a>
+							<br/>
+							<a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">Jon Resig: Strict Mode</a>
 						</section>
 						<section>
 							<h2></h2>
