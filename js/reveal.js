@@ -945,7 +945,7 @@ var Reveal = (function(){
 	function nextFragment() {
 		// Vertical slides:
 		if( document.querySelector( VERTICAL_SLIDES_SELECTOR + '.present' ) ) {
-			var currentFragment = document.querySelectorAll(VERTICAL_SLIDES_SELECTOR + '.present .fragmentCenterOnly.visible'),
+			var currentFragment = document.querySelectorAll(VERTICAL_SLIDES_SELECTOR + '.present .oneFragmentAtaTime.visible'),
 				verticalFragments = document.querySelectorAll( VERTICAL_SLIDES_SELECTOR + '.present .fragment:not(.visible):not(.displayed)'),
 				currClassList;
 
