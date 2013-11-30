@@ -60,6 +60,9 @@
 					font-weight: bold;
 					color:purple;
 				}
+				.oneFragmentAtaTime{
+					list-style-type: none;
+				}
 			</style>
 			<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 			<script>
@@ -547,18 +550,14 @@ Math.min.apply(null, [2,3,4,5]); //2
 							<h4>What the heck is "this"?</h4>
 						</section>
 						<section>
+							<h4>in JavaScript</h4>
 							<ul>
-								<li>Every function is just an object</li>
-								<li class="fragment">just like object, function has properties</li>
-								<li class="fragment">gets the "this" property during execution</li>
-								<li class="fragment">"this" ALWAYS refer to an object</li>
-							</ul>
-							<br/>
-							<br/>
-							<ul class="fragment">
-								<li>refer to current execution context</li>																
-								<li class="fragment">Mostly depend on how function is called</li>								
-								<li class="fragment">undefined for anonymous function that not bound to any object</li>
+								<li class="fragment oneFragmentAtaTime">functions are like objects</li>
+								<li class="fragment oneFragmentAtaTime">function has properties</li>
+								<li class="fragment oneFragmentAtaTime">gets "this" property during execution</li>
+								<li class="fragment oneFragmentAtaTime">"this" ALWAYS refer to an object</li>
+								<li class="fragment oneFragmentAtaTime">refer to current execution context</li>
+								<li class="fragment oneFragmentAtaTime">depend on how function is called</li>
 							</ul>							
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
@@ -1899,7 +1898,7 @@ if (myArray.length == 3) {//..}
 			</div>
 
 			<script src="lib/js/head.min.js"></script>
-			<script src="js/reveal.min.js"></script>
+			<script src="js/reveal.js"></script>
 
 			<script>
 
