@@ -89,15 +89,7 @@
 						</section>
 					<section>
 						<h2 style="color:red; font-weight: bold">This is work in process presentation</h2>
-					</section>
-					<section>
-						<h2>Must read</h2>
-						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS concepts</a>
-						<br/>
-						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">21 JS i struggle to remember</a>
-						<br/>
-						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
-					</section>
+					</section>					
 					<section>
 						<section>
 							<h1>Check lists</h1>
@@ -1164,6 +1156,29 @@ function outer(){
 }
 							</code></pre>
 						</section>
+						<section>
+							<h2>quiz</h2>
+							<pre><code>
+var foo=1;
+function bar(){
+  foo=10;
+  return;	
+}
+bar();
+console.log(foo);//?
+							</code></pre>
+							<pre class="fragment"><code>
+var foo=1;
+function bar(){
+  foo=10;
+  return;
+  function foo(){};	
+}
+bar();
+console.log(foo);//?
+							</code></pre>
+							<h4 class="fragment">first: 10, second:1</h4>
+						</section>
 					</section>
 					<section>
 						<section>
@@ -1834,6 +1849,8 @@ if (myArray.length == 3) {//..}
 						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS Concepts</a>
 						<br/>
 						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">JS parts i struggled to remember</a>
+						<br/>
+						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
 					</section>
 					<section>
 						<h1>Thank You</h1>
