@@ -740,6 +740,27 @@ in such case remove this slide
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
 						</section>
 						<section>
+							<h2>quiz</h2>
+							<pre><code>
+var x   = 4,
+    obj = {
+        x: 3,
+        
+        bar: function() {
+            var x = 2;
+
+            setTimeout(function() {
+                var x = 1;
+                alert(this.x);
+            }, 1000);
+        }
+
+    };
+obj.bar();//?
+							</code></pre>
+							<h4 class="fragment">4</h4>
+						</section>
+						<section>
 							<h4>inside callback</h4>
 							<h4>inside closure</h4>
 							<h4>method assigned to a variable</h4>
