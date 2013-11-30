@@ -1179,6 +1179,19 @@ console.log(foo);//?
 							</code></pre>
 							<h4 class="fragment">first: 10, second:1</h4>
 						</section>
+						<section>
+							<h2>another one</h2>
+							<pre><code>
+function bar(){
+  return foo;
+  foo=10;
+  function foo(){}
+  var foo =10;
+}
+typeof bar();//?
+							</code></pre>
+							<h4 class="fragment">function</h4>
+						</section>
 					</section>
 					<section>
 						<section>
