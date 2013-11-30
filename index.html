@@ -604,28 +604,42 @@ console.log(window.name); // Adam</code></pre>
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
-							<h2>method of an Object</h2>
-							<h4>this = object the method is called on</h4>
+							<h2>this of an Object</h2>							
 							<pre><code>
-var myObject = {
+var buddy = {
+	firstName:'penny',
+	lastName:this.firstName,
+	obj:this
+}
+
+buddy.firstName; //penny
+buddy.lastName;//undefined
+buddy.obj;//window
+							</code></pre>
+							<pre class="fragment"><code>
+var buddy = {
   myMethod: function() {
    return this;
   }
 };
+buddy.myMethod(); // Object {myMethod: function}</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+						</section>
+						<section>
+							<pre><code>
+var buddy = {  
+  name:'Tom Hanks',
 
-myObject.myMethod(); // Object {myMethod: function}</code></pre>
-							<pre class="fragment"><code>
-var buddy = {
-  name: 'Tom Hanks',
   libraries:['jquery', 'ember', 'backbone'],
-
+  
   firstLib:function(){
     return this.libraries[0];
   }
+
 };
 
-buddy.firstLib();//jquery</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+buddy.firstLib();//jquery
+							</code></pre>
 						</section>
 						<section>
 							<h2>constructor</h2>
