@@ -585,17 +585,16 @@ console.log(window.name); // Adam</code></pre>
 						<section>
 							<h2>strict mode</h2>
 							<pre><code>
-function whatIsThis(){
-  "use strict";
-  return this;
-}
-//Doesn't work in chrom test this
-whatIsThis(); //undefined</code></pre>
-							<pre class="fragment"><code>
 (function(){
    'use strict';
    return this;
 })(); //undefined</code></pre>
+							<pre class="fragment"><code>
+(function(){
+  'use strict';
+  return this;
+}).call(this);
+//window</code></pre>
 							<pre class="fragment"><code>
 (function(self){
   'use strict';
