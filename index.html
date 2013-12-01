@@ -605,12 +605,12 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre>
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
-							<h2>this of an Object</h2>							
+							<h2>this of an Object</h2>
 							<pre><code>
 var buddy = {
-	firstName:'penny',
-	lastName:this.firstName,
-	context:this
+  firstName:'penny',
+  lastName:this.firstName,
+  context:this
 }
 
 buddy.firstName; //penny
@@ -627,6 +627,7 @@ buddy.myMethod(); // Object {myMethod: function}</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
+							<h4>Access object propeties via "this"</h4>
 							<pre><code>
 var buddy = {  
   name:'Tom Hanks',
@@ -641,7 +642,57 @@ var buddy = {
 
 buddy.firstLib();//jquery
 							</code></pre>
+							<pre class="fragment"><code>
+buddy.addLib = function(newLib){
+  this.libraries.push(newLib);
+}
+
+buddy.addLib('angular');
+buddy.libraries; //["jquery", "ember", "backbone", "angular"]
+							</code></pre>
 						</section>
+						<section>
+							<h4>understand the context of execution</h4>
+							<pre><code>
+var a = {
+    b: function() {
+        return this;
+    }
+};
+a.b();//window</code></pre>
+							<pre class="fragment"><code> 
+var foo = a.b;
+foo(); //window</code></pre>
+							<pre class="fragment"><code>
+var d = {};
+d.b = a.b;
+d.b();//Object {b: function}
+							</code></pre>
+
+							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
+						</section>
+						<section>
+							<h3>some more execution context</h3>
+							<pre><code>
+var a = {
+    b: function() {
+        var c = function() {
+            return this;
+        };
+        return c();
+    }
+}; 
+a.b();//window</code></pre>
+							<pre class="fragment"><code>
+var a = {
+    b: function() {
+        return (function() {return this;})();
+    }
+};
+ 
+a.b(); //window
+							</code></pre>
+						</section>							
 						<section>
 							<h2>constructor</h2>
 							<h4>this= newly constructed object</h4>
@@ -735,6 +786,49 @@ bigBang.getContext();//window
 							</code></pre>	
 						</section>
 						<section>
+							<h4>setTimeout inside constructor</h4>
+							<pre><code>
+function Menu(item){
+  this.item = item;
+  this.context = this;
+
+  setTimeout(function(){
+    console.log('setTimeout context:', this);
+  }, 10);
+
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var earlyMorning = new Menu('starBucks');
+
+//setTimeout context: window
+earlyMorning.context//Menu {item: "starBucks", context: Menu}
+							</code></pre>
+							<h4>Same issues with setInterval</h4>
+						</section>
+						<section>
+							<h3>How to fix this?</h3>
+							<pre><code>
+function Menu(item){
+  var that = this;
+  this.item = item;
+  this.context = this;
+
+  setTimeout(function(){
+    console.log('setTimeout context:', that);
+  }, 10);
+
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var earlyMorning = new Menu('starBucks');
+
+//setTimeout context: Menu {item: "starBucks", context: Menu}
+earlyMorning.context//Menu {item: "starBucks", context: Menu}
+							</code></pre>
+							<h4 class="fragment">Other solutions. Coming soon...</h4>
+						</section>
+						<section>
 							<h2>"this" in arguments</h2>
 							<h4>8 ES5 function allows thisArg</h4>
 							<pre><code>
@@ -751,7 +845,7 @@ Array.prototype.filter( callbackfn [ , thisArg ] )
 							</code></pre>
 						</section>
 						<section>
-							<h2>"this" in arguments</h2>
+							<h2>bind, call and apply</h2>
 							<pre><code>
 function getMenu(){
   return this.menu;
@@ -788,11 +882,17 @@ function bluify(e){
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
-							<h2>Eval</h2>
+							<h4>Eval doesn't have special context</h4>
 							<pre><code>
-Investigate whether eval has special impact on this
-most likely dont.
-in such case remove this slide
+console.log(eval('this==window'));//true
+ 
+var a = {
+    b: function() {
+        eval('console.log(this==a)');
+    }
+};
+ 
+a.b(); //true;
 							</code></pre>
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
 						</section>						
@@ -993,6 +1093,7 @@ function getExpertLevel(){
 getExpertLevel(); //undefined
 console.log(expertLevel); //3
 							</code></pre>
+							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">get the image:for better explanation</a>
 						</section>
 						<section>
 							<h2>name conflict</h2>
@@ -1222,8 +1323,7 @@ function bar(){
   return;	
 }
 bar();
-console.log(foo);//?
-							</code></pre>
+console.log(foo);//10</code></pre>
 							<pre class="fragment"><code>
 var foo=1;
 function bar(){
@@ -1368,6 +1468,25 @@ myStore.next(); //15
 myStore.next(); //17
 							</code></pre>
 							<h3 class="fragment">Currently executing functions</h3>
+						</section>
+						<section>
+							<h3>Don't mess up with names</h3>
+							<pre><code>
+function foo(a, arguments) {
+    return arguments;
+};
+ 
+foo(1); //undefined
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(a, b) {
+    var arguments = 43;
+    return arguments
+};
+ 
+foo(1, 2); //43
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/01/18/javascripts-arguments-object-and-beyond/">Angus Croll: aguments</a>
 						</section>
 						<section>
 							<a href="http://javascript.info/tutorial/arguments">Last part caller calee and add even more</a>
@@ -1599,6 +1718,8 @@ kk[2]();//5
 							<li class="fragment">new set of local variables is kept every time a function with a closure is called</li>
 							<li class="fragment">no easier way to detect closure</li>
 							<a href="http://javascript-reference.info/javascript-closures-for-dummies.htm">Closure for dummies</a>
+							<br/>
+							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">add: when should use closure</a>
 								
 						</section>
 						<section>
@@ -1697,7 +1818,31 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 							<h2>Debounce and Throttle</h2>
 							<a href="http://jhankarmahbub.com/presentations/debounce.html">click: debounce & throttle</a>
 						</section>
-					</section>				
+					</section>
+					<section>
+						<section>
+							<h3>Life cycle of a function call</h3>
+							<pre><code>
+	//very nice link make it graphical
+
+							</code></pre>
+							<a href="http://corporate.tuenti.com/en/dev/blog/functions-and-execution-contexts-in-javascript-2">function and execution</a>
+						</section>
+						<section>
+							<p>Execution context is a concept in the language spec that—in layman's terms—roughly equates to the 'environment' a function executes in; that is, variable scope (and the scope chain, variables in closures from outer scopes), function arguments, and the value of the this object.</p>
+							<p>avaScript uses static scope; that is, the scope chain of a function is defined at the moment that function is created and never changes; the scope chain is a property of the function.</p>
+							<p>Execution context is different and separate from the scope chain</p>
+							<p>The call stack can be thought of as an array of execution contexts. At the bottom of the stack is the global execution context. Each time a function is called, its parameters and this value are stored in a new 'object' on the stack.</p>
+							<a href="http://stackoverflow.com/questions/9384758/what-is-the-execution-context-in-javascript-exactly">JS execution context</a>
+							<a href="http://stackoverflow.com/questions/7721200/using-javascript-closures-in-settimeout/7722057#7722057">JS Scope</a>
+						</section>
+						<section>
+							<h2>References</h2>
+							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">Very nice article</a>
+							<a href=""></a>
+							<a href=""></a>
+						</section>
+					</section>
 					<section>
 						<section>
 							<h1>Oh! that's in Javascript</h1>
