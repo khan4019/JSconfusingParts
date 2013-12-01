@@ -555,7 +555,8 @@ Math.min.apply(null, [2,3,4,5]); //2
 								<li class="fragment oneFragmentAtaTime">functions are like objects</li>
 								<li class="fragment oneFragmentAtaTime">function could have properties</li>
 								<li class="fragment oneFragmentAtaTime">gets "this" property during execution</li>
-								<li class="fragment oneFragmentAtaTime">"this" ALWAYS refer to an object</li>
+								<h4 class="fragment">"this"</h4>
+								<li class="fragment oneFragmentAtaTime">ALWAYS refer to an object</li>
 								<li class="fragment oneFragmentAtaTime">refer to current execution context</li>
 								<li class="fragment oneFragmentAtaTime">depend on how function is called</li>
 							</ul>														
@@ -563,17 +564,17 @@ Math.min.apply(null, [2,3,4,5]); //2
 						<section>
 							<h2>What is this?</h2>
 							<pre><code>
+this;//window
+
 function whatIsThis() { 
    return this; 
 }
-
 whatIsThis(); //window</code></pre>
 							<pre class="fragment"><code>
 function justAddName(name) {
   this.name = name;
   return this;
 }
-
 justAddName(" Amy Farrah Fowler");//window
 console.log(window.name); //  Amy Farrah Fowler</code></pre>
 				  			<pre class="fragment"><code>
@@ -591,16 +592,16 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre>
    return this;
 })(); //undefined</code></pre>
 							<pre class="fragment"><code>
-(function(){
-  'use strict';
-  return this;
-}).call(this);
-//window</code></pre>
-							<pre class="fragment"><code>
 (function(self){
   'use strict';
   return self;
 })(this);
+//window</code></pre>
+							<pre class="fragment"><code>
+(function(){
+  'use strict';
+  return this;
+}).call(this);
 //window</code></pre>
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
@@ -612,18 +613,19 @@ var buddy = {
   lastName:this.firstName,
   context:this
 }
-
+							</code></pre>
+							<pre class="fragment"><code>
 buddy.firstName; //penny
 buddy.lastName;//undefined
 buddy.context;//window
 							</code></pre>
 							<pre class="fragment"><code>
 var buddy = {
-  myMethod: function() {
+  getContext: function() {
    return this;
   }
 };
-buddy.myMethod(); // Object {myMethod: function}</code></pre>
+buddy.getContext(); // Object {getContext: function}</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
@@ -659,16 +661,20 @@ var a = {
         return this;
     }
 };
-a.b();//window</code></pre>
+a.b();//Object {b: function}</code></pre>
 							<pre class="fragment"><code> 
 var foo = a.b;
+foo(); //window</code></pre>
+							<pre class="fragment"><code> 
+var foo = function(){
+  return this;	
+};
 foo(); //window</code></pre>
 							<pre class="fragment"><code>
 var d = {};
 d.b = a.b;
 d.b();//Object {b: function}
 							</code></pre>
-
 							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>
 						<section>
@@ -690,8 +696,9 @@ var a = {
     }
 };
  
-a.b(); //window
-							</code></pre>
+a.b(); //window</code></pre>
+							<h4 class="fragment">strict mode will return undefined</h4>	
+							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>							
 						<section>
 							<h2>constructor</h2>
@@ -729,6 +736,7 @@ function CrazyFriend(name) {
 							<pre class="fragment"><code>
 var crazy1 = CrazyFriend('Howard Wolowitz');
 crazy1.name;//Howard Wolowitz'
+window.name;//Howard Wolowitz'
 crazy1.context;//window
 							</code></pre>
 							<pre class="fragment"><code>
@@ -897,11 +905,7 @@ a.b(); //true;
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
 						</section>						
 						<section>
-							<h4>inside callback</h4>
-							<h4>inside closure</h4>
-							<h4>method assigned to a variable</h4>
-							<h4>borrowing methods</h4>
-							<a href="http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/">understand JS this</a>
+							<h4>graphical/ list items as summary to recap</h4>							
 						</section>
 					</section>
 					<section>
@@ -1311,8 +1315,7 @@ function outer(){
   inner = function(){
     console.log('inside inner');
   }  
-}
-							</code></pre>
+}</code></pre>
 						</section>
 						<section>
 							<h2>quiz</h2>
@@ -1325,6 +1328,7 @@ function bar(){
 bar();
 console.log(foo);//10</code></pre>
 							<pre class="fragment"><code>
+//TODO: try to explain David Shariff quiz along with angus croll example
 var foo=1;
 function bar(){
   foo=10;
@@ -1334,20 +1338,32 @@ function bar(){
 bar();
 console.log(foo);//?
 							</code></pre>
-							<h4 class="fragment">first: 10, second:1</h4>
+							<h4 class="fragment">answer:1</h4>
+							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">David: A Word On Hoisting</a>
 						</section>
 						<section>
-							<h2>another one</h2>
-							<pre><code>
-function bar(){
+							<h3>more quiz</h3>
+							<pre><code>function bar(){
   return foo;
   foo=10;
   function foo(){}
   var foo =10;
 }
-typeof bar();//?
+typeof bar();//?</code></pre>
+							<h4 class="fragment">answer:function</h4>
+							<pre class="fragment"><code>function foo(){
+    function bar() {
+        return 3;
+    }
+    return bar();
+    function bar() {
+        return 8;
+    }
+}
+foo();//?
 							</code></pre>
-							<h4 class="fragment">function</h4>
+							<h4 class="fragment">answer:8</h4>
+							<a href="http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/">Angus Croll: function declaration</a>
 						</section>
 					</section>
 					<section>
