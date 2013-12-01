@@ -1469,6 +1469,25 @@ myStore.next(); //17
 							<h3 class="fragment">Currently executing functions</h3>
 						</section>
 						<section>
+							<h3>Don't mess up with names</h3>
+							<pre><code>
+function foo(a, arguments) {
+    return arguments;
+};
+ 
+foo(1); //undefined
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(a, b) {
+    var arguments = 43;
+    return arguments
+};
+ 
+foo(1, 2); //43
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/01/18/javascripts-arguments-object-and-beyond/">Angus Croll: aguments</a>
+						</section>
+						<section>
 							<a href="http://javascript.info/tutorial/arguments">Last part caller calee and add even more</a>
 						</section>
 						<section>
