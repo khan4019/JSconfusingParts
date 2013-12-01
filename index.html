@@ -664,6 +664,16 @@ a.b();//window</code></pre>
 var foo = a.b;
 foo(); //window</code></pre>
 							<pre class="fragment"><code>
+var d = {};
+d.b = a.b;
+d.b();//Object {b: function}
+							</code></pre>
+
+							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
+						</section>
+						<section>
+							<h3>some more execution context</h3>
+							<pre><code>
 var a = {
     b: function() {
         var c = function() {
@@ -673,8 +683,16 @@ var a = {
     }
 }; 
 a.b();//window</code></pre>
-							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
-						</section>
+							<pre class="fragment"><code>
+var a = {
+    b: function() {
+        return (function() {return this;})();
+    }
+};
+ 
+a.b(); //window
+							</code></pre>
+						</section>							
 						<section>
 							<h2>constructor</h2>
 							<h4>this= newly constructed object</h4>
