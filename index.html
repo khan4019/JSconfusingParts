@@ -564,17 +564,17 @@ Math.min.apply(null, [2,3,4,5]); //2
 						<section>
 							<h2>What is this?</h2>
 							<pre><code>
+this;//window
+
 function whatIsThis() { 
    return this; 
 }
-
 whatIsThis(); //window</code></pre>
 							<pre class="fragment"><code>
 function justAddName(name) {
   this.name = name;
   return this;
 }
-
 justAddName(" Amy Farrah Fowler");//window
 console.log(window.name); //  Amy Farrah Fowler</code></pre>
 				  			<pre class="fragment"><code>
@@ -664,6 +664,11 @@ var a = {
 a.b();//Object {b: function}</code></pre>
 							<pre class="fragment"><code> 
 var foo = a.b;
+foo(); //window</code></pre>
+							<pre class="fragment"><code> 
+var foo = function(){
+  return this;	
+};
 foo(); //window</code></pre>
 							<pre class="fragment"><code>
 var d = {};
