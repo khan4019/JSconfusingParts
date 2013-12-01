@@ -637,7 +637,7 @@ var buddy = {
   firstLib:function(){
     return this.libraries[0];
   }
-  
+
 };
 
 buddy.firstLib();//jquery
@@ -650,7 +650,30 @@ buddy.addLib = function(newLib){
 buddy.addLib('angular');
 buddy.libraries; //["jquery", "ember", "backbone", "angular"]
 							</code></pre>
-
+						</section>
+						<section>
+							<h4>understand the context of execution</h4>
+							<pre><code>
+var a = {
+    b: function() {
+        return this;
+    }
+};
+a.b();//window</code></pre>
+							<pre class="fragment"><code> 
+var foo = a.b;
+foo(); //window</code></pre>
+							<pre class="fragment"><code>
+var a = {
+    b: function() {
+        var c = function() {
+            return this;
+        };
+        return c();
+    }
+}; 
+a.b();//window</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>
 						<section>
 							<h2>constructor</h2>
