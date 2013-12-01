@@ -605,12 +605,12 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre>
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
-							<h2>this of an Object</h2>							
+							<h3>this of an Object method</h3>
 							<pre><code>
 var buddy = {
-	firstName:'penny',
-	lastName:this.firstName,
-	context:this
+  firstName:'penny',
+  lastName:this.firstName,
+  context:this
 }
 
 buddy.firstName; //penny
@@ -1265,8 +1265,7 @@ function bar(){
   return;	
 }
 bar();
-console.log(foo);//?
-							</code></pre>
+console.log(foo);//10</code></pre>
 							<pre class="fragment"><code>
 var foo=1;
 function bar(){
@@ -1757,6 +1756,12 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 							<p>The call stack can be thought of as an array of execution contexts. At the bottom of the stack is the global execution context. Each time a function is called, its parameters and this value are stored in a new 'object' on the stack.</p>
 							<a href="http://stackoverflow.com/questions/9384758/what-is-the-execution-context-in-javascript-exactly">JS execution context</a>
 							<a href="http://stackoverflow.com/questions/7721200/using-javascript-closures-in-settimeout/7722057#7722057">JS Scope</a>
+						</section>
+						<section>
+							<h2>References</h2>
+							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">Very nice article</a>
+							<a href=""></a>
+							<a href=""></a>
 						</section>
 					</section>
 					<section>
