@@ -605,7 +605,7 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre>
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
-							<h3>this of an Object method</h3>
+							<h2>this of an Object</h2>
 							<pre><code>
 var buddy = {
   firstName:'penny',
@@ -627,6 +627,7 @@ buddy.myMethod(); // Object {myMethod: function}</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
+							<h4>Access object propeties via "this"</h4>
 							<pre><code>
 var buddy = {  
   name:'Tom Hanks',
@@ -636,11 +637,20 @@ var buddy = {
   firstLib:function(){
     return this.libraries[0];
   }
-
+  
 };
 
 buddy.firstLib();//jquery
 							</code></pre>
+							<pre class="fragment"><code>
+buddy.addLib = function(newLib){
+  this.libraries.push(newLib);
+}
+
+buddy.addLib('angular');
+buddy.libraries; //["jquery", "ember", "backbone", "angular"]
+							</code></pre>
+
 						</section>
 						<section>
 							<h2>constructor</h2>
