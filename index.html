@@ -755,6 +755,28 @@ earlyMorning.context//Menu {item: "starBucks", context: Menu}
 							</code></pre>
 						</section>
 						<section>
+							<h3>How to fix this?</h3>
+							<pre><code>
+function Menu(item){
+  var that = this;
+  this.item = item;
+  this.context = this;
+
+  setTimeout(function(){
+    console.log('setTimeout context:', that);
+  }, 10);
+
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var earlyMorning = new Menu('starBucks');
+
+//setTimeout context: Menu {item: "starBucks", context: Menu}
+earlyMorning.context//Menu {item: "starBucks", context: Menu}
+							</code></pre>
+							<h4 class="fragment">Other solutions. Coming soon...</h4>
+						</section>
+						<section>
 							<h2>"this" in arguments</h2>
 							<h4>8 ES5 function allows thisArg</h4>
 							<pre><code>
