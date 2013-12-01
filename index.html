@@ -1339,16 +1339,27 @@ console.log(foo);//?
 						</section>
 						<section>
 							<h3>more quiz</h3>
-							<pre><code>
-function bar(){
+							<pre><code>function bar(){
   return foo;
   foo=10;
   function foo(){}
   var foo =10;
 }
-typeof bar();//?
-							</code></pre>
+typeof bar();//?</code></pre>
 							<h4 class="fragment">answer:function</h4>
+							<pre class="fragment"><code>function foo(){
+    function bar() {
+        return 3;
+    }
+    return bar();
+    function bar() {
+        return 8;
+    }
+}
+foo();//?
+							</code></pre>
+							<h4 class="fragment">answer:8</h4>
+							<a href="http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/">Angus Croll: function declaration</a>
 						</section>
 					</section>
 					<section>
