@@ -696,8 +696,8 @@ var a = {
     }
 };
  
-a.b(); //window
-							</code></pre>
+a.b(); //window</code></pre>
+							<h4 class="fragment">strict mode will return undefined</h4>	
 							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>							
 						<section>
@@ -736,6 +736,7 @@ function CrazyFriend(name) {
 							<pre class="fragment"><code>
 var crazy1 = CrazyFriend('Howard Wolowitz');
 crazy1.name;//Howard Wolowitz'
+window.name;//Howard Wolowitz'
 crazy1.context;//window
 							</code></pre>
 							<pre class="fragment"><code>
