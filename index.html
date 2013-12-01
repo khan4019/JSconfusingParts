@@ -753,6 +753,7 @@ var earlyMorning = new Menu('starBucks');
 //setTimeout context: window
 earlyMorning.context//Menu {item: "starBucks", context: Menu}
 							</code></pre>
+							<h4>Same issues with setInterval</h4>
 						</section>
 						<section>
 							<h3>How to fix this?</h3>
@@ -793,7 +794,7 @@ Array.prototype.filter( callbackfn [ , thisArg ] )
 							</code></pre>
 						</section>
 						<section>
-							<h2>"this" in arguments</h2>
+							<h2>bind, call and apply</h2>
 							<pre><code>
 function getMenu(){
   return this.menu;
@@ -1739,7 +1740,14 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 							<h2>Debounce and Throttle</h2>
 							<a href="http://jhankarmahbub.com/presentations/debounce.html">click: debounce & throttle</a>
 						</section>
-					</section>				
+					</section>
+					<section>
+						<h3>Life cycle of a function call</h3>
+						<pre><code>
+//very nice link make it graphical
+						</code></pre>
+						<a href="http://corporate.tuenti.com/en/dev/blog/functions-and-execution-contexts-in-javascript-2">function and execution</a>
+					</section>
 					<section>
 						<section>
 							<h1>Oh! that's in Javascript</h1>
