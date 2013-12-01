@@ -609,12 +609,12 @@ console.log(window.name); // Adam</code></pre>
 var buddy = {
 	firstName:'penny',
 	lastName:this.firstName,
-	obj:this
+	context:this
 }
 
 buddy.firstName; //penny
 buddy.lastName;//undefined
-buddy.obj;//window
+buddy.context;//window
 							</code></pre>
 							<pre class="fragment"><code>
 var buddy = {
@@ -646,24 +646,43 @@ buddy.firstLib();//jquery
 							<h4>this= newly constructed object</h4>
 							<pre><code>
 function Friend(name) {
-  this.name= name;  
+  this.name= name;
+  this.context = this;
 }
+
 var frnd1 = new Friend('nice guy');
-var frnd2 = new Friend('common guy');</code></pre>
+var frnd2 = new Friend('common guy');
+							</code></pre>
 							<pre class="fragment"><code>
 frnd1.name; //nice guy
+frnd1.context;//Friend {name: "nice guy", context: Friend}
+							</code></pre>
+							<pre class="fragment"><code>
 frnd2.name; //common guy
+frnd2.context;//Friend {name: "common guy", context: Friend}
 
 window.name;//undefined</code></pre>
-							<pre class="fragment"><code>
+						</section>
+						<section>
+							<h3>function returning object</h3>
+							<pre><code>
 function CrazyFriend(name) {
   this.name= name;  
   return {
-    name:'get lost'
+    name:this.name,
+    context:this
   }
 }
-var crazy = new CrazyFriend('Simon Fisher');
-crazy.name;//get lost
+							</code></pre>
+							<pre class="fragment"><code>
+var crazy1 = CrazyFriend('Howard Wolowitz');
+crazy1.name;//Howard Wolowitz'
+crazy1.context;//window
+							</code></pre>
+							<pre class="fragment"><code>
+var crazy21 = new CrazyFriend('Howard Wolowitz');
+crazy21.name;//Howard Wolowitz'
+crazy21.context;//CrazyFriend {name: "Howard Wolo"}
 							</code></pre>
 						</section>
 						<section>
