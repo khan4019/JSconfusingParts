@@ -553,13 +553,12 @@ Math.min.apply(null, [2,3,4,5]); //2
 							<h4>in JavaScript</h4>
 							<ul>
 								<li class="fragment oneFragmentAtaTime">functions are like objects</li>
-								<li class="fragment oneFragmentAtaTime">function has properties</li>
+								<li class="fragment oneFragmentAtaTime">function could have properties</li>
 								<li class="fragment oneFragmentAtaTime">gets "this" property during execution</li>
 								<li class="fragment oneFragmentAtaTime">"this" ALWAYS refer to an object</li>
 								<li class="fragment oneFragmentAtaTime">refer to current execution context</li>
 								<li class="fragment oneFragmentAtaTime">depend on how function is called</li>
-							</ul>							
-							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
+							</ul>														
 						</section>
 						<section>
 							<h2>What is this?</h2>
@@ -568,86 +567,123 @@ function whatIsThis() {
    return this; 
 }
 
-whatIsThis(); //window
-							</code></pre>
+whatIsThis(); //window</code></pre>
 							<pre class="fragment"><code>
 function justAddName(name) {
   this.name = name;
+  return this;
 }
 
-justAddName("Adam");
-console.log(window.name); // Adam
-							</code></pre>
+justAddName(" Amy Farrah Fowler");//window
+console.log(window.name); //  Amy Farrah Fowler</code></pre>
+				  			<pre class="fragment"><code>
+(function(){
+   return this;
+})();
+//window</code></pre>
 							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
 						<section>
 							<h2>strict mode</h2>
 							<pre><code>
-function whatIsThis(){
-  "use strict";
+(function(){
+   'use strict';
+   return this;
+})(); //undefined</code></pre>
+							<pre class="fragment"><code>
+(function(){
+  'use strict';
   return this;
-}
-
-whatIsThis(); //undefined								
-							</code></pre>
+}).call(this);
+//window</code></pre>
 							<pre class="fragment"><code>
-//add example for this
-(function(){return this;})();
-							</code></pre>
-							<pre class="fragment"><code>
-//add example for IIFE with object bind
-							</code></pre>
+(function(self){
+  'use strict';
+  return self;
+})(this);
+//window</code></pre>
+							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
 						<section>
-							<h2>method of an Object</h2>
-							<h4>this = object the method is called on</h4>
+							<h2>this of an Object</h2>							
 							<pre><code>
-var myObject = {
+var buddy = {
+	firstName:'penny',
+	lastName:this.firstName,
+	context:this
+}
+
+buddy.firstName; //penny
+buddy.lastName;//undefined
+buddy.context;//window
+							</code></pre>
+							<pre class="fragment"><code>
+var buddy = {
   myMethod: function() {
    return this;
   }
 };
-
-myObject.myMethod(); // Object {myMethod: function}
-							</code></pre>
-							<pre class="fragment"><code>
-var buddy = {
-  name: 'Tom Hanks',
+buddy.myMethod(); // Object {myMethod: function}</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+						</section>
+						<section>
+							<pre><code>
+var buddy = {  
+  name:'Tom Hanks',
 
   libraries:['jquery', 'ember', 'backbone'],
-
+  
   firstLib:function(){
     return this.libraries[0];
   }
+
 };
 
 buddy.firstLib();//jquery
 							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
 							<h2>constructor</h2>
 							<h4>this= newly constructed object</h4>
 							<pre><code>
 function Friend(name) {
-  this.name= name;  
+  this.name= name;
+  this.context = this;
 }
+
 var frnd1 = new Friend('nice guy');
-var frnd2 = new Friend('common guy');</code></pre>
+var frnd2 = new Friend('common guy');
+							</code></pre>
 							<pre class="fragment"><code>
 frnd1.name; //nice guy
+frnd1.context;//Friend {name: "nice guy", context: Friend}
+							</code></pre>
+							<pre class="fragment"><code>
 frnd2.name; //common guy
+frnd2.context;//Friend {name: "common guy", context: Friend}
 
 window.name;//undefined</code></pre>
-							<pre class="fragment"><code>
+						</section>
+						<section>
+							<h3>function returning object</h3>
+							<pre><code>
 function CrazyFriend(name) {
   this.name= name;  
   return {
-    name:'get lost'
+    name:this.name,
+    context:this
   }
 }
-var crazy = new CrazyFriend('Simon Fisher');
-crazy.name;//get lost
+							</code></pre>
+							<pre class="fragment"><code>
+var crazy1 = CrazyFriend('Howard Wolowitz');
+crazy1.name;//Howard Wolowitz'
+crazy1.context;//window
+							</code></pre>
+							<pre class="fragment"><code>
+var crazy21 = new CrazyFriend('Howard Wolowitz');
+crazy21.name;//Howard Wolowitz'
+crazy21.context;//CrazyFriend {name: "Howard Wolo"}
 							</code></pre>
 						</section>
 						<section>
@@ -659,13 +695,12 @@ var dad = {
 }
 
 var child =Object.create(dad);
-
+child.fathersName; //big Dad
+							</code></pre>
+							<pre class="fragment"><code>
 child.whoIsYourFather:function(){
     return this.fathersName;
  }
-							</code></pre>
-							<pre class="fragment"><code>
-child.fathersName; //big Dad
 child.whoIsYourFather(); //big Dad
 							</code></pre>
 							<pre class="fragment"><code>
@@ -673,6 +708,47 @@ child.hasOwnProperty('fathersName'); //false
 Object.getPrototypeOf(child); //{fathersName: "big Dad"}
 							</code></pre>
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
+						</section>
+						<section>
+							<h2>setTimeout</h2>
+							<pre><code>
+var bigBang = {
+  name:'Penny',
+  getContext:function(){
+    return this;
+  }
+}
+bigBang.getContext();//{name: "Penny", getContext: function}
+							</code></pre>
+							<pre class="fragment"><code>
+function context(){
+  console.log(this);
+}
+
+var bigBang = {
+  name:'Bernadette',
+  getContext:function(){
+    setTimeout(context, 10);
+  }
+}
+bigBang.getContext();//window
+							</code></pre>	
+						</section>
+						<section>
+							<h2>"this" in arguments</h2>
+							<h4>8 ES5 function allows thisArg</h4>
+							<pre><code>
+Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.apply( thisArg, argArray )
+							</code></pre>
+							<pre class="fragment"><code>
+Array.prototype.every( callbackfn [ , thisArg ] )
+Array.prototype.some( callbackfn [ , thisArg ] )
+Array.prototype.forEach( callbackfn [ , thisArg ] )
+Array.prototype.map( callbackfn [ , thisArg ] )
+Array.prototype.filter( callbackfn [ , thisArg ] )
+							</code></pre>
 						</section>
 						<section>
 							<h2>"this" in arguments</h2>
@@ -694,27 +770,8 @@ function lunch(budget, time){
 var forDev = {menu: 'pizza'};
 							</code></pre>							
 							<pre class="fragment"><code>
-lunch.call(forDev, 5, 10);
-//pizza for 5 within 10 min.
-lunch.apply(forDev, [5, 10]);
-//pizza for 5 within 10 min.
-							</code></pre>
-						</section>
-						<section>
-							<h2>"this" in arguments</h2>
-							<h4>8 ES5 function allows thisArg</h4>
-							<pre><code>
-//might consider to move this before last slide to explain better
-Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
-Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
-Function.prototype.apply( thisArg, argArray )
-							</code></pre>
-							<pre class="fragment"><code>
-Array.prototype.every( callbackfn [ , thisArg ] )
-Array.prototype.some( callbackfn [ , thisArg ] )
-Array.prototype.forEach( callbackfn [ , thisArg ] )
-Array.prototype.map( callbackfn [ , thisArg ] )
-Array.prototype.filter( callbackfn [ , thisArg ] )
+lunch.call(forDev, 5, 10);//pizza for 5 within 10 min.
+lunch.apply(forDev, [5, 10]);//pizza for 5 within 10 min.
 							</code></pre>
 						</section>
 						<section>
@@ -738,28 +795,7 @@ most likely dont.
 in such case remove this slide
 							</code></pre>
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
-						</section>
-						<section>
-							<h2>quiz</h2>
-							<pre><code>
-var x   = 4,
-    obj = {
-        x: 3,
-        
-        bar: function() {
-            var x = 2;
-
-            setTimeout(function() {
-                var x = 1;
-                alert(this.x);
-            }, 1000);
-        }
-
-    };
-obj.bar();//?
-							</code></pre>
-							<h4 class="fragment">4</h4>
-						</section>
+						</section>						
 						<section>
 							<h4>inside callback</h4>
 							<h4>inside closure</h4>
@@ -1742,6 +1778,8 @@ $('ul').on('click', 'li', function(){});
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">MDN: strict mode</a>
 							<br/>
 							<a href="http://msdn.microsoft.com/en-us/library/br230269(v=vs.94).aspx">Restrictions on Strict mode</a>
+							<br/>
+							<a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">Jon Resig: Strict Mode</a>
 						</section>
 						<section>
 							<h2></h2>
