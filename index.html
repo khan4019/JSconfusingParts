@@ -555,7 +555,8 @@ Math.min.apply(null, [2,3,4,5]); //2
 								<li class="fragment oneFragmentAtaTime">functions are like objects</li>
 								<li class="fragment oneFragmentAtaTime">function could have properties</li>
 								<li class="fragment oneFragmentAtaTime">gets "this" property during execution</li>
-								<li class="fragment oneFragmentAtaTime">"this" ALWAYS refer to an object</li>
+								<h4 class="fragment">"this"</h4>
+								<li class="fragment oneFragmentAtaTime">ALWAYS refer to an object</li>
 								<li class="fragment oneFragmentAtaTime">refer to current execution context</li>
 								<li class="fragment oneFragmentAtaTime">depend on how function is called</li>
 							</ul>														
@@ -591,16 +592,16 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre>
    return this;
 })(); //undefined</code></pre>
 							<pre class="fragment"><code>
-(function(){
-  'use strict';
-  return this;
-}).call(this);
-//window</code></pre>
-							<pre class="fragment"><code>
 (function(self){
   'use strict';
   return self;
 })(this);
+//window</code></pre>
+							<pre class="fragment"><code>
+(function(){
+  'use strict';
+  return this;
+}).call(this);
 //window</code></pre>
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>
@@ -612,18 +613,19 @@ var buddy = {
   lastName:this.firstName,
   context:this
 }
-
+							</code></pre>
+							<pre class="fragment"><code>
 buddy.firstName; //penny
 buddy.lastName;//undefined
 buddy.context;//window
 							</code></pre>
 							<pre class="fragment"><code>
 var buddy = {
-  myMethod: function() {
+  getContext: function() {
    return this;
   }
 };
-buddy.myMethod(); // Object {myMethod: function}</code></pre>
+buddy.getContext(); // Object {getContext: function}</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
 						<section>
@@ -659,7 +661,7 @@ var a = {
         return this;
     }
 };
-a.b();//window</code></pre>
+a.b();//Object {b: function}</code></pre>
 							<pre class="fragment"><code> 
 var foo = a.b;
 foo(); //window</code></pre>
@@ -668,7 +670,6 @@ var d = {};
 d.b = a.b;
 d.b();//Object {b: function}
 							</code></pre>
-
 							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>
 						<section>
@@ -692,6 +693,7 @@ var a = {
  
 a.b(); //window
 							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>							
 						<section>
 							<h2>constructor</h2>
