@@ -571,10 +571,11 @@ whatIsThis(); //window</code></pre>
 							<pre class="fragment"><code>
 function justAddName(name) {
   this.name = name;
+  return this;
 }
 
-justAddName("Adam");
-console.log(window.name); // Adam</code></pre>
+justAddName(" Amy Farrah Fowler");//window
+console.log(window.name); //  Amy Farrah Fowler</code></pre>
 				  			<pre class="fragment"><code>
 (function(){
    return this;
@@ -694,13 +695,12 @@ var dad = {
 }
 
 var child =Object.create(dad);
-
+child.fathersName; //big Dad
+							</code></pre>
+							<pre class="fragment"><code>
 child.whoIsYourFather:function(){
     return this.fathersName;
  }
-							</code></pre>
-							<pre class="fragment"><code>
-child.fathersName; //big Dad
 child.whoIsYourFather(); //big Dad
 							</code></pre>
 							<pre class="fragment"><code>
@@ -710,10 +710,34 @@ Object.getPrototypeOf(child); //{fathersName: "big Dad"}
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
 						<section>
+							<h2>setTimeout</h2>
+							<pre><code>
+var bigBang = {
+  name:'Penny',
+  getContext:function(){
+    return this;
+  }
+}
+bigBang.getContext();//{name: "Penny", getContext: function}
+							</code></pre>
+							<pre class="fragment"><code>
+function context(){
+  console.log(this);
+}
+
+var bigBang = {
+  name:'Bernadette',
+  getContext:function(){
+    setTimeout(context, 10);
+  }
+}
+bigBang.getContext();//window
+							</code></pre>	
+						</section>
+						<section>
 							<h2>"this" in arguments</h2>
 							<h4>8 ES5 function allows thisArg</h4>
 							<pre><code>
-//might consider to move this before last slide to explain better
 Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
 Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
 Function.prototype.apply( thisArg, argArray )
@@ -746,10 +770,8 @@ function lunch(budget, time){
 var forDev = {menu: 'pizza'};
 							</code></pre>							
 							<pre class="fragment"><code>
-lunch.call(forDev, 5, 10);
-//pizza for 5 within 10 min.
-lunch.apply(forDev, [5, 10]);
-//pizza for 5 within 10 min.
+lunch.call(forDev, 5, 10);//pizza for 5 within 10 min.
+lunch.apply(forDev, [5, 10]);//pizza for 5 within 10 min.
 							</code></pre>
 						</section>
 						<section>
@@ -773,28 +795,7 @@ most likely dont.
 in such case remove this slide
 							</code></pre>
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
-						</section>
-						<section>
-							<h2>quiz</h2>
-							<pre><code>
-var x   = 4,
-    obj = {
-        x: 3,
-        
-        bar: function() {
-            var x = 2;
-
-            setTimeout(function() {
-                var x = 1;
-                alert(this.x);
-            }, 1000);
-        }
-
-    };
-obj.bar();//?
-							</code></pre>
-							<h4 class="fragment">4</h4>
-						</section>
+						</section>						
 						<section>
 							<h4>inside callback</h4>
 							<h4>inside closure</h4>
