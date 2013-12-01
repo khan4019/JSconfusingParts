@@ -1752,7 +1752,11 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 						</section>
 						<section>
 							<p>Execution context is a concept in the language spec that—in layman's terms—roughly equates to the 'environment' a function executes in; that is, variable scope (and the scope chain, variables in closures from outer scopes), function arguments, and the value of the this object.</p>
+							<p>avaScript uses static scope; that is, the scope chain of a function is defined at the moment that function is created and never changes; the scope chain is a property of the function.</p>
+							<p>Execution context is different and separate from the scope chain</p>
+							<p>The call stack can be thought of as an array of execution contexts. At the bottom of the stack is the global execution context. Each time a function is called, its parameters and this value are stored in a new 'object' on the stack.</p>
 							<a href="http://stackoverflow.com/questions/9384758/what-is-the-execution-context-in-javascript-exactly">JS execution context</a>
+							<a href="http://stackoverflow.com/questions/7721200/using-javascript-closures-in-settimeout/7722057#7722057">JS Scope</a>
 						</section>
 					</section>
 					<section>
