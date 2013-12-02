@@ -698,7 +698,7 @@ var a = {
  
 a.b(); //window</code></pre>
 							<h4 class="fragment">strict mode will return undefined</h4>	
-							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
+							<a href="http://stackoverflow.com/questions/20309236/understanding-javascript-this-with-private-function-and-self-executing-function/20309357?noredirect=1#20309357">context of this</a>
 						</section>							
 						<section>
 							<h2>constructor</h2>
@@ -876,8 +876,9 @@ lunch.call(forDev, 5, 10);//pizza for 5 within 10 min.
 lunch.apply(forDev, [5, 10]);//pizza for 5 within 10 min.
 							</code></pre>
 						</section>
-						<section>
+						<section>							
 							<h2>DOM event handler</h2>
+							<button id="myButton" style="font-size: 1.1em;">my button</button>
 							<h4>this = element the event fired from</h4>
 							<pre><code>
 function bluify(e){
@@ -885,6 +886,12 @@ function bluify(e){
   console.log(this === e.target);// true when currentTarget and target are the same object
   this.style.backgroundColor = '#A5D9F3';
 }
+							</code></pre>
+							<pre><code>
+//execute it in console
+document.getElementById('myButton').addEventListener('click', function(){
+console.log(this);
+}, false);
 							</code></pre>	
 							<h4>same for inline element this</h4>					
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
@@ -905,7 +912,19 @@ a.b(); //true;
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
 						</section>						
 						<section>
-							<h4>graphical/ list items as summary to recap</h4>							
+							<h2>Now. I know this</h2>
+							<ul>
+								<li class="fragment oneFragmentAtaTime">this = window (function context)</li>
+								<li class="fragment oneFragmentAtaTime">this = undefined (strict mode IIFE)</li>
+								<li class="fragment oneFragmentAtaTime">this = object (called in object context)</li>
+								<li class="fragment oneFragmentAtaTime">this = object (constructor: new keyword)</li>
+								<li class="fragment oneFragmentAtaTime">this has access to all inherited properties</li>
+								<li class="fragment oneFragmentAtaTime">this = object (Arg of bind, call, apply)</li>
+								<li class="fragment oneFragmentAtaTime">this = window (inside setTimeout)</li>
+								<li class="fragment oneFragmentAtaTime">this = element the event fired from</li>
+							</ul>	
+							<!-- <h4 class="hidden">graphical/ list items as summary to recap</h4> -->
+							<!-- <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JS: execution context</a> -->							
 						</section>
 					</section>
 					<section>
@@ -929,6 +948,7 @@ a.b(); //true;
 							<h2>Interesting Drawing to explain inheritance</h2>
 							<pre><code></code></pre>
 							<p>create one: do some work</p>
+							<a href="http://davidshariff.com/blog/javascript-inheritance-patterns/">Inheritance Pattern</a>
 						</section>
 						<section>
 							<h2>constructor</h2>
