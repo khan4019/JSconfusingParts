@@ -140,6 +140,10 @@
 							<ul>
 								<li>true</li>
 								<li>'false'</li>
+								<li>' '</li>
+								<li>{}</li>
+								<li>[]</li>
+								<li>new Date()</li>								
 								<li>Everything not false</li>
 							</ul>
 						</section>
@@ -974,6 +978,7 @@ function CloseFriend(name){
 
 CloseFriend.prototype = new Friend();
 							</code></pre>
+							<p>use instanceOf somewhere and explain it</p>
 							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
 						</section>
 						<section>
@@ -1989,6 +1994,8 @@ $('ul').on('click', 'li', function(){});
 							<h2>Function constructor vs. function declaration vs. function expression</h2>
 							<pre><code></code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">MDN: compare function creation</a>
+							<br/>
+							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=1614fd5557">Function function</a>
 						</section>
 						<section>
 							<h1>Expression vs Statement</h1>
@@ -2087,14 +2094,60 @@ if (myArray.length == 3) {//..}
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Angus Croll: JS Equality</a>
 											</section>
 						<section>
-							<h2></h2>
-							<h4></h4>
-							<pre><code></code></pre>
+							<h2>[].indexOf</h2>
+							<h4>Only finds exact match</h4>
+							<pre><code>
+[{a:1}, {b:2}, {c:3}, 4].indexOf(4); //3
+[{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
+							</code></pre>
+							<pre class="fragment"><code>
+//is there better solution??
+//ggl it stupid
+var a = {a:1}, 
+    b = {b:2}, 
+    c = {c:3};
+
+[a,b,c,4].indexOf(c);//2    
+							</code></pre>
+						</section>
+						<section>
+							<h2>dot</h2>
+							<h4>Could be removed</h4>
+							<pre><code>
+42.toString();//"42"
+42..toString();//"42"
+42 .toString();//"42"
+4.2        .  toString();//"4.2"
+							</code></pre>
+							<pre class="fragment"><code>
+42...toString();//SyntaxError: Unexpected token .
+4.2..toString();//SyntaxError: Unexpected token .
+							</code></pre>
+							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=3a857e5967">JS: dot notation</a>
+						</section>
+						<section>
+							<h2>read those links</h2>
+							<pre><code>
+//if you find anything, interesting
+							</code></pre>
+							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=313093ad76">Array method on string</a>
+							<br/>
+							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=d56bf8ad4f">JS void</a>
 						</section>
 						<section>
 							<h2></h2>
-							<h4></h4>
 							<pre><code></code></pre>
+							<a href=""></a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+							<a href=""></a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+							<a href=""></a>
 						</section>
 					</section>
 					<section>
