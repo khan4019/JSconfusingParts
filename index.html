@@ -2091,9 +2091,20 @@ if (myArray.length == 3) {//..}
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Angus Croll: JS Equality</a>
 											</section>
 						<section>
-							<h2></h2>
-							<h4></h4>
-							<pre><code></code></pre>
+							<h2>[].indexOf</h2>
+							<h4>Only finds exact match</h4>
+							<pre><code>
+[{a:1}, {b:2}, {c:3}, 4].indexOf(4); //3
+[{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
+							</code></pre>
+							<pre class="fragment"><code>
+//is there better solution??
+var a = {a:1}, 
+    b = {b:2}, 
+    c = {c:3};
+
+[a,b,c,4].indexOf(c);//2    
+							</code></pre>
 						</section>
 						<section>
 							<h2></h2>
