@@ -982,6 +982,29 @@ CloseFriend.prototype = new Friend();
 							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
 						</section>
 						<section>
+							<h2>instanceof</h2>
+							<h4>doesn't work on primitive values</h4>
+							<pre><code>
+//does not work on primtive values
+"" instanceof String; //false
+3 instanceof Number; //false
+false instanceof Boolean; //false
+							</code></pre>
+							<pre class="fragment"><code>
+//works on objects
+new String() instanceof String; //true
+new Number() instanceof Number; //true
+new Boolean() instanceof Boolean; //true
+[] instanceof Array; //true
+{} instanceof Object; //true
+/foo/ instanceof RegExp; //true
+							</code></pre>
+							<pre class="fragment"><code>
+//be aware
+[] instanceof Object; //true
+							</code></pre>
+						</section>
+						<section>
 							<h2>object.create</h2>
 							<pre><code>
 var Friend = {name: 'Geek smith'}; 
@@ -2029,30 +2052,7 @@ $('ul').on('click', 'li', function(){});
 					<section>
 						<section>
 							<h1>Free Caveats</h1>
-						</section>
-						<section>
-							<h2>instanceof</h2>
-							<h4>doesn't work on primitive values</h4>
-							<pre><code>
-//does not work on primtive values
-"" instanceof String; //false
-3 instanceof Number; //false
-false instanceof Boolean; //false
-							</code></pre>
-							<pre class="fragment"><code>
-//works on objects
-new String() instanceof String; //true
-new Number() instanceof Number; //true
-new Boolean() instanceof Boolean; //true
-[] instanceof Array; //true
-{} instanceof Object; //true
-/foo/ instanceof RegExp; //true
-							</code></pre>
-							<pre class="fragment"><code>
-//be aware
-[] instanceof Object; //true
-							</code></pre>
-						</section>
+						</section>						
 						<section>
 							<h2>array.length</h2>
 							<h4></h4>
