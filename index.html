@@ -2099,6 +2099,7 @@ if (myArray.length == 3) {//..}
 							</code></pre>
 							<pre class="fragment"><code>
 //is there better solution??
+//ggl it stupid
 var a = {a:1}, 
     b = {b:2}, 
     c = {c:3};
@@ -2107,9 +2108,19 @@ var a = {a:1},
 							</code></pre>
 						</section>
 						<section>
-							<h2></h2>
-							<h4></h4>
-							<pre><code></code></pre>
+							<h2>dot</h2>
+							<h4>Could be removed</h4>
+							<pre><code>
+42.toString();//"42"
+42..toString();//"42"
+42 .toString();//"42"
+4.2        .  toString();//"4.2"
+							</code></pre>
+							<pre class="fragment"><code>
+42...toString();//SyntaxError: Unexpected token .
+4.2..toString();//SyntaxError: Unexpected token .
+							</code></pre>
+							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=3a857e5967">JS: dot notation</a>
 						</section>
 					</section>
 					<section>
