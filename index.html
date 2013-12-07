@@ -857,6 +857,7 @@ Array.prototype.forEach( callbackfn [ , thisArg ] )
 Array.prototype.map( callbackfn [ , thisArg ] )
 Array.prototype.filter( callbackfn [ , thisArg ] )
 							</code></pre>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES5: 5 parts</a>
 						</section>
 						<section>
 							<h2>bind, call and apply</h2>
@@ -2159,9 +2160,25 @@ console.log(myArray.length) //logs 3, regardless of trailing comma
 							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES 5: 5 parts</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<a href=""></a>
+							<h2>getter setter</h2>
+							<h4>less important remove this one</h4>
+							<pre><code>
+//es5
+var myObject = {
+    //name:'', WOULD CAUSE ERROR
+    get name() { //notice use of get to indicate accessor property 
+        console.log('read name');
+    },
+    set name(value) { //notice use of set to indicate accessor property
+        console.log('wrote to name the value: ' + value);
+    }
+
+};
+
+myObject.name = 'codylindley'; //invokes set 
+myObject.name; //invokes get    
+							</code></pre>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">es5: 5 parts</a>
 						</section>
 						<section>
 							<h2></h2>
