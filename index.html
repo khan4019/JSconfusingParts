@@ -2019,8 +2019,16 @@ $('ul').on('click', 'li', function(){});
 							<pre><code></code></pre>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>Check Strict Mode</h2>
+							<pre><code>
+//
+function isStrictMode(){
+	return (function(){	
+		return !this;
+})();
+}
+							</code></pre>
+							<a href="http://youtu.be/UTEqr0IlFKY?t=44m31s">Douglas Crockford: use strict</a>
 						</section>
 					</section>
 					<section>
