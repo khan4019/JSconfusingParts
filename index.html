@@ -2144,9 +2144,19 @@ var a = {a:1},
 							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=d56bf8ad4f">JS void</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<a href=""></a>
+							<h2>Execusing Extra Comma</h2>
+							<pre><code>
+var myObject = {
+    foo:'foo',
+    bar:'bar', //no error
+};
+
+var myArray = [1,2,3,];
+               
+console.log(myArray.length) //logs 3, regardless of trailing comma 
+							</code></pre>
+							<p>trailing comma in array should not push extra undefined</p>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES 5: 5 parts</a>
 						</section>
 						<section>
 							<h2></h2>
