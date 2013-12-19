@@ -11,3 +11,7 @@ This is a talk to explain things (important things) like scope, hoisting, closur
 After watching this, you will not need to kills hours to figure out a bug
 
 
+###vidoes
+From this confusing parts, i will make some videos in my [youtube channel](http://www.youtube.com/user/khanLearning) or  [thatjsdude blog](http://www.thatjsdude.com/jsConcepts/jsConcepts.html)
+
+
