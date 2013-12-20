@@ -91,14 +91,17 @@
 							<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
 						</p>
 						</section>
-					<section>
-						<h2 style="color:red; font-weight: bold">This is work in process presentation</h2>
-					</section>					
-					<section>
-						<section>
-							<h1>Check lists</h1>
-						</section>
-						<section>							
+					<section>						
+						<h2>You don't get what you <span class="greenBold">deserve</span></h2>
+						<h2>You only get what you <span class="redBold">negotiate</span></h2>
+						<br>
+						<br>
+						<p>Get pissed off at your own risk :p</p>
+						(<span style="color:red; font-weight: bold">This is work-in-process presentation</span>)
+						
+					</section>
+					<!--
+					<section>						
 							<ul>
 								<li class="lineThrough">scope, hoisting</li>
 								<li class="lineThrough">this</li>
@@ -112,18 +115,13 @@
 								<li>use strict</li>								
 								<li class="lineThrough">Number</li>
 							</ul>
-						</section>				
-					</section>
+					</section> -->					
 					<section>
 						<section>
 							<h1>True lies</h1>
 							<h3>Truth is very subjective</h3>
 							<h4>you are right. no no. you are left</h4>
-						</section>
-						<section>
-							<h2>You don't get what you <span class="greenBold">deserve</span></h2>
-							<h2 class="fragment">You only get what you <span class="redBold">negotiate</span></h2>
-						</section>
+						</section>						
 						<section>
 							<h2>Falsy values</h2>
 							<ul>
@@ -143,6 +141,8 @@
 								<li>' '</li>
 								<li>{}</li>
 								<li>[]</li>
+								<li>new Boolean(false)</li>
+								<li>new String('')</li>
 								<li>new Date()</li>								
 								<li>Everything not false</li>
 							</ul>
@@ -250,10 +250,8 @@ isNaN(;//use it
 						<section>
 							<h2>Arithmatic in JS</h2>
 							<pre><code>
-//lowerside
 0.1 + 0.2; //0.30000000000000004 
 
-//upperside
 9809987889988777 + 1 = 9809987889988777
 							</code></pre>
 							<pre class="fragment"><code>
@@ -268,6 +266,27 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
+							<h2>parseInt, parseFloat</h2>
+							<pre><code>
+//var num = parseInt(string, radix); 
+parseInt('12px'); //12
+parseInt('0xFF'); // 255
+parseInt('a123'); //NaN
+
+
+parseInt('010');  // in some browsers 8, because 0 means octal
+parseInt('010', 10); //10
+
+//parseFloat(string)
+parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
+							</code></pre>
+							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
+							<br/>
+							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
+						</section>
+						<section>
 							<h2>Unary + and -</h2>
 							<pre><code>
 +"20.14"; //20.14
@@ -275,11 +294,11 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 
 +true; //1
 +null; //0
+
 +''; //0
 +'abc'; //NaN
 
--'34'+10; //-24
-							</code></pre>
+-'34'+10; //-24</code></pre>
 							<pre class="fragment"><code>
 +" \n20  .14\n"; // NaN, not everything
 +"20.14Here"; //NaN
@@ -337,28 +356,7 @@ function reallyNaN(x) {
 reallyNaN(undefined); //false
 reallyNaN(NaN); //true
 							</code></pre>
-						</section>
-						<section>
-							<h2>parseInt, parseFloat</h2>
-							<pre><code>
-//var num = parseInt(string, radix); 
-parseInt('12px'); //12
-parseInt('0xFF'); // 255
-parseInt('a123'); //NaN
-
-
-parseInt('010');  // in some browsers 8, because 0 means octal
-parseInt('010', 10); //10
-
-//parseFloat(string)
-parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
-							</code></pre>
-							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
-							<br/>
-							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
-							<br/>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
-						</section>
+						</section>						
 					</section>					
 					<section>
 						<section>
@@ -855,6 +853,7 @@ Array.prototype.forEach( callbackfn [ , thisArg ] )
 Array.prototype.map( callbackfn [ , thisArg ] )
 Array.prototype.filter( callbackfn [ , thisArg ] )
 							</code></pre>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES5: 5 parts</a>
 						</section>
 						<section>
 							<h2>bind, call and apply</h2>
@@ -982,6 +981,36 @@ CloseFriend.prototype = new Friend();
 							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
 						</section>
 						<section>
+							<h2>instanceOf</h2>
+							<h4>talk about instance of</h4>
+							<pre><code>
+//add example
+							</code></pre>
+						</section>
+						<section>
+							<h2>instanceof</h2>
+							<h4>doesn't work on primitive values</h4>
+							<pre><code>
+//does not work on primtive values
+"" instanceof String; //false
+3 instanceof Number; //false
+false instanceof Boolean; //false
+							</code></pre>
+							<pre class="fragment"><code>
+//works on objects
+new String() instanceof String; //true
+new Number() instanceof Number; //true
+new Boolean() instanceof Boolean; //true
+[] instanceof Array; //true
+{} instanceof Object; //true
+/foo/ instanceof RegExp; //true
+							</code></pre>
+							<pre class="fragment"><code>
+//be aware
+[] instanceof Object; //true
+							</code></pre>
+						</section>
+						<section>
 							<h2>object.create</h2>
 							<pre><code>
 var Friend = {name: 'Geek smith'}; 
@@ -1036,7 +1065,7 @@ console.log(frnd);
 								<li class="fragment"></li>								
 							</ul>
 							<img src="images/lookForProperty.png" alt="">
-							<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">delete inherited property</a>
+							<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">delete inherited property</a>							
 						</section>
 						<section>
 							<h2></h2>
@@ -1777,10 +1806,72 @@ kk[2]();//5
 							<h1>Event loop</h1>
 							<h2>read and understand it</h2>
 							<a href="http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained">JS Event loop</a>
+							<br>
+							<h4>this might go to high perf js under browser</h4>
+						</section>
+						<section>
+							<h2></h2>
+							<ul>
+								<li>Capture Phase</li>
+								<li>Target Phase</li>
+								<li>Bubble Phase</li>
+							</ul>
+							<br>
+							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#h2_events-module">W3: Summary of Event Types</a>
+						</section>
+						<section>
+							<img src="images/eventflow.svg" alt="">
+							<p>must explain it</p>
+							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#h2_dom-event-architecture">W3: DOM events</a>
+						</section>
+						<section>
+							<h2>Event Bubble reference</h2>
+							<a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow">W3: Event flow</a>
+							<br>
+							<a href="http://www.w3.org/wiki/Handling_events_with_JavaScript">W3: handing Events with JS</a>
+							<br>
+							<a href="http://bitovi.com/blog/2010/10/a-crash-course-in-how-dom-events-work.html">Bitovi: Dom Event</a>
+							<br>
+							<a href="http://javascript.info/tutorial/bubbling-and-capturing">bubbling & Campturing</a>
+							<br>
+							<a href="http://catcode.com/domcontent/events/capture.html">nice & short explanation</a>
+							<br>
+							<a href="http://www.quirksmode.org/js/events_order.html">quirks mode: Event order (didn't read)</a>
+							<br>
+						</section>
+						<section>
+							<h2>event delegation references</h2>
+							<a href="http://coding.smashingmagazine.com/2012/08/17/javascript-events-responding-user/">Smashing: Very good link</a>
+							<br>
+							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#events-EventTarget-addEventListener">W3: Fantastic link</a>
+							<br>
+							<a href="http://thewebrocks.com/demos/smashing-events/keytime.html">measure key press time</a>
+						</section>
+						<section>
+							<h2>Event Delegate references</h2>
+							<a href="http://davidwalsh.name/event-delegate">simple Delegate Example</a>
+							<br>
+							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/quick-tip-javascript-event-delegation-in-4-minutes/">NetTuts: Event Delegate in 4min</a>
+							<br>
+							<a href="http://javascriptweblog.wordpress.com/2010/12/22/delegation-vs-inheritance-in-javascript/">Angus Croll: Delegate vs Inheritance</a>
+							<br>
+							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/quick-tip-javascript-event-delegation-in-4-minutes/">(simple) Event Delegate</a>
+							<br>
+							<a href="http://javascript.info/tutorial/event-delegation">Event delegation</a>
+							<br>
+							<a href="http://learn.jquery.com/events/event-delegation/">Jquery: Event Delegation</a>
+							<br>
+							<a href="http://bitovi.com/blog/2011/04/why-you-should-never-use-jquery-live.html">Bitovi: Jquery live: don't use</a>
+							<br>
+							<a href="http://www.nczonline.net/blog/2009/06/30/event-delegation-in-javascript/">Nicholas Zakkas: Event Delegation</a>
 						</section>
 					</section>
 					<section>
 						<h1>Date object</h1>
+						<p>(candidate to be removed)</p>
+						<a href="http://www.i-programmer.info/programming/javascript/2994-speed-dating-the-art-of-the-javascript-date-object.html">Speed Dating with JS</a>
+						<br>
+						<a href="http://www.andrejfarkas.com/2012/07/tricky-javascript-date-object/">date issue</a>
 					</section>
 					<section>
 						<section>
@@ -1966,18 +2057,36 @@ $('ul').on('click', 'li', function(){});
 							<a href="http://msdn.microsoft.com/en-us/library/br230269(v=vs.94).aspx">Restrictions on Strict mode</a>
 							<br/>
 							<a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">Jon Resig: Strict Mode</a>
+							<br/>
+							<a href="http://youtu.be/UTEqr0IlFKY?t=39m8s">Douglas Crockford: video</a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code></code></pre>
+							<ul>
+								<li>no implied global</li>
+								<li>this not bound to global</li>
+								<li>apply call do not default to global</li>
+								<li>no with</li>
+								<li>restricts on eval</li>
+								<li>no duplicate parameters</li>
+							</ul>
 						</section>
 						<section>
 							<h2></h2>
 							<pre><code></code></pre>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
+							<h2>Check Strict Mode</h2>
+							<pre><code>
+//
+function isStrictMode(){
+	return (function(){	
+		return !this;
+})();
+}
+							</code></pre>
+							<a href="http://youtu.be/UTEqr0IlFKY?t=44m31s">Douglas Crockford: use strict</a>
 						</section>
 					</section>
 					<section>
@@ -2008,51 +2117,19 @@ $('ul').on('click', 'li', function(){});
 						</section>
 						<section>
 							<h1>Dynamic types</h1>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-						</section>
+						</section>						
 					</section>
 					<section>
 						<section>
 							<h1>Free Caveats</h1>
 						</section>
 						<section>
-							<h2>instanceof</h2>
-							<h4>doesn't work on primitive values</h4>
-							<pre><code>
-//does not work on primtive values
-"" instanceof String; //false
-3 instanceof Number; //false
-false instanceof Boolean; //false
-							</code></pre>
-							<pre class="fragment"><code>
-//works on objects
-new String() instanceof String; //true
-new Number() instanceof Number; //true
-new Boolean() instanceof Boolean; //true
-[] instanceof Array; //true
-{} instanceof Object; //true
-/foo/ instanceof RegExp; //true
-							</code></pre>
-							<pre class="fragment"><code>
-//be aware
-[] instanceof Object; //true
-							</code></pre>
-						</section>
+							<h2>Add some from here</h2>
+							<a href="http://wtfjs.com/">wtfjs</a>
+							<br>
+							<p>also some from here</p>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript?redirectlocale=en-US&redirectslug=JavaScript%2FA_re-introduction_to_JavaScript">re-introduction to JS</a>
+						</section>						
 						<section>
 							<h2>array.length</h2>
 							<h4></h4>
@@ -2066,6 +2143,11 @@ languages; //["knockout", "backbone", "meteor", undefined, undefined]
 							<pre class="fragment"><code>
 languages.length = 1;
 languages; //["knockout"]
+							</code></pre>
+							<pre class="fragment"><code>
+var libs = [];
+libs[21] = 'DoctorJS';
+libs.length; // 22
 							</code></pre>
 						</section>
 						<section>
@@ -2135,19 +2217,49 @@ var a = {a:1},
 							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=d56bf8ad4f">JS void</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<a href=""></a>
+							<h2>Execusing Extra Comma</h2>
+							<pre><code>
+var myObject = {
+    foo:'foo',
+    bar:'bar', //no error
+};
+
+var myArray = [1,2,3,];
+               
+console.log(myArray.length) //logs 3, regardless of trailing comma 
+							</code></pre>
+							<p>trailing comma in array should not push extra undefined</p>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES 5: 5 parts</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<a href=""></a>
+							<h2>getter setter</h2>
+							<h4>less important remove this one</h4>
+							<pre><code>
+//es5
+var myObject = {
+    //name:'', WOULD CAUSE ERROR
+    get name() { //notice use of get to indicate accessor property 
+        console.log('read name');
+    },
+    set name(value) { //notice use of set to indicate accessor property
+        console.log('wrote to name the value: ' + value);
+    }
+
+};
+
+myObject.name = 'codylindley'; //invokes set 
+myObject.name; //invokes get    
+							</code></pre>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">es5: 5 parts</a>
 						</section>
 						<section>
-							<h2></h2>
-							<pre><code></code></pre>
-							<a href=""></a>
+							<h2>delete</h2>
+							<pre><code>
+//delete wont delete elements
+in array
+
+							</code></pre>
+							<a href="http://us6.campaign-archive1.com/?u=2cc20705b76fa66ab84a6634f&id=38748d10f8">JS Drip: delete</a>
 						</section>
 					</section>
 					<section>
@@ -2160,6 +2272,7 @@ var a = {a:1},
 					</section>
 					<section>
 						<h1>Thank You</h1>
+						<span>(sorry, I missed RegEx)</span>
 						<br/>
 						<!-- <h2><a href="http://bit.ly/1gx0FRU">http://bit.ly/1gx0FRU</a> </h2> -->
 						<br/>
