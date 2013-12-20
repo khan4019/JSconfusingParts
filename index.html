@@ -250,10 +250,8 @@ isNaN(;//use it
 						<section>
 							<h2>Arithmatic in JS</h2>
 							<pre><code>
-//lowerside
 0.1 + 0.2; //0.30000000000000004 
 
-//upperside
 9809987889988777 + 1 = 9809987889988777
 							</code></pre>
 							<pre class="fragment"><code>
@@ -268,6 +266,27 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
+							<h2>parseInt, parseFloat</h2>
+							<pre><code>
+//var num = parseInt(string, radix); 
+parseInt('12px'); //12
+parseInt('0xFF'); // 255
+parseInt('a123'); //NaN
+
+
+parseInt('010');  // in some browsers 8, because 0 means octal
+parseInt('010', 10); //10
+
+//parseFloat(string)
+parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
+							</code></pre>
+							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
+							<br/>
+							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
+							<br/>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
+						</section>
+						<section>
 							<h2>Unary + and -</h2>
 							<pre><code>
 +"20.14"; //20.14
@@ -275,11 +294,11 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 
 +true; //1
 +null; //0
+
 +''; //0
 +'abc'; //NaN
 
--'34'+10; //-24
-							</code></pre>
+-'34'+10; //-24</code></pre>
 							<pre class="fragment"><code>
 +" \n20  .14\n"; // NaN, not everything
 +"20.14Here"; //NaN
@@ -337,28 +356,7 @@ function reallyNaN(x) {
 reallyNaN(undefined); //false
 reallyNaN(NaN); //true
 							</code></pre>
-						</section>
-						<section>
-							<h2>parseInt, parseFloat</h2>
-							<pre><code>
-//var num = parseInt(string, radix); 
-parseInt('12px'); //12
-parseInt('0xFF'); // 255
-parseInt('a123'); //NaN
-
-
-parseInt('010');  // in some browsers 8, because 0 means octal
-parseInt('010', 10); //10
-
-//parseFloat(string)
-parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
-							</code></pre>
-							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
-							<br/>
-							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
-							<br/>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
-						</section>
+						</section>						
 					</section>					
 					<section>
 						<section>
@@ -2274,6 +2272,7 @@ in array
 					</section>
 					<section>
 						<h1>Thank You</h1>
+						<span>(sorry, I missed RegEx)</span>
 						<br/>
 						<!-- <h2><a href="http://bit.ly/1gx0FRU">http://bit.ly/1gx0FRU</a> </h2> -->
 						<br/>
