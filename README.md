@@ -1,17 +1,21 @@
 JavaScript: the Confusing Parts
 =======
-###this talk materials development in progress
+###slides are under construction
 
-Usually it takes 2 hours to feel comfortable/confident about JS. However, the truth is, "The more you learn about JavaScript, the more confused you are". Here JS Dude tries to explain confusing JS parts in a super easy way so that it becomes a piece of cake ever for your grand mother.
+As soon as you know how to write a function and alert every damn thing in JavaScript, you are thrown into the ocean of confusion. Most of your days are spent by banging head against wall, “why things don’t always work in JavaScript?”. And post 10 questions in StackOveflow with some pray that somebody will answer correctly before your manager starts yelling at you. 
 
-_______
-This is a talk to explain things (important things) like scope, hoisting, closure, inheritance, this, eval, timers, use strict, truthy and falsy, etc.
+________
+
+The goal of this talk is to remove your confusion with in depth explanation that will make you confident to explain javascript to your manager as well as your grandmother. Of course, we will talk about the most confusing parts of JavaScript that includes, notorious “this”, mysterious “scope”, obscure “hoisting”, cryptic “closure”, ambiguous “inheritance”, heinous “truthy & falsy”, spiteful “numbers”, and some caveats.
+
+
 
 ------
-After watching this, you will not need to kills hours to figure out a bug
+###[live slides](http://khan4019.github.io/JSconfusingParts/#/)
+The slides doesn't have enough description. However, you can go to the references and try to get something from there. To learn in depth either watch the videos (links below) or join my any of my live talk
 
 
-###vidoes
+###[vidoes](http://www.youtube.com/user/khanLearning)
 From this confusing parts, i will make some videos in my [youtube channel](http://www.youtube.com/user/khanLearning) or  [thatjsdude blog](http://www.thatjsdude.com/jsConcepts/jsConcepts.html)
 
 
