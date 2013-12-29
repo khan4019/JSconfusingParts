@@ -1880,6 +1880,24 @@ typeof new Number(69); //object
 
 Object.prototype.toString.call([1, 2, 3]); //"[object Array]"
 Object.prototype.toString.call(new Date); //"[object Date]"
+
+//simply
+toString([1, 2, 3]); //"[object Array]"
+							</code></pre>
+							<p class="fragment">write small regEx to extruct realtype</p>
+						</section>
+						<section>
+							<h2>underscore style</h2>
+							<pre><code>
+function isDate(obj){
+  return toString.call(obj)=='[object Date]'
+}
+
+isDate([1, 2, 3]); //false
+isDate(2); //false
+isDate({}); //false
+
+isDate(new Date); //true
 							</code></pre>
 						</section>
 					</section>
