@@ -1917,6 +1917,7 @@ getType({}); //object
 getType(undefined); //window
 getType(null); //window
 							</code></pre>
+							<a href="https://gist.github.com/cowboy/1131946">check this one. modify it</a>
 						</section>
 						<section>
 							<h2>duck-typing</h2>
@@ -1924,6 +1925,22 @@ getType(null); //window
 //learn about it
 //ggl about it
 //duck-typing is popular in JS
+							</code></pre>
+						</section>
+						<section>
+							<h2>instanceof</h2>
+							<h4>if constructor</h4>
+							<pre><code>
+[1,2,3] instanceof Array; //true
+new Date instanceof Date; //true
+ 
+function CustomType() {};
+new CustomType instanceof CustomType; //true 
+							</code></pre>
+							<p>add problem with instanceof</p>
+							<pre><code>
+Math instanceof Math;
+=TypeError: Expecting a function in instanceof check, but got #&lt;Object&gt;
 							</code></pre>
 						</section>
 					</section>
