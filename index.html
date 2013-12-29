@@ -1846,6 +1846,20 @@ typeof(1+true); // number
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/#more-2838">Angus Croll: Fixing typeof</a>
 						</section>
+						<section>
+							<pre><code>
+var a;
+
+typeof a; //undefined
+typeof b; //undefined
+
+console.log(a);
+ = undefined
+
+console.log(b);
+ = ReferenceError: b is not defined
+							</code></pre>
+						</section>
 					</section>
 					<section>
 						<section>
