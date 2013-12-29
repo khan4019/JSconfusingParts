@@ -1864,6 +1864,24 @@ console.log(b);
 							<h2>how to fix it</h2>
 							<p>add a nice image</p>
 						</section>
+						<section>
+							<h2>fix build in type</h2>
+							<pre><code>
+//(Array, Arguments, Date, JSON, RegExp, Math, Error)
+typeof [1, 2, 3]; // object
+typeof new Error('just not working'); //object
+
+//primitive wrapper objects Number, Boolean and String
+typeof new Number(69); //object
+							</code></pre>
+							<h3 class="fragment">by using build in "toString"</h3>
+							<pre class="fragment"><code>
+[1, 2, 3].toString(); //"1, 2, 3"
+
+Object.prototype.toString.call([1, 2, 3]); //"[object Array]"
+Object.prototype.toString.call(new Date); //"[object Date]"
+							</code></pre>
+						</section>
 					</section>
 					<section>
 						<section>
