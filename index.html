@@ -1890,7 +1890,7 @@ toString([1, 2, 3]); //"[object Array]"
 							<h2>underscore style</h2>
 							<pre><code>
 function isDate(obj){
-  return toString.call(obj)=='[object Date]'
+  return toString.call(obj)=='[object Date]';
 }
 
 isDate([1, 2, 3]); //false
@@ -1898,6 +1898,17 @@ isDate(2); //false
 isDate({}); //false
 
 isDate(new Date); //true
+							</code></pre>
+							<h3 class="fragment">getType name</h3>
+							<pre class="fragment"><code>
+function getType(obj){
+  return toString.call(obj).slice(8, -1).toLowerCase();
+}
+
+getType(2); //number
+getType(false); //boolean
+getType([]); //array
+getType({}); //object
 							</code></pre>
 						</section>
 					</section>
