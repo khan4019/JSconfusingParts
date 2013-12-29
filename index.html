@@ -1825,6 +1825,27 @@ typeof {}; //object
 typeof Boolean; //function
 							</code></pre>
 						</section>
+						<section>
+							<h3>Whats wrong with typeof</h3>
+							<pre><code>
+typeof []; //object
+typeof NaN; //number
+
+typeof new Date; //object
+typeof new Number(71); //object
+typeof new String('js'); //object
+typeof new Boolean(true); //object
+							</code></pre>
+							<pre class="fragment"><code>
+typeof 2; //number
+typeof(2); //number
+typeof    (2); //number
+
+typeof('a', 2); //number
+typeof(1+true); // number
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/#more-2838">Angus Croll: Fixing typeof</a>
+						</section>
 					</section>
 					<section>
 						<section>
