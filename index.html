@@ -1824,6 +1824,12 @@ typeof null; //null
 typeof {}; //object
 typeof Boolean; //function
 							</code></pre>
+							<h3 class="fragment">Why is this confusing?</h3>
+							<pre class="fragment"><code>
+typefo 2; //number
+typefo Number(2); //number
+typefo new Number(2); //object
+							</code></pre>
 						</section>
 						<section>
 							<h3>Whats wrong with typeof</h3>
@@ -1832,7 +1838,6 @@ typeof []; //object
 typeof NaN; //number
 
 typeof new Date; //object
-typeof new Number(71); //object
 typeof new String('js'); //object
 typeof new Boolean(true); //object
 							</code></pre>
