@@ -952,6 +952,8 @@ a.b(); //true;
 							<pre><code></code></pre>
 							<p>create one: do some work</p>
 							<a href="http://davidshariff.com/blog/javascript-inheritance-patterns/">Inheritance Pattern</a>
+							<br>
+							<a href="http://javascriptweblog.wordpress.com/2010/06/07/understanding-javascript-prototypes/#more-645">angus croll: inheritance (read this)</a>
 						</section>
 						<section>
 							<h2>constructor</h2>
@@ -1442,6 +1444,7 @@ console.log(sum); //0012
 								<li>Always enumerates the keys</li>
 								<li>Keys always string</li>
 							</ul>
+							<a href="http://javascriptweblog.wordpress.com/2011/01/04/exploring-javascript-for-in-loops/#more-1897">Angus Croll: add couple example</a>
 						</section>
 						<section>							
 							<li>Enumerates object's inherited properties as well</li>
@@ -1588,6 +1591,10 @@ document.getElementByTagName('li')
 								<li class="fragment">Usually Slow as Interpreter need to invoke. other as optimized by JS engine</li>
 								<li class="fragment">Maintainability</li>
 							</ul>
+							<a href="http://javascriptweblog.wordpress.com/2010/04/19/how-evil-is-eval/#more-184">Angus: how eval is evil</a>
+							<br>
+							find the video of angus croll
+							<br>
 							<a href="http://www.nczonline.net/blog/2013/06/25/eval-isnt-evil-just-misunderstood/">Eval</a>
 							<br/>
 							<a href="http://stackoverflow.com/questions/197769/when-is-javascripts-eval-not-evil">Eval: code injection</a>
@@ -1800,7 +1807,160 @@ kk[2]();//5
 							<br/>
 							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">Nettuts: closure</a>
 						</section>
-					</section>					
+					</section>
+					<section>
+						<section>
+							<h1>typeof</h1>
+							<h3>instandeof</h3>
+							<br>
+							<br>
+							<h4>typeof developer; //bugCreator</h4>
+						</section>
+						<section>
+							<pre><code>
+typeof 3; //number
+typeof true; //boolean
+typeof 'javascript'; //string
+
+typeof undefined; //undefined
+typeof null; //null
+
+typeof {}; //object
+typeof Boolean; //function
+							</code></pre>
+							<h3 class="fragment">Why is this confusing?</h3>
+							<pre class="fragment"><code>
+typefo 2; //number
+typefo Number(2); //number
+typefo new Number(2); //object
+							</code></pre>
+						</section>
+						<section>
+							<h3>Whats wrong with typeof</h3>
+							<pre><code>
+typeof []; //object
+typeof NaN; //number
+
+typeof new Date; //object
+typeof new String('js'); //object
+typeof new Boolean(true); //object
+							</code></pre>
+							<pre class="fragment"><code>
+typeof 2; //number
+typeof(2); //number
+typeof    (2); //number
+
+typeof('a', 2); //number
+typeof(1+true); // number
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/#more-2838">Angus Croll: Fixing typeof</a>
+						</section>
+						<section>
+							<pre><code>
+var a;
+
+typeof a; //undefined
+typeof b; //undefined
+
+console.log(a);
+ = undefined
+
+console.log(b);
+ = ReferenceError: b is not defined
+							</code></pre>
+						</section>
+						<section>
+							<h2>how to fix it?</h2>
+							<img src="images/androidAppleFix.jpg" alt="">
+						</section>
+						<section>
+							<h2>fix build in type</h2>
+							<pre><code>
+//(Array, Arguments, Date, JSON, RegExp, Math, Error)
+typeof [1, 2, 3]; // object
+typeof new Error('just not working'); //object
+
+//primitive wrapper objects Number, Boolean and String
+typeof new Number(69); //object
+							</code></pre>
+							<h3 class="fragment">by using build in "toString"</h3>
+							<pre class="fragment"><code>
+[1, 2, 3].toString(); //"1, 2, 3"
+
+Object.prototype.toString.call([1, 2, 3]); //"[object Array]"
+Object.prototype.toString.call(new Date); //"[object Date]"
+
+//simply
+toString([1, 2, 3]); //"[object Array]"
+							</code></pre>
+							<p class="fragment">write small regEx to extruct realtype</p>
+						</section>
+						<section>
+							<h2>underscore style</h2>
+							<pre><code>
+function isDate(obj){
+  return toString.call(obj)=='[object Date]';
+}
+
+isDate([1, 2, 3]); //false
+isDate(2); //false
+isDate({}); //false
+
+isDate(new Date); //true
+							</code></pre>
+							<h3 class="fragment">getType name</h3>
+							<pre class="fragment"><code>
+function getType(obj){
+  return toString.call(obj).slice(8, -1).toLowerCase();
+}
+
+getType(2); //number
+getType(false); //boolean
+getType([]); //array
+getType({}); //object
+							</code></pre>
+						</section>
+						<section>
+							<h3>don't be supper happy</h3>
+							<pre><code>
+getType(undefined); //window
+getType(null); //window
+							</code></pre>
+							<a href="https://gist.github.com/cowboy/1131946">check this one. modify it</a>
+						</section>
+						<section>
+							<h2>duck-typing</h2>
+							<pre><code>
+//learn about it
+//ggl about it
+//duck-typing is popular in JS
+							</code></pre>
+						</section>
+						<section>
+							<h2>instanceof</h2>
+							<h4>if constructor</h4>
+							<pre><code>
+[1,2,3] instanceof Array; //true
+new Date instanceof Date; //true
+ 
+function CustomType() {};
+new CustomType instanceof CustomType; //true 
+							</code></pre>							
+							<pre class="fragment"><code>
+//be careful
+3 instanceof Number; //false
+[] instanceof Object; //true
+
+Math instanceof Math;
+= TypeError: Expecting a function in instanceof check, but got #&lt;Object&gt;
+							</code></pre>
+						</section>
+						<section>
+							<pre><code>
+
+							</code></pre>
+						</section>
+					</section>
 					<section>
 						<section>
 							<h1>Event loop</h1>
@@ -1828,8 +1988,6 @@ kk[2]();//5
 							<h2>Event Bubble reference</h2>
 							<a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow">W3: Event flow</a>
 							<br>
-							<a href="http://www.w3.org/wiki/Handling_events_with_JavaScript">W3: handing Events with JS</a>
-							<br>
 							<a href="http://bitovi.com/blog/2010/10/a-crash-course-in-how-dom-events-work.html">Bitovi: Dom Event</a>
 							<br>
 							<a href="http://javascript.info/tutorial/bubbling-and-capturing">bubbling & Campturing</a>
@@ -1838,41 +1996,13 @@ kk[2]();//5
 							<br>
 							<a href="http://www.quirksmode.org/js/events_order.html">quirks mode: Event order (didn't read)</a>
 							<br>
-						</section>
-						<section>
-							<h2>event delegation references</h2>
-							<a href="http://coding.smashingmagazine.com/2012/08/17/javascript-events-responding-user/">Smashing: Very good link</a>
-							<br>
-							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#events-EventTarget-addEventListener">W3: Fantastic link</a>
-							<br>
-							<a href="http://thewebrocks.com/demos/smashing-events/keytime.html">measure key press time</a>
-						</section>
-						<section>
-							<h2>Event Delegate references</h2>
-							<a href="http://davidwalsh.name/event-delegate">simple Delegate Example</a>
-							<br>
-							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/quick-tip-javascript-event-delegation-in-4-minutes/">NetTuts: Event Delegate in 4min</a>
+							<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">HTML5rocks: has image below</a>
 							<br>
 							<a href="http://javascriptweblog.wordpress.com/2010/12/22/delegation-vs-inheritance-in-javascript/">Angus Croll: Delegate vs Inheritance</a>
-							<br>
-							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/quick-tip-javascript-event-delegation-in-4-minutes/">(simple) Event Delegate</a>
-							<br>
-							<a href="http://javascript.info/tutorial/event-delegation">Event delegation</a>
-							<br>
-							<a href="http://learn.jquery.com/events/event-delegation/">Jquery: Event Delegation</a>
-							<br>
-							<a href="http://bitovi.com/blog/2011/04/why-you-should-never-use-jquery-live.html">Bitovi: Jquery live: don't use</a>
-							<br>
-							<a href="http://www.nczonline.net/blog/2009/06/30/event-delegation-in-javascript/">Nicholas Zakkas: Event Delegation</a>
-						</section>
-					</section>
-					<section>
-						<h1>Date object</h1>
-						<p>(candidate to be removed)</p>
-						<a href="http://www.i-programmer.info/programming/javascript/2994-speed-dating-the-art-of-the-javascript-date-object.html">Speed Dating with JS</a>
-						<br>
-						<a href="http://www.andrejfarkas.com/2012/07/tricky-javascript-date-object/">date issue</a>
-					</section>
+							<br>							
+							<a href="http://javascript.info/tutorial/event-delegation">Event delegation</a>	
+						</section>						
+					</section>					
 					<section>
 						<section>
 							<h1>Timer</h1>
@@ -2054,6 +2184,8 @@ $('ul').on('click', 'li', function(){});
 							<pre><code></code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">MDN: strict mode</a>
 							<br/>
+							<a href="http://javascriptweblog.wordpress.com/2011/05/03/javascript-strict-mode/#more-804">Angus croll: strict mode</a>
+							<br>
 							<a href="http://msdn.microsoft.com/en-us/library/br230269(v=vs.94).aspx">Restrictions on Strict mode</a>
 							<br/>
 							<a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">Jon Resig: Strict Mode</a>
@@ -2098,6 +2230,8 @@ function isStrictMode(){
 							<h2>Namespace</h2>
 							<pre><code></code></pre>
 							<a href="http://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani: Namespacing patterns</a>
+							<br>
+							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/the-essentials-of-writing-high-quality-javascript">Has a part about why global is bad. also go through it</a>
 						</section>
 						<section>
 							<h2>Function constructor vs. function declaration vs. function expression</h2>
@@ -2266,6 +2400,8 @@ in array
 						<h2>Need more !!!</h2>
 						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS Concepts</a>
 						<br/>
+						<a href="http://javascriptweblog.wordpress.com/2011/04/04/the-javascript-comma-operator/#more-2261">JS comma</a>
+						<br>
 						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">JS parts i struggled to remember</a>
 						<br/>
 						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
