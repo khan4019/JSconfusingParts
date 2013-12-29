@@ -1945,11 +1945,19 @@ new Date instanceof Date; //true
  
 function CustomType() {};
 new CustomType instanceof CustomType; //true 
-							</code></pre>
-							<p>add problem with instanceof</p>
-							<pre><code>
+							</code></pre>							
+							<pre class="fragment"><code>
+//be careful
+3 instanceof Number; //false
+[] instanceof Object; //true
+
 Math instanceof Math;
-=TypeError: Expecting a function in instanceof check, but got #&lt;Object&gt;
+= TypeError: Expecting a function in instanceof check, but got #&lt;Object&gt;
+							</code></pre>
+						</section>
+						<section>
+							<pre><code>
+
 							</code></pre>
 						</section>
 					</section>
