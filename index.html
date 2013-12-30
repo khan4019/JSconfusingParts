@@ -2281,12 +2281,11 @@ if (myArray.length == 3) {//..}
 							<h2>[].indexOf</h2>
 							<h4>Only finds exact match</h4>
 							<pre><code>
-[{a:1}, {b:2}, {c:3}, 4].indexOf(4); //3
+[1, 2, 3, 4].indexOf(4); //3
+[1, 2, 3, 4].indexOf('4'); //-1
 [{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
 							</code></pre>
 							<pre class="fragment"><code>
-//is there better solution??
-//ggl it stupid
 var a = {a:1}, 
     b = {b:2}, 
     c = {c:3};
