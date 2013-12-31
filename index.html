@@ -1385,9 +1385,21 @@ function looping (){
 }
 							</code></pre>
 							<pre class="fragment"><code>
+looping();
 logCache[0](); //5
 logCache[3](); //5
-logCache[4](); //5
+							</code></pre>
+							<pre class="fragment"><code>
+function looping (){
+ for(var i =0; i&lt;5; i++){
+    myArr.push(logg(i));
+  }
+}
+function logg(i){
+   console.log(i)
+}
+
+looping();
 							</code></pre>
 						</section>
 						<section>
