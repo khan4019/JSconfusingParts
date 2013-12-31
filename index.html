@@ -1374,7 +1374,7 @@ function outer(){
 }</code></pre>
 						</section>
 						<section>
-							<h2>loop problem</h2>
+							<h3>anonymous loop function problem</h3>
 							<pre><code>
 var logCache=[];
 
@@ -1400,6 +1400,17 @@ function logg(i){
 }
 
 looping();
+							</code></pre>
+						</section>
+						<section>
+							<h2>IIFE</h2>
+							<pre><code>
+//refactor this example
+function looping (){
+ for(var i =0; i&lt;5; i++){
+    myArr.push((function(){console.log(i)})());
+  }
+}
 							</code></pre>
 						</section>
 						<section>
