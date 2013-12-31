@@ -1374,6 +1374,23 @@ function outer(){
 }</code></pre>
 						</section>
 						<section>
+							<h2>loop problem</h2>
+							<pre><code>
+var logCache=[];
+
+function looping (){
+ for(var i =0; i&lt;5; i++){
+    myArr.push(function(){ console.log(i)});
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+logCache[0](); //5
+logCache[3](); //5
+logCache[4](); //5
+							</code></pre>
+						</section>
+						<section>
 							<h2>quiz</h2>
 							<pre><code>
 var foo=1;
