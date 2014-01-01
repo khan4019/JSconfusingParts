@@ -1154,6 +1154,8 @@ getExpertLevel(); //undefined
 console.log(expertLevel); //3
 							</code></pre>
 							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">get the image:for better explanation</a>
+							<br>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">MDN: scope</a>
 						</section>
 						<section>
 							<h2>name conflict</h2>
@@ -1192,6 +1194,7 @@ foo();
 //inside a:3 			
 //outside a:2					
 							</code></pre>
+							<a href="http://stackoverflow.com/questions/500431/javascript-variable-scope">variable scope</a>
 						</section>
 						<section>
 							<h2>closure name conflict</h2>
@@ -1238,16 +1241,8 @@ exLevel(5); //2
 //highlight to explain scope
 							</code></pre>
 							<a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">JS scoping and hoisting</a>
-							<br/>
-							<a href="http://stackoverflow.com/questions/500431/javascript-variable-scope">variable scope</a>
-							<br/>
-							<a href="http://msdn.microsoft.com/en-us/library/ie/bzt2dkta(v=vs.94).aspx">variable scope</a>
-							<br/>
-							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing article</a>
-							<br/>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">MDN: scope</a>
-							<br/>
-							<a href="http://robertnyman.com/2008/10/09/explaining-javascript-scope-and-closures/">Scope and closure</a>
+							<br>
+							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">David Sharif: scope</a>
 						</section>
 						<section>
 							<h2>Add ES6 let</h2>
@@ -1372,6 +1367,46 @@ function outer(){
     console.log('inside inner');
   }  
 }</code></pre>
+						</section>
+						<section>
+							<h3>anonymous loop function problem</h3>
+							<pre><code>
+var logCache=[];
+
+function looping (){
+ for(var i =0; i&lt;5; i++){
+    myArr.push(function(){ console.log(i)});
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+looping();
+logCache[0](); //5
+logCache[3](); //5
+							</code></pre>
+							<pre class="fragment"><code>
+function looping (){
+ for(var i =0; i&lt;5; i++){
+    myArr.push(logg(i));
+  }
+}
+function logg(i){
+   console.log(i)
+}
+
+looping();
+							</code></pre>
+						</section>
+						<section>
+							<h2>IIFE</h2>
+							<pre><code>
+//refactor this example
+function looping (){
+ for(var i =0; i&lt;5; i++){
+    myArr.push((function(){console.log(i)})());
+  }
+}
+							</code></pre>
 						</section>
 						<section>
 							<h2>quiz</h2>
@@ -2220,39 +2255,7 @@ function isStrictMode(){
 							</code></pre>
 							<a href="http://youtu.be/UTEqr0IlFKY?t=44m31s">Douglas Crockford: use strict</a>
 						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Others</h1>
-						</section>
-						<section>
-							<h1>Reduce Global</h1>
-							<h2>Namespace</h2>
-							<pre><code></code></pre>
-							<a href="http://addyosmani.com/blog/essential-js-namespacing/">Addy Osmani: Namespacing patterns</a>
-							<br>
-							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/the-essentials-of-writing-high-quality-javascript">Has a part about why global is bad. also go through it</a>
-						</section>
-						<section>
-							<h2>Function constructor vs. function declaration vs. function expression</h2>
-							<pre><code></code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">MDN: compare function creation</a>
-							<br/>
-							<a href="http://us6.campaign-archive2.com/?u=2cc20705b76fa66ab84a6634f&id=1614fd5557">Function function</a>
-						</section>
-						<section>
-							<h1>Expression vs Statement</h1>
-							<h2>semicolon</h2>
-							<a href="http://www.2ality.com/2012/09/expressions-vs-statements.html">2ality</a>
-						</section>
-						<section>
-							<h2>Sorting in js</h2>
-							<a href="http://zhangwenli.com/blog/2013/11/02/sorting-in-javascript/">random link</a>
-						</section>
-						<section>
-							<h1>Dynamic types</h1>
-						</section>						
-					</section>
+					</section>	
 					<section>
 						<section>
 							<h1>Free Caveats</h1>
@@ -2313,12 +2316,11 @@ if (myArray.length == 3) {//..}
 							<h2>[].indexOf</h2>
 							<h4>Only finds exact match</h4>
 							<pre><code>
-[{a:1}, {b:2}, {c:3}, 4].indexOf(4); //3
+[1, 2, 3, 4].indexOf(4); //3
+[1, 2, 3, 4].indexOf('4'); //-1
 [{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
 							</code></pre>
 							<pre class="fragment"><code>
-//is there better solution??
-//ggl it stupid
 var a = {a:1}, 
     b = {b:2}, 
     c = {c:3};
