@@ -237,8 +237,8 @@ undefined == null; // true
 NaN == null; // false
 NaN == NaN; // false
 
-typeof(NaN; //number
-isNaN(;//use it
+typeof(NaN); //number
+isNaN(NaN);//use it
 							</code></pre>
 							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
@@ -252,7 +252,8 @@ isNaN(;//use it
 							<pre><code>
 0.1 + 0.2; //0.30000000000000004 
 
-9809987889988777 + 1 = 9809987889988777
+9809987889988769 + 1; //9809987889988768
+9809987889988770 + 1; //9809987889988772
 							</code></pre>
 							<pre class="fragment"><code>
 //toFixed to generate string result
@@ -1740,6 +1741,8 @@ myCounter();//3
 myCounter();//4
 							</code></pre>
 							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">How Closure works</a>
+							<br>
+							<a href="http://www.kirupa.com/html5/closures_in_javascript.htm">Closure in Javascript (nice article)</a>
 						</section>
 						<section>
 							<h3>maintain outside reference </h3>
@@ -2011,6 +2014,7 @@ Math instanceof Math;
 								<li>Target Phase</li>
 								<li>Bubble Phase</li>
 							</ul>
+							<a href="http://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm">Event capturing and bubbling</a>
 							<br>
 							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#h2_events-module">W3: Summary of Event Types</a>
 						</section>
@@ -2391,11 +2395,18 @@ myObject.name; //invokes get
 						<section>
 							<h2>delete</h2>
 							<pre><code>
-//delete wont delete elements
+//delete wont delete arry elements
 in array
+
+//delete wond delete a variable..but does in firefox
+//from kagnex quiz
 
 							</code></pre>
 							<a href="http://us6.campaign-archive1.com/?u=2cc20705b76fa66ab84a6634f&id=38748d10f8">JS Drip: delete</a>
+						</section>
+						<section>
+							<h2>by Val or by Ref</h2>
+							<a href="http://stackoverflow.com/a/3638034/1535443">by ref</a> or <a href="http://snook.ca/archives/javascript/javascript_pass">snook</a>
 						</section>
 					</section>
 					<section>
