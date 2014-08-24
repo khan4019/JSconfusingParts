@@ -179,25 +179,7 @@
 									<li>Everything not false</li>	
 								</div>								
 							</ul>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-//EQUALITY CHECK...
-[0] == true; 
- 
-//HOW IT WORKS...
-//convert boolean using toNumber
-[0] == 1;
-//convert object using toPrimitive
-//[0].valueOf() is not a primitive so use...
-//[0].toString() -> "0"
-"0" == 1; 
-//convert string using toNumber
-0 == 1; //false!
-							</code></pre>
-							<h4>Work on this. try to explain</h4>
-						</section>
+						</section>						
 						<section>
 							<h2>Boolean()</h2>
 							<h4>convert anything to bool</h4>
@@ -218,7 +200,12 @@ Boolean(/foo/); // true
 							</code></pre>
 						</section>
 						<section>
-							<h2>unary bang(!)</h2>
+							<h3>unary bang(!)</h2>
+							<pre><code>
+!true; //false
+!false; //true
+!'some text'; //false
+							</code></pre>
 						</section>
 						<section>
 							<h2>double bang(!!)</h2>
@@ -358,7 +345,8 @@ reallyNaN(NaN); //true
 					</section>
 					<section>
 						<section>
-							<h2>Equality</h2>
+							<h1>Equality</h1>
+							<h2>== or ===</h2>
 						</section>
 						<section>
 							<h2>potato and JS</h2>
@@ -382,6 +370,24 @@ NaN == 0; //false!
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
 						</section>
 						<section>
+							<h2></h2>
+							<pre><code>
+//EQUALITY CHECK...
+[0] == true; 
+ 
+//HOW IT WORKS...
+//convert boolean using toNumber
+[0] == 1;
+//convert object using toPrimitive
+//[0].valueOf() is not a primitive so use...
+//[0].toString() -> "0"
+"0" == 1; 
+//convert string using toNumber
+0 == 1; //false!
+							</code></pre>
+							<h4>Work on this. try to explain</h4>
+						</section>
+						<section>
 							<h2>Little More</h2>
 							<pre><code>
 null == false; // false
@@ -399,7 +405,75 @@ isNaN(NaN);//use it
 							</code></pre>
 							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
-					</section>					
+					</section>		
+					<section>
+						<section>
+							<h1>String</h1>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Object</h1>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Array</h1>
+						</section>
+						<section>
+							<h2>dealing with length</h2>
+							<pre><code>
+var myArr = [1, 2, 3, 4];
+
+myArr[68] = 69;
+myArr.length; //69
+myArr; //[1, 2, 3, 4, undefined × 64, 69]
+							</code></pre>
+							<pre class="fragment"><code>
+var a = [1, 2, 3, 4, 5, 6];
+
+a.length = 15
+a; //[1, 2, 3, 4, 5, 6, undefined × 9]
+							</code></pre>
+							<pre class="fragment"><code>
+a.length = 4;
+a; //[1, 2, 3, 4]
+							</code></pre>
+						</section>
+						<section>
+							<h2>be careful with assign</h2>
+							<pre><code>
+var myArr = [1,2,3,4];
+myArr[-7] = -7;
+myArr[2.5] = 3.5;
+myArr['myDude'] = 'thatJSDude';
+
+myArr.length;//4
+myArr; //[1, 2, 3, 4] 
+							</code></pre>
+							<pre class="fragment"><code>
+for(var i =0; i &lt; myArr.length; i++){
+   console.log(myArr[i]);
+}
+//1, 2, 3, 4
+							</code></pre>
+							<pre class="fragment"><code>
+for (var i in myArr){
+   console.log(myArr[i]);
+}
+//1, 2, 3, 4, -7, 3.5
+							</code></pre>
+							<a href="http://www.thatjsdude.com/jsConcepts/concepts/array.html">Array: that js dude</a>
+						</section>
+						<section>
+							<h2>set length</h2>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>+</h1>
+						</section>
+					</section>
 					<section>
 						<section>
 							<h1>Bind, call and Apply</h1>
