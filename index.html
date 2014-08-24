@@ -100,23 +100,37 @@
 						(<span style="color:red; font-weight: bold">This is work-in-process presentation</span>)
 						
 					</section>
-					
-					<section>						
-							<ul>
-								<li class="lineThrough">scope, hoisting</li>
-								<li class="lineThrough">this</li>
-								<li class="lineThrough">closure</li>
-								<li>inheritance</li>
-								<li class="lineThrough">Bind, call apply</li>
-								<li>Eval, with, global</li>
-								<li>timer</li>
-								<li>Date, Function, Object</li>
-								<li class="lineThrough">Timers</li>
-								<li class="lineThrough">truthy and falsy</li>
-								<li>use strict</li>								
-								<li class="lineThrough">Number</li>
-							</ul>
-					</section> 					
+					<section>
+						<section>						
+								<ul>
+									<li class="lineThrough">scope, hoisting</li>
+									<li class="lineThrough">this</li>
+									<li class="lineThrough">closure</li>
+									<li>inheritance</li>
+									<li class="lineThrough">Bind, call apply</li>
+									<li>Eval, with, global</li>
+									<li>timer</li>
+									<li>Date, Function, Object</li>
+									<li class="lineThrough">Timers</li>
+									<li class="lineThrough">truthy and falsy</li>
+									<li>use strict</li>								
+									<li class="lineThrough">Number</li>
+								</ul>
+						</section>
+						<section>
+							<h3>notest</h3>
+							<li>== in true lies should goes in equality section including little more. If there is not sectiona bout == and === create one</li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</section>
+					</section>					 					
 					<section>
 						<section>
 							<h1>True lies</h1>
@@ -127,15 +141,21 @@
 							<h2>Falsy values</h2>
 							<ul>
 								<li>false</li>
-								<li>null</li>
-								<li>undefined</li>
-								<li>''</li>
-								<li>0</li>
-								<li>NaN</li>
+								<div class="fragment">
+									<li>null</li>
+									<li>undefined</li>
+								</div>
+								<div class="fragment">
+									<li>''</li>
+									<li>0</li>									
+								</div>
+								<div class="fragment">
+									<li>NaN</li>
+								</div>
 							</ul>
 						</section>
 						<section>
-							<h2>Only one rule</h2>
+							<h2>Truthy: Only one rule</h2>
 							<h4 class="fragment">Whatever is not falsy</h4>
 							<img class="fragment" src="images/goLeft.jpg"></img>
 						</section>
@@ -143,36 +163,22 @@
 							<h2>Truthy values</h2>
 							<ul>
 								<li>true</li>
-								<li>'false'</li>
-								<li>' '</li>
-								<li>{}</li>
-								<li>[]</li>
-								<li>new Boolean(false)</li>
-								<li>new String('')</li>
-								<li>new Date()</li>								
-								<li>Everything not false</li>
+								<div class="fragment">
+									<li>'false'</li>
+									<li>' '</li>	
+								</div>
+								<div class="fragment">
+									<li>{}</li>
+									<li>[]</li>	
+								</div>
+								<div class="fragment">
+									<li>new Boolean(false)</li>
+									<li>new String('')</li>	
+								</div>
+								<div class="fragment">
+									<li>Everything not false</li>	
+								</div>								
 							</ul>
-						</section>
-						<section>
-							<h2>potato and JS</h2>
-							<pre><code>
-"potato" == false; //false
-"potato" == true; //false
-							</code></pre>
-							<h4 class="redBold">are you kidding!!!</h4>
-							<pre class="fragment"><code>
-//convert boolean using toNumber
-"potato" == 1;
-//convert string using toNumber
-NaN == 1; //false!
-							</code></pre>
-							<pre class="fragment"><code>
-//convert boolean using toNumber
-"potato" == 0;
-//convert string using toNumber
-NaN == 0; //false!
-							</code></pre>
-							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -212,6 +218,9 @@ Boolean(/foo/); // true
 							</code></pre>
 						</section>
 						<section>
+							<h2>unary bang(!)</h2>
+						</section>
+						<section>
 							<h2>double bang(!!)</h2>
 							<pre><code>
 !!undefined; // false
@@ -229,25 +238,7 @@ Boolean(/foo/); // true
 !!/foo/; // true
 							</code></pre>
 							<a href="http://www.sitepoint.com/javascript-truthy-falsy/">Truthy -falsy</a>
-						</section>
-						<section>
-							<h2>Little More</h2>
-							<pre><code>
-null == false; // false
-null == null; // true
-
-undefined == undefined; // true
-undefined == null; // true
-							</code></pre>						
-							<pre class="fragment"><code>
-NaN == null; // false
-NaN == NaN; // false
-
-typeof(NaN); //number
-isNaN(NaN);//use it
-							</code></pre>
-							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
-						</section>
+						</section>						
 					</section>					
 					<section>
 						<section>
@@ -364,6 +355,50 @@ reallyNaN(undefined); //false
 reallyNaN(NaN); //true
 							</code></pre>
 						</section>						
+					</section>
+					<section>
+						<section>
+							<h2>Equality</h2>
+						</section>
+						<section>
+							<h2>potato and JS</h2>
+							<pre><code>
+"potato" == false; //false
+"potato" == true; //false
+							</code></pre>
+							<h4 class="redBold">are you kidding!!!</h4>
+							<pre class="fragment"><code>
+//convert boolean using toNumber
+"potato" == 1;
+//convert string using toNumber
+NaN == 1; //false!
+							</code></pre>
+							<pre class="fragment"><code>
+//convert boolean using toNumber
+"potato" == 0;
+//convert string using toNumber
+NaN == 0; //false!
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
+						</section>
+						<section>
+							<h2>Little More</h2>
+							<pre><code>
+null == false; // false
+null == null; // true
+
+undefined == undefined; // true
+undefined == null; // true
+							</code></pre>						
+							<pre class="fragment"><code>
+NaN == null; // false
+NaN == NaN; // false
+
+typeof(NaN); //number
+isNaN(NaN);//use it
+							</code></pre>
+							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
+						</section>
 					</section>					
 					<section>
 						<section>
@@ -558,12 +593,7 @@ Math.min.apply(null, [2,3,4,5]); //2
 							<h2>Date</h2>
 							<a href="http://ardalis.com/javascript-date-tips">js date tips</a>
 						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Timer</h1>
-						</section>
-					</section>
+					</section>					
 					<section>
 						<section>
 							<h1>this</h1>
@@ -2450,7 +2480,7 @@ in array
 						<br/>
 						<a href="http://javascriptweblog.wordpress.com/2011/04/04/the-javascript-comma-operator/#more-2261">JS comma</a>
 						<br>
-						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">JS parts i struggled to remember</a>
+						<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">JS parts i struggled to remember.</a>
 						<br/>
 						<a href="https://speakerdeck.com/anguscroll/es6-uncensored">Angus ES6</a>
 					</section>
