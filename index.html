@@ -122,7 +122,7 @@
 							<li>== in true lies should goes in equality section including little more. If there is not sectiona bout == and === create one</li>
 							<li><a href="https://gist.github.com/getify">check getify gist</a> <a href="https://github.com/getify/You-Dont-Know-JS">u dont know JS</a></li>
 							<li><a href="https://gist.github.com/getify/3057796">just read this fight</a></li>
-							<li></li>
+							<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/types%20&%20grammar/ch1.md#undefined-vs-undeclared">typeof undecalred</a></li>
 							<li></li>
 							<li></li>
 							<li></li>
@@ -367,6 +367,10 @@ isNaN(NaN);//use it
 							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
 						<section>
+							<h2>comparing objects or array in JS</h2>
+							<li>compare string constructed. </li>
+						</section>
+						<section>
 							<h3>performance</h3>
 							<a href="http://jsperf.com/implicit-coercion-with-null-and-undefined/5">implicit coercion is faster</a>
 						</section>
@@ -408,13 +412,17 @@ a; //[1, 2, 3, 4]
 						<section>
 							<h2>be careful with assign</h2>
 							<pre><code>
-var myArr = [1,2,3,4];
-myArr[-7] = -7;
-myArr[2.5] = 3.5;
-myArr['myDude'] = 'thatJSDude';
+var a = [1,2,3,4];
+a[-7] = -7;
+a[2.5] = 3.5;
+a['myDude'] = 'thatJSDude';
 
-myArr.length;//4
-myArr; //[1, 2, 3, 4] 
+a.length;//4
+a; //[1, 2, 3, 4] 
+							</code></pre>
+							<pre class="fragment"><code>
+a['12'] = 55;
+a.length; //13
 							</code></pre>
 							<pre class="fragment"><code>
 for(var i =0; i &lt; myArr.length; i++){
@@ -432,6 +440,10 @@ for (var i in myArr){
 						</section>
 						<section>
 							<h2>remove</h2>
+							<pre><code>
+var a = [1, 2, 3, 4];
+delete a[1]; //true
+							</code></pre>
 							<pre><code>
 //slice
 							</code></pre>
@@ -452,9 +464,8 @@ for (var i in myArr){
 							<h3>Addition operator</h3>
 						</section>
 						<section>
-							<h2>Addition operator</h2>
-							<li>concatenation</li>
-							<li>numeric addition</li>
+							<h2>Addition operator (+)</h2>
+							<li>concatenation or numeric addition</li>
 							<pre><code>
 2 + 3; // 5
 'js' + 'dude'; //jsdude 
@@ -1474,7 +1485,8 @@ foo();//undefined
 							</code></pre>
 						</section>
 						<section>
-							<img src="images/hoist.png" alt="">
+							<img src="images/hoist.jpg" alt="">
+							<img src="images/hoistBike.jpg" alt="">
 						</section>
 						<section>							
 							<pre><code>
@@ -1642,41 +1654,24 @@ foo();//?
 					</section>
 					<section>
 						<section>
-							<h1>For in </h1>
+							<h1>for rent </h1>
 						</section>
 						<section>
 							<h2>What is the sum?</h2>
 								<pre><code>
-var numbers = [10, 20, 30];
-var sum = 0;
-for(var num in numbers){
-	sum+=num;	
-}
 
-console.log(sum); //?
 								</code></pre>
 								<pre class="fragment"><code>
-console.log(sum); //0012				
+			
 								</code></pre>
-							<ul class="fragment">
-								<li>Always enumerates the keys</li>
-								<li>Keys always string</li>
-							</ul>
-							<a href="http://javascriptweblog.wordpress.com/2011/01/04/exploring-javascript-for-in-loops/#more-1897">Angus Croll: add couple example</a>
+							
 						</section>
 						<section>							
-							<li>Enumerates object's inherited properties as well</li>
-							<li>Dont modify object while enumerting it by using for in loop</li>
-							<li>in such case use while loop</li>
-							<li>Might have different order of enumeration in different environment</li>
-							<p>add example as well: effective JS p-113q</p>
+							
 						</section>
 						<section>
 							<h2></h2>
-							<ul>
-								<li>use for loop</li>
-								<li>forEach</li>
-							</ul>
+							
 						</section>
 					</section>
 					<section>
@@ -1792,110 +1787,6 @@ document.getElementByTagName('li')
 							<h2></h2>
 						</section>
 					</section>
-					<section>
-						<section>
-							<h1>Eval</h1>
-						</section>
-						<section>
-							<h1>Eval is Evil</h1>
-							<p>Add a evil picture</p>
-						</section>
-						<section>
-							<h2>Why Eval is called Evil</h2>
-							<ul>
-								<li class="fragment">Code injection: could execute malicious code</li>
-								<li class="fragment">third party code can see scope of eval</li>
-								<li class="fragment">Hard to debug</li>
-								<li class="fragment">Usually Slow as Interpreter need to invoke. other as optimized by JS engine</li>
-								<li class="fragment">Maintainability</li>
-							</ul>
-							<a href="http://javascriptweblog.wordpress.com/2010/04/19/how-evil-is-eval/#more-184">Angus: how eval is evil</a>
-							<br>
-							find the video of angus croll
-							<br>
-							<a href="http://www.nczonline.net/blog/2013/06/25/eval-isnt-evil-just-misunderstood/">Eval</a>
-							<br/>
-							<a href="http://stackoverflow.com/questions/197769/when-is-javascripts-eval-not-evil">Eval: code injection</a>
-						</section>
-						<section>
-							<h2>Alternative to Evil eval()</h2>
-							<ul></ul>
-							<li class="fragment"></li>
-							<li class="fragment"></li>
-							<li class="fragment"></li>
-							<li class="fragment"></li>
-							<a href="http://dominoyesmaybe.blogspot.com/2012/11/alternates-to-evil-eval-in-javascript.html">eval()</a>
-						</section>
-
-						<section>
-							<h2></h2>
-							<pre class="widerCode"><code>
-eval(new String("2 + 2")); // returns a String object containing "2 + 2"
-eval("2 + 2");             // returns 4
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">MDN: eval</a>
-						</section>
-						<section>
-							<h2>Don't use Eval</h2>
-							<pre class="fragment"><code>
-var obj = { a: 20, b: 30 };
-var propname = getPropName();  //returns "a" or "b"
-
-eval( "var result = obj." + propname );
-							</code></pre>
-							<pre class="fragment"><code>
-var obj = { a: 20, b: 30 };
-var propname = getPropName();  //returns "a" or "b"
-var result = obj[ propname ];  //  obj[ "a" ] is the same as obj.a
-							</code></pre>
-						</section>
-						<section>
-							<h2>Add example when Eval is good</h2>
-						</section>
-						<section>
-							<h2>Wait a second!</h2>
-							<h3 class="fragment"> if eval() is evil. What about reflection, file/network IO, threading, and IPC.</h3>
-						</section>
-						<section>
-							<h2>Power of Eval</h2>
-							<pre class="fragment"><code></code></pre>
-							<pre class="fragment"><code></code></pre>
-							<a href="http://www.bennadel.com/blog/1926-Exploring-Javascript-s-eval-Capabilities-And-Closure-Scoping.htm">Ben Nadel: capabilities of Eval</a>
-							<br/>
-							<a href="http://stackoverflow.com/questions/197769/when-is-javascripts-eval-not-evil">use of eval</a>
-						</section>
-					</section>
-					
-					<section>
-						<section>
-							<h1>With</h1>
-						</section>
-						<section>
-							<h2>forbidden in ECMAScript 5 strict mode.</h2>
-							<pre><code>
-read perf pros cons
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with">MDN: with</a> 
-							<br/>
-							<a href="http://stackoverflow.com/questions/61552/are-there-legitimate-uses-for-javascripts-with-statement">Ligitimate use of With</a>
-						</section>
-						<section>
-							<pre><code>
-var a, x, y;
-var r = 10;
-
-with (Math) {
-  a = PI * r * r;
-  x = r * cos(PI);
-  y = r * sin(PI / 2);
-}
-							</code></pre>
-						</section>
-						<section>
-							<h2>Add example when With is awesome</h2>
-						</section>
-					</section>
-					
 					<section>
 						<section>
 							<h1>Closure</h1>
