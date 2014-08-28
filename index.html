@@ -123,7 +123,7 @@
 							<li><a href="https://gist.github.com/getify">check getify gist</a> <a href="https://github.com/getify/You-Dont-Know-JS">u dont know JS</a></li>
 							<li><a href="https://gist.github.com/getify/3057796">just read this fight</a></li>
 							<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/types%20&%20grammar/ch1.md#undefined-vs-undeclared">typeof undecalred</a></li>
-							<li></li>
+							<li><a href="http://vimeo.com/96425312">Help, I’m stuck in an event loop By Philip robert</a></li>
 							<li></li>
 							<li></li>
 							<li></li>
@@ -1451,7 +1451,7 @@ exLevel(5); //2
 							<h2></h2>
 							<pre><code>
 function justLooping() {
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i &lt; 5; i++) {
         //do something
     } 
     console.log(i);
@@ -1462,22 +1462,9 @@ justLooping();//5;
 							</code></pre>
 							<pre class="fragment"><code>
 function foo(){
-  console.log(myVar);
+  console.log(a);
   //do something
-  var myVar = 42;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-foo();//undefined
-							</code></pre>
-						</section>
-						<section>							
-							<pre><code>
-var myVar = 54;
-function foo(){
-  console.log(myVar);
-  //do something
-  var myVar = 42;
+  var a = 42;
 }
 							</code></pre>
 							<pre class="fragment"><code>
@@ -1486,33 +1473,43 @@ foo();//undefined
 						</section>
 						<section>
 							<img src="images/hoist.jpg" alt="">
-							<img src="images/hoistBike.jpg" alt="">
+							<img class="fragment" src="images/hoistBike.jpg" alt="">
+							<img class="fragment" src="images/hoistAnt.jpg" alt="">
 						</section>
-						<section>							
+						<section>	
+							<pre><code>
+function foo(){
+  console.log(a);
+  //do something
+  var a = 42;
+}
+							</code></pre>						
+							<pre class="fragment"><code>
+function foo(){
+  var a;
+  console.log(a);
+  //do something
+  a = 42;
+}
+							</code></pre>
+						</section>
+						<section>	
 							<pre><code>
 function justLooping() {
-    var i;
-    for (i = 0; i < 5; i++) {
+    
+    for (var i = 0; i &lt; 5; i++) {
         //do something
     } 
     console.log(i);
 }
-							</code></pre>
+							</code></pre>						
 							<pre class="fragment"><code>
-function foo(){
-  var myVar;
-  console.log(myVar);
-  //do something
-  myVar = 42;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var myVar = 54;
-function foo(){
-  var myVar;
-  console.log(myVar);
-  //do something
-  myVar = 42;
+function justLooping() {
+    var i;
+    for (i = 0; i &lt; 5; i++) {
+        //do something
+    } 
+    console.log(i);
 }
 							</code></pre>
 						</section>
@@ -1520,23 +1517,28 @@ function foo(){
 							<h4>let's look into inner function</h4>
 							<pre><code>
 function outer(){
-  function inner(){
-    console.log('inside inner');
-  }
-  //do something
   inner();
+
+  //do something else 	
+  
+  function inner(){
+    console.log('inside inner function');
+  }  
 }
+
+outer(); // inside inner function
 							</code></pre>
 							<pre class="fragment"><code>
 function outer(){
-  inner();
-  //do something else 	
   function inner(){
     console.log('inside inner');
-  }  
+  }
+
+  //do something
+  
+  inner();
 }
-							</code></pre>
-							<h4 class="fragment">function declaration: name and implementation hoisted</h4>
+							</code></pre>							
 							<a href="http://www.kenneth-truyers.net/2013/04/20/javascript-hoisting-explained/">JS hoisting explained</a>
 						</section>
 						<section>
@@ -1562,6 +1564,73 @@ function outer(){
     console.log('inside inner');
   }  
 }</code></pre>
+						</section>
+						<section>
+							<h2>quiz</h2>							
+							<pre><code>
+var a = 1;
+
+function bar(){
+  a = 10;
+  return;
+  var a = 7;
+}
+
+bar();
+
+console.log(a);//?
+							</code></pre>
+							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">A Word On Hoisting</a>
+						</section>
+						<section>
+							<h3></h3>
+							<pre><code>var a = 1;
+
+function bar(){
+  a = 10;
+  return;
+}</code></pre>				
+							<pre class="fragment"><code>function bar(){
+  a = 10;
+  return;
+  var a = 1;
+}</code></pre>				
+							<pre class="fragment"><code>function bar(){
+  var a;
+  a = 10;
+  return;
+  a = 1;
+}</code></pre>	
+							<a href="http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/">Angus Croll: function declaration</a>
+						</section>
+						<section>
+							<pre><code>function bar(){
+  var a;
+  a = 10;
+  console.log(a);
+  return;
+  a = 1;
+}
+bar(); //10</code></pre>
+							<pre><code>
+var a = 1;
+
+function bar(){
+  a = 10;
+  return;
+  var a = 7;
+}
+
+bar();
+
+console.log(a);//?
+							</code></pre>
+							<h4 class="fragment">Answer: 1</h4>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Un intended closure</h1>
 						</section>
 						<section>
 							<h3>anonymous loop function problem</h3>
@@ -1602,69 +1671,6 @@ function looping (){
   }
 }
 							</code></pre>
-						</section>
-						<section>
-							<h2>quiz</h2>
-							<pre><code>
-var foo=1;
-function bar(){
-  foo=10;
-  return;	
-}
-bar();
-console.log(foo);//10</code></pre>
-							<pre class="fragment"><code>
-//TODO: try to explain David Shariff quiz along with angus croll example
-var foo=1;
-function bar(){
-  foo=10;
-  return;
-  function foo(){};	
-}
-bar();
-console.log(foo);//?
-							</code></pre>
-							<h4 class="fragment">answer:1</h4>
-							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">David: A Word On Hoisting</a>
-						</section>
-						<section>
-							<h3>more quiz</h3>
-							<pre><code>function bar(){
-  return foo;
-  foo=10;
-  function foo(){}
-  var foo =10;
-}
-typeof bar();//?</code></pre>
-							<h4 class="fragment">answer:function</h4>
-							<pre class="fragment"><code>function foo(){
-    function bar() {
-        return 3;
-    }
-    return bar();
-    function bar() {
-        return 8;
-    }
-}
-foo();//?
-							</code></pre>
-							<h4 class="fragment">answer:8</h4>
-							<a href="http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/">Angus Croll: function declaration</a>
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>for rent </h1>
-						</section>
-						<section>
-							<h2>What is the sum?</h2>
-								<pre><code>
-
-								</code></pre>
-								<pre class="fragment"><code>
-			
-								</code></pre>
-							
 						</section>
 						<section>							
 							
