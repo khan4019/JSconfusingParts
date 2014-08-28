@@ -123,12 +123,18 @@
 							<li><a href="https://gist.github.com/getify">check getify gist</a> <a href="https://github.com/getify/You-Dont-Know-JS">u dont know JS</a></li>
 							<li><a href="https://gist.github.com/getify/3057796">just read this fight</a></li>
 							<li><a href="http://vimeo.com/96425312">Help, I’m stuck in an event loop By Philip robert</a></li>
-							<li></li>
+							<li>must watch 1 hour<a href="https://www.youtube.com/watch?v=UJPdhx5zTaw">Breaking the JavaScript Speed Limit with V8</a></li>
 							<li></li>
 							<li></li>
 							<li></li>
 							<li></li>
 						</section>
+					</section>
+					<section>
+						<section>
+							<h2>why should u learn Javascript</h2>
+							<p>make ur story</p>
+						</section>						
 					</section>
 					<section>
 						<section>
@@ -163,25 +169,78 @@
 								<li class="fragment"><code>typeof undefined</code> is "undefined"</li>
 								<li class="fragment">its not a constant or a keyword</li>
 								<li class="fragment">its a type with exactly one value</li>
-								<li class="fragment">assinging values doesnt change value of udnefined</li>
+								<li class="fragment">cannot change value of udnefined</li>
 							</ol>
 						</section>
 						<section>
-							<h2><code>undefined</code> - 8 ways</h2>
-							<ol>
-					          <li>declared variable without assigned value</li>
-					          <li class="fragment">function with no return statement</li>
-					          <li class="fragment"><code>return;</code> nothing returns explicitly</li>
-					          <li class="fragment">non-existent properties in an object</li>
-					          <li class="fragment">parameters that have not passed</li>
-					          <li class="fragment">Anything value set to value of undefined</li>
-					          <li class="fragment">Any expression in the form of void(expression)</li>
-					          <li class="fragment">value of the global variable <code>undefined</code></li>
-					        </ol>
+							<h2>undefined in variable</h2>
+							<pre><code>
+//value of the global variable undefined
+console.log(undefined); 
+							</code></pre>
+							<pre class="fragment"><code>
+var a = undefined;
+
+console.log(a); //undefined
+							</code></pre>							
+							<pre class="fragment"><code>
+var a; 
+
+console.log(a); //undefined
+							</code></pre>							
+						</section>
+						<section>
+							<h2>undefined in function</h2>
+							<pre><code>
+function foo(){
+    console.log(555);
+}
+
+foo(); //undefined
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(){
+    console.log(555);
+    return;
+    console.log(777);
+}
+
+foo(); //undefined
+							</code></pre>
+							<pre class="fragment"><code>
+function foo(a, b){
+   console.log(b);
+}
+
+foo(2); //undefined
+							</code></pre>
+						</section>
+						<section>
+							<h2>undefined - others</h2>
+							<pre><code>
+var obj = {};
+
+console.log(obj.b); //undefined
+							</code></pre>							
+							<pre class="fragment"><code>
+//add example of void expression
+							</code></pre>
 						</section>
 						<section>
 							<h2>undeclared</h2>
-							<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/types%20&%20grammar/ch1.md#undefined-vs-undeclared">typeof undecalred</a></li>
+							<pre><code>
+var a; 
+
+console.log(a); //undefined
+console.log(b); //ReferenceError: b is not defined
+							</code></pre>
+							<pre class="fragment"><code>
+var a;
+typeof a; //undefined
+
+typeof b; //undefined
+							</code></pre>
+							<a href="https://github.com/getify/You-Dont-Know-JS/blob/master/types%20&%20grammar/ch1.md#undefined-vs-undeclared">typeof undecalred</a>
 						</section>
 						<section>
 							<h2><code>null</code></h2>
@@ -191,6 +250,24 @@
 								<li><code>null</code> is not an object</li>
 								<li><code>typeof null == 'object'</code> is a bug</li>
 							</ol>
+						</section>
+						<section>
+							<h2>Summary</h2>
+							<li>null means empty</li>
+							<li class="fragment">undefined and undeclared is not same</li>							
+						</section>
+						<section>
+							<h2>8 wasy to get undefined</h2>
+								<ol>
+								  <li>value of global variable <code>undefined</code></li>
+								  <li class="fragment">value explicity set to <code>undefined</code></li>
+						          <li class="fragment">variable declared but unassigned</li>
+						          <li class="fragment">no return statement</li>
+						          <li class="fragment">return nothing</li>
+						          <li class="fragment">parameters that have not passed</li>
+						          <li class="fragment">non-existent properties</li>
+						          <li class="fragment">expression in the form of void(expression)</li>
+						        </ol>
 						</section>
 					</section>					 					
 					<section>
