@@ -156,10 +156,56 @@
 							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">javascript-scope-chain-and-closures</a>
 						</section>
 						<section>
+							<h2></h2>
+							<img src="images/javascript.png" alt="">
+						</section>
+						<section>
+							<h2>What is JavaScript?</h2>
+							<h4 class="fragment">a <span class="purpleBold">single-threaded</span>, <span class="purpleBold">non-blocking</span>, <span class="purpleBold">asnchronous</span> concurrent runtime</h4>
+							<br>
+							<div class="fragment">
+								<hr>
+								<h3>I am a programmer, give me detail</h3>
+								<h4 class="fragment">have a <span class="purpleBold">call stack</span>, <span class="purpleBold">event loop</span>, <span class="purpleBold">callback queue</span>, etc.</h4>
+							</div>
+							<br>
+							<div class="fragment">
+								<hr>
+								<h3>are these in JS?</h3>
+								<h4 class="fragment">no they are in javascript implementation.</h4>
+							</div>
+						</section>
+						<section>
+							<h2>what is call stack?</h2>
+						</section>
+						<section>
 							<h2>talk about heap, stack and event loop</h2>
 						</section>
 						<section>
 							<h2>also talk about how async stuff works</h2>
+							<a href="http://www.eriwen.com/javascript/js-stack-trace/">js strack trace</a>
+							<a href="http://stackoverflow.com/questions/280389/how-do-you-find-out-the-caller-function-in-javascript">check this</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h2>stack</h2>
+							<a href="https://thomashunter.name/blog/the-javascript-event-loop-presentation/">read notes in slide 5: implementation</a>
+						</section>
+						<section>
+							<h2>give example</h2>
+						</section>
+						<section>
+							<h2>trace a stack</h2>
+							<pre><code>
+
+							</code></pre>
+						</section>
+						<section>
+							<h2>event loop</h2>
+							<a href="http://ckazbah.com/2014/07/29/notes-on-javascript-nodejs-and-event-loop-single-thread-of-execution-and-little-bit-of-under-the-hood-stuff/"></a>, 
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/EventLoop">MDN: event loop</a>, 
+							<a href="http://www.quora.com/How-does-a-JavaScript-engine-work">synchornous tree</a>
 						</section>
 					</section>
 					<section>
@@ -280,7 +326,8 @@ typeof b; //undefined
 						<section>
 							<h2>Summary</h2>
 							<li>null means empty</li>
-							<li class="fragment">undefined and undeclared is not same</li>							
+							<li>add a point about difference between null and undefined</li>
+							<li class="fragment">undefined and undeclared is not same</li>
 						</section>
 						<section>
 							<h2>8 wasy to get undefined</h2>
@@ -475,6 +522,49 @@ reallyNaN(NaN); //true
 							<a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">another link</a>
 						</section>
 						<section>
+							<h2>===</h2>
+							<li>check type and value</li>
+							<pre class="fragment"><code>
+//NaN, null and undefined will never === to another type
+//Nan does not even equal to itself
+							</code></pre>
+							<div class="fragment">
+								<hr>
+								<h3>==</h3>
+								<ul>
+									<li>will not check type (simplified)</li>
+									<li class="fragment">tolerant</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ul>
+							</div>
+						</section>
+						<section>
+							<h2>object equality</h2>
+							<pre><code>
+var a = {a: 1};
+var b = {a: 1};
+a == b //false
+a === b //false
+							</code></pre>
+							<pre class="fragment"><code>
+var c = a;
+a == c//true
+a === c //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>type coercion by ==</h2>
+							<ul>
+								<li>update content: <a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">read this one</a></li>
+								<li>or this one <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">in reddit</a></li>
+					            <li>both operands are same type: use ===</li>
+					            <li class="fragment">undefined == null</li>
+					            <li class="fragment">One operands is string another is number: convert string to number</li>
+					            <li class="fragment">One is boolean and another is non-boolean: convert boolean to number</li>
+					            <li class="fragment">While comparing a string or number to an object, try to convert the object to a primitive type and then try to compare</li>
+					        </ul>
+						</section>
+						<section>
 							<h2>potato and JS</h2>
 							<pre><code>
 "potato" == false; //false
@@ -494,6 +584,9 @@ NaN == 1; //false!
 NaN == 0; //false!
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
+						</section>
+						<section>
+							<h2>Create graphic to explain</h2>
 						</section>
 						<section>
 							<h2></h2>
