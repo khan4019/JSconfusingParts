@@ -91,56 +91,24 @@
 							<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
 						</p>
 						</section>
-					<section>						
+					<section>
 						<h2>You don't get what you <span class="greenBold">deserve</span></h2>
 						<h2>You only get what you <span class="redBold">negotiate</span></h2>
-						<br>
-						<br>
-						<p>Get pissed off at your own risk :p</p>
-						(<span style="color:red; font-weight: bold">This is work-in-process presentation</span>)
-						
-					</section>
-					<section>
-						<section>						
-								<ul>
-									<li class="lineThrough">scope, hoisting</li>
-									<li class="lineThrough">this</li>
-									<li class="lineThrough">closure</li>
-									<li>inheritance</li>
-									<li class="lineThrough">Bind, call apply</li>
-									<li>Eval, with, global</li>
-									<li>timer</li>
-									<li>Date, Function, Object</li>
-									<li class="lineThrough">Timers</li>
-									<li class="lineThrough">truthy and falsy</li>
-									<li>use strict</li>								
-									<li class="lineThrough">Number</li>
-								</ul>
-						</section>
-						<section>
-							<h3>todo remaining tasks</h3>
-							<li>== in true lies should goes in equality section including little more. If there is not sectiona bout == and === create one</li>
-							<li><a href="https://gist.github.com/getify">check getify gist</a> <a href="https://github.com/getify/You-Dont-Know-JS">u dont know JS</a></li>
-							<li><a href="https://gist.github.com/getify/3057796">just read this fight</a></li>
-							<li><a href="http://vimeo.com/96425312">Help, I’m stuck in an event loop By Philip robert</a></li>
-							<li>must watch 1 hour<a href="https://www.youtube.com/watch?v=UJPdhx5zTaw">Breaking the JavaScript Speed Limit with V8</a></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-						</section>
 					</section>
 					<section>
 						<section>
 							<h2>why should u learn Javascript</h2>
 							<p>make ur story</p>
 							<p>a day of javascript developer</p>
-						</section>						
+						</section>
 						<section>
 							<img src="images/programmers.jpg" alt="">
 						</section>
 						<section>
 							<img src="images/cutPaste.jpg" alt="">
+						</section>
+						<section>
+							<h2></h2>
 						</section>
 					</section>
 					<section>
@@ -153,10 +121,57 @@
 							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">javascript-scope-chain-and-closures</a>
 						</section>
 						<section>
+							<h2></h2>
+							<img src="images/javascript.png" alt="">
+						</section>
+						<section>
+							<h2>What is JavaScript?</h2>
+							<h4 class="fragment">a <span class="purpleBold">single-threaded</span>, <span class="purpleBold">non-blocking</span>, <span class="purpleBold">asnchronous</span> concurrent runtime</h4>
+							<br>
+							<div class="fragment">
+								<hr>
+								<h3>I am a programmer, give me detail</h3>
+								<h4 class="fragment">have a <span class="purpleBold">call stack</span>, <span class="purpleBold">event loop</span>, <span class="purpleBold">callback queue</span>, etc.</h4>
+							</div>
+							<br>
+							<div class="fragment">
+								<hr>
+								<h3>are these in JS?</h3>
+								<h4 class="fragment">no they are in javascript implementation.</h4>
+							</div>
+						</section>
+						<section>
+							<h2>what is call stack?</h2>
+						</section>
+						<section>
 							<h2>talk about heap, stack and event loop</h2>
+							<a href="http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/">event loop explained</a>
 						</section>
 						<section>
 							<h2>also talk about how async stuff works</h2>
+							<a href="http://www.eriwen.com/javascript/js-stack-trace/">js strack trace</a>
+							<a href="http://stackoverflow.com/questions/280389/how-do-you-find-out-the-caller-function-in-javascript">check this</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h2>stack</h2>
+							<a href="https://thomashunter.name/blog/the-javascript-event-loop-presentation/">read notes in slide 5: implementation</a>
+						</section>
+						<section>
+							<h2>give example</h2>
+						</section>
+						<section>
+							<h2>trace a stack</h2>
+							<pre><code>
+
+							</code></pre>
+						</section>
+						<section>
+							<h2>event loop</h2>
+							<a href="http://ckazbah.com/2014/07/29/notes-on-javascript-nodejs-and-event-loop-single-thread-of-execution-and-little-bit-of-under-the-hood-stuff/"></a>, 
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/EventLoop">MDN: event loop</a>, 
+							<a href="http://www.quora.com/How-does-a-JavaScript-engine-work">synchornous tree</a>
 						</section>
 					</section>
 					<section>
@@ -277,7 +292,8 @@ typeof b; //undefined
 						<section>
 							<h2>Summary</h2>
 							<li>null means empty</li>
-							<li class="fragment">undefined and undeclared is not same</li>							
+							<li>add a point about difference between null and undefined</li>
+							<li class="fragment">undefined and undeclared is not same</li>
 						</section>
 						<section>
 							<h2>8 wasy to get undefined</h2>
@@ -401,6 +417,7 @@ Boolean(/foo/); // true
 9809987889988769 + 1; //9809987889988768
 9809987889988770 + 1; //9809987889988772
 							</code></pre>
+							<img src="images/bit.png" alt="" class="fragment">
 							<pre class="fragment"><code>
 //toFixed to generate string result
 (.1+.2).toFixed(1); //'0.3'
@@ -432,7 +449,14 @@ parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
 							<br/>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
-						</section>						
+						</section>
+						<section>
+							<h2>parseInt</h2>
+							<pre><code>
+parseInt(0/1,19)==18
+							</code></pre>
+							<a href="https://gist.github.com/getify/3057796">read the bottom part of this gist to get awesome ideas</a>
+						</section>
 						<section>
 							<h2>zeros in JavaScript</h2>
 							<a href="http://zero.milosz.ca/">zeros in JS</a>
@@ -472,6 +496,49 @@ reallyNaN(NaN); //true
 							<a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">another link</a>
 						</section>
 						<section>
+							<h2>===</h2>
+							<li>check type and value</li>
+							<pre class="fragment"><code>
+//NaN, null and undefined will never === to another type
+//Nan does not even equal to itself
+							</code></pre>
+							<div class="fragment">
+								<hr>
+								<h3>==</h3>
+								<ul>
+									<li>will not check type (simplified)</li>
+									<li class="fragment">tolerant</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ul>
+							</div>
+						</section>
+						<section>
+							<h2>object equality</h2>
+							<pre><code>
+var a = {a: 1};
+var b = {a: 1};
+a == b //false
+a === b //false
+							</code></pre>
+							<pre class="fragment"><code>
+var c = a;
+a == c//true
+a === c //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>type coercion by ==</h2>
+							<ul>
+								<li>update content: <a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">read this one</a></li>
+								<li>or this one <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">in reddit</a></li>
+					            <li>both operands are same type: use ===</li>
+					            <li class="fragment">undefined == null</li>
+					            <li class="fragment">One operands is string another is number: convert string to number</li>
+					            <li class="fragment">One is boolean and another is non-boolean: convert boolean to number</li>
+					            <li class="fragment">While comparing a string or number to an object, try to convert the object to a primitive type and then try to compare</li>
+					        </ul>
+						</section>
+						<section>
 							<h2>potato and JS</h2>
 							<pre><code>
 "potato" == false; //false
@@ -491,6 +558,9 @@ NaN == 1; //false!
 NaN == 0; //false!
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
+						</section>
+						<section>
+							<h2>Create graphic to explain</h2>
 						</section>
 						<section>
 							<h2></h2>
@@ -518,7 +588,7 @@ null == null; // true
 
 undefined == undefined; // true
 undefined == null; // true
-							</code></pre>						
+							</code></pre>
 							<pre class="fragment"><code>
 NaN == null; // false
 NaN == NaN; // false
@@ -536,15 +606,14 @@ isNaN(NaN);//use it
 							<h3>performance</h3>
 							<a href="http://jsperf.com/implicit-coercion-with-null-and-undefined/5">implicit coercion is faster</a>
 						</section>
-					</section>		
+					</section>
 					<section>
 						<section>
 							<h1>String</h1>
 						</section>
-					</section>
-					<section>
 						<section>
-							<h1>Object</h1>
+							<h2>dont mess up with toString</h2>
+							<a href=""></a>
 						</section>
 					</section>
 					<section>
@@ -599,6 +668,22 @@ for (var i in myArr){
 //1, 2, 3, 4, -7, 3.5
 							</code></pre>
 							<a href="http://www.thatjsdude.com/jsConcepts/concepts/array.html">Array: that js dude</a>
+						</section>
+						<section>
+							<h2>[].indexOf</h2>
+							<h4>Only finds exact match</h4>
+							<pre><code>
+[1, 2, 3, 4].indexOf(4); //3
+[1, 2, 3, 4].indexOf('4'); //-1
+[{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
+							</code></pre>
+							<pre class="fragment"><code>
+var a = {a:1},
+    b = {b:2},
+    c = {c:3};
+
+[a,b,c,4].indexOf(c);//2
+							</code></pre>
 						</section>
 						<section>
 							<h2>remove</h2>
@@ -897,6 +982,7 @@ Math.min.apply(null, [2,3,4,5]); //2
 						<section>
 							<h1>this</h1>
 							<h4>What the heck is "this"?</h4>
+							<a href="http://youtu.be/_vQ-6SWAtjE?t=3m01s">watch this one</a>
 							<h4><a href="http://www.2ality.com/2014/05/this.html">Read this from 2ality and check whether he has something new</a></h4>
 						</section>
 						<section>
@@ -925,6 +1011,7 @@ function justAddName(name) {
   this.name = name;
   return this;
 }
+
 justAddName(" Amy Farrah Fowler");//window
 console.log(window.name); //  Amy Farrah Fowler</code></pre>
 				  			<pre class="fragment"><code>
@@ -984,7 +1071,7 @@ buddy.getContext(); // Object {getContext: function}</code></pre>
 var buddy = {  
   name:'Tom Hanks',
 
-  libraries:['jquery', 'ember', 'backbone'],
+  libraries:['forestJS', 'castJS', 'greenMile'],
   
   firstLib:function(){
     return this.libraries[0];
@@ -992,7 +1079,7 @@ var buddy = {
 
 };
 
-buddy.firstLib();//jquery
+buddy.firstLib();//forestJS
 							</code></pre>
 							<pre class="fragment"><code>
 buddy.addLib = function(newLib){
@@ -1280,15 +1367,9 @@ a.b(); //true;
 					</section>
 					<section>
 						<section>
-							<h1>Constructor</h1>
-						</section>
-						<section>
-							<li><a href="http://raganwald.com/2014/07/09/javascript-constructor-problem.html">JavaScript constructor 3 problems and solutions</a></li>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1>Inheritance</h1>
+							<a href="http://blogs.msdn.com/b/eternalcoding/archive/2014/08/20/simple-inheritance-with-javascript.aspx">simple inheritance, have a look</a>
+							<h3>could move to deleted scene</h3>
 						</section>
 						<section>
 							<h3></h3>
@@ -1458,6 +1539,8 @@ frnd.hasOwnProperty('name');
 					<section>
 						<section>
 							<h1>scope</h1>
+							<h3>bring scope from high perf</h3>
+							<h5>also add slides for outer scope and local scope variable with same name. like name conflict</h5>
 						</section>
 						<section>
 							<p>Type these in console for live Demo</p>
@@ -1844,7 +1927,7 @@ function looping (){
 					</section>
 					<section>
 						<section>
-							<h1>arguments</h1>							
+							<h1>arguments</h1>
 						</section>
 						<section>		
 							<h4>Local variable, availalbe to all functions</h4>					
@@ -1950,9 +2033,6 @@ foo(1, 2); //43
 							<pre><code>
 document.getElementByTagName('li')
 							</code></pre>
-						</section>
-						<section>
-							<h2></h2>
 						</section>
 					</section>
 					<section>
@@ -2387,77 +2467,8 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 					</section>
 					<section>
 						<section>
-							<h1>Oh! that's in Javascript</h1>
-						</section>
-						<section>
-							<h2>e.stopImmediatePropagetion</h2>
-							<h2>e.PreventDefault</h2>
-							<pre><code>
-some other cool feature that JS have
-//dont think Jquery invented those
-							</code></pre>
-						</section>
-						<section>
-							<h2>indexOf search start parameter</h2>
-							<pre><code>
-var myArray = [1,2,3,4,5];
-
-var idx1 = myArray.indexOf(2); //1
-
-var idx2 = myArray.indexOf(2, 3); //-1
-							</code></pre>
-							<h2 class="fragment">indexOf matches ===</h2>
-							<pre class="fragment"><code>
-var myArray = [1,2,3,4,5];
-
-var idx1 = myArray.indexOf('2'); //-1
-							</code></pre>
-							<a href="http://designpepper.com/blog/drips/finding-array-elements-with-array-indexof"></a>
-						</section>
-						<section>
-							<h2>Very nice article about DOM Events and Bubbles</h2>
-							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">intro to DOM Event</a>
-							<br/>
-							<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow">W3C: Event flow</a>
-							<br/>
-							<a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-types">W3C: summary of Event types</a>
-						</section>
-						<section>
-							<h2>Event Delegation</h2>
-							<pre><code>
-var list = document.querySelector('ul');
-
-list.addEventListener('click', function(event) {
-  var target = event.target;
- 
-  while (target.tagName !== 'LI') {
-    target = target.parentNode;
-    if (target === list) return;
-  }
-
-  // Do stuff here
-});
-							</code></pre>
-							<h2 class="fragment">Use this</h2>
-							<pre class="fragment"><code>
-// Not using event delegation
-$('li').on('click', function(){});
-
-// Using event delegation
-$('ul').on('click', 'li', function(){});
-							</code></pre>
-							<a href="http://coding.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/">In the middle look for "Delegate Event"</a>
-							<br/>
-							<a href="http://www.quirksmode.org/dom/events/">Event Compatibility Table</a>
-							<br/>
-							<a href="https://developer.mozilla.org/en/docs/Web/API/Event">MDN: DOM Events</a>
-							<br/>
-							<a href="http://www.w3.org/TR/DOM-Level-3-Events/">W3C: Event Spec</a>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1>Strict Mode</h1>
+							<a href="http://restrictmode.org/">read and explore here</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -2520,29 +2531,9 @@ function isStrictMode(){
 							<br>
 							<p>also some from here</p>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript?redirectlocale=en-US&redirectslug=JavaScript%2FA_re-introduction_to_JavaScript">re-introduction to JS</a>
-						</section>						
-						<section>
-							<h2>array.length</h2>
-							<h4></h4>
-							<pre><code>
-var languages = ['knockout', 'backbone','meteor'];
-languages.length;//3
-
-languages.length = 5;
-languages; //["knockout", "backbone", "meteor", undefined, undefined]
-							</code></pre>
-							<pre class="fragment"><code>
-languages.length = 1;
-languages; //["knockout"]
-							</code></pre>
-							<pre class="fragment"><code>
-var libs = [];
-libs[21] = 'DoctorJS';
-libs.length; // 22
-							</code></pre>
 						</section>
 						<section>
-							<h2>Equality overkill</h2>						
+							<h2>Equality overkill</h2>
 							<pre><code>
 //unnecessary
 if (typeof myVar === "function");
@@ -2565,22 +2556,6 @@ if (myArray.length === 3) {//..}
 if (myArray.length == 3) {//..}
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Angus Croll: JS Equality</a>
-											</section>
-						<section>
-							<h2>[].indexOf</h2>
-							<h4>Only finds exact match</h4>
-							<pre><code>
-[1, 2, 3, 4].indexOf(4); //3
-[1, 2, 3, 4].indexOf('4'); //-1
-[{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
-							</code></pre>
-							<pre class="fragment"><code>
-var a = {a:1}, 
-    b = {b:2}, 
-    c = {c:3};
-
-[a,b,c,4].indexOf(c);//2    
-							</code></pre>
 						</section>
 						<section>
 							<h2>dot</h2>
@@ -2660,6 +2635,14 @@ in array
 						</section>
 					</section>
 					<section>
+						<section>
+							<h1>Deleted Scenes</h1>
+						</section>
+						<section>
+							<li><a href="http://raganwald.com/2014/07/09/javascript-constructor-problem.html">JavaScript constructor 3 problems and solutions</a></li>
+						</section>
+					</section>
+					<section>
 						<h2>Need more !!!</h2>
 						<a href="http://bolinfest.com/javascript/misunderstood.html">Frequently misunderstood JS Concepts</a>
 						<br/>
@@ -2672,6 +2655,17 @@ in array
 					<section>
 						<h3>Look-Busy-at-Work-Without-Really-Working</h3>
 						<a href="http://www.wikihow.com/Look-Busy-at-Work-Without-Really-Working">Look-Busy-at-Work-Without-Really-Working</a>
+					</section>
+					<section>
+						<h2>free tip</h2>
+						<p>convert it to how to sleep in meeting</p>
+						<a href="http://physics.illinois.edu/events/sleeping.asp">how to sleep in seminar</a>
+						<a href="http://lifehacker.com/5815967/how-to-get-away-with-sleeping-at-work">some concepts</a>
+						<a href="http://www.examiner.com/article/cubicle-101-how-to-sleep-at-work-and-not-get-caught">some more</a>
+						<a href="http://hottywoodhelps.com/2010/01/07/the-art-of-sleeping-at-work-without-getting-caught/">read it</a>
+						<a href="http://www.wikihow.com/Sleep-in-Class">though for class but u can use it</a>
+						<a href="http://www.wikihow.com/Sleep-at-Work">not very good but check it out</a>
+						<p>search for poing pong eyes and show a process of doing it</p>
 					</section>
 					<section>
 						<h1>Thank You</h1>
