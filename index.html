@@ -444,10 +444,6 @@ parseInt('010', 10); //10
 //parseFloat(string)
 parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							</code></pre>
-							<a href="http://javascript.info/tutorial/number-math">JS number math</a>
-							<br/>
-							<a href="http://jsperf.com/parseint-vs-unary-operator">JSPerf: parseInt vs parseInt</a>
-							<br/>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
 						</section>
 						<section>
@@ -458,17 +454,44 @@ parseInt(0/1,19)==18
 							<a href="https://gist.github.com/getify/3057796">read the bottom part of this gist to get awesome ideas</a>
 						</section>
 						<section>
-<<<<<<< HEAD
-=======
-							<h2>zeros in JavaScript</h2>
-							<a href="http://zero.milosz.ca/">zeros in JS</a>
-						</section>
-						<section>
 							<h2>Check integer</h2>
-							<a href="http://stackoverflow.com/questions/23889317/explain-this-javascript-name-clash">very good take couple example</a>
+							<pre><code>
+function isInteger(x) {
+    return x % 1 === 0;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+//test
+isInteger(5); //true
+isInteger(3.5); //false
+							</code></pre>
+							<pre class="fragment"><code>
+isInteger(''); //true
+isIntenger(true); //true
+isInteger(false); //true
+							</code></pre>
+							<pre class="fragment"><code>
+function isInteger(x) {
+    return (typeof x === 'number') && (x % 1 === 0);
+}
+							</code></pre>
+							<a href="http://www.2ality.com/2014/05/is-integer.html">check integer</a>
 						</section>
 						<section>
->>>>>>> origin/master
+							<h2><code>Math.round()</code></h2>
+						</section>
+						<section>
+							<h2>parseInt()</h2>
+						</section>
+						<section>
+							<h2>others</h2>
+							<a href="https://twitter.com/rauschma/timelines/468147791379062785">get answers from here</a>
+						</section>
+						<section>
+							<h2>zeros in JavaScript</h2>
+
+						</section>
+						<section>
 							<h2>NaN, isNaN, isFinite</h2>
 							<pre><code>
 isNaN(2); //false
@@ -746,11 +769,10 @@ delete a[1]; //true
 							<h3>Addition operator</h3>
 						</section>
 						<section>
-							<h2>Addition operator (+)</h2>
-							<li>concatenation or numeric addition</li>
+							<h3>Concat/ numeric addition</h3>
 							<pre><code>
 2 + 3; // 5
-'js' + 'dude'; //jsdude 
+'js' + 'dude'; //jsdude
 							</code></pre>
 							<pre class="fragment"><code>
 2 + 'dude'; //2dude
@@ -764,23 +786,35 @@ delete a[1]; //true
 1 + 2 + "3";    // "33"
 1 + "2" + 3;    // "123"
 							</code></pre>
-							<pre class="fragment"><code>"17" * 3;  // 51</code></pre>
+							<pre class="fragment"><code>2 + true;  // 3
+5 + false; //5</code></pre>
 							<a href="http://www.informit.com/articles/article.aspx?p=1997934&seqNum=3">implicit coercion	</a>
 						</section>
 						<section>
-							<h3>addition in JavaScript</h3>
-							<li>if either one is NaN, result is NaN</li>
-							<li>Two infinities of opposite sign, result NaN</li>
-							<li>Two infinities of same sign, reult similar sigh infinity</li>
-							<li></li>
-							<li></li>
+							<h3>Addition in JavaScript</h3>
+							<ol>
+								<li>if either one is NaN, result is NaN</li>
+								<li>Two infinities of opposite sign, result NaN</li>
+								<br>
+								<div class="fragment">
+									<li>Two infinities of same sign, result similar sign infinity</li>
+									<li>Infinity and a number, result infinity</li>
+								</div>
+								<br>
+								<div class="fragment">
+									<li>two negative 0, result -0</li>
+									<li>two positive 0, result +0</li>
+									<li>two opposite sign 0, result +0</li>
+								</div>
+								<br>
+								<div class="fragment">
+									<li>computed and rounded to nearest IEEE 754 representable number</li>
+								</div>
+							</ol>
 						</section>
 						<section>
+							<h2>Add arrays</h2>
 							<pre><code>
-//i got it
-'0' + '0'; // '00'
-
-//but why
 [0] + [0]; // "00"
 
 or
@@ -788,6 +822,12 @@ or
 
 or
 [] + []; // ''
+							</code></pre>
+							<pre class="fragment"><code>
+[1, 2, 3].toString(); // 1,2,3
+
+[1, 2, 3] + [1, 2, 3]; //"1,2,31,2,3"
+
 							</code></pre>
 							<a href="http://zero.milosz.ca/">zeros in JS</a>
 						</section>
@@ -821,7 +861,7 @@ undefined + undefined; //NaN
 null + undefined; //NaN
 [null] + undefined; //undefined
 							</code></pre>
-							<pre><code>
+							<pre class="fragment"><code>
 true + undefined; //NaN
 false + undefined; //NaN
 							</code></pre>
@@ -855,24 +895,7 @@ false + undefined; //NaN
 							</code></pre>
 						</section>
 						<section>
-							<h2>Implicit Coercion</h2>
-							<pre><code>
-var num = 2 + 3; //5
-var txt = 'hello' + 'World'; //helloWorld
-							</code></pre>
-							<pre class="fragment"><code>
-//Forgive type error
-var num = 2 + true; //3
-
-//favor string for tie break
-var num2 = '6' + 9; //69
-							</code></pre>
-							<pre class="fragment"><code>
-var num3 = '6' - 9; //-3
-var num4 = '6' * 9; //54
-var num5 = '6' / 9; //0.6666
-							</code></pre>
-							<a href="http://www.amazon.com/Effective-JavaScript-Specific-Software-Development/dp/0321812182">Effective Javascript: Item 3: implicit coercion</a>
+							<h2>Summary</h2>
 						</section>
 					</section>
 					<section>
@@ -1784,13 +1807,13 @@ exLevel(5); //2
 						</section>
 						<section>
 							<h2>Add ES6 let</h2>
-							<pre><code></code></pre>
+							<a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let">what you need to know about block scope- let</a>
 						</section>
 					</section>
 					<section>
 						<section>
-							<h1>hoisting</h1>							
-						</section>						
+							<h1>hoisting</h1>
+						</section>
 						<section>
 							<h2></h2>
 							<pre><code>
@@ -1908,6 +1931,24 @@ function outer(){
     console.log('inside inner');
   }  
 }</code></pre>
+						</section>
+						<section>
+							<h2>function hoisting</h2>
+							<pre><code>
+function foo(){
+	var f = function() {
+	    console.log("original");
+	}
+
+	function f() {
+	    console.log("duplicate");
+	}
+
+	f();
+}
+
+foo(); //?
+							</code></pre>
 						</section>
 						<section>
 							<h2>quiz</h2>							
@@ -2742,6 +2783,7 @@ in array
 							<h1>Deleted Scenes</h1>
 						</section>
 						<section>
+							<li><a href="http://bjorn.tipling.com/advanced-objects-in-javascript">Advanced Object in JavaScript</a></li>
 							<li><a href="http://raganwald.com/2014/07/09/javascript-constructor-problem.html">JavaScript constructor 3 problems and solutions</a></li>
 						</section>
 						<section>
