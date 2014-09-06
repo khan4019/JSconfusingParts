@@ -40,13 +40,13 @@
 				.reveal code.largeCode {
 					max-height: 600px;
 				}
-				
+
 				pre.widerCode{
 					width: 100%;
 				}
-				
+
 				.lineThrough{
-					text-decoration: line-through;					
+					text-decoration: line-through;
 				}
 				.greenBold{
 					color: green !important;
@@ -155,34 +155,13 @@
 					</section>
 					<section>
 						<section>
-							<h2>stack</h2>
-							<a href="https://thomashunter.name/blog/the-javascript-event-loop-presentation/">read notes in slide 5: implementation</a>
-						</section>
-						<section>
-							<h2>give example</h2>
-						</section>
-						<section>
-							<h2>trace a stack</h2>
-							<pre><code>
-
-							</code></pre>
-						</section>
-						<section>
-							<h2>event loop</h2>
-							<a href="http://ckazbah.com/2014/07/29/notes-on-javascript-nodejs-and-event-loop-single-thread-of-execution-and-little-bit-of-under-the-hood-stuff/"></a>, 
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/EventLoop">MDN: event loop</a>, 
-							<a href="http://www.quora.com/How-does-a-JavaScript-engine-work">synchornous tree</a>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1>types</h1>
 						</section>
 						<section>
 							<h2>build in types</h2>
 							<ul>
-								<li><code>null</code></li>
 								<li><code>undefined</code></li>
+								<li><code>null</code></li>
 								<div class="fragment">
 									<li><code>boolean</code></li>
 									<li><code>number</code></li>
@@ -194,7 +173,6 @@
 								<div class="fragment">
 									<li><code>symbol</code> - ES6</li>
 								</div>
-								
 							</ul>
 							<h4 class="fragment">build in types a.k.a "primitives"</h4>
 						</section>
@@ -292,29 +270,36 @@ typeof b; //undefined
 						<section>
 							<h2>Summary</h2>
 							<li>null means empty</li>
-							<li>add a point about difference between null and undefined</li>
+							<li>interview question: null vs undefined</li>
 							<li class="fragment">undefined and undeclared is not same</li>
 						</section>
 						<section>
 							<h2>8 wasy to get undefined</h2>
 								<ol>
 								  <li>value of global variable <code>undefined</code></li>
-								  <li class="fragment">value explicity set to <code>undefined</code></li>
+								  <li class="fragment">variable explictly set to <code>undefined</code></li>
 						          <li class="fragment">variable declared but unassigned</li>
-						          <li class="fragment">no return statement</li>
+						          <li class="fragment">no return statement in a function</li>
 						          <li class="fragment">return nothing</li>
 						          <li class="fragment">parameters that have not passed</li>
 						          <li class="fragment">non-existent properties</li>
 						          <li class="fragment">expression in the form of void(expression)</li>
 						        </ol>
 						</section>
-					</section>					 					
+					</section>
 					<section>
 						<section>
 							<h1>True lies</h1>
+							<hr>
+							<img src="images/trueLies.jpg" alt="">
+						</section>
+						<section>
+							<img src="images/trueLies2.jpg" alt="">
+						</section>
+						<section>
 							<h3>Truth is very subjective</h3>
-							<h4>you are right. no no. you are left</h4>
-						</section>						
+							<img src="images/subjective.jpg" alt="" class="fragment">
+						</section>
 						<section>
 							<h2>Falsy values</h2>
 							<ul>
@@ -325,7 +310,7 @@ typeof b; //undefined
 								</div>
 								<div class="fragment">
 									<li>''</li>
-									<li>0</li>									
+									<li>0</li>
 								</div>
 								<div class="fragment">
 									<li>NaN</li>
@@ -343,30 +328,35 @@ typeof b; //undefined
 								<li>true</li>
 								<div class="fragment">
 									<li>'false'</li>
-									<li>' '</li>	
+									<li>' '</li>
 								</div>
 								<div class="fragment">
 									<li>{}</li>
-									<li>[]</li>	
+									<li>[]</li>
 								</div>
 								<div class="fragment">
 									<li>new Boolean(false)</li>
-									<li>new String('')</li>	
+									<li>new String('')</li>
 								</div>
 								<div class="fragment">
-									<li>Everything not false</li>	
-								</div>								
+									<li>Everything not false</li>
+								</div>
 							</ul>
-						</section>						
+						</section>
 						<section>
 							<h2>Boolean()</h2>
 							<h4>convert anything to bool</h4>
-							<pre><code> 
+							<pre><code>
 Boolean(undefined); // false
 Boolean(null); // false
 Boolean(0); // false
 Boolean(''); // false
 Boolean(NaN); // false
+							</code></pre>
+							<pre class="fragment"><code>
+new Boolean(undefined); // truthy
+new Boolean(null); // truthy
+new Boolean(0); // truthy
 							</code></pre>
 							<pre class="fragment"><code>
 Boolean(1); // true
@@ -2482,47 +2472,25 @@ Math instanceof Math;
 					</section>
 					<section>
 						<section>
-							<h1>Event loop</h1>
-							<h2>read and understand it</h2>
-							<a href="http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained">JS Event loop</a>
-							<br>
-							<h4>this might go to high perf js under browser</h4>
+							<h2>stack</h2>
+							<a href="https://thomashunter.name/blog/the-javascript-event-loop-presentation/">read notes in slide 5: implementation</a>
 						</section>
 						<section>
-							<h2></h2>
-							<ul>
-								<li>Capture Phase</li>
-								<li>Target Phase</li>
-								<li>Bubble Phase</li>
-							</ul>
-							<a href="http://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm">Event capturing and bubbling</a>
-							<br>
-							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#h2_events-module">W3: Summary of Event Types</a>
+							<h2>give example</h2>
 						</section>
 						<section>
-							<img src="images/eventflow.svg" alt="">
-							<p>must explain it</p>
-							<a href="https://dvcs.w3.org/hg/dom3events/raw-file/tip/html/DOM3-Events.html#h2_dom-event-architecture">W3: DOM events</a>
+							<h2>trace a stack</h2>
+							<pre><code>
+
+							</code></pre>
 						</section>
 						<section>
-							<h2>Event Bubble reference</h2>
-							<a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow">W3: Event flow</a>
-							<br>
-							<a href="http://bitovi.com/blog/2010/10/a-crash-course-in-how-dom-events-work.html">Bitovi: Dom Event</a>
-							<br>
-							<a href="http://javascript.info/tutorial/bubbling-and-capturing">bubbling & Campturing</a>
-							<br>
-							<a href="http://catcode.com/domcontent/events/capture.html">nice & short explanation</a>
-							<br>
-							<a href="http://www.quirksmode.org/js/events_order.html">quirks mode: Event order (didn't read)</a>
-							<br>
-							<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">HTML5rocks: has image below</a>
-							<br>
-							<a href="http://javascriptweblog.wordpress.com/2010/12/22/delegation-vs-inheritance-in-javascript/">Angus Croll: Delegate vs Inheritance</a>
-							<br>							
-							<a href="http://javascript.info/tutorial/event-delegation">Event delegation</a>	
-						</section>						
-					</section>					
+							<h2>event loop</h2>
+							<a href="http://ckazbah.com/2014/07/29/notes-on-javascript-nodejs-and-event-loop-single-thread-of-execution-and-little-bit-of-under-the-hood-stuff/"></a>,
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/EventLoop">MDN: event loop</a>,
+							<a href="http://www.quora.com/How-does-a-JavaScript-engine-work">synchornous tree</a>
+						</section>
+					</section>
 					<section>
 						<section>
 							<h1>Timer</h1>
