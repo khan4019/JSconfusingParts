@@ -479,9 +479,25 @@ function isInteger(x) {
 						</section>
 						<section>
 							<h2><code>Math.round()</code></h2>
+							<pre><code>
+function isInteger(x) {
+    return Math.round(x) === x;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+//test
+isInteger(5); //true
+isInteger(3.5); //false
+							</code></pre>
+							<pre class="fragment"><code>
+isInteger(''); //false
+isIntenger(true); //false
+isInteger(false); //false
+							</code></pre>
 						</section>
 						<section>
 							<h2>parseInt()</h2>
+							<p>might skip it or check 2ality</p>
 						</section>
 						<section>
 							<h2>others</h2>
