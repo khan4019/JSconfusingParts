@@ -263,8 +263,15 @@ typeof b; //undefined
 							<ol>
 								<li><code>null</code> means empty or non-existant</li>
 								<li>indicate "no value"</li>
-								<li><code>null</code> is not an object</li>
-								<li><code>typeof null == 'object'</code> is a bug</li>
+								<div class="fragment">
+									<li><code>null</code> is not an object</li>
+									<li><code>typeof null == 'object'</code> is a bug</li>
+								</div>
+								<br>
+								<li class="fragment">null means empty reference to an object</li>
+								<br>
+								<br>
+								<a href="http://kiro.me/blog/typeof_null.html">null and typeof</a>
 							</ol>
 						</section>
 						<section>
@@ -393,8 +400,8 @@ Boolean(/foo/); // true
 !!/foo/; // true
 							</code></pre>
 							<a href="http://www.sitepoint.com/javascript-truthy-falsy/">Truthy -falsy</a>
-						</section>						
-					</section>					
+						</section>
+					</section>
 					<section>
 						<section>
 							<h1>Number</h1>
@@ -402,7 +409,7 @@ Boolean(/foo/); // true
 						<section>
 							<h2>Arithmatic in JS</h2>
 							<pre><code>
-0.1 + 0.2; //0.30000000000000004 
+0.1 + 0.2; //0.30000000000000004
 
 9809987889988769 + 1; //9809987889988768
 9809987889988770 + 1; //9809987889988772
@@ -422,7 +429,7 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 						<section>
 							<h2>parseInt, parseFloat</h2>
 							<pre><code>
-//var num = parseInt(string, radix); 
+//var num = parseInt(string, radix);
 parseInt('12px'); //12
 parseInt('0xFF'); // 255
 parseInt('a123'); //NaN
@@ -487,18 +494,40 @@ isInteger(false); //false
 						</section>
 						<section>
 							<h2>parseInt()</h2>
-							<p>might skip it or check 2ality</p>
+							<pre><code>
+function isInteger(x) {
+    return parseInt(x, 10) === x;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+isInteger(1000000000000000000000);
+//false
+							</code></pre>
+							<a href="https://twitter.com/rauschma/timelines/468147791379062785">Other method to check integer</a>
 						</section>
 						<section>
-							<h2>others</h2>
-							<a href="https://twitter.com/rauschma/timelines/468147791379062785">get answers from here</a>
+							<h2>NaN</h2>
+							<h4>Not-A-Number</h4>
+							<ul>
+								<li>NaN is a property of global object</li>
+								<li>NaN is equal to Number.NaN</li>
+								<li class="fragment">Processing a number went wrong</li>
+								<div class="fragment">
+									<li><code>Math.sqrt(-1)</code></li>
+									<li><code>parseInt('dude')</code></li>
+								</div>
+							</ul>
+							<pre class="fragment"><code>
+typeof NaN; //number
+							</code></pre>
+							<pre class="fragment"><code>
+NaN != NaN; //true
+NaN !== NaN; //true
+Number.NaN === NaN; //false
+							</code></pre>
 						</section>
 						<section>
-							<h2>zeros in JavaScript</h2>
-
-						</section>
-						<section>
-							<h2>NaN, isNaN, isFinite</h2>
+							<h2>isNaN</h2>
 							<pre><code>
 isNaN(2); //false
 isNaN('2'); //false
@@ -508,18 +537,29 @@ isNaN('2mrw'); //true
 isNaN(''); //true
 							</code></pre>
 							<pre class="fragment"><code>
-NaN === NaN; //false
 isNaN(NaN); //true
 isNaN(undefined); //true
+isNaN({}); //true
+							</code></pre>
+							<pre class="fragment"><code>
+function reallyNaN(x) {
+    return typeof x === 'number' && isNaN(x);
+};
+reallyNaN(undefined); //false
+reallyNaN(NaN); //true
 							</code></pre>
 							<pre class="fragment"><code>
 function reallyNaN(x) {
   return x !== x;
 }
-
-reallyNaN(undefined); //false
-reallyNaN(NaN); //true
 							</code></pre>
+						</section>
+						<section>
+							<h2>Infinity, isInfinity</h2>
+							<p>tell something about infinity and </p>
+						</section>
+						<section>
+							<h2>summary</h2>
 						</section>
 					</section>
 					<section>
