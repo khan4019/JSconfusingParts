@@ -555,10 +555,6 @@ function reallyNaN(x) {
 							</code></pre>
 						</section>
 						<section>
-							<h2>Infinity, isInfinity</h2>
-							<p>tell something about infinity and </p>
-						</section>
-						<section>
 							<h2>summary</h2>
 						</section>
 					</section>
@@ -568,24 +564,20 @@ function reallyNaN(x) {
 							<h2>== or ===</h2>
 						</section>
 						<section>
-							<h2><a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">read this</a></h2>
-							<a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">another link</a>
-						</section>
-						<section>
-							<h2>===</h2>
+							<h2>Strict Equality (===)</h2>
 							<li>check type and value</li>
 							<pre class="fragment"><code>
 //NaN, null and undefined will never === to another type
 //Nan does not even equal to itself
+NaN === NaN; //false
+//+0 equals to -0
 							</code></pre>
 							<div class="fragment">
 								<hr>
-								<h3>==</h3>
-								<ul>
-									<li>will not check type (simplified)</li>
-									<li class="fragment">tolerant</li>
-									<li class="fragment">under the hood converts to convenient type</li>
-								</ul>
+								<h3>Equality (==)</h3>
+								<li>will not check type (simplified)</li>
+								<li class="fragment">tolerant</li>
+								<li class="fragment">under the hood converts to convenient type</li>
 							</div>
 						</section>
 						<section>
@@ -604,15 +596,39 @@ a === c //true
 						</section>
 						<section>
 							<h2>type coercion by ==</h2>
-							<ul>
-								<li>update content: <a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">read this one</a></li>
-								<li>or this one <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">in reddit</a></li>
+							<ol>
 					            <li>both operands are same type: use ===</li>
 					            <li class="fragment">undefined == null</li>
 					            <li class="fragment">One operands is string another is number: convert string to number</li>
 					            <li class="fragment">One is boolean and another is non-boolean: convert boolean to number</li>
-					            <li class="fragment">While comparing a string or number to an object, try to convert the object to a primitive type and then try to compare</li>
-					        </ul>
+					            <li class="fragment">boolean and number: convert boolean to number</li>
+					            <li class="fragment">string/number and object, try to convert the object to a primitive type and then try to compare</li>
+
+					        </ol>
+					        <br>
+					        <br>
+					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
+						</section>
+						<section>
+							<h2>force comparison</h2>
+							<pre><code>
+//force string
+'' + a == ''+b
+
+//force number
++a == +b
+
+//force boolean
+!a == !b
+							</code></pre>
+							<pre class="fragment"><code>
+new String('dude') == 'dude'; //true
+'dude'  == new String('dude'); //true
+
+//not two object
+new String('dude') == new String('dude'); //false
+							</code></pre>
+							<a href="">Spec: 11.9.3</a>
 						</section>
 						<section>
 							<h2>zeros in JavaScript</h2>
@@ -628,19 +644,10 @@ a === c //true
 [] == '0'; //false
 
 //steps
+//explain how this works
 
 							</code></pre>
 							<a href="http://zero.milosz.ca/">zeros in JS</a>
-						</section>
-						<section>
-							<h2>===</h2>
-							<pre><code>
-[] === []; //false
-{} === {}; //false
-							</code></pre>
-							<pre class="fragment"><code>
-NaN === NaN; //false
-							</code></pre>
 						</section>
 						<section>
 							<h2>potato and JS</h2>
@@ -696,28 +703,11 @@ undefined == null; // true
 							<pre class="fragment"><code>
 NaN == null; // false
 NaN == NaN; // false
-
-typeof(NaN); //number
-isNaN(NaN);//use it
 							</code></pre>
 							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
 						</section>
 						<section>
-							<h2>comparing objects or array in JS</h2>
-							<li>compare string constructed. </li>
-						</section>
-						<section>
-							<h3>performance</h3>
-							<a href="http://jsperf.com/implicit-coercion-with-null-and-undefined/5">implicit coercion is faster</a>
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>String</h1>
-						</section>
-						<section>
-							<h2>dont mess up with toString</h2>
-							<a href=""></a>
+							<h3>Summary</h3>
 						</section>
 					</section>
 					<section>
@@ -753,7 +743,7 @@ a[2.5] = 3.5;
 a['myDude'] = 'thatJSDude';
 
 a.length;//4
-a; //[1, 2, 3, 4] 
+a; //[1, 2, 3, 4]
 							</code></pre>
 							<pre class="fragment"><code>
 a['12'] = 55;
@@ -914,8 +904,17 @@ false + undefined; //NaN
 						</section>
 						<section>
 							<h2>infinity</h2>
-							<p>think about whether this is becoming too much </p>
-							<pre><code></code></pre>
+							<pre><code>
+5 + infinity; //infinity
+
+infinity + null; //infinity
+infinity + undefined; //NaN
+infinity + NaN; //NaN
+							</code></pre>
+							<pre class="fragment"><code>
+isFinite(1/0); //false
+isFinite(44); //true
+							</code></pre>
 						</section>
 						<section>
 							<h2>Unary + and -</h2>
@@ -942,15 +941,6 @@ false + undefined; //NaN
 						</section>
 						<section>
 							<h2>Summary</h2>
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>*</h1>
-						</section>
-						<section>
-							<h2>keep it or not</h2>
-							<a href="http://zero.milosz.ca/">zeros in JS</a>
 						</section>
 					</section>
 					<section>
