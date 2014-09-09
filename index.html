@@ -1858,17 +1858,108 @@ frnd.hasOwnProperty('name');
 					</section>
 					<section>
 						<section>
-							<h1>scope</h1>
-							<h3>bring scope from high perf</h3>
-							<h5>also add slides for outer scope and local scope variable with same name. like name conflict</h5>
+							<h1 class="upholdHeader">Scope</h1>
+						</section>
+						<section>
+							<h2>JavaScript Scope</h2>
+							<br>
+							<br>
+							<ul class="fragment">
+									<li>Global scope</li>
+									<br>
+									<li class="fragment">local scope</li>
+							</ul>
+						</section>
+
+						<section>
+							<img src="images/my Drawing/globe.png" alt="">
+						</section>
+
+						<section>
+							<img src="images/my Drawing/globeJackie.jpg" alt="">
+						</section>
+						<section><img src="images/jackie.jpg" alt=""></section>
+						<section><img src="images/newYear.jpg" alt=""></section>
+						<section>
+							<img src="images/my Drawing/globeStars.jpg" alt="">
+						</section>
+						<section>
+							<h2>global scope</h2>
+							<pre><code>var a = 2;
+function b(){
+   console.log(a);
+}							</code></pre>
+							<img class="fragment" src="images/globalscope.png" alt="">
+						</section>
+						<section>
+							<h1>Local Scope</h1>
+						</section>
+						<section>
+							<img  class="fullScreenImage" src="images/my Drawing/gglMap.jpg" alt="">
+						</section>
+						<section>
+							<img src="images/kd.jpg" alt="">
+						</section>
+						<section>
+							<img  class="fullScreenImage" src="images/localStar.jpg" alt="">
+						</section>
+						<section>
+							<h2>local/function scope</h2>
+							<pre><code>function b(){
+   var d = 21;
+   console.log(d);
+}
+b();</code></pre>
+<pre class="fragment"><code>console.log(d); //ReferenceError: d is not defined</code></pre>
+							<div class="fragment">
+								<ol>
+									<li>function call creates execution context (before running any code) </li>
+									<li class="fragment">First thing created is the scope chain</li>
+									<li class="fragment">create arguments, variable, determine <code>this</code></li>
+									<li class="fragment">execute function</li>
+								</ol>
+							</div>
+														<br>
+							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">JS scope chain</a>
+						</section>
+						<section>
+							<img src="images/localScope.png" alt="">
+						</section>
+						<section>
+							<h2>multi execution context</h2>
+							<pre><code>var a = 2;
+function b(){ console.log(a); }
+function c(){ console.log(a); }
+b();
+c();</code></pre>
+							<img class="fragment" src="images/multiScope.png" alt="">
+						</section>
+						<section>
+							<h2>local events</h2>
+							<img src="images/football.jpg" alt="">
+						</section>
+						<section>
+							<img  class="fullScreenImage" src="images/localEvents.jpg" alt="">
+						</section>
+						<section>
+							<h2>nested function (closure)</h2>
+											<img class="fragment" src="images/closureScope.png" alt="">
 						</section>
 						<section>
 							<h2>scope chain</h2>
-							<h4>collection of </h4>
+							<hr>
+							<br>
+							<br>
+							<h4>is a collection of </h4>
 							 <li class="fragment">Current Variable Object</li>
 							 <li class="fragment"> and all parent Variable Object</li>
-							 <li>how scope chain is connected. learn from the link and explain</li>
-							 <a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/"> JS: Scope chain</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>scope</h1>
+							<h3>bring scope from high perf</h3>
+							<h5>also add slides for outer scope and local scope variable with same name. like name conflict</h5>
 						</section>
 						<section>
 							<h2>name conflict</h2>
