@@ -1126,738 +1126,6 @@ ExecutionContext: {
 					</section>
 					<section>
 						<section>
-							<h1>xBind, call and Apply</h1>
-							<br/>
-							<h4>fun with function</h4>
-						</section>
-						<section>
-							<h3>bind specific object to "this"</h3>
-							<h4>sometimes "this" is not the object intended</h4>
-							<pre><code>
-function getMontlhlyFee(fee){
-  var remaining = this.total - fee;
-  this.total = remaining;
-  return this.name +' remaining balance:'+remaining;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var rachel = {name:'Rachel Green', total:500};
-//bind
-var getRachelFee = getMontlhlyFee.bind(rachel, 90);
-//deduct
-getRachelFee();//Rachel Green remaining balance:410
-getRachelFee();//Rachel Green remaining balance:320
-							</code></pre>
-							<pre class="fragment"><code>
-var ross = {name:'Ross Geller', total:250};
-//bind
-var getRossFee = getMontlhlyFee.bind(ross, 25);
-//deduct
-getRossFee(); //Ross Geller remaining balance:225
-getRossFee(); //Ross Geller remaining balance:200
-							</code></pre>
-						</section>
-						<section>
-							<h2>Explain bind</h2>
-								<li>create a robot arm</li>
-								<li>arms takes money from peoples pocket</li>
-								<li>there is a place person need to stand</li>
-								<li>like in club</li>
-								<li>now bind (change) person and money would be taken out from his pocket</li>
-
-						</section>
-						<section>
-							<h4>currying/ partial function application</h4>
-							<pre><code>
-function greet (favLan, name) {
-    if (favLan === 'javascript') {
-        return "Hello, my dear" + name + ".";
-    }
-    else {
-        return "Hi, " + name + ".";
-    }
-}
-							</code></pre>
-							<pre class="fragment"><code>
-// bind to null as "this" keyword wasn't used
-var greetJSDude = greet.bind (null, "javascript");
-
-greetJSDude("James Kirk"); // "Hello, my dear James Kirk."
-greetJSDude("Spock"); // "Hello, my dear Spock."
-							</code></pre>
-							<pre class="fragment"><code>
-var designerBuddy = greet.bind (null, "css");
-
-designerBuddy("Alex"); // "Hi, Alex."
-designerBuddy("Emma Waterloo"); // "Hi, Emma Waterloo."
-							</code></pre>
-							<a href="http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/">bind, call and apply</a>
-						</section>												
-						<section>
-							<h2>call</h2>							
-							<pre><code>
-function Friend(name){
-  return {
-    name:name,
-    libraries:[],
-
-    addLib:function(lib){
-      this.libraries.push(lib);
-    },
-
-    knowLib:function(lib){
-      return this.libraries.indexOf(lib) > -1;
-    }
-  }
-}</code></pre>
-							<pre class="fragment"><code>
-var sheldon = new Friend('Shelodn Cooper');
-sheldon.addLib('angular');
-sheldon.addLib('backbone');
-sheldon.addLib('ember');</code></pre>							
-						<pre class="fragment"><code>
-sheldon.knowLib('ember'); //true
-sheldon.knowLib('jquery'); //false
-						</code></pre>	
-						</section>
-						<section>							
-							<pre><code>
-var raj = {
-  name:'Raj Koothrappali', 
-  libraries:['angular', 'jquery']
-}
-							</code></pre>
-							<pre class="fragment"><code>
-shelod.knowLib.call(raj, 'angular'); //true
-shelod.knowLib.call(raj, 'ember'); //false
-							</code></pre>
-							<h4 class="fragment">call method on another object</h4>
-							<h4 class="fragment">this refers to the first parameter</h4>
-							<h4 class="fragment">reuse of method</h4>
-							<h4 class="fragment">Parameters needs to be explicity mentioned</h4>
-						</section>
-						<section>
-							<h2>more useful example</h2>
-							<pre><code>
-function Friend(name, libraries) {
-  this.name = name;
-  this.libraries = libraries;
-
-  if (libraries.length == 0)
-    throw Error('Are you a manager!');
-  return this;
-}							</code></pre>
-							<pre class="fragment"><code>
-function Developer(name, libraries) {
-  Friend.call(this, name, libraries);
-  this.category = 'developer';
-}
-Developer.prototype = new Friend();
-
-var jsDude = new Developer('JS Dude', ['jquery', 'node.js']);
-							</code></pre>
-							<pre class="fragment"><code>
-function Designer(name, libraries) {
-  Friend.call(this, name, libraries);
-  this.category = 'designer';
-}
-Designer.prototype = new Friend();
-
-var cssBuddy = new Designer('CSS buddy',['sass', 'bootstrap']);
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">MDN:call</a>
-						</section>
-						<section>
-							<h2>apply</h2>
-							<ul>
-								<li>similar to call</li>
-								<li class="fragment">array-like arguments in one parameter</li>
-								<li class="fragment">can pass arguments as well</li>
-								<li class="fragment">Pretty close in performance. but call dont need to evaluate an array</li>
-							</ul>
-							<pre class="fragment"><code>
-//apply
-sheldon.knowLib.apply(raj, ['jquery']); //true
-
-//call
-shelod.knowLib.call(raj, 'angular'); //true
-							</code></pre>
-						</section>
-						<section>
-							<h2>Execute ariable-Arity/ Variadic Function</h2>
-							<pre><code>
-Math.max(2,3,4,5); //5
-Math.max([2,3,4,5]); // NaN
-							</code></pre>
-							<pre class="fragment"><code>
-function getMax(numbers){
-  var max = -Infinity;
-  for (var i = 0, len = numbers.length; i<len; i++) {
-    if (numbers[i] > max)
-      max = numbers[i];
-  }
-  return max;
-}
-
-getMax([2,3,4,5]); //5
-							</code></pre>
-							<pre class="fragment"><code>
-Math.max.apply(null, [2,3,4,5]); //5
-Math.min.apply(null, [2,3,4,5]); //2
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">MDN: apply</a>
-						</section>
-						<section>
-							<h2>Summary and recap</h2>
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>this</h1>
-							<h4>What the heck is "this"?</h4>
-							<h4><a href="http://www.2ality.com/2014/05/this.html">Read this from 2ality and check whether he has something new</a></h4>
-						</section>
-						<section>
-							<h2>What is this?</h2>
-							<pre><code>
-this;//window
-
-function whatIsThis() { 
-   return this; 
-}
-whatIsThis(); //window</code></pre>
-							<pre class="fragment"><code>
-function justAddName(name) {
-  this.name = name;
-  return this;
-}
-
-justAddName(" Amy Farrah Fowler");//window
-console.log(window.name); //  Amy Farrah Fowler</code></pre>
-				  			<pre class="fragment"><code>
-(function(){
-   return this;
-})();
-//window</code></pre>
-							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
-						</section>
-						<section>
-							<h2>strict mode</h2>
-							<pre><code>
-(function(){
-   'use strict';
-   return this;
-})(); //undefined</code></pre>
-							<pre class="fragment"><code>
-(function(self){
-  'use strict';
-  return self;
-})(this);
-//window</code></pre>
-							<pre class="fragment"><code>
-(function(){
-  'use strict';
-  return this;
-}).call(this);
-//window</code></pre>
-							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
-						</section>
-						<section>
-							<h2>this of an Object</h2>
-							<pre><code>
-var buddy = {
-  firstName:'penny',
-  lastName:this.firstName,
-  context:this
-}
-							</code></pre>
-							<pre class="fragment"><code>
-buddy.firstName; //penny
-buddy.lastName;//undefined
-buddy.context;//window
-							</code></pre>
-							<pre class="fragment"><code>
-var buddy = {
-  getContext: function() {
-   return this;
-  }
-};
-buddy.getContext(); // Object {getContext: function}</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
-						</section>
-						<section>
-							<h4>Access object propeties via "this"</h4>
-							<pre><code>
-var buddy = {  
-  name:'Tom Hanks',
-
-  libraries:['forestJS', 'castJS', 'greenMile'],
-  
-  firstLib:function(){
-    return this.libraries[0];
-  }
-
-};
-
-buddy.firstLib();//forestJS
-							</code></pre>
-							<pre class="fragment"><code>
-buddy.addLib = function(newLib){
-  this.libraries.push(newLib);
-}
-
-buddy.addLib('angular');
-buddy.libraries; //["jquery", "ember", "backbone", "angular"]
-							</code></pre>
-						</section>
-						<section>
-							<h4>understand the context of execution</h4>
-							<pre><code>
-var a = {
-    b: function() {
-        return this;
-    }
-};
-a.b();//Object {b: function}</code></pre>
-							<pre class="fragment"><code> 
-var foo = a.b;
-foo(); //window</code></pre>
-							<pre class="fragment"><code> 
-var foo = function(){
-  return this;	
-};
-foo(); //window</code></pre>
-							<pre class="fragment"><code>
-var d = {};
-d.b = a.b;
-d.b();//Object {b: function}
-							</code></pre>
-							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
-						</section>
-						<section>
-							<h3>some more execution context</h3>
-							<pre><code>
-var a = {
-    b: function() {
-        var c = function() {
-            return this;
-        };
-        return c();
-    }
-}; 
-a.b();//window</code></pre>
-							<pre class="fragment"><code>
-var a = {
-    b: function() {
-        return (function() {return this;})();
-    }
-};
- 
-a.b(); //window</code></pre>
-							<h4 class="fragment">strict mode will return undefined</h4>	
-							<a href="http://stackoverflow.com/questions/20309236/understanding-javascript-this-with-private-function-and-self-executing-function/20309357?noredirect=1#20309357">context of this</a>
-						</section>							
-						<section>
-							<h2>constructor</h2>
-							<h4>this= newly constructed object</h4>
-							<pre><code>
-function Friend(name) {
-  this.name= name;
-  this.context = this;
-}
-
-var frnd1 = new Friend('nice guy');
-var frnd2 = new Friend('common guy');
-							</code></pre>
-							<pre class="fragment"><code>
-frnd1.name; //nice guy
-frnd1.context;//Friend {name: "nice guy", context: Friend}
-							</code></pre>
-							<pre class="fragment"><code>
-frnd2.name; //common guy
-frnd2.context;//Friend {name: "common guy", context: Friend}
-
-window.name;//undefined</code></pre>
-						</section>
-						<section>
-							<h3>function returning object</h3>
-							<pre><code>
-function CrazyFriend(name) {
-  this.name= name;  
-  return {
-    name:this.name,
-    context:this
-  }
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var crazy1 = CrazyFriend('Howard Wolowitz');
-crazy1.name;//Howard Wolowitz'
-window.name;//Howard Wolowitz'
-crazy1.context;//window
-							</code></pre>
-							<pre class="fragment"><code>
-var crazy21 = new CrazyFriend('Howard Wolowitz');
-crazy21.name;//Howard Wolowitz'
-crazy21.context;//CrazyFriend {name: "Howard Wolo"}
-							</code></pre>
-						</section>
-						<section>
-							<h2>prototype chain</h2>
-							<h4>access property, methods in the prototype chain</h4>
-							<pre><code>
-var dad = {
-  fathersName:'big Dad'
-}
-
-var child =Object.create(dad);
-child.fathersName; //big Dad
-							</code></pre>
-							<pre class="fragment"><code>
-child.whoIsYourFather:function(){
-    return this.fathersName;
- }
-child.whoIsYourFather(); //big Dad
-							</code></pre>
-							<pre class="fragment"><code>
-child.hasOwnProperty('fathersName'); //false
-Object.getPrototypeOf(child); //{fathersName: "big Dad"}
-							</code></pre>
-							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
-						</section>
-						<section>
-							<h2>setTimeout</h2>
-							<pre><code>
-var bigBang = {
-  name:'Penny',
-  getContext:function(){
-    return this;
-  }
-}
-bigBang.getContext();//{name: "Penny", getContext: function}
-							</code></pre>
-							<pre class="fragment"><code>
-function context(){
-  console.log(this);
-}
-
-var bigBang = {
-  name:'Bernadette',
-  getContext:function(){
-    setTimeout(context, 10);
-  }
-}
-bigBang.getContext();//window
-							</code></pre>	
-						</section>
-						<section>
-							<h4>setTimeout inside constructor</h4>
-							<pre><code>
-function Menu(item){
-  this.item = item;
-  this.context = this;
-
-  setTimeout(function(){
-    console.log('setTimeout context:', this);
-  }, 10);
-
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var earlyMorning = new Menu('starBucks');
-
-//setTimeout context: window
-earlyMorning.context//Menu {item: "starBucks", context: Menu}
-							</code></pre>
-							<h4>Same issues with setInterval</h4>
-						</section>
-						<section>
-							<h3>How to fix this?</h3>
-							<pre><code>
-function Menu(item){
-  var that = this;
-  this.item = item;
-  this.context = this;
-
-  setTimeout(function(){
-    console.log('setTimeout context:', that);
-  }, 10);
-
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var earlyMorning = new Menu('starBucks');
-
-//setTimeout context: Menu {item: "starBucks", context: Menu}
-earlyMorning.context//Menu {item: "starBucks", context: Menu}
-							</code></pre>
-							<h4 class="fragment">Other solutions. Coming soon...</h4>
-						</section>
-						<section>
-							<h2>"this" in arguments</h2>
-							<h4>8 ES5 function allows thisArg</h4>
-							<pre><code>
-Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
-Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
-Function.prototype.apply( thisArg, argArray )
-							</code></pre>
-							<pre class="fragment"><code>
-Array.prototype.every( callbackfn [ , thisArg ] )
-Array.prototype.some( callbackfn [ , thisArg ] )
-Array.prototype.forEach( callbackfn [ , thisArg ] )
-Array.prototype.map( callbackfn [ , thisArg ] )
-Array.prototype.filter( callbackfn [ , thisArg ] )
-							</code></pre>
-							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES5: 5 parts</a>
-						</section>
-						<section>
-							<h2>bind, call and apply</h2>
-							<pre><code>
-function getMenu(){
-  return this.menu;
-}
-
-var forDev = {menu: 'pizza'};
-
-var devLunch = getMenu.bind(forDev);
-devLunch(); // pizza
-							</code></pre>
-							<pre class="fragment"><code>
-function lunch(budget, time){
-  return this.menu +' for ' + budget +' within '+ time +' min.';
-}
-
-var forDev = {menu: 'pizza'};
-							</code></pre>							
-							<pre class="fragment"><code>
-lunch.call(forDev, 5, 10);//pizza for 5 within 10 min.
-lunch.apply(forDev, [5, 10]);//pizza for 5 within 10 min.
-							</code></pre>
-						</section>
-						<section>							
-							<h2>DOM event handler</h2>
-							<button id="myButton" style="font-size: 1.1em;">my button</button>
-							<h4>this = element the event fired from</h4>
-							<pre><code>
-function bluify(e){
-  console.log(this === e.currentTarget); // Always true
-  console.log(this === e.target);// true when currentTarget and target are the same object
-  this.style.backgroundColor = '#A5D9F3';
-}
-							</code></pre>
-							<pre><code>
-//execute it in console
-document.getElementById('myButton').addEventListener('click', function(){
-console.log(this);
-}, false);
-							</code></pre>	
-							<h4>same for inline element this</h4>					
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
-						</section>
-						<section>
-							<h4>Eval doesn't have special context</h4>
-							<pre><code>
-console.log(eval('this==window'));//true
- 
-var a = {
-    b: function() {
-        eval('console.log(this==a)');
-    }
-};
- 
-a.b(); //true;
-							</code></pre>
-							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
-						</section>						
-						<section>
-							<h2>Now. I know this</h2>
-							<ul>
-								<li class="fragment oneFragmentAtaTime">this = window (function context)</li>
-								<li class="fragment oneFragmentAtaTime">this = undefined (strict mode IIFE)</li>
-								<li class="fragment oneFragmentAtaTime">this = object (called in object context)</li>
-								<li class="fragment oneFragmentAtaTime">this = object (constructor: new keyword)</li>
-								<li class="fragment oneFragmentAtaTime">this has access to all inherited properties</li>
-								<li class="fragment oneFragmentAtaTime">this = object (Arg of bind, call, apply)</li>
-								<li class="fragment oneFragmentAtaTime">this = window (inside setTimeout)</li>
-								<li class="fragment oneFragmentAtaTime">this = element the event fired from</li>
-							</ul>	
-							<!-- <h4 class="hidden">graphical/ list items as summary to recap</h4> -->
-							<!-- <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JS: execution context</a> -->							
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Inheritance</h1>
-							<a href="http://blogs.msdn.com/b/eternalcoding/archive/2014/08/20/simple-inheritance-with-javascript.aspx">simple inheritance, have a look</a>
-							<h3>could move to deleted scene</h3>
-						</section>
-						<section>
-							<h3></h3>
-							<ul class="">
-								<li>Only one construct in JS: object</li>
-								<li class="fragment">Each object has an internatl link (prototype) to another object</li>
-								<li class="fragment">Prototype itself is an object</li>
-								<li class="fragment">Prototype object has its own prototype</li>
-								<li class="fragment">this link goes until it hits null</li>
-								<li class="fragment">null has no prototype.</li>
-								<li class="fragment">null is the final end of prototype chain</li>
-							</ul>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance and prototype chain</a>
-						</section>
-						<section>
-							<h2>Interesting Drawing to explain inheritance</h2>
-							<pre><code></code></pre>
-							<p>create one: do some work</p>
-							<a href="http://davidshariff.com/blog/javascript-inheritance-patterns/">Inheritance Pattern</a>
-							<br>
-							<a href="http://javascriptweblog.wordpress.com/2010/06/07/understanding-javascript-prototypes/#more-645">angus croll: inheritance (read this)</a>
-						</section>
-						<section>
-							<h2>constructor</h2>
-							<pre><code>
-function Friend(name) {
-  this.name = name;
-  this.libraries = [];
-}
-
-Friend.prototype = {
-  addLibrary: function(newLib){
-    this.libraries.push(newLib);
-  }
-};
-
-var frnd = new Friend('Angular Ember');
-frnd.addLibrary('asm.js');
-							</code></pre>
-							<pre class="fragment"><code>
-function CloseFriend(name){
- this.name = name;
-}
-
-CloseFriend.prototype = new Friend();
-							</code></pre>
-							<p>use instanceOf somewhere and explain it</p>
-							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
-						</section>
-						<section>
-							<h2>instanceOf</h2>
-							<h4>talk about instance of</h4>
-							<pre><code>
-//add example
-							</code></pre>
-						</section>
-						<section>
-							<h2>instanceof</h2>
-							<h4>doesn't work on primitive values</h4>
-							<pre><code>
-//does not work on primtive values
-"" instanceof String; //false
-3 instanceof Number; //false
-false instanceof Boolean; //false
-							</code></pre>
-							<pre class="fragment"><code>
-//works on objects
-new String() instanceof String; //true
-new Number() instanceof Number; //true
-new Boolean() instanceof Boolean; //true
-[] instanceof Array; //true
-{} instanceof Object; //true
-/foo/ instanceof RegExp; //true
-							</code></pre>
-							<pre class="fragment"><code>
-//be aware
-[] instanceof Object; //true
-							</code></pre>
-						</section>
-						<section>
-							<h2>object.create</h2>
-							<pre><code>
-var Friend = {name: 'Geek smith'}; 
-Friend.prototype; //undefined
-
-var JSFriend = Object.create(Friend);
-// JSFriend => Friend => Object.prototype => null
-console.log(JSFriend.name); // Geek Smith
-							</code></pre>
-							<pre class="fragment"><code>
-var AngularFriend = Object.create(JSFriend);
-// AngularFriend => JSFriend => Friend => Object.prototype => null
-console.log(AngularFriend.name); //Geek Smith
-
-var RandomGuy = Object.create(null);
-// RandomGuy => null
-console.log(RandomGuy.hasOwnProperty); // undefined
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance</a>
-						</section>
-						<section>
-							<h3>New / update prototype property</h3>
-							<pre><code>
-function Friend(name){
-  this.name = name;
-}
-
-Friend.prototype ={
-  knowJS:true
-}
-
-var frnd = new Friend('Scala Guy');
-frnd.city = 'Chicago';
-console.log(frnd);
-//Friend {name: "Scala Guy", city: 'chicago', knowJS: true}
-frnd.hasOwnProperty('city'); //true
-							</code></pre>
-							<pre class="fragment"><code>
-var frnd = new Friend('Scala Guy');
-frnd.knowJS = false;
-console.log(frnd);
-//Friend {name: "Scala Guy", knowJS: false, knowJS: true}
-							</code></pre>
-							<a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">JS Prototype</a>
-						</section>
-						<section>
-							<h2>Lookup for properties</h2>
-							<ul>
-								<li>negative impact when have to traverse prototype chain</li>
-								<li class="fragment">monkey patching (extend build in object.prototype)</li>
-								<li class="fragment">delete wont delete inheriter properties</li>
-								<li class="fragment"></li>								
-							</ul>
-							<img src="images/lookForProperty.png" alt="">
-							<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">delete inherited property</a>							
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-function Friend(name){
-  this.name = name;
-}
-
-Friend.prototype ={
-  knowJS:true
-}
-
-var frnd = new Friend('Scala Guy');
-'knowJS' in frnd; //true
-							</code></pre>
-							<pre class="fragment"><code>
-frnd.hasOwnProperty('name'); //true
-frnd.hasOwnProperty('knowJS'); //false
-							</code></pre>
-							<pre class="fragment"><code>
-frnd.hasOwnProperty = 10;
-frnd.hasOwnProperty('name'); 
-//TypeError: Property 'hasOwnProperty' of object is not a function
-{}.hasOwnProperty.call(frnd, 'name'); //true
-							</code></pre>
-						</section>
-						<section>
-							<h2>getPrototypeOf, __Proto__</h2>
-							<p>source: Effective JS p-118</p>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1 class="upholdHeader">Scope</h1>
 						</section>
 						<section>
@@ -1953,106 +1221,143 @@ c();</code></pre>
 							<h4>is a collection of </h4>
 							 <li class="fragment">Current Variable Object</li>
 							 <li class="fragment"> and all parent Variable Object</li>
+							 <br>
+							 <li class="fragment"><a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let">what you need to know about block scope- let</a></li>
+							 <br>
+							 <br>
+							 <li class="fragment" style="color:red;">How scope chain is created????</li>
 						</section>
 					</section>
 					<section>
 						<section>
-							<h1>scope</h1>
-							<h3>bring scope from high perf</h3>
-							<h5>also add slides for outer scope and local scope variable with same name. like name conflict</h5>
+							<h1>Closure</h1>
+							<p>the act or process of closing something.</p>
 						</section>
 						<section>
-							<h2>name conflict</h2>
+							<h4>Refer to variables outside of current function</h4>
 							<pre><code>
-function foo(){
-  var a = 2;
-  function bar(){
-   a = 3;
-   console.log('inside a:', a)
- }
- bar();
- console.log('outside a:', a)
+function getCounter(){
+  var i =0;
+
+  function increment(){
+    return ++i;
+  }
+
+  return increment;
 }
 							</code></pre>
 							<pre class="fragment"><code>
-foo();
-//inside a:3
-//outside a:3
+var myCounter = getCounter();
+
+myCounter();//1
+myCounter();//2
+myCounter();//3
+myCounter();//4
 							</code></pre>
-						</section>
-						<section>
-							<h2>name conflict</h2>
-							<pre><code>
-function foo(){
-  var a = 2;
-  function bar(){
-   var a = 3;
-   console.log('inside a:', a)
- }
- bar();
- console.log('outside a:', a)
-}
-							</code></pre>
-							<pre class="fragment"><code>
-foo();
-//inside a:3
-//outside a:2
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">JS: name conflict</a>
+							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">How Closure works</a>
 							<br>
-							<a href="http://stackoverflow.com/questions/500431/javascript-variable-scope">variable scope</a>
+							<a href="http://www.kirupa.com/html5/closures_in_javascript.htm">Closure in Javascript (nice article)</a>
 						</section>
 						<section>
-							<h2>closure name conflict</h2>
+							<h3>maintain outside reference </h3>
 							<pre><code>
-// inner function take precenden
-function getExpertLevel(){
-  var level = 4;
-  return function (level){
-    return level;
+function generateGreet(greet){
+  
+  function sayHelloTo (name){
+      return greet + ', ' + name;
+  }
+
+  return sayHelloTo;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var hiTo = generateGreet('Hi');
+
+hiTo('JavaScript'); // Hi, Javascript
+hiTo('Angular'); // Hi, Angular
+							</code></pre>							
+							<pre class="fragment"><code>
+var booTo = generateGreet('Boo');
+
+hiTo('Java'); // Boo, Java
+hiTo('XML'); // Boo, XML
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN:closure</a>
+						</section>
+						<section>
+							<h2>Cleaner Closure</h2>							
+							<pre><code>
+function generateGreet(greet){
+  
+  function sayHelloTo (name){
+      return greet + ', ' + name;
+  }
+
+  return sayHelloTo;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+function generateGreet(greet){
+
+  //return anonymous function
+  return function (name){
+      return greet + ', ' + name;
   }
 }
 							</code></pre>
-							<pre class="fragment"><code>
-var exLevel = getExpertLevel();
-exLevel(2); //2
-exLevel(5); //4
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
+							<a href="http://stackoverflow.com/questions/12930272/javascript-closures-vs-anonymous-functions">closures vs anonymous function</a>
 						</section>
-												<section>
-							<h2>closure name conflict</h2>
+						<section>
+							<h2>closure</h2>
+							<ul>
+								<li>Refer to variables, parameters outside of current scope</li>
+								<li class="fragment">doesn't have to return anything</li>
+								<li class="fragment">read and write outer scope variable</li>
+								<li class="fragment">store outer variables by reference not by value (add an example for this)</li>
+								<li class="fragment"></li>
+							</ul>
+							<a href="">Effective Javascript (item -13)</a>
+						</section>
+						<section>
+							<h2></h2>
 							<pre><code>
-// inner function take precenden
-function getExpertLevel(){
-  var level = 4;
-  return function (){
-    var level= 2;
-    return level;
+function abc (){
+  var result = [];
+  for(var i=0; i<5; i++){
+   result.push(function (){console.log(i)});
   }
+  return result;
 }
 							</code></pre>
 							<pre class="fragment"><code>
-var exLevel = getExpertLevel();
-exLevel(); //2
-exLevel(5); //2
+var kk = abc();
+kk[1]();//5
+kk[2]();//5
 							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
+							<pre class="fragment"><code>
+//solve by IIFE
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example">closure inside loops</a>
 						</section>
 						<section>
-							<h2>Give graphical example here</h2>
-							<pre><code>
-//create some code block
-//and apply different color 
-//highlight to explain scope
-							</code></pre>
-							<a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">JS scoping and hoisting</a>
-							<br>
-							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">David Sharif: scope</a>
+							<h2>closure is used</h2>
+							<li>function inside another function</li>
+							<li>eval() inside a function. can reference/create or update local variables</li>
+							<li class="lineThrough">Function() inside a function (cannot reference the local variables)</li>
+							<li class="fragment">new set of local variables is kept every time a function with a closure is called</li>
+							<li class="fragment">no easier way to detect closure</li>
+							<a href="http://javascript-reference.info/javascript-closures-for-dummies.htm">Closure for dummies</a>
+							<br/>
+							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">add: when should use closure</a>
+
 						</section>
 						<section>
-							<h2>Add ES6 let</h2>
-							<a href="http://es6rocks.com/2014/08/what-you-need-to-know-about-block-scope-let">what you need to know about block scope- let</a>
+							<h3>Add graphical explanation</h3>
+							<p>both the link have some image</p>
+							<p>make something cool</p>
+							<a href="http://doctrina.org/JavaScript:Why-Understanding-Scope-And-Closures-Matter.html">Good link and image:</a>
+							<br/>
+							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">Nettuts: closure</a>
 						</section>
 					</section>
 					<section>
@@ -2065,7 +1370,7 @@ exLevel(5); //2
 function justLooping() {
     for (var i = 0; i &lt; 5; i++) {
         //do something
-    } 
+    }
     console.log(i);
 }
 							</code></pre>
@@ -2088,14 +1393,14 @@ foo();//undefined
 							<img class="fragment" src="images/hoistBike.jpg" alt="">
 							<img class="fragment" src="images/hoistAnt.jpg" alt="">
 						</section>
-						<section>	
+						<section>
 							<pre><code>
 function foo(){
   console.log(a);
   //do something
   var a = 42;
 }
-							</code></pre>						
+							</code></pre>
 							<pre class="fragment"><code>
 function foo(){
   var a;
@@ -2105,22 +1410,22 @@ function foo(){
 }
 							</code></pre>
 						</section>
-						<section>	
+						<section>
 							<pre><code>
 function justLooping() {
-    
+
     for (var i = 0; i &lt; 5; i++) {
         //do something
-    } 
+    }
     console.log(i);
 }
-							</code></pre>						
+							</code></pre>
 							<pre class="fragment"><code>
 function justLooping() {
     var i;
     for (i = 0; i &lt; 5; i++) {
         //do something
-    } 
+    }
     console.log(i);
 }
 							</code></pre>
@@ -2260,6 +1565,473 @@ console.log(a);//?
 						<section>
 							<h2>move this before</h2>
 							<a href="http://stackoverflow.com/questions/23889317/explain-this-javascript-name-clash">nice and simple hoisting issue</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>this</h1>
+							<h4>What the heck is "this"?</h4>
+						</section>
+						<section>
+							<h2>What is this?</h2>
+							<pre><code>
+this;//window
+
+function whatIsThis() {
+   return this;
+}
+whatIsThis(); //window</code></pre>
+							<pre class="fragment"><code>
+function justAddName(name) {
+  this.name = name;
+  return this;
+}
+
+justAddName(" Amy Farrah Fowler");//window
+console.log(window.name); //  Amy Farrah Fowler</code></pre>
+				  			<pre class="fragment"><code>
+(function(){
+   return this;
+})();
+//window</code></pre>
+							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
+						</section>
+						<section>
+							<h2>strict mode</h2>
+							<pre><code>
+(function(){
+   'use strict';
+   return this;
+})(); //undefined</code></pre>
+							<pre class="fragment"><code>
+(function(self){
+  'use strict';
+  return self;
+})(this);
+//window</code></pre>
+							<pre class="fragment"><code>
+(function(){
+  'use strict';
+  return this;
+}).call(this);
+//window</code></pre>
+							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
+						</section>
+						<section>
+							<h2>this of an Object</h2>
+							<pre><code>
+var buddy = {
+  firstName:'penny',
+  lastName:this.firstName,
+  context:this
+}
+							</code></pre>
+							<pre class="fragment"><code>
+buddy.firstName; //penny
+buddy.lastName;//undefined
+buddy.context;//window
+							</code></pre>
+							<pre class="fragment"><code>
+var buddy = {
+  getContext: function() {
+   return this;
+  }
+};
+buddy.getContext(); // Object {getContext: function}</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+						</section>
+						<section>
+							<h4>Access object propeties via "this"</h4>
+							<pre><code>
+var buddy = {
+  name:'Tom Hanks',
+
+  libraries:['forestJS', 'castJS', 'greenMile'],
+
+  firstLib:function(){
+    return this.libraries[0];
+  }
+
+};
+
+buddy.firstLib();//forestJS
+							</code></pre>
+							<pre class="fragment"><code>
+buddy.addLib = function(newLib){
+  this.libraries.push(newLib);
+}
+
+buddy.addLib('angular');
+buddy.libraries; //["jquery", "ember", "backbone", "angular"]
+							</code></pre>
+						</section>
+						<section>
+							<h4>understand the context of execution</h4>
+							<pre><code>
+var a = {
+    b: function() {
+        return this;
+    }
+};
+a.b();//Object {b: function}</code></pre>
+							<pre class="fragment"><code>
+var foo = a.b;
+foo(); //window</code></pre>
+							<pre class="fragment"><code>
+var foo = function(){
+  return this;
+};
+foo(); //window</code></pre>
+							<pre class="fragment"><code>
+var d = {};
+d.b = a.b;
+d.b();//Object {b: function}
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
+						</section>
+						<section>
+							<h3>some more execution context</h3>
+							<pre><code>
+var a = {
+    b: function() {
+        var c = function() {
+            return this;
+        };
+        return c();
+    }
+}; 
+a.b();//window</code></pre>
+							<pre class="fragment"><code>
+var a = {
+    b: function() {
+        return (function() {return this;})();
+    }
+};
+
+a.b(); //window</code></pre>
+							<h4 class="fragment">strict mode will return undefined</h4>
+							<a href="http://stackoverflow.com/questions/20309236/understanding-javascript-this-with-private-function-and-self-executing-function/20309357?noredirect=1#20309357">context of this</a>
+						</section>
+						<section>
+							<h2>constructor</h2>
+							<h4>this= newly constructed object</h4>
+							<pre><code>
+function Friend(name) {
+  this.name= name;
+  this.context = this;
+}
+
+var frnd1 = new Friend('nice guy');
+var frnd2 = new Friend('common guy');
+							</code></pre>
+							<pre class="fragment"><code>
+frnd1.name; //nice guy
+frnd1.context;//Friend {name: "nice guy", context: Friend}
+							</code></pre>
+							<pre class="fragment"><code>
+frnd2.name; //common guy
+frnd2.context;//Friend {name: "common guy", context: Friend}
+
+window.name;//undefined</code></pre>
+						</section>
+						<section>
+							<h3>function returning object</h3>
+							<pre><code>
+function CrazyFriend(name) {
+  this.name= name;
+  return {
+    name:this.name,
+    context:this
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var crazy1 = CrazyFriend('Howard Wolowitz');
+crazy1.name;//Howard Wolowitz'
+window.name;//Howard Wolowitz'
+crazy1.context;//window
+							</code></pre>
+							<pre class="fragment"><code>
+var crazy21 = new CrazyFriend('Howard Wolowitz');
+crazy21.name;//Howard Wolowitz'
+crazy21.context;//CrazyFriend {name: "Howard Wolo"}
+							</code></pre>
+						</section>
+						<section>
+							<h2>prototype chain</h2>
+							<h4>access property, methods in the prototype chain</h4>
+							<pre><code>
+var dad = {
+  fathersName:'big Dad'
+}
+
+var child =Object.create(dad);
+child.fathersName; //big Dad
+							</code></pre>
+							<pre class="fragment"><code>
+child.whoIsYourFather:function(){
+    return this.fathersName;
+ }
+child.whoIsYourFather(); //big Dad
+							</code></pre>
+							<pre class="fragment"><code>
+child.hasOwnProperty('fathersName'); //false
+Object.getPrototypeOf(child); //{fathersName: "big Dad"}
+							</code></pre>
+							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
+						</section>
+						<section>
+							<h2>setTimeout</h2>
+							<pre><code>
+var bigBang = {
+  name:'Penny',
+  getContext:function(){
+    return this;
+  }
+}
+bigBang.getContext();//{name: "Penny", getContext: function}
+							</code></pre>
+							<pre class="fragment"><code>
+function context(){
+  console.log(this);
+}
+
+var bigBang = {
+  name:'Bernadette',
+  getContext:function(){
+    setTimeout(context, 10);
+  }
+}
+bigBang.getContext();//window
+							</code></pre>
+						</section>
+						<section>
+							<h4>setTimeout inside constructor</h4>
+							<pre><code>
+function Menu(item){
+  this.item = item;
+  this.context = this;
+
+  setTimeout(function(){
+    console.log('setTimeout context:', this);
+  }, 10);
+
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var earlyMorning = new Menu('starBucks');
+
+//setTimeout context: window
+earlyMorning.context//Menu {item: "starBucks", context: Menu}
+							</code></pre>
+							<h4>Same issues with setInterval</h4>
+						</section>
+						<section>
+							<h3>How to fix this?</h3>
+							<pre><code>
+function Menu(item){
+  var that = this;
+  this.item = item;
+  this.context = this;
+
+  setTimeout(function(){
+    console.log('setTimeout context:', that);
+  }, 10);
+
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var earlyMorning = new Menu('starBucks');
+
+//setTimeout context: Menu {item: "starBucks", context: Menu}
+earlyMorning.context//Menu {item: "starBucks", context: Menu}
+							</code></pre>
+							<h4 class="fragment">Other solutions. Coming soon...</h4>
+						</section>
+						<section>
+							<h2>"this" in arguments</h2>
+							<h4>8 ES5 function allows thisArg</h4>
+							<pre><code>
+Function.prototype.bind( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
+Function.prototype.apply( thisArg, argArray )
+							</code></pre>
+							<pre class="fragment"><code>
+Array.prototype.every( callbackfn [ , thisArg ] )
+Array.prototype.some( callbackfn [ , thisArg ] )
+Array.prototype.forEach( callbackfn [ , thisArg ] )
+Array.prototype.map( callbackfn [ , thisArg ] )
+Array.prototype.filter( callbackfn [ , thisArg ] )
+							</code></pre>
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES5: 5 parts</a>
+						</section>
+						<section>
+							<h2>bind, call and apply</h2>
+							<pre><code>
+function getMenu(){
+  return this.menu;
+}
+
+var forDev = {menu: 'pizza'};
+
+var devLunch = getMenu.bind(forDev);
+devLunch(); // pizza
+							</code></pre>
+							<pre class="fragment"><code>
+function lunch(budget, time){
+  return this.menu +' for ' + budget +' within '+ time +' min.';
+}
+
+var forDev = {menu: 'pizza'};
+							</code></pre>
+							<pre class="fragment"><code>
+lunch.call(forDev, 5, 10);//pizza for 5 within 10 min.
+lunch.apply(forDev, [5, 10]);//pizza for 5 within 10 min.
+							</code></pre>
+						</section>
+						<section>
+							<h2>DOM event handler</h2>
+							<button id="myButton" style="font-size: 1.1em;">my button</button>
+							<h4>this = element the event fired from</h4>
+							<pre><code>
+function bluify(e){
+  console.log(this === e.currentTarget); // Always true
+  console.log(this === e.target);// true when currentTarget and target are the same object
+  this.style.backgroundColor = '#A5D9F3';
+}
+							</code></pre>
+							<pre><code>
+//execute it in console
+document.getElementById('myButton').addEventListener('click', function(){
+console.log(this);
+}, false);
+							</code></pre>
+							<h4>same for inline element this</h4>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
+						</section>
+						<section>
+							<h4>Eval doesn't have special context</h4>
+							<pre><code>
+console.log(eval('this==window'));//true
+
+var a = {
+    b: function() {
+        eval('console.log(this==a)');
+    }
+};
+
+a.b(); //true;
+							</code></pre>
+							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
+						</section>
+						<section>
+							<h2>Now. I know this</h2>
+							<ul>
+								<li class="fragment oneFragmentAtaTime">this = window (function context)</li>
+								<li class="fragment oneFragmentAtaTime">this = undefined (strict mode IIFE)</li>
+								<li class="fragment oneFragmentAtaTime">this = object (called in object context)</li>
+								<li class="fragment oneFragmentAtaTime">this = object (constructor: new keyword)</li>
+								<li class="fragment oneFragmentAtaTime">this has access to all inherited properties</li>
+								<li class="fragment oneFragmentAtaTime">this = object (Arg of bind, call, apply)</li>
+								<li class="fragment oneFragmentAtaTime">this = window (inside setTimeout)</li>
+								<li class="fragment oneFragmentAtaTime">this = element the event fired from</li>
+							</ul>
+							<!-- <h4 class="hidden">graphical/ list items as summary to recap</h4> -->
+							<!-- <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JS: execution context</a> -->
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>name conflict</h1>
+						</section>
+						<section>
+							<h2>name conflict</h2>
+							<pre><code>
+function foo(){
+  var a = 2;
+  function bar(){
+   a = 3;
+   console.log('inside a:', a)
+ }
+ bar();
+ console.log('outside a:', a)
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo();
+//inside a:3
+//outside a:3
+							</code></pre>
+						</section>
+						<section>
+							<h2>name conflict</h2>
+							<pre><code>
+function foo(){
+  var a = 2;
+  function bar(){
+   var a = 3;
+   console.log('inside a:', a)
+ }
+ bar();
+ console.log('outside a:', a)
+}
+							</code></pre>
+							<pre class="fragment"><code>
+foo();
+//inside a:3
+//outside a:2
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">JS: name conflict</a>
+							<br>
+							<a href="http://stackoverflow.com/questions/500431/javascript-variable-scope">variable scope</a>
+						</section>
+						<section>
+							<h2>closure name conflict</h2>
+							<pre><code>
+// inner function take precenden
+function getExpertLevel(){
+  var level = 4;
+  return function (level){
+    return level;
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var exLevel = getExpertLevel();
+exLevel(2); //2
+exLevel(5); //4
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
+						</section>
+												<section>
+							<h2>closure name conflict</h2>
+							<pre><code>
+// inner function take precenden
+function getExpertLevel(){
+  var level = 4;
+  return function (){
+    var level= 2;
+    return level;
+  }
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var exLevel = getExpertLevel();
+exLevel(); //2
+exLevel(5); //2
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope">function var name conlict</a>
+						</section>
+						<section>
+							<h2>Give graphical example here</h2>
+							<pre><code>
+//create some code block
+//and apply different color 
+//highlight to explain scope
+							</code></pre>
+							<a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">JS scoping and hoisting</a>
+							<br>
+							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">David Sharif: scope</a>
 						</section>
 					</section>
 					<section>
@@ -2422,138 +2194,6 @@ foo(1, 2); //43
 							<pre><code>
 document.getElementByTagName('li')
 							</code></pre>
-						</section>
-					</section>
-					<section>
-						<section>
-							<h1>Closure</h1>
-							<p>the act or process of closing something.</p>
-						</section>
-						<section>
-							<h4>Refer to variables outside of current function</h4>
-							<pre><code>
-function getCounter(){
-  var i =0;
-
-  function increment(){
-    return ++i;
-  }
-
-  return increment;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var myCounter = getCounter();
-
-myCounter();//1
-myCounter();//2
-myCounter();//3
-myCounter();//4
-							</code></pre>
-							<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">How Closure works</a>
-							<br>
-							<a href="http://www.kirupa.com/html5/closures_in_javascript.htm">Closure in Javascript (nice article)</a>
-						</section>
-						<section>
-							<h3>maintain outside reference </h3>
-							<pre><code>
-function generateGreet(greet){
-  
-  function sayHelloTo (name){
-      return greet + ', ' + name;
-  }
-
-  return sayHelloTo;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var hiTo = generateGreet('Hi');
-
-hiTo('JavaScript'); // Hi, Javascript
-hiTo('Angular'); // Hi, Angular
-							</code></pre>							
-							<pre class="fragment"><code>
-var booTo = generateGreet('Boo');
-
-hiTo('Java'); // Boo, Java
-hiTo('XML'); // Boo, XML
-							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">MDN:closure</a>
-						</section>
-						<section>
-							<h2>Cleaner Closure</h2>							
-							<pre><code>
-function generateGreet(greet){
-  
-  function sayHelloTo (name){
-      return greet + ', ' + name;
-  }
-
-  return sayHelloTo;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-function generateGreet(greet){
-  
-  //return anonymous function	
-  return function (name){
-      return greet + ', ' + name;
-  }
-}
-							</code></pre>		
-							<a href="http://stackoverflow.com/questions/12930272/javascript-closures-vs-anonymous-functions">closures vs anonymous function</a>
-						</section>
-						<section>
-							<h2>closure</h2>
-							<ul>
-								<li>Refer to variables, parameters outside of current scope</li>
-								<li class="fragment">doesn't have to return anything</li>
-								<li class="fragment">read and write outer scope variable</li>
-								<li class="fragment">store outer variables by reference not by value (add an example for this)</li>
-								<li class="fragment"></li>								
-							</ul>
-							<a href="">Effective Javascript (item -13)</a>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-function abc (){
-  var result = [];
-  for(var i=0; i<5; i++){
-   result.push(function (){console.log(i)});
-  }
-  return result;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var kk = abc();
-kk[1]();//5
-kk[2]();//5
-							</code></pre>
-							<pre class="fragment"><code>
-//solve by IIFE								
-							</code></pre>
-							<a href="http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example">closure inside loops</a>
-						</section>
-						<section>
-							<h2>closure is used</h2>
-							<li>function inside another function</li>
-							<li>eval() inside a function. can reference/create or update local variables</li>
-							<li class="lineThrough">Function() inside a function (cannot reference the local variables)</li>
-							<li class="fragment">new set of local variables is kept every time a function with a closure is called</li>
-							<li class="fragment">no easier way to detect closure</li>
-							<a href="http://javascript-reference.info/javascript-closures-for-dummies.htm">Closure for dummies</a>
-							<br/>
-							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">add: when should use closure</a>
-								
-						</section>
-						<section>
-							<h3>Add graphical explanation</h3>
-							<p>both the link have some image</p>
-							<p>make something cool</p>
-							<a href="http://doctrina.org/JavaScript:Why-Understanding-Scope-And-Closures-Matter.html">Good link and image:</a>
-							<br/>
-							<a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">Nettuts: closure</a>
 						</section>
 					</section>
 					<section>
@@ -2734,6 +2374,177 @@ Math instanceof Math;
 							<a href="http://ckazbah.com/2014/07/29/notes-on-javascript-nodejs-and-event-loop-single-thread-of-execution-and-little-bit-of-under-the-hood-stuff/"></a>,
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/EventLoop">MDN: event loop</a>,
 							<a href="http://www.quora.com/How-does-a-JavaScript-engine-work">synchornous tree</a>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Inheritance</h1>
+							<a href="http://blogs.msdn.com/b/eternalcoding/archive/2014/08/20/simple-inheritance-with-javascript.aspx">simple inheritance, have a look</a>
+							<h3>could move to deleted scene</h3>
+						</section>
+						<section>
+							<h3></h3>
+							<ul class="">
+								<li>Only one construct in JS: object</li>
+								<li class="fragment">Each object has an internatl link (prototype) to another object</li>
+								<li class="fragment">Prototype itself is an object</li>
+								<li class="fragment">Prototype object has its own prototype</li>
+								<li class="fragment">this link goes until it hits null</li>
+								<li class="fragment">null has no prototype.</li>
+								<li class="fragment">null is the final end of prototype chain</li>
+							</ul>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance and prototype chain</a>
+						</section>
+						<section>
+							<h2>Interesting Drawing to explain inheritance</h2>
+							<pre><code></code></pre>
+							<p>create one: do some work</p>
+							<a href="http://davidshariff.com/blog/javascript-inheritance-patterns/">Inheritance Pattern</a>
+							<br>
+							<a href="http://javascriptweblog.wordpress.com/2010/06/07/understanding-javascript-prototypes/#more-645">angus croll: inheritance (read this)</a>
+						</section>
+						<section>
+							<h2>constructor</h2>
+							<pre><code>
+function Friend(name) {
+  this.name = name;
+  this.libraries = [];
+}
+
+Friend.prototype = {
+  addLibrary: function(newLib){
+    this.libraries.push(newLib);
+  }
+};
+
+var frnd = new Friend('Angular Ember');
+frnd.addLibrary('asm.js');
+							</code></pre>
+							<pre class="fragment"><code>
+function CloseFriend(name){
+ this.name = name;
+}
+
+CloseFriend.prototype = new Friend();
+							</code></pre>
+							<p>use instanceOf somewhere and explain it</p>
+							<a href="http://stackoverflow.com/questions/572897/how-does-javascript-prototype-work">how prototype works</a>
+						</section>
+						<section>
+							<h2>instanceOf</h2>
+							<h4>talk about instance of</h4>
+							<pre><code>
+//add example
+							</code></pre>
+						</section>
+						<section>
+							<h2>instanceof</h2>
+							<h4>doesn't work on primitive values</h4>
+							<pre><code>
+//does not work on primtive values
+"" instanceof String; //false
+3 instanceof Number; //false
+false instanceof Boolean; //false
+							</code></pre>
+							<pre class="fragment"><code>
+//works on objects
+new String() instanceof String; //true
+new Number() instanceof Number; //true
+new Boolean() instanceof Boolean; //true
+[] instanceof Array; //true
+{} instanceof Object; //true
+/foo/ instanceof RegExp; //true
+							</code></pre>
+							<pre class="fragment"><code>
+//be aware
+[] instanceof Object; //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>object.create</h2>
+							<pre><code>
+var Friend = {name: 'Geek smith'}; 
+Friend.prototype; //undefined
+
+var JSFriend = Object.create(Friend);
+// JSFriend => Friend => Object.prototype => null
+console.log(JSFriend.name); // Geek Smith
+							</code></pre>
+							<pre class="fragment"><code>
+var AngularFriend = Object.create(JSFriend);
+// AngularFriend => JSFriend => Friend => Object.prototype => null
+console.log(AngularFriend.name); //Geek Smith
+
+var RandomGuy = Object.create(null);
+// RandomGuy => null
+console.log(RandomGuy.hasOwnProperty); // undefined
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">MDN: inheritance</a>
+						</section>
+						<section>
+							<h3>New / update prototype property</h3>
+							<pre><code>
+function Friend(name){
+  this.name = name;
+}
+
+Friend.prototype ={
+  knowJS:true
+}
+
+var frnd = new Friend('Scala Guy');
+frnd.city = 'Chicago';
+console.log(frnd);
+//Friend {name: "Scala Guy", city: 'chicago', knowJS: true}
+frnd.hasOwnProperty('city'); //true
+							</code></pre>
+							<pre class="fragment"><code>
+var frnd = new Friend('Scala Guy');
+frnd.knowJS = false;
+console.log(frnd);
+//Friend {name: "Scala Guy", knowJS: false, knowJS: true}
+							</code></pre>
+							<a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">JS Prototype</a>
+						</section>
+						<section>
+							<h2>Lookup for properties</h2>
+							<ul>
+								<li>negative impact when have to traverse prototype chain</li>
+								<li class="fragment">monkey patching (extend build in object.prototype)</li>
+								<li class="fragment">delete wont delete inheriter properties</li>
+								<li class="fragment"></li>								
+							</ul>
+							<img src="images/lookForProperty.png" alt="">
+							<a href="http://tech.pro/tutorial/1669/21-javascript-parts-i-struggle-to-remember-">delete inherited property</a>							
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code>
+function Friend(name){
+  this.name = name;
+}
+
+Friend.prototype ={
+  knowJS:true
+}
+
+var frnd = new Friend('Scala Guy');
+'knowJS' in frnd; //true
+							</code></pre>
+							<pre class="fragment"><code>
+frnd.hasOwnProperty('name'); //true
+frnd.hasOwnProperty('knowJS'); //false
+							</code></pre>
+							<pre class="fragment"><code>
+frnd.hasOwnProperty = 10;
+frnd.hasOwnProperty('name'); 
+//TypeError: Property 'hasOwnProperty' of object is not a function
+{}.hasOwnProperty.call(frnd, 'name'); //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>getPrototypeOf, __Proto__</h2>
+							<p>source: Effective JS p-118</p>
 						</section>
 					</section>
 					<section>
