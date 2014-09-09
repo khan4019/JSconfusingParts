@@ -945,6 +945,166 @@ isFinite(44); //true
 					</section>
 					<section>
 						<section>
+							<h1>Function</h1>
+						</section>
+						<section>
+							<h2>4 ways to create function</h2>
+							<pre><code>
+//declaration
+function foo(a, b){
+	return a * b;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+//expression - anonymous
+var foo = function(a, b){
+	return a * b;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+//expression - named
+var foo = function boo(a, b){
+	console.log(boo);
+	return a * b;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var foo = new Function("a", "b", "return a * b;");
+							</code></pre>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">MDN: function</a>
+						</section>
+						<section>
+							<h2>function is a object</h2>
+							<li>can have property</li>
+							<li>have length</li>
+							<li>find more and example</li>
+						</section>
+						<section>
+							<h3>function call</h3>
+							<pre><code>
+function foo(a, b){
+    return a * b;
+}
+
+foo(2,3);
+							</code></pre>
+							<pre class="fragment"><code>
+ExecutionContext: {}
+							</code></pre>
+							<pre class="fragment"><code>
+ExecutionContext: {
+    arguments:{
+		0 : 2,
+		1 : 3,
+		length : 2,
+		callee : function(){
+		    //points to foo function
+		}
+    }
+}
+							</code></pre>
+						</section>
+						<section>
+							<h2>variable instantiation</h2>
+							<pre><code>
+ExecutionContext: {
+    arguments:{
+		0 : 2,
+		1 : 3,
+		length : 2,
+		callee : function(){
+		    //points to foo function
+		}
+    },
+    a : 2,
+    b : 3
+}
+							</code></pre>
+						</section>
+						<section>
+							<h2>inner function</h2>
+							<pre><code>
+function foo(a, b){
+    function ttt(){console.log(a);}
+    var dd = a + b;
+    return a * b;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+ExecutionContext: {
+    arguments:{
+		0 : 2,
+		1 : 3,
+		length : 2,
+		callee : function(){
+		    //points to foo function
+		}
+    },
+    a : 2,
+    b : 3,
+    ttt : function (){console.log(222);},
+    dd : undefined
+}
+							</code></pre>
+						</section>
+						<section>
+							<h2>this</h2>
+							<pre class=""><code>
+ExecutionContext: {
+    arguments:{
+		0 : 2,
+		1 : 3,
+		length : 2,
+		callee : function(){
+		    //points to foo function
+		}
+    },
+    a : 2,
+    b : 3,
+    ttt : function (){console.log(222);},
+    dd : undefined,
+    this : window
+}
+							</code></pre>
+						</section>
+						<section>
+							<h2>start running code</h2>
+							<li>in the body until hits first return</li>
+							<li>if need to access variable, it read from ExecutionContext</li>
+						</section>
+						<section>
+							<h2>call a function</h2>
+							<ol>
+								<li><code>arguments</code> - array like object</li>
+								<li class="fragment">ExecutionContext is created</li>
+								<li class="fragment">variable instantiation as property of <code>ExectuionContext</code>
+									<ol>
+										<li>each <code>arguments</code></li>
+										<li class="fragment">function declaration</li>
+										<li class="fragment">variable declaration</li>
+									</ol>
+								</li>
+								<li class="fragment">this property is created</li>
+							</ol>
+							<a href="http://corporate.tuenti.com/en/dev/blog/functions-and-execution-contexts-in-javascript-2">function and execution</a>
+						</section>
+						<section>
+							<p>Execution context is a concept in the language spec that—in layman's terms—roughly equates to the 'environment' a function executes in; that is, variable scope (and the scope chain, variables in closures from outer scopes), function arguments, and the value of the this object.</p>
+							<p>avaScript uses static scope; that is, the scope chain of a function is defined at the moment that function is created and never changes; the scope chain is a property of the function.</p>
+							<p>Execution context is different and separate from the scope chain</p>
+							<p>The call stack can be thought of as an array of execution contexts. At the bottom of the stack is the global execution context. Each time a function is called, its parameters and this value are stored in a new 'object' on the stack.</p>
+							<a href="http://stackoverflow.com/questions/9384758/what-is-the-execution-context-in-javascript-exactly">JS execution context</a>
+							<a href="http://stackoverflow.com/questions/7721200/using-javascript-closures-in-settimeout/7722057#7722057">JS Scope</a>
+						</section>
+						<section>
+							<h2>References</h2>
+							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">Very nice article</a>
+							<a href=""></a>
+							<a href=""></a>
+						</section>
+					</section>
+					<section>
+						<section>
 							<h1>Bind, call and Apply</h1>
 							<br/>
 							<h4>fun with function</h4>
@@ -1130,12 +1290,6 @@ Math.min.apply(null, [2,3,4,5]); //2
 							<h2>Summary and recap</h2>
 						</section>
 					</section>
-					<section>
-						<section>
-							<h2>Date</h2>
-							<a href="http://ardalis.com/javascript-date-tips">js date tips</a>
-						</section>
-					</section>					
 					<section>
 						<section>
 							<h1>this</h1>
@@ -2352,6 +2506,7 @@ kk[2]();//5
 							<h1>typeof</h1>
 							<h3>instandeof</h3>
 							<br>
+							<p>consider to remove</p>
 							<br>
 							<h4>typeof developer; //bugCreator</h4>
 						</section>
@@ -2601,30 +2756,6 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 					</section>
 					<section>
 						<section>
-							<h3>Life cycle of a function call</h3>
-							<pre><code>
-	//very nice link make it graphical
-
-							</code></pre>
-							<a href="http://corporate.tuenti.com/en/dev/blog/functions-and-execution-contexts-in-javascript-2">function and execution</a>
-						</section>
-						<section>
-							<p>Execution context is a concept in the language spec that—in layman's terms—roughly equates to the 'environment' a function executes in; that is, variable scope (and the scope chain, variables in closures from outer scopes), function arguments, and the value of the this object.</p>
-							<p>avaScript uses static scope; that is, the scope chain of a function is defined at the moment that function is created and never changes; the scope chain is a property of the function.</p>
-							<p>Execution context is different and separate from the scope chain</p>
-							<p>The call stack can be thought of as an array of execution contexts. At the bottom of the stack is the global execution context. Each time a function is called, its parameters and this value are stored in a new 'object' on the stack.</p>
-							<a href="http://stackoverflow.com/questions/9384758/what-is-the-execution-context-in-javascript-exactly">JS execution context</a>
-							<a href="http://stackoverflow.com/questions/7721200/using-javascript-closures-in-settimeout/7722057#7722057">JS Scope</a>
-						</section>
-						<section>
-							<h2>References</h2>
-							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">Very nice article</a>
-							<a href=""></a>
-							<a href=""></a>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1>Strict Mode</h1>
 							<a href="http://restrictmode.org/">read and explore here</a>
 						</section>
@@ -2799,6 +2930,7 @@ in array
 						<section>
 							<li><a href="http://bjorn.tipling.com/advanced-objects-in-javascript">Advanced Object in JavaScript</a></li>
 							<li><a href="http://raganwald.com/2014/07/09/javascript-constructor-problem.html">JavaScript constructor 3 problems and solutions</a></li>
+							<li><a href="http://ardalis.com/javascript-date-tips">dating with js</a></li>
 						</section>
 						<section>
 							<h2>ruined JS</h2>
