@@ -63,6 +63,7 @@
 				.oneFragmentAtaTime{
 					list-style-type: none;
 				}
+				.smallerUL{font-size: }
 			</style>
 			<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 			<script>
@@ -449,8 +450,8 @@ Boolean(/foo/); // true
 							<h1>Number</h1>
 						</section>
 						<section>
-							<h2>number</h2>
-							<ul>
+							<h2>Number in JS</h2>
+							<ul class="smallerUL">
 								<li>double-precision 64-bit binary format IEEE 754 value</li>
 								<li class="fragment">number between -(2<sup>53</sup>	 -1) and 2<sup>53</sup> -1</li>
 								<li class="fragment">no specific type for integers</li>
@@ -477,29 +478,28 @@ parseFloat((.1+.2).toFixed(1)); //0.3
 							<a href="http://www.youtube.com/watch?v=MqHDDtVYJRI">Everything u never wanted to know about JS Number</a>
 						</section>
 						<section>
-							<h2>parseInt, parseFloat</h2>
-							<p>check the link and give general idea and change it</p>
-							<pre><code>
-//var num = parseInt(string, radix);
+							<h2>parseInt</h2>
+							<ol>
+								<li>integer from string, optional radix or base</li>
+								<li class="fragment">if not string tries to convert to string</li>
+								<li class="fragment">trim leading white space</li>
+							</ol>
+							<pre class="fragment"><code>
 parseInt('12px'); //12
-parseInt('0xFF'); // 255
+parseInt('123%'); // 123
+
+parseInt("123      "); // 123 -- thanks javascript!
+parseInt("123bss"); // 123 -- yeah, i'm fine
 parseInt('a123'); //NaN
-
-
+							</code></pre>
+							<pre class="fragment"><code>
 parseInt('010');  // in some browsers 8, because 0 means octal
 parseInt('010', 10); //10
 
 //parseFloat(string)
 parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
-						</section>
-						<section>
-							<h2>parseInt</h2>
-							<pre><code>
-parseInt(0/1,19)==18
-							</code></pre>
-							<a href="https://gist.github.com/getify/3057796">read the bottom part of this gist to get awesome ideas</a>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt">MDN: parseInt</a>, <a href="https://gist.github.com/getify/3057796">comments in gist</a>
 						</section>
 						<section>
 							<h2>Check integer</h2>
@@ -632,19 +632,23 @@ function reallyNaN(x) {
 						</section>
 						<section>
 							<h2>Strict Equality (===)</h2>
-							<li>check type and value</li>
+							<ol>
+								<li>check type and value</li>
+								<li class="fragment">NaN, null and undefined will never === to another type</li>
+								<li class="fragment">NaN does not even equal to itself</li>
+							</ol>
 							<pre class="fragment"><code>
-//NaN, null and undefined will never === to another type
-//Nan does not even equal to itself
 NaN === NaN; //false
 //+0 equals to -0
 							</code></pre>
 							<div class="fragment">
 								<hr>
 								<h3>Equality (==)</h3>
-								<li>will not check type (simplified)</li>
-								<li class="fragment">tolerant</li>
-								<li class="fragment">under the hood converts to convenient type</li>
+								<ol>
+									<li>will not check type (simplified)</li>
+									<li class="fragment">tolerant</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ol>
 							</div>
 						</section>
 						<section>
@@ -680,7 +684,7 @@ a === c //true
 							<h2>force comparison</h2>
 							<pre><code>
 //force string
-'' + a == ''+b
+'' + a == '' + b
 
 //force number
 +a == +b
@@ -736,9 +740,6 @@ NaN == 1; //false!
 NaN == 0; //false!
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
-						</section>
-						<section>
-							<h2>Create graphic to explain</h2>
 						</section>
 						<section>
 							<h2></h2>
