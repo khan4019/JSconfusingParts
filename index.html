@@ -83,14 +83,21 @@
 <!-- start of intro -->
 					<section>
 						<h1>Are u sure!</h1>
-						<h2>you know JavaScript?</h2>
+						<h2>You know JavaScript?</h2>
 						<br/>
 						<!-- <h2><a href="http://bit.ly/1gx0FRU">http://bit.ly/1gx0FRU</a> </h2> -->
 						<br/>
+						<br>
+						<br>
 						<p>
-							<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+							<h3>
+								<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+
+							</h3>
 						</p>
-						</section>
+						<h4>www.thatJSdude.com</h4>
+						<small>(youtube.com/user/khanLearning)</small>
+					</section>
 					<section>
 						<h2>You don't get what you <span class="greenBold">deserve</span></h2>
 						<h2>You only get what you <span class="redBold">negotiate</span></h2>
@@ -101,6 +108,7 @@
 							<p>make ur story</p>
 							<p>a day of javascript developer</p>
 						</section>
+						<section></section>
 						<section>
 							<img src="images/programmers.jpg" alt="">
 						</section>
@@ -113,12 +121,43 @@
 					</section>
 					<section>
 						<section>
+							<h1 class ="noUppercase">How do we develop a app?</h1>
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bike.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/fancyBike.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/emptyBike.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeHack.jpeg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeCow.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeBrick.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeGreen.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeDesi.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeFullLoad.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/fancyBike.jpg">
+						</section>
+					</section>
+					<section>
+						<section>
 							<h2>what is JavaScript</h2>
 							<a href="http://vimeo.com/96425312">Help, I'm stuck in an event-loop</a>
-							<br>
-							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">what-is-the-execution-context-in-javascript</a>
-							<br>
-							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">javascript-scope-chain-and-closures</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -168,13 +207,13 @@
 								</div>
 								<div class="fragment">
 									<li><code>string</code></li>
-									<li><code>object</code></li>
-								</div>
-								<div class="fragment">
 									<li><code>symbol</code> - ES6</li>
 								</div>
+								<h4 class="fragment">a.k.a "primitives" types</h4>
+								<div class="fragment">
+									<li><code>object</code></li>
+								</div>
 							</ul>
-							<h4 class="fragment">build in types a.k.a "primitives"</h4>
 						</section>
 						<section>
 							<h2><code>undefined</code></h2>
@@ -198,12 +237,12 @@ console.log(undefined);
 var a = undefined;
 
 console.log(a); //undefined
-							</code></pre>							
+							</code></pre>
 							<pre class="fragment"><code>
 var a; 
 
 console.log(a); //undefined
-							</code></pre>							
+							</code></pre>
 						</section>
 						<section>
 							<h2>undefined in function</h2>
@@ -237,15 +276,18 @@ foo(2); //undefined
 var obj = {};
 
 console.log(obj.b); //undefined
-							</code></pre>							
-							<pre class="fragment"><code>
-//add example of void expression
 							</code></pre>
+							<pre class="fragment"><code>
+//void evaluates an expression and returns undefined
+void(0);
+void(document.body.style.backgroundColor='green');
+							</code></pre>
+							<a href="http://www.2ality.com/2011/05/void-operator.html">void - operator</a>
 						</section>
 						<section>
 							<h2>undeclared</h2>
 							<pre><code>
-var a; 
+var a;
 
 console.log(a); //undefined
 console.log(b); //ReferenceError: b is not defined
@@ -407,27 +449,36 @@ Boolean(/foo/); // true
 							<h1>Number</h1>
 						</section>
 						<section>
+							<h2>number</h2>
+							<ul>
+								<li>double-precision 64-bit binary format IEEE 754 value</li>
+								<li class="fragment">number between -(2<sup>53</sup>	 -1) and 2<sup>53</sup> -1</li>
+								<li class="fragment">no specific type for integers</li>
+								<li class="fragment">three symbolic values: +Infinity, -Infinity, and NaN</li>
+								<li class="fragment">0 is represented as -0 and +0</li>
+								<br>
+								<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
+							</ul>
+						</section>
+						<section>
 							<h2>Arithmatic in JS</h2>
-							<pre><code>
+							<img src="images/bit.png" alt="">
+							<pre class="fragment"><code>
 0.1 + 0.2; //0.30000000000000004
 
 9809987889988769 + 1; //9809987889988768
 9809987889988770 + 1; //9809987889988772
 							</code></pre>
-							<img src="images/bit.png" alt="" class="fragment">
 							<pre class="fragment"><code>
-//toFixed to generate string result
 (.1+.2).toFixed(1); //'0.3'
 
-//to get a number parseFloat
 parseFloat((.1+.2).toFixed(1)); //0.3
 							</code></pre>
 							<a href="http://www.youtube.com/watch?v=MqHDDtVYJRI">Everything u never wanted to know about JS Number</a>
-							<br/>
-							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
 							<h2>parseInt, parseFloat</h2>
+							<p>check the link and give general idea and change it</p>
 							<pre><code>
 //var num = parseInt(string, radix);
 parseInt('12px'); //12
@@ -508,15 +559,31 @@ isInteger(1000000000000000000000);
 						<section>
 							<h2>NaN</h2>
 							<h4>Not-A-Number</h4>
-							<ul>
+							<ol>
 								<li>NaN is a property of global object</li>
 								<li>NaN is equal to Number.NaN</li>
+								<li class="fragment">undefined numerical result from an operation</li>
 								<li class="fragment">Processing a number went wrong</li>
-								<div class="fragment">
-									<li><code>Math.sqrt(-1)</code></li>
-									<li><code>parseInt('dude')</code></li>
-								</div>
-							</ul>
+								<li class="fragment">Still a numeric type</li>
+								<li class="fragment">But undefined as a real number</li>
+								<li class="fragment">represents any number outside of the ECMAScript domain of definition.</li>
+							</ol>
+							<br>
+							<a href="http://kiro.me/blog/typeof_nan.html">NaN</a>
+						</section>
+						<section>
+							<h2>how to get NaN</h2>
+							<pre><code>
+0 / 0; //NaN
+Infinity / Infinity; //NaN
+Infinity * 0 ; //NaN
+							</code></pre>
+							<li class="fragment">Any operation in which NaN is an operand</li>
+							<li class="fragment">Convert non-numeric or string or undefined to number</li>
+							<pre class="fragment"><code>
+NaN + 100; //NaN
+parseInt('dude'); //NaN
+							</code></pre>
 							<pre class="fragment"><code>
 typeof NaN; //number
 							</code></pre>
