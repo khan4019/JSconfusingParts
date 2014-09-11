@@ -633,161 +633,6 @@ function reallyNaN(x) {
 					</section>
 					<section>
 						<section>
-							<h1>Equality</h1>
-							<h2>== or ===</h2>
-						</section>
-						<section>
-							<h3>Equality (==)</h3>
-								<ol>
-									<li>Tolerant: will not check type (simplified)</li>
-									<li class="fragment">under the hood converts to convenient type</li>
-								</ol>
-							<div class="fragment">
-								<hr>
-								<h2>Strict Equality (===)</h2>
-								<ol>
-									<li>check type and value</li>
-									<li class="fragment">NaN, null and undefined will never === to another type</li>
-									<li class="fragment">NaN does not even equal to itself</li>
-								</ol>
-								<pre class="fragment"><code>
-NaN === NaN; //false
-//+0 equals to -0
-							</code></pre>
-							</div>
-						</section>
-						<section>
-							<h2>object equality</h2>
-							<pre><code>
-var a = {a: 1};
-var b = {a: 1};
-a == b //false
-a === b //false
-							</code></pre>
-							<pre class="fragment"><code>
-var c = a;
-a == c//true
-a === c //true
-							</code></pre>
-						</section>
-						<section>
-							<h2>type coercion by ==</h2>
-							<ol>
-					            <li>both operands are same type: use = = =</li>
-					            <li class="fragment">undefined = = null</li>
-					            <br>
-					            <li class="fragment">string & number: convert string to number</li>
-					            <li class="fragment">boolean & number: convert boolean to number</li>
-					            <br>
-					            <li class="fragment">boolean & non-boolean: convert boolean to number</li>
-					            <br>
-					            <li class="fragment">string/number & object: try to convert the object to a primitive type and then try to compare</li>
-
-					        </ol>
-					        <br>
-					        <br>
-					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
-						</section>
-						<section>
-							<h2>force comparison</h2>
-							<pre><code>
-//force string
-'' + a == '' + b
-
-//force number
-+a == +b
-
-//force boolean
-!a == !b
-							</code></pre>
-							<pre class="fragment"><code>
-new String('dude') == 'dude'; //true
-'dude'  == new String('dude'); //true
-
-//not two object
-new String('dude') == new String('dude'); //false
-							</code></pre>
-							<a href="">Spec: 11.9.3</a>
-						</section>
-						<section>
-							<h2>zeros in JavaScript</h2>
-							<pre><code>
-[0] == 0; //true
-[] == 0; //true
-
-[0] == []; //false
-//explain this
-							</code></pre>
-							<pre class="fragment"><code>
-[0] == '0'; //true
-[] == '0'; //false
-
-//steps
-//explain how this works
-
-							</code></pre>
-							<a href="http://zero.milosz.ca/">zeros in JS</a>
-						</section>
-						<section>
-							<h2>potato and JS</h2>
-							<pre><code>
-"potato" == false; //false
-"potato" == true; //false
-							</code></pre>
-							<h4 class="redBold">are you kidding!!!</h4>
-							<pre class="fragment"><code>
-//convert boolean using toNumber
-"potato" == 1;
-//convert string using toNumber
-NaN == 1; //false!
-							</code></pre>
-							<pre class="fragment"><code>
-//convert boolean using toNumber
-"potato" == 0;
-//convert string using toNumber
-NaN == 0; //false!
-							</code></pre>
-							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-//EQUALITY CHECK...
-[0] == true;
-
-//HOW IT WORKS...
-//convert boolean using toNumber
-[0] == 1;
-//convert object using toPrimitive
-//[0].valueOf() is not a primitive so use...
-//[0].toString() -> "0"
-"0" == 1;
-//convert string using toNumber
-0 == 1; //false!
-							</code></pre>
-							<h4>Work on this. try to explain</h4>
-						</section>
-						<section>
-							<h2>Little More</h2>
-							<pre><code>
-null == false; // false
-null == null; // true
-
-undefined == undefined; // true
-undefined == null; // true
-							</code></pre>
-							<pre class="fragment"><code>
-NaN == null; // false
-NaN == NaN; // false
-							</code></pre>
-							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
-						</section>
-						<section>
-							<h3>Summary</h3>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1>Array</h1>
 						</section>
 						<section>
@@ -797,6 +642,7 @@ var myArr = [1, 2, 3, 4];
 
 myArr[68] = 69;
 myArr.length; //69
+
 myArr; //[1, 2, 3, 4, undefined × 64, 69]
 							</code></pre>
 							<pre class="fragment"><code>
@@ -806,6 +652,8 @@ a.length = 15
 a; //[1, 2, 3, 4, 5, 6, undefined × 9]
 							</code></pre>
 							<pre class="fragment"><code>
+var a = [1, 2, 3, 4, 5, 6];
+
 a.length = 4;
 a; //[1, 2, 3, 4]
 							</code></pre>
@@ -845,7 +693,9 @@ for (var i in myArr){
 							<pre><code>
 [1, 2, 3, 4].indexOf(4); //3
 [1, 2, 3, 4].indexOf('4'); //-1
-[{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
+
+var arr = [{a:1}, {b:2}, {c:3}, 4]; 
+arr.indexOf({a:1}); //-1
 							</code></pre>
 							<pre class="fragment"><code>
 var a = {a:1},
@@ -1017,6 +867,161 @@ isFinite(44); //true
 						</section>
 						<section>
 							<h2>Summary</h2>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Equality</h1>
+							<h2>== or ===</h2>
+						</section>
+						<section>
+							<h3>Equality (==)</h3>
+								<ol>
+									<li>Tolerant: will not check type (simplified)</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ol>
+							<div class="fragment">
+								<hr>
+								<h2>Strict Equality (===)</h2>
+								<ol>
+									<li>check type and value</li>
+									<li class="fragment">NaN, null and undefined will never === to another type</li>
+									<li class="fragment">NaN does not even equal to itself</li>
+								</ol>
+								<pre class="fragment"><code>
+NaN === NaN; //false
+//+0 equals to -0
+							</code></pre>
+							</div>
+						</section>
+						<section>
+							<h2>object equality</h2>
+							<pre><code>
+var a = {a: 1};
+var b = {a: 1};
+a == b //false
+a === b //false
+							</code></pre>
+							<pre class="fragment"><code>
+var c = a;
+a == c//true
+a === c //true
+							</code></pre>
+						</section>
+						<section>
+							<h2>type coercion by ==</h2>
+							<ol>
+					            <li>both operands are same type: use = = =</li>
+					            <li class="fragment">undefined = = null</li>
+					            <br>
+					            <li class="fragment">string & number: convert string to number</li>
+					            <li class="fragment">boolean & number: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">boolean & non-boolean: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">string/number & object: try to convert the object to a primitive type and then try to compare</li>
+
+					        </ol>
+					        <br>
+					        <br>
+					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
+						</section>
+						<section>
+							<h2>force comparison</h2>
+							<pre><code>
+//force string
+'' + a == '' + b
+
+//force number
++a == +b
+
+//force boolean
+!a == !b
+							</code></pre>
+							<pre class="fragment"><code>
+new String('dude') == 'dude'; //true
+'dude'  == new String('dude'); //true
+
+//not two object
+new String('dude') == new String('dude'); //false
+							</code></pre>
+							<a href="">Spec: 11.9.3</a>
+						</section>
+						<section>
+							<h2>zeros in JavaScript</h2>
+							<pre><code>
+[0] == 0; //true
+[] == 0; //true
+
+[0] == []; //false
+//explain this
+							</code></pre>
+							<pre class="fragment"><code>
+[0] == '0'; //true
+[] == '0'; //false
+
+//steps
+//explain how this works
+
+							</code></pre>
+							<a href="http://zero.milosz.ca/">zeros in JS</a>
+						</section>
+						<section>
+							<h2>potato and JS</h2>
+							<pre><code>
+"potato" == false; //false
+"potato" == true; //false
+							</code></pre>
+							<h4 class="redBold">are you kidding!!!</h4>
+							<pre class="fragment"><code>
+//convert boolean using toNumber
+"potato" == 1;
+//convert string using toNumber
+NaN == 1; //false!
+							</code></pre>
+							<pre class="fragment"><code>
+//convert boolean using toNumber
+"potato" == 0;
+//convert string using toNumber
+NaN == 0; //false!
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
+						</section>
+						<section>
+							<h2></h2>
+							<pre><code>
+//EQUALITY CHECK...
+[0] == true;
+
+//HOW IT WORKS...
+//convert boolean using toNumber
+[0] == 1;
+//convert object using toPrimitive
+//[0].valueOf() is not a primitive so use...
+//[0].toString() -> "0"
+"0" == 1;
+//convert string using toNumber
+0 == 1; //false!
+							</code></pre>
+							<h4>Work on this. try to explain</h4>
+						</section>
+						<section>
+							<h2>Little More</h2>
+							<pre><code>
+null == false; // false
+null == null; // true
+
+undefined == undefined; // true
+undefined == null; // true
+							</code></pre>
+							<pre class="fragment"><code>
+NaN == null; // false
+NaN == NaN; // false
+							</code></pre>
+							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
+						</section>
+						<section>
+							<h3>Summary</h3>
 						</section>
 					</section>
 					<section>
