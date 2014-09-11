@@ -221,10 +221,13 @@
 							<ol>
 								<li>un-defined (value is not defined)</li>
 								<li class="fragment">global variable <code>undefined</code></li>
+								<br>
 								<li class="fragment">value of <code>undefined</code> undefined</li>
 								<li class="fragment"><code>typeof undefined</code> is "undefined"</li>
+								<br>
 								<li class="fragment">its not a constant or a keyword</li>
 								<li class="fragment">its a type with exactly one value</li>
+								<br>
 								<li class="fragment">cannot change value of udnefined</li>
 							</ol>
 						</section>
@@ -324,14 +327,17 @@ typeof b; //undefined
 							<li class="fragment">undefined and undeclared is not same</li>
 						</section>
 						<section>
-							<h2>8 wasy to get undefined</h2>
+							<h2>8 ways to get undefined</h2>
 								<ol>
 								  <li>value of global variable <code>undefined</code></li>
 								  <li class="fragment">variable explictly set to <code>undefined</code></li>
+								  <br>
 						          <li class="fragment">variable declared but unassigned</li>
 						          <li class="fragment">no return statement in a function</li>
+						          <br>
 						          <li class="fragment">return nothing</li>
 						          <li class="fragment">parameters that have not passed</li>
+						          <br>
 						          <li class="fragment">non-existent properties</li>
 						          <li class="fragment">expression in the form of void(expression)</li>
 						        </ol>
@@ -427,7 +433,7 @@ Boolean(/foo/); // true
 						</section>
 						<section>
 							<h2>double bang(!!)</h2>
-							<pre><code>
+							<pre class=""><code>
 !!undefined; // false
 !!null; // false
 !!0; // false
@@ -562,14 +568,17 @@ isInteger(1000000000000000000000);
 							<ol>
 								<li>NaN is a property of global object</li>
 								<li>NaN is equal to Number.NaN</li>
+								<br>
 								<li class="fragment">undefined numerical result from an operation</li>
 								<li class="fragment">Processing a number went wrong</li>
+								<br>
 								<li class="fragment">Still a numeric type</li>
-								<li class="fragment">But undefined as a real number</li>
+								<li class="fragment">But not defined as a real number</li>
+								<br>
 								<li class="fragment">represents any number outside of the ECMAScript domain of definition.</li>
 							</ol>
 							<br>
-							<a href="http://kiro.me/blog/typeof_nan.html">NaN</a>
+							<a href="http://kiro.me/blog/typeof_nan.html">JS: NaN</a>
 						</section>
 						<section>
 							<h2>how to get NaN</h2>
@@ -588,21 +597,18 @@ parseInt('dude'); //NaN
 typeof NaN; //number
 							</code></pre>
 							<pre class="fragment"><code>
-NaN != NaN; //true
-NaN !== NaN; //true
-Number.NaN === NaN; //false
+NaN == NaN; //false
+NaN === NaN; //false
 							</code></pre>
 						</section>
 						<section>
 							<h2>isNaN</h2>
-							<pre><code>
-isNaN(2); //false
+							<pre><code>isNaN(2); //false
 isNaN('2'); //false
 isNaN(1/0); //false, use isFinite
 
-isNaN('2mrw'); //true
 isNaN(''); //true
-							</code></pre>
+isNaN('2mrw'); //true</code></pre>
 							<pre class="fragment"><code>
 isNaN(NaN); //true
 isNaN(undefined); //true
@@ -631,24 +637,23 @@ function reallyNaN(x) {
 							<h2>== or ===</h2>
 						</section>
 						<section>
-							<h2>Strict Equality (===)</h2>
-							<ol>
-								<li>check type and value</li>
-								<li class="fragment">NaN, null and undefined will never === to another type</li>
-								<li class="fragment">NaN does not even equal to itself</li>
-							</ol>
-							<pre class="fragment"><code>
+							<h3>Equality (==)</h3>
+								<ol>
+									<li>Tolerant: will not check type (simplified)</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ol>
+							<div class="fragment">
+								<hr>
+								<h2>Strict Equality (===)</h2>
+								<ol>
+									<li>check type and value</li>
+									<li class="fragment">NaN, null and undefined will never === to another type</li>
+									<li class="fragment">NaN does not even equal to itself</li>
+								</ol>
+								<pre class="fragment"><code>
 NaN === NaN; //false
 //+0 equals to -0
 							</code></pre>
-							<div class="fragment">
-								<hr>
-								<h3>Equality (==)</h3>
-								<ol>
-									<li>will not check type (simplified)</li>
-									<li class="fragment">tolerant</li>
-									<li class="fragment">under the hood converts to convenient type</li>
-								</ol>
 							</div>
 						</section>
 						<section>
@@ -668,12 +673,15 @@ a === c //true
 						<section>
 							<h2>type coercion by ==</h2>
 							<ol>
-					            <li>both operands are same type: use ===</li>
-					            <li class="fragment">undefined == null</li>
-					            <li class="fragment">One operands is string another is number: convert string to number</li>
-					            <li class="fragment">One is boolean and another is non-boolean: convert boolean to number</li>
-					            <li class="fragment">boolean and number: convert boolean to number</li>
-					            <li class="fragment">string/number and object, try to convert the object to a primitive type and then try to compare</li>
+					            <li>both operands are same type: use = = =</li>
+					            <li class="fragment">undefined = = null</li>
+					            <br>
+					            <li class="fragment">string & number: convert string to number</li>
+					            <li class="fragment">boolean & number: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">boolean & non-boolean: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">string/number & object: try to convert the object to a primitive type and then try to compare</li>
 
 					        </ol>
 					        <br>
@@ -745,15 +753,15 @@ NaN == 0; //false!
 							<h2></h2>
 							<pre><code>
 //EQUALITY CHECK...
-[0] == true; 
- 
+[0] == true;
+
 //HOW IT WORKS...
 //convert boolean using toNumber
 [0] == 1;
 //convert object using toPrimitive
 //[0].valueOf() is not a primitive so use...
 //[0].toString() -> "0"
-"0" == 1; 
+"0" == 1;
 //convert string using toNumber
 0 == 1; //false!
 							</code></pre>
