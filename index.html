@@ -63,6 +63,7 @@
 				.oneFragmentAtaTime{
 					list-style-type: none;
 				}
+				.smallerUL{font-size: }
 			</style>
 			<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 			<script>
@@ -83,14 +84,21 @@
 <!-- start of intro -->
 					<section>
 						<h1>Are u sure!</h1>
-						<h2>you know JavaScript?</h2>
+						<h2>You know JavaScript?</h2>
 						<br/>
 						<!-- <h2><a href="http://bit.ly/1gx0FRU">http://bit.ly/1gx0FRU</a> </h2> -->
 						<br/>
+						<br>
+						<br>
 						<p>
-							<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+							<h3>
+								<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+
+							</h3>
 						</p>
-						</section>
+						<h4>www.thatJSdude.com</h4>
+						<small>(youtube.com/user/khanLearning)</small>
+					</section>
 					<section>
 						<h2>You don't get what you <span class="greenBold">deserve</span></h2>
 						<h2>You only get what you <span class="redBold">negotiate</span></h2>
@@ -101,6 +109,7 @@
 							<p>make ur story</p>
 							<p>a day of javascript developer</p>
 						</section>
+						<section></section>
 						<section>
 							<img src="images/programmers.jpg" alt="">
 						</section>
@@ -113,12 +122,43 @@
 					</section>
 					<section>
 						<section>
+							<h1 class ="noUppercase">How do we develop a app?</h1>
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bike.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/fancyBike.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/emptyBike.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeHack.jpeg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeCow.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeBrick.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeGreen.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeDesi.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/bikeFullLoad.jpg">
+						</section>
+						<section>
+							<img class="fullScreenImage" src="images/fancyBike.jpg">
+						</section>
+					</section>
+					<section>
+						<section>
 							<h2>what is JavaScript</h2>
 							<a href="http://vimeo.com/96425312">Help, I'm stuck in an event-loop</a>
-							<br>
-							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">what-is-the-execution-context-in-javascript</a>
-							<br>
-							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">javascript-scope-chain-and-closures</a>
 						</section>
 						<section>
 							<h2></h2>
@@ -168,23 +208,26 @@
 								</div>
 								<div class="fragment">
 									<li><code>string</code></li>
-									<li><code>object</code></li>
-								</div>
-								<div class="fragment">
 									<li><code>symbol</code> - ES6</li>
 								</div>
+								<h4 class="fragment">a.k.a "primitives" types</h4>
+								<div class="fragment">
+									<li><code>object</code></li>
+								</div>
 							</ul>
-							<h4 class="fragment">build in types a.k.a "primitives"</h4>
 						</section>
 						<section>
 							<h2><code>undefined</code></h2>
 							<ol>
 								<li>un-defined (value is not defined)</li>
 								<li class="fragment">global variable <code>undefined</code></li>
+								<br>
 								<li class="fragment">value of <code>undefined</code> undefined</li>
 								<li class="fragment"><code>typeof undefined</code> is "undefined"</li>
+								<br>
 								<li class="fragment">its not a constant or a keyword</li>
 								<li class="fragment">its a type with exactly one value</li>
+								<br>
 								<li class="fragment">cannot change value of udnefined</li>
 							</ol>
 						</section>
@@ -198,12 +241,12 @@ console.log(undefined);
 var a = undefined;
 
 console.log(a); //undefined
-							</code></pre>							
+							</code></pre>
 							<pre class="fragment"><code>
 var a; 
 
 console.log(a); //undefined
-							</code></pre>							
+							</code></pre>
 						</section>
 						<section>
 							<h2>undefined in function</h2>
@@ -237,15 +280,18 @@ foo(2); //undefined
 var obj = {};
 
 console.log(obj.b); //undefined
-							</code></pre>							
-							<pre class="fragment"><code>
-//add example of void expression
 							</code></pre>
+							<pre class="fragment"><code>
+//void evaluates an expression and returns undefined
+void(0);
+void(document.body.style.backgroundColor='green');
+							</code></pre>
+							<a href="http://www.2ality.com/2011/05/void-operator.html">void - operator</a>
 						</section>
 						<section>
 							<h2>undeclared</h2>
 							<pre><code>
-var a; 
+var a;
 
 console.log(a); //undefined
 console.log(b); //ReferenceError: b is not defined
@@ -281,14 +327,17 @@ typeof b; //undefined
 							<li class="fragment">undefined and undeclared is not same</li>
 						</section>
 						<section>
-							<h2>8 wasy to get undefined</h2>
+							<h2>8 ways to get undefined</h2>
 								<ol>
 								  <li>value of global variable <code>undefined</code></li>
 								  <li class="fragment">variable explictly set to <code>undefined</code></li>
+								  <br>
 						          <li class="fragment">variable declared but unassigned</li>
 						          <li class="fragment">no return statement in a function</li>
+						          <br>
 						          <li class="fragment">return nothing</li>
 						          <li class="fragment">parameters that have not passed</li>
+						          <br>
 						          <li class="fragment">non-existent properties</li>
 						          <li class="fragment">expression in the form of void(expression)</li>
 						        </ol>
@@ -384,7 +433,7 @@ Boolean(/foo/); // true
 						</section>
 						<section>
 							<h2>double bang(!!)</h2>
-							<pre><code>
+							<pre class=""><code>
 !!undefined; // false
 !!null; // false
 !!0; // false
@@ -407,48 +456,56 @@ Boolean(/foo/); // true
 							<h1>Number</h1>
 						</section>
 						<section>
+							<h2>Number in JS</h2>
+							<ul class="smallerUL">
+								<li>double-precision 64-bit binary format IEEE 754 value</li>
+								<li class="fragment">number between -(2<sup>53</sup>	 -1) and 2<sup>53</sup> -1</li>
+								<li class="fragment">no specific type for integers</li>
+								<li class="fragment">three symbolic values: +Infinity, -Infinity, and NaN</li>
+								<li class="fragment">0 is represented as -0 and +0</li>
+								<br>
+								<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
+							</ul>
+						</section>
+						<section>
 							<h2>Arithmatic in JS</h2>
-							<pre><code>
+							<img src="images/bit.png" alt="">
+							<pre class="fragment"><code>
 0.1 + 0.2; //0.30000000000000004
 
 9809987889988769 + 1; //9809987889988768
 9809987889988770 + 1; //9809987889988772
 							</code></pre>
-							<img src="images/bit.png" alt="" class="fragment">
 							<pre class="fragment"><code>
-//toFixed to generate string result
 (.1+.2).toFixed(1); //'0.3'
 
-//to get a number parseFloat
 parseFloat((.1+.2).toFixed(1)); //0.3
 							</code></pre>
 							<a href="http://www.youtube.com/watch?v=MqHDDtVYJRI">Everything u never wanted to know about JS Number</a>
-							<br/>
-							<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">Floating point Arithmatic</a>
 						</section>
 						<section>
-							<h2>parseInt, parseFloat</h2>
-							<pre><code>
-//var num = parseInt(string, radix);
+							<h2>parseInt</h2>
+							<ol>
+								<li>integer from string, optional radix or base</li>
+								<li class="fragment">if not string tries to convert to string</li>
+								<li class="fragment">trim leading white space</li>
+							</ol>
+							<pre class="fragment"><code>
 parseInt('12px'); //12
-parseInt('0xFF'); // 255
+parseInt('123%'); // 123
+
+parseInt("123      "); // 123 -- thanks javascript!
+parseInt("123bss"); // 123 -- yeah, i'm fine
 parseInt('a123'); //NaN
-
-
+							</code></pre>
+							<pre class="fragment"><code>
 parseInt('010');  // in some browsers 8, because 0 means octal
 parseInt('010', 10); //10
 
 //parseFloat(string)
 parseFloat('12.3.4'); // 12.3, 1st dot is fine, but not the 2nd
 							</code></pre>
-							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FparseInt">MDN: parseInt</a>
-						</section>
-						<section>
-							<h2>parseInt</h2>
-							<pre><code>
-parseInt(0/1,19)==18
-							</code></pre>
-							<a href="https://gist.github.com/getify/3057796">read the bottom part of this gist to get awesome ideas</a>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt">MDN: parseInt</a>, <a href="https://gist.github.com/getify/3057796">comments in gist</a>
 						</section>
 						<section>
 							<h2>Check integer</h2>
@@ -508,34 +565,50 @@ isInteger(1000000000000000000000);
 						<section>
 							<h2>NaN</h2>
 							<h4>Not-A-Number</h4>
-							<ul>
+							<ol>
 								<li>NaN is a property of global object</li>
 								<li>NaN is equal to Number.NaN</li>
+								<br>
+								<li class="fragment">undefined numerical result from an operation</li>
 								<li class="fragment">Processing a number went wrong</li>
-								<div class="fragment">
-									<li><code>Math.sqrt(-1)</code></li>
-									<li><code>parseInt('dude')</code></li>
-								</div>
-							</ul>
+								<br>
+								<li class="fragment">Still a numeric type</li>
+								<li class="fragment">But not defined as a real number</li>
+								<br>
+								<li class="fragment">represents any number outside of the ECMAScript domain of definition.</li>
+							</ol>
+							<br>
+							<a href="http://kiro.me/blog/typeof_nan.html">JS: NaN</a>
+						</section>
+						<section>
+							<h2>how to get NaN</h2>
+							<pre><code>
+0 / 0; //NaN
+Infinity / Infinity; //NaN
+Infinity * 0 ; //NaN
+							</code></pre>
+							<li class="fragment">Any operation in which NaN is an operand</li>
+							<li class="fragment">Convert non-numeric or string or undefined to number</li>
+							<pre class="fragment"><code>
+NaN + 100; //NaN
+parseInt('dude'); //NaN
+							</code></pre>
 							<pre class="fragment"><code>
 typeof NaN; //number
 							</code></pre>
 							<pre class="fragment"><code>
-NaN != NaN; //true
-NaN !== NaN; //true
-Number.NaN === NaN; //false
+NaN == NaN; //false
+NaN === NaN; //false
 							</code></pre>
 						</section>
 						<section>
 							<h2>isNaN</h2>
-							<pre><code>
-isNaN(2); //false
+							<pre><code>isNaN(2); //false
 isNaN('2'); //false
 isNaN(1/0); //false, use isFinite
 
-isNaN('2mrw'); //true
 isNaN(''); //true
-							</code></pre>
+isNaN('2mrw'); //true</code></pre>
 							<pre class="fragment"><code>
 isNaN(NaN); //true
 isNaN(undefined); //true
@@ -564,20 +637,23 @@ function reallyNaN(x) {
 							<h2>== or ===</h2>
 						</section>
 						<section>
-							<h2>Strict Equality (===)</h2>
-							<li>check type and value</li>
-							<pre class="fragment"><code>
-//NaN, null and undefined will never === to another type
-//Nan does not even equal to itself
+							<h3>Equality (==)</h3>
+								<ol>
+									<li>Tolerant: will not check type (simplified)</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ol>
+							<div class="fragment">
+								<hr>
+								<h2>Strict Equality (===)</h2>
+								<ol>
+									<li>check type and value</li>
+									<li class="fragment">NaN, null and undefined will never === to another type</li>
+									<li class="fragment">NaN does not even equal to itself</li>
+								</ol>
+								<pre class="fragment"><code>
 NaN === NaN; //false
 //+0 equals to -0
 							</code></pre>
-							<div class="fragment">
-								<hr>
-								<h3>Equality (==)</h3>
-								<li>will not check type (simplified)</li>
-								<li class="fragment">tolerant</li>
-								<li class="fragment">under the hood converts to convenient type</li>
 							</div>
 						</section>
 						<section>
@@ -597,12 +673,15 @@ a === c //true
 						<section>
 							<h2>type coercion by ==</h2>
 							<ol>
-					            <li>both operands are same type: use ===</li>
-					            <li class="fragment">undefined == null</li>
-					            <li class="fragment">One operands is string another is number: convert string to number</li>
-					            <li class="fragment">One is boolean and another is non-boolean: convert boolean to number</li>
-					            <li class="fragment">boolean and number: convert boolean to number</li>
-					            <li class="fragment">string/number and object, try to convert the object to a primitive type and then try to compare</li>
+					            <li>both operands are same type: use = = =</li>
+					            <li class="fragment">undefined = = null</li>
+					            <br>
+					            <li class="fragment">string & number: convert string to number</li>
+					            <li class="fragment">boolean & number: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">boolean & non-boolean: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">string/number & object: try to convert the object to a primitive type and then try to compare</li>
 
 					        </ol>
 					        <br>
@@ -613,7 +692,7 @@ a === c //true
 							<h2>force comparison</h2>
 							<pre><code>
 //force string
-'' + a == ''+b
+'' + a == '' + b
 
 //force number
 +a == +b
@@ -671,21 +750,18 @@ NaN == 0; //false!
 							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
 						</section>
 						<section>
-							<h2>Create graphic to explain</h2>
-						</section>
-						<section>
 							<h2></h2>
 							<pre><code>
 //EQUALITY CHECK...
-[0] == true; 
- 
+[0] == true;
+
 //HOW IT WORKS...
 //convert boolean using toNumber
 [0] == 1;
 //convert object using toPrimitive
 //[0].valueOf() is not a primitive so use...
 //[0].toString() -> "0"
-"0" == 1; 
+"0" == 1;
 //convert string using toNumber
 0 == 1; //false!
 							</code></pre>
