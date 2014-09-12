@@ -706,21 +706,35 @@ var a = {a:1},
 							</code></pre>
 						</section>
 						<section>
-							<h2>remove</h2>
+							<h2>delete wont delete</h2>
 							<pre><code>
-var a = [1, 2, 3, 4];
-delete a[1]; //true
-a; // [1, undefined × 1, 3, 4]
-							</code></pre>
-							<pre class="fragment"><code>
-//slice
-							</code></pre>
-							<pre class="fragment"><code>
-//splice
+var myArr = [1,2,3,4,5,6,7];
+delete myArr[3]; // true
+
+myArr; // [1, 2, 3, undefined × 1, 5, 6, 7]
 							</code></pre>
 						</section>
 						<section>
-							<h2>fitler, every</h2>
+							<h2>splice</h2>
+							<pre><code>
+var GFs = ['angular', 'ember', 'jQuery', 'knockout', 'backbone', 'meteor'];
+
+GFs.splice(2); // ['jQuery', 'knockout', 'backbone', 'meteor']
+GFs; // ['angular', 'ember']
+							</code></pre>
+							<pre class="fragment"><code>
+var GFs = ['angular', 'ember', 'jQuery', 'knockout', 'backbone', 'meteor'];
+
+GFs.splice(2, 2); // ['jQuery', 'knockout']
+GFs; //['angular', 'ember', 'backbone', 'meteor'];
+							</code></pre>
+							<pre class="fragment"><code>
+var GFs = ['angular', 'ember', 'jQuery', 'knockout', 'backbone', 'meteor'];
+
+GFs.splice(2, 2, 'react', 'flight', 'moment'); //['jQuery', 'knockout']
+GFs; //['angular', 'ember', 'react', 'flight', 'moment', 'backbone', 'meteor']
+							</code></pre>
+							<h4 class="fragment">array.splice(idx, howMany[, elements to insert])</h4>
 						</section>
 						<section>
 							<h2>summary of array</h2>
@@ -1135,7 +1149,7 @@ new String('dude') == new String('dude'); //false
 							<h1>Function</h1>
 						</section>
 						<section>
-							<h2>4 ways to create function</h2>
+							<h2>create a function</h2>
 							<pre><code>
 //declaration
 function foo(a, b){
@@ -1164,7 +1178,9 @@ var foo = new Function("a", "b", "return a * b;");
 							<h2>function like an object</h2>
 							<li>could have property</li>
 							<li>have length</li>
-							<li>find more and example</li>
+							<li>always return</li>
+							<li>default return is undefined</li>
+							<li>for constructor returns this</li>
 						</section>
 						<section>
 							<h2>function call</h2>
