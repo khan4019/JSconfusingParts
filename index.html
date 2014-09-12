@@ -633,161 +633,6 @@ function reallyNaN(x) {
 					</section>
 					<section>
 						<section>
-							<h1>Equality</h1>
-							<h2>== or ===</h2>
-						</section>
-						<section>
-							<h3>Equality (==)</h3>
-								<ol>
-									<li>Tolerant: will not check type (simplified)</li>
-									<li class="fragment">under the hood converts to convenient type</li>
-								</ol>
-							<div class="fragment">
-								<hr>
-								<h2>Strict Equality (===)</h2>
-								<ol>
-									<li>check type and value</li>
-									<li class="fragment">NaN, null and undefined will never === to another type</li>
-									<li class="fragment">NaN does not even equal to itself</li>
-								</ol>
-								<pre class="fragment"><code>
-NaN === NaN; //false
-//+0 equals to -0
-							</code></pre>
-							</div>
-						</section>
-						<section>
-							<h2>object equality</h2>
-							<pre><code>
-var a = {a: 1};
-var b = {a: 1};
-a == b //false
-a === b //false
-							</code></pre>
-							<pre class="fragment"><code>
-var c = a;
-a == c//true
-a === c //true
-							</code></pre>
-						</section>
-						<section>
-							<h2>type coercion by ==</h2>
-							<ol>
-					            <li>both operands are same type: use = = =</li>
-					            <li class="fragment">undefined = = null</li>
-					            <br>
-					            <li class="fragment">string & number: convert string to number</li>
-					            <li class="fragment">boolean & number: convert boolean to number</li>
-					            <br>
-					            <li class="fragment">boolean & non-boolean: convert boolean to number</li>
-					            <br>
-					            <li class="fragment">string/number & object: try to convert the object to a primitive type and then try to compare</li>
-
-					        </ol>
-					        <br>
-					        <br>
-					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
-						</section>
-						<section>
-							<h2>force comparison</h2>
-							<pre><code>
-//force string
-'' + a == '' + b
-
-//force number
-+a == +b
-
-//force boolean
-!a == !b
-							</code></pre>
-							<pre class="fragment"><code>
-new String('dude') == 'dude'; //true
-'dude'  == new String('dude'); //true
-
-//not two object
-new String('dude') == new String('dude'); //false
-							</code></pre>
-							<a href="">Spec: 11.9.3</a>
-						</section>
-						<section>
-							<h2>zeros in JavaScript</h2>
-							<pre><code>
-[0] == 0; //true
-[] == 0; //true
-
-[0] == []; //false
-//explain this
-							</code></pre>
-							<pre class="fragment"><code>
-[0] == '0'; //true
-[] == '0'; //false
-
-//steps
-//explain how this works
-
-							</code></pre>
-							<a href="http://zero.milosz.ca/">zeros in JS</a>
-						</section>
-						<section>
-							<h2>potato and JS</h2>
-							<pre><code>
-"potato" == false; //false
-"potato" == true; //false
-							</code></pre>
-							<h4 class="redBold">are you kidding!!!</h4>
-							<pre class="fragment"><code>
-//convert boolean using toNumber
-"potato" == 1;
-//convert string using toNumber
-NaN == 1; //false!
-							</code></pre>
-							<pre class="fragment"><code>
-//convert boolean using toNumber
-"potato" == 0;
-//convert string using toNumber
-NaN == 0; //false!
-							</code></pre>
-							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
-						</section>
-						<section>
-							<h2></h2>
-							<pre><code>
-//EQUALITY CHECK...
-[0] == true;
-
-//HOW IT WORKS...
-//convert boolean using toNumber
-[0] == 1;
-//convert object using toPrimitive
-//[0].valueOf() is not a primitive so use...
-//[0].toString() -> "0"
-"0" == 1;
-//convert string using toNumber
-0 == 1; //false!
-							</code></pre>
-							<h4>Work on this. try to explain</h4>
-						</section>
-						<section>
-							<h2>Little More</h2>
-							<pre><code>
-null == false; // false
-null == null; // true
-
-undefined == undefined; // true
-undefined == null; // true
-							</code></pre>
-							<pre class="fragment"><code>
-NaN == null; // false
-NaN == NaN; // false
-							</code></pre>
-							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
-						</section>
-						<section>
-							<h3>Summary</h3>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h1>Array</h1>
 						</section>
 						<section>
@@ -797,6 +642,7 @@ var myArr = [1, 2, 3, 4];
 
 myArr[68] = 69;
 myArr.length; //69
+
 myArr; //[1, 2, 3, 4, undefined × 64, 69]
 							</code></pre>
 							<pre class="fragment"><code>
@@ -806,6 +652,8 @@ a.length = 15
 a; //[1, 2, 3, 4, 5, 6, undefined × 9]
 							</code></pre>
 							<pre class="fragment"><code>
+var a = [1, 2, 3, 4, 5, 6];
+
 a.length = 4;
 a; //[1, 2, 3, 4]
 							</code></pre>
@@ -845,7 +693,9 @@ for (var i in myArr){
 							<pre><code>
 [1, 2, 3, 4].indexOf(4); //3
 [1, 2, 3, 4].indexOf('4'); //-1
-[{a:1}, {b:2}, {c:3}, 4].indexOf({a:1}); //-1
+
+var arr = [{a:1}, {b:2}, {c:3}, 4]; 
+arr.indexOf({a:1}); //-1
 							</code></pre>
 							<pre class="fragment"><code>
 var a = {a:1},
@@ -856,20 +706,35 @@ var a = {a:1},
 							</code></pre>
 						</section>
 						<section>
-							<h2>remove</h2>
+							<h2>delete wont delete</h2>
 							<pre><code>
-var a = [1, 2, 3, 4];
-delete a[1]; //true
-							</code></pre>
-							<pre><code>
-//slice
-							</code></pre>
-							<pre><code>
-//splice
+var myArr = [1,2,3,4,5,6,7];
+delete myArr[3]; // true
+
+myArr; // [1, 2, 3, undefined × 1, 5, 6, 7]
 							</code></pre>
 						</section>
 						<section>
-							<h2>fitler, every</h2>
+							<h2>splice</h2>
+							<pre><code>
+var GFs = ['angular', 'ember', 'jQuery', 'knockout', 'backbone', 'meteor'];
+
+GFs.splice(2); // ['jQuery', 'knockout', 'backbone', 'meteor']
+GFs; // ['angular', 'ember']
+							</code></pre>
+							<pre class="fragment"><code>
+var GFs = ['angular', 'ember', 'jQuery', 'knockout', 'backbone', 'meteor'];
+
+GFs.splice(2, 2); // ['jQuery', 'knockout']
+GFs; //['angular', 'ember', 'backbone', 'meteor'];
+							</code></pre>
+							<pre class="fragment"><code>
+var GFs = ['angular', 'ember', 'jQuery', 'knockout', 'backbone', 'meteor'];
+
+GFs.splice(2, 2, 'react', 'flight', 'moment'); //['jQuery', 'knockout']
+GFs; //['angular', 'ember', 'react', 'flight', 'moment', 'backbone', 'meteor']
+							</code></pre>
+							<h4 class="fragment">array.splice(idx, howMany[, elements to insert])</h4>
 						</section>
 						<section>
 							<h2>summary of array</h2>
@@ -903,47 +768,88 @@ delete a[1]; //true
 							<a href="http://www.informit.com/articles/article.aspx?p=1997934&seqNum=3">implicit coercion	</a>
 						</section>
 						<section>
-							<h3>Addition in JavaScript</h3>
-							<ol>
-								<li>if either one is NaN, result is NaN</li>
-								<li>Two infinities of opposite sign, result NaN</li>
-								<br>
-								<div class="fragment">
-									<li>Two infinities of same sign, result similar sign infinity</li>
-									<li>Infinity and a number, result infinity</li>
-								</div>
-								<br>
-								<div class="fragment">
-									<li>two negative 0, result -0</li>
-									<li>two positive 0, result +0</li>
-									<li>two opposite sign 0, result +0</li>
-								</div>
-								<br>
-								<div class="fragment">
-									<li>computed and rounded to nearest IEEE 754 representable number</li>
-								</div>
-							</ol>
+							<h2>Unary + and -</h2>
+							<pre><code>
++"20.14"; // 20.14
+
++true; // 1
++null; // 0
+
+-'34' + 10; //-24</code></pre>
+							<pre class="fragment"><code>
++''; // 0
++'     '; //0
+							</code></pre>
+							<pre class="fragment"><code>
++'buddy'; // NaN
++"20.14Here"; // NaN
++'js dude'; // NaN
+							</code></pre>
 						</section>
 						<section>
 							<h2>Add arrays</h2>
 							<pre><code>
-[0] + [0]; // "00"
-
-or
-[1] + [1]; // "11"
-
-or
 [] + []; // ''
+							</code></pre>
+							<ol>
+								<li class="fragment">convert object <code>[]</code> to primitive type</li>
+								<li class="fragment">toPrimitive on array is calling <code>toString()</code></li
+								>
+								<li class="fragment"><code>toString()</code> on array is <code>array.join('')</code></li>
+							</ol>
+							<pre class="fragment"><code>
+[].torString(); // ''
+'' + ''; // ''
+							</code></pre>
+							<pre class="fragment"><code>
+[0].toString(); // "0"
+
+[0] + [0]; // "00"
 							</code></pre>
 							<pre class="fragment"><code>
 [1, 2, 3].toString(); // 1,2,3
 
 [1, 2, 3] + [1, 2, 3]; //"1,2,31,2,3"
-
 							</code></pre>
-							<a href="http://zero.milosz.ca/">zeros in JS</a>
+							<a href="https://www.destroyallsoftware.com/talks/wat">WAT</a>, <a href="http://stackoverflow.com/a/9033306/1535443">Explain: WAT</a>
 						</section>
 						<section>
+							<h2>array and Object</h2>
+							<pre><code>
+[] + {}; // "[object Object]"
+							</code></pre>
+							<li class="fragment"><code>Object.toString()</code> results ""[object Object]""</li>
+							<pre class="fragment"><code>
+{} + []; // 0
+							</code></pre>
+							<ol>
+								<li class="fragment">{} is not evaluated as object</li>
+								<li class="fragment">{} is evaluated as block <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-12.1">speck-12.1</a></li>
+								<li class="fragment">empty block will not return anything</li>
+								<li class="fragment">{} + [] becomes +[]</li>
+								<li class="fragment">unary + will try to convert [] to number</li>
+								<li class="fragment">[].toString() equals ''</li>
+								<li class="fragment"> +'' results 0</li>
+							</ol>
+						</section>
+						<section>
+							<h2>add objects</h2>
+							<pre><code>
+{} + {}; //NaN
+							</code></pre>
+							<ol>
+								<li class="fragment">{} + {} becomes +{}</li>
+								<li class="fragment">toSrting() of {} is "[object object]"</li>
+								<li class="fragment">+"[object object]" results NaN</li>
+							</ol>
+							<pre class="fragment"><code>
+var a = {};
+var b = {};
+
+a + b; //"[object Object][object Object]"
+							</code></pre>
+						</section>
+						<!-- <section>
 							<h2>null</h2>
 							<pre><code>
 null + null; //0
@@ -960,8 +866,9 @@ true + null; //1
 							</code></pre>
 							<pre class="fragment"><code>
 true + [null]; //true
-false + [null]; ..false
+false + [null]; //false
 							</code></pre>
+							<a href="http://stackoverflow.com/a/25799485/1535443">null concat</a>
 						</section>
 						<section>
 							<h2>undefined</h2>
@@ -991,32 +898,250 @@ infinity + NaN; //NaN
 isFinite(1/0); //false
 isFinite(44); //true
 							</code></pre>
+						</section> -->
+						<section>
+							<h3>Addition in JavaScript</h3>
+							<ol>
+								<li>if either one is NaN, result is NaN</li>
+								<li>Two infinities of opposite sign, result NaN</li>
+								<br>
+								<div class="fragment">
+									<li>Two infinities of same sign, result similar sign infinity</li>
+									<li>Infinity and a number, result infinity</li>
+								</div>
+								<br>
+								<div class="fragment">
+									<li>two negative 0, result -0</li>
+									<li>two positive 0, result +0</li>
+									<li>two opposite sign 0, result +0</li>
+								</div>
+								<br>
+								<div class="fragment">
+									<li>computed and rounded to nearest IEEE 754 representable number</li>
+								</div>
+							</ol>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h1>Equality</h1>
+							<h2>== or ===</h2>
 						</section>
 						<section>
-							<h2>Unary + and -</h2>
+							<h3>Equality (==)</h3>
+								<ol>
+									<li>Tolerant: will not check type (simplified)</li>
+									<li class="fragment">under the hood converts to convenient type</li>
+								</ol>
+							<div class="fragment">
+								<hr>
+								<hr>
+								<h2>Strict Equality (===)</h2>
+								<ol>
+									<li>check type and value</li>
+									<li class="fragment">NaN, null and undefined will never === to another type</li>
+									<li class="fragment">NaN does not even equal to itself</li>
+								</ol>
+								<pre class="fragment"><code>
+NaN === NaN; //false
+//+0 equals to -0
+							</code></pre>
+							</div>
+						</section>
+						<section>
+							<h2>object equality</h2>
 							<pre><code>
-+"20.14"; //20.14
-+" \n20.14      \n"; //20.14, ignores whitspace, line break
-
-+true; //1
-+null; //0
-
-+''; //0
-+'abc'; //NaN
-
--'34'+10; //-24</code></pre>
-							<pre class="fragment"><code>
-+" \n20  .14\n"; // NaN, not everything
-+"20.14Here"; //NaN
-+'md khan'; //NaN
+var a = {a: 1};
+var b = {a: 1};
+a == b //false
+a === b //false
 							</code></pre>
 							<pre class="fragment"><code>
-//to get a number use +
-+(.1+.2).toPrecision(1); //0.3
+var c = a;
+a == c//true
+a === c //true
 							</code></pre>
 						</section>
 						<section>
-							<h2>Summary</h2>
+							<h2>type coercion by ==</h2>
+							<ol>
+					            <li>both operands are same type: use = = =</li>
+					            <li class="fragment">undefined = = null</li>
+					        </ol>
+						</section>
+						<section>
+							<h2>string and number</h2>
+							<pre><code>
+"2" == 2; //true
+							</code></pre>
+							<ol>
+								<li class="fragment">first convert string to number</li>
+								<li class="fragment">and then compare them by = = =</li>
+							</ol>
+							<div class="fragment">
+								<hr>
+								<hr>
+								<h3>boolean and number</h3>
+								<pre><code>
+2 == true
+								</code></pre>
+								<ol>
+									<li class="fragment">convert boolean to number</li>
+									<li class="fragment">true becomes 1 and false becomes 0</li>
+									<li class="fragment">now compare two numbers</li>
+									<li class="fragment"> +0 equals to -0</li>
+								</ol>
+							</div>
+						</section>
+						<section>
+							<h2>string and boolean</h2>
+							<pre><code>
+"potato" == true;
+							</code></pre>
+							<h4>1. convert boolean toNumber(primVal)</h4>
+							<img src="images/toNumber.png" class="fragment" alt="">
+						</section>
+						<section>
+							<h4>2. compare string with number</h4>
+							<pre><code>
+//"potato" == true;
+"potato" == 1;
+							</code></pre>
+							<h4 class="fragment">3. convert string to number</h4>
+							<pre class="fragment"><code>
+//"potato" == true;
+//"potato" == 1;
+NaN == 1;
+							</code></pre>
+							<h4 class="fragment">4. same type use ===</h4>
+							<pre class="fragment"><code>
+//"potato" == true;
+//"potato" == 1;
+//NaN == 1;
+NaN === 1; //false
+							</code></pre>
+						</section>
+						<section>
+							<h2>falsy potato</h2>
+							<pre><code>
+"potato" == false;
+							</code></pre>
+							<pre class="fragment"><code>
+//1. convert boolean using toNumber
+"potato" == 0;
+//2. convert string using toNumber
+NaN == 0;
+//3. compare by using ===
+NaN === 0; //false
+							</code></pre>
+							<pre class="fragment"><code>
+"potato" == true; //false
+
+"potato" == false; //false
+							</code></pre>
+							<a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">Truth and equality in JS</a>
+						</section>
+						<section>
+							<h2>array with boolean</h2>
+							<pre><code>
+[0] == true;
+							</code></pre>
+							<h4 class="fragment">1. convert boolean to number</h4>
+							<pre class="fragment"><code>
+[0] == 1;
+							</code></pre>
+							<h4 class="fragment">2. try to convert [0] to primitive type</h4>
+							<h4 class="fragment">3. use toString()</h4>
+							<h4 class="fragment">4. toString() under the hood uses join.('')</h4>
+							<pre class="fragment"><code>
+[0].toString(); //"0"
+
+"0" == 1;
+							</code></pre>
+						</section>
+						<section>
+							<h4>5. convert string to number</h4>
+							<h4 class="fragment">6. use === to compare to numbers</h4>
+							<pre class="fragment"><code>
+0 === 1; //false
+							</code></pre>
+						</section>
+						<section>
+							<h2>arrays with boolean</h2>
+							<pre><code>
+[0] == false;
+							</code></pre>
+							<pre class="fragment"><code>
+//steps
+[0] == 0;
+"0" == 0;
+0 == 0;
+0 === 0; //true
+							</code></pre>
+							<h4 class="fragment">similar cases</h4>
+							<pre class="fragment"><code>
+[] == 0; //true
+//steps
+"" == 0;
+0 == 0;
+0 === 0;
+							</code></pre>
+							<a href="http://zero.milosz.ca/">zeros in JS</a>
+						</section>
+						<section>
+							<h2>Little More</h2>
+							<h4 class="redBold">Find explanation</h4>
+							<pre><code>
+null == false; // false
+null == null; // true
+
+undefined == undefined; // true
+undefined == null; // true
+							</code></pre>
+							<pre class="fragment"><code>
+NaN == null; // false
+NaN == NaN; // false
+							</code></pre>
+							<a href="http://www.2ality.com/2013/10/typeof-null.html">history of typeof null</a>
+						</section>
+						<section>
+							<h2>force comparison</h2>
+							<pre><code>
+//force string
+'' + a == '' + b
+
+//force number
++a == +b
+
+//force boolean
+!a == !b
+							</code></pre>
+							<pre class="fragment"><code>
+new String('dude') == 'dude'; //true
+'dude'  == new String('dude'); //true
+
+//not two object
+new String('dude') == new String('dude'); //false
+							</code></pre>
+							<a href="">Spec: 11.9.3</a>
+						</section>
+						<section>
+							<h3>Summary</h3>
+							<ol>
+					            <li>both operands are same type: use = = =</li>
+					            <li class="fragment">undefined = = null</li>
+					            <br>
+					            <li class="fragment">string & number: convert string to number</li>
+					            <li class="fragment">boolean & number: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">boolean & non-boolean: convert boolean to number</li>
+					            <br>
+					            <li class="fragment">object & string/number: try to convert the object to a primitive type and then try to compare</li>
+
+					        </ol>
+					        <br>
+					        <br>
+					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
 						</section>
 					</section>
 					<section>
@@ -1024,7 +1149,7 @@ isFinite(44); //true
 							<h1>Function</h1>
 						</section>
 						<section>
-							<h2>4 ways to create function</h2>
+							<h2>create a function</h2>
 							<pre><code>
 //declaration
 function foo(a, b){
@@ -1053,7 +1178,9 @@ var foo = new Function("a", "b", "return a * b;");
 							<h2>function like an object</h2>
 							<li>could have property</li>
 							<li>have length</li>
-							<li>find more and example</li>
+							<li>always return</li>
+							<li>default return is undefined</li>
+							<li>for constructor returns this</li>
 						</section>
 						<section>
 							<h2>function call</h2>
