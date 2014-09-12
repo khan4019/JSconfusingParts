@@ -1175,12 +1175,16 @@ var foo = new Function("a", "b", "return a * b;");
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">MDN: function</a>
 						</section>
 						<section>
-							<h2>function like an object</h2>
-							<li>could have property</li>
-							<li>have length</li>
-							<li>always return</li>
-							<li>default return is undefined</li>
-							<li>for constructor returns this</li>
+							<h2>function in JS</h2>
+							<ol>
+								<li>function like an object</li>
+								<li class="fragment">could have property</li>
+								<li class="fragment">have length</li>
+								<li class="fragment">always return</li>
+								<li class="fragment">default return is <code>undefined</code></li>
+								<li class="fragment">for constructor returns <code>this</code></li>
+								<li class="fragment">array like object- arguments</li>
+							</ol>
 						</section>
 						<section>
 							<h2>function call</h2>
@@ -1214,6 +1218,9 @@ ExecutionContext: {
     }
 }
 							</code></pre>
+							<pre class="fragment"><code>
+foo(2,3);
+							</code></pre>
 							<a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JavaScript execution</a>
 						</section>
 						<section>
@@ -1234,11 +1241,11 @@ ExecutionContext: {
 							</code></pre>
 						</section>
 						<section>
-							<h2>inner function and variable</h2>
+							<h2>inner variable, function</h2>
 							<pre><code>
 function foo(a, b){
     function ttt(){console.log(a);}
-    var dd = a + b;
+    var c = a + b;
     return a * b;
 }
 							</code></pre>
@@ -1254,7 +1261,7 @@ ExecutionContext: {
         a : 2,
         b : 3,
         ttt : pointer to function ttt(),
-        dd : undefined
+        c : undefined
     }
 }
 							</code></pre>
@@ -1274,22 +1281,19 @@ ExecutionContext: {
         a : 2,
         b : 3,
         ttt : pointer to function ttt(),
-        dd : undefined,
+        c : undefined,
     },
     this: { ... }
 }
 							</code></pre>
 						</section>
 						<section>
-							<h2>Execution stage</h2>
-							<li>start reading the code from first line</li>
-							<li class="fragment">assign values</li>
-							<li class="fragment">if need to access variable, it read from ExecutionContext</li>
-							<li class="fragment">until hits first return or body ends</li>
-						</section>
-						<section>
 							<h2>scope chain</h2>
-							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">read this and update</a>
+							<li>a collection of</li>
+							<ol>
+								<li>current execution context</li>
+								<li>all parent execution context</li>
+							</ol>
 						</section>
 						<section>
 							<h2>Execution Context and Scope</h2>
@@ -1309,6 +1313,15 @@ ExecutionContext: {
 							<!-- <p>Execution context is different and separate from the scope chain</p> -->
 						</section>
 						<section>
+							<h2>Execution stage</h2>
+							<ol>
+								<li>start reading the code from first line</li>
+								<li class="fragment">assign values</li>
+								<li class="fragment">if need to access variable, it read from ExecutionContext</li>
+								<li class="fragment">until hits first return or body ends</li>
+							</ol>
+						</section>
+						<!-- <section>
 							<h2>Summary</h2>
 							<ol>
 								<li><code>arguments</code> - array like object</li>
@@ -1325,7 +1338,7 @@ ExecutionContext: {
 								<br>
 								<li>summary about scope chain</li>
 							</ol>
-						</section>
+						</section> -->
 					</section>
 					<section>
 						<section>
