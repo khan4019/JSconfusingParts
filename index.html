@@ -466,11 +466,18 @@ c();</code></pre>
 											<img class="fragment" src="images/closureScope.png" alt="">
 						</section>
 						<section>
+
+							<li class="">Scope is static.</li>
+							<li class="fragment">set in the creation stage and never changes</li>
+							<br>
+							<br>
+							<div class="fragment">
+								<hr>
 							<h2>scope chain</h2>
 							<hr>
 							<br>
-							<br>
 							<h4>is a collection of </h4>
+							</div>
 							 <li class="fragment">current execution context</li>
 							 <li class="fragment"> all parent execution context</li>
 							 <br>
@@ -504,7 +511,7 @@ a;
 //    }
 							</code></pre>
 							<pre class="fragment"><code>
-a(); //0
+a();
 							</code></pre>
 						</section>
 						<section>
@@ -531,7 +538,7 @@ a(); //4
 a(); //5</code></pre>
 							<!-- <h6 class="fragment">a and b has separate private i to remember position</h6> -->
 						</section>
-						<section>
+						<!-- <section>
 							<h2>closure creation</h2>
 							<img src="images/closure1.png" alt="">
 							<br>
@@ -539,7 +546,7 @@ a(); //5</code></pre>
 							<span class="fragment">, save state</span>
 							<span class="fragment">, create encapsulation</span>
 							<h6 class="fragment">every assignment of counter creates new closure</h6>
-						</section>
+						</section> -->
 						<section>
 							<h2>multiple closure</h2>
 							<pre><code>
@@ -694,7 +701,7 @@ foo(1, 2); //43
 								<li>function could have properties</li>
 								<li class="fragment">two stages of function call: Creation, Execution</li>
 								<br>
-								<li class="fragment">ExecutionObject: Scope, variableObj, this</li>
+								<li class="fragment">ExecutionContext: Scope chain, variableObj, this</li>
 								<li class="fragment">Jackie Chan, Kim Kardashian, super bowl</li>
 								<br>
 								<li class="fragment">Scope chain: collection of current + all parent Execution context</li>
@@ -945,8 +952,9 @@ console.log(a);//?
 						<section>
 							<h2>What is this?</h2>
 							<pre><code>
-this;//window
-
+this;//window								
+							</code></pre>
+							<pre class="fragment"><code>
 function whatIsThis() {
    return this;
 }
@@ -1057,10 +1065,11 @@ var foo = function(){
   return this;
 };
 foo(); //window</code></pre>
+							<pre class="fragment"><code>window.foo(); //window</code></pre>
 							<pre class="fragment"><code>
 var d = {};
 d.c = a.b;
-d.c();//Object {b: function}
+d.c();//Object {c: function}
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>
@@ -1089,19 +1098,20 @@ a.b(); //window</code></pre>
 						</section> -->
 						<section>
 							<h2>constructor</h2>
-							<h4>this= newly constructed object</h4>
+							<h4>this = {}</h4>
+							<h4>newly constructed object</h4>
 							<pre><code>
 function Friend(name) {
-  this.name= name;
+  this.name = name;
   this.context = this;
 }
 
-var frnd1 = new Friend('nice guy');
+var frnd1 = new Friend('js dude');
 var frnd2 = new Friend('common guy');
 							</code></pre>
 							<pre class="fragment"><code>
-frnd1.name; //nice guy
-frnd1.context;//Friend {name: "nice guy", context: Friend}
+frnd1.name; //js dude
+frnd1.context;//Friend {name: "js dude", context: Friend}
 							</code></pre>
 							<pre class="fragment"><code>
 frnd2.name; //common guy
@@ -1145,7 +1155,8 @@ var child = Object.create(dad);
 child.whoIsYourFather = function(){
     return this.fathersName;
  }
-
+							</code></pre>
+							<pre class="fragment"><code>
 child.whoIsYourFather(); //big Dad
 							</code></pre>
 							<pre class="fragment"><code>
@@ -1313,7 +1324,6 @@ a.b(); //true;
 								<li>left of dot(.) will indicate value of this</li>
 								<li class="fragment">window (no dot)</li>
 								<br>
-								<li class="fragment">foo() === window.foo()</li>
 								<li class="fragment">undefined (strict mode IIFE)</li>
 								<br>
 								<li class="fragment">object (left of dot('.') for a method call)</li>
@@ -1345,6 +1355,9 @@ a.b(); //true;
 							<img src="images/phone4.jpg" alt="">
 						</section>
 						<section>
+							<img src="images/play.jpg" alt="">
+						</section>
+						<section>
 							<img src="images/cutPaste.jpg" alt="">
 						</section>
 						<section>
@@ -1362,6 +1375,67 @@ a.b(); //true;
 <!-- 						<section>
 							<img src="images/sickDay.jpg" alt="">
 						</section> -->
+					</section>
+					<section>
+						<section>
+							<h1>pass by</h1>
+						</section>
+						<section>
+							<h2>primitive by value</h2>
+							<pre><code>
+function foo(a){
+    a = 55;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var a = 7;
+
+foo(a);
+
+a; //7
+							</code></pre>
+							<h4 class="fragment">primitive types: boolean, string, number</h4>
+						</section>
+						<section>
+							<h2>object is pass by ref</h2>
+							<pre><code>
+function foo(speaker){
+    speaker.name = 'Paul Irish';
+}
+
+var speaker = {name : 'Addy Osmani'};
+
+foo(speaker);
+
+console.log(speaker);//Object {name : "Paul Irish"}
+							</code></pre>
+						</section>
+						<section>
+							<h2>replace object parameter</h2>
+							<pre><code>
+function foo(speaker){
+    speaker = {name : 'Paul Irish'};
+}
+
+var speaker = {name : 'Addy Osmani'};
+
+foo(speaker);
+
+console.log(speaker);//Object {name : "Addy Osmani"}
+							</code></pre>
+						</section>
+						<section>
+							<h2>Call by Sharing</h2>
+							<ul>
+								<li>If u change the parameter, it wont affect</li>
+								<li class="fragment">If u change INTERNALS, changes will propagate</li>
+							</ul>
+							<br>
+							<br>
+							<a href="http://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_sharing">call by sharing</a>
+							<br>
+							<a href="http://stackoverflow.com/a/3638034/1535443">by Ref</a>, <a href="http://snook.ca/archives/javascript/javascript_pass">check this one</a>
+						</section>
 					</section>
 					<section>
 						<section>
@@ -1420,67 +1494,6 @@ consoleSquare(3);
 					</section>
 					<section>
 						<section>
-							<h1>pass by</h1>
-						</section>
-						<section>
-							<h2>primitive by value</h2>
-							<pre><code>
-function foo(a){
-    a = 55;
-}
-							</code></pre>
-							<pre class="fragment"><code>
-var a = 7;
-
-foo(a);
-
-a; //7
-							</code></pre>
-							<h4 class="fragment">primitive types: boolean, string, number, null, undefined</h4>
-						</section>
-						<section>
-							<h2>object is pass by ref</h2>
-							<pre><code>
-function foo(speaker){
-    speaker.name = 'Paul Irish';
-}
-
-var speaker = {name : 'Addy Osmani'};
-
-foo(speaker);
-
-console.log(speaker);//Object {name : "Paul Irish"}
-							</code></pre>
-						</section>
-						<section>
-							<h2>replace object parameter</h2>
-							<pre><code>
-function foo(speaker){
-    speaker = {name : 'Paul Irish'};
-}
-
-var speaker = {name : 'Addy Osmani'};
-
-foo(speaker);
-
-console.log(speaker);//Object {name : "Addy Osmani"}
-							</code></pre>
-						</section>
-						<section>
-							<h2>Call by Sharing</h2>
-							<ul>
-								<li>If u change the parameter, it wont affect</li>
-								<li class="fragment">If u change INTERNALS, changes will propagate</li>
-							</ul>
-							<br>
-							<br>
-							<a href="http://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_sharing">call by sharing</a>
-							<br>
-							<a href="http://stackoverflow.com/a/3638034/1535443">by Ref</a>, <a href="http://snook.ca/archives/javascript/javascript_pass">check this one</a>
-						</section>
-					</section>
-					<section>
-						<section>
 							<h2>get out of there</h2>
 							<img src="images/shell.jpg" alt="">
 						</section>
@@ -1488,7 +1501,7 @@ console.log(speaker);//Object {name : "Addy Osmani"}
 							<h2>Summary</h2>
 							<ol>
 								<li>two stages of function call: creation, execution</li>
-								<li class="fragment">ExecutionObject: scope chain, variable Object, this</li>
+								<li class="fragment">ExecutionContext: scope chain, variable Object, this</li>
 								<br>
 								<li class="fragment">Scope chain: collection of current + all parent Execution context</li>
 								<li class="fragment">Closure: Save states and create encapsulation</li>
@@ -1496,7 +1509,9 @@ console.log(speaker);//Object {name : "Addy Osmani"}
 								<li class="fragment">left side of "." helps to defines values of this</li>
 								<li class="fragment">use bind, call, apply to set value of this explicitly</li>
 								<br>
+								<li class="fragment">changing properties of passed object will propagate</li>
 								<li class="fragment">JS Implementation: call stack, event loop, queue</li>
+
 							</ol>
 						</section>
 					</section>
@@ -3251,11 +3266,12 @@ in array
 							<h2>Look Busy at Work</h2>
 							<ol>
 								<li class="fragment">Ctrl + 1 when big brother is around</li>
+								<li class="fragment">Use headphone or mute</li>
+								<br>
 								<li class="fragment">Always carry extra bag and print out</li>
-								<br>
 								<li class="fragment">do ur personal work, but leave after ur manager</li>
-								<li class="fragment">always leave a extra jacket on your chair</li>
 								<br>
+								<li class="fragment">always leave a extra jacket on your chair</li>
 								<li class="fragment">compose email during office hours, send it midnight or weekends</li>
 							</ol>
 							<br>
