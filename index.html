@@ -143,7 +143,7 @@
 							<h1>Function</h1>
 							<img src="images/function.jpg" alt="">
 						</section>
-						<section>
+						<!-- <section>
 							<h2>create a function</h2>
 							<pre><code>//declaration
 function foo(a, b){
@@ -165,7 +165,7 @@ var foo = function boo(a, b){
 var foo = new Function("a", "b", "return a * b;");
 							</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">MDN: function</a>
-						</section>
+						</section> -->
 						<section>
 							<h2>function in JS</h2>
 							<ol>
@@ -361,9 +361,11 @@ ExecutionContext: {
 						<section>
 							<h2>Summary</h2>
 							<ol>
-									<li>function call creates execution context (before running any code) </li>
+									<li>two stages of function: creation, execution</li>
+									<li>creates execution context (before running any code) </li>
 									<br>
 									<li class="fragment">First thing created is the scope chain</li>
+									<li class="fragment">then it creates variableObject</li>
 									<br>
 									<li class="fragment">create arguments, variable, determine <code>this</code></li>
 									<br>
@@ -540,13 +542,13 @@ a(); //5</code></pre>
 						</section>
 						<section>
 							<h2>multiple closure</h2>
-							<pre class="fragment"><code>
+							<pre><code>
 var b = counter();
 b(); //0
 b(); //1
 b(); //2
 b(); //3</code></pre>
-							<img src="images/closureTwoFunc.png" alt="">
+							<img  class="fragment" src="images/closureTwoFunc.png" alt="">
 							<p class="fragment">each closure have separate private variable</p>
 						</section>
 						<section>
@@ -712,6 +714,7 @@ foo(1, 2); //43
 						<section><img src="images/train5.jpg" alt=""></section>
 						<section><img src="images/train1.jpg" alt=""></section>
 						<section><img src="images/train6.jpg" alt=""></section>
+						<section><img src="images/sucks.jpg" alt=""></section>
 						<section><img src="images/sleep1.jpg" alt=""></section>
 						<section><img src="images/tshirt.jpg" alt=""></section>
 						<section><img src="images/shoes.jpg" alt=""></section>
@@ -989,7 +992,7 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre> -->
 //window</code></pre> 
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
 						</section>-->
-						<section>
+						<!--<section>
 							<h2>this of an Object</h2>
 							<pre><code>
 var buddy = {
@@ -1003,15 +1006,15 @@ buddy.firstName; //penny
 buddy.lastName;//undefined
 buddy.context;//window
 							</code></pre>
-							<!-- <pre class="fragment"><code>
+							 <pre class="fragment"><code>
 var buddy = {
   getContext: function() {
    return this;
   }
 };
-buddy.getContext(); // Object {getContext: function}</code></pre> -->
+buddy.getContext(); // Object {getContext: function}</code></pre> 
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
-						</section>
+						</section>-->
 						<!-- <section>
 							<h4>Access object propeties via "this"</h4>
 							<pre><code>
@@ -1056,8 +1059,8 @@ var foo = function(){
 foo(); //window</code></pre>
 							<pre class="fragment"><code>
 var d = {};
-d.b = a.b;
-d.b();//Object {b: function}
+d.c = a.b;
+d.c();//Object {b: function}
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>
@@ -1190,11 +1193,11 @@ function Menu(item){
 }
 							</code></pre>
 							<pre class="fragment"><code>
-var earlyMorning = new Menu('starBucks');
+var lunch = new Menu('pizza');
 
 //setTimeout context: window
 
-earlyMorning.context//Menu {item: "starBucks", context: Menu}
+lunch.context//Menu {item: "pizza", context: Menu}
 							</code></pre>
 							<h4>Same issues with setInterval</h4>
 						</section>
@@ -1306,16 +1309,22 @@ a.b(); //true;
 						</section> -->
 						<section>
 							<h2>Now. I know this</h2>
-							<ul>
-								<li class="fragment oneFragmentAtaTime">this = window (function context)</li>
-								<li class="fragment oneFragmentAtaTime">this = undefined (strict mode IIFE)</li>
-								<li class="fragment oneFragmentAtaTime">this = object (called in object context)</li>
-								<li class="fragment oneFragmentAtaTime">this = object (constructor: new keyword)</li>
-								<li class="fragment oneFragmentAtaTime">this has access to all inherited properties</li>
-								<li class="fragment oneFragmentAtaTime">this = object (Arg of bind, call, apply)</li>
-								<li class="fragment oneFragmentAtaTime">this = window (inside setTimeout)</li>
-								<li class="fragment oneFragmentAtaTime">this = element the event fired from</li>
-							</ul>
+							<ol>
+								<li>left of dot(.) will indicate value of this</li>
+								<li class="fragment">window (no dot)</li>
+								<br>
+								<li class="fragment">foo() === window.foo()</li>
+								<li class="fragment">undefined (strict mode IIFE)</li>
+								<br>
+								<li class="fragment">object (left of dot('.') for a method call)</li>
+								<li class="fragment">newly constructed object (constructor: new keyword)</li>
+								<br>
+								<li class="fragment">window (inside setTimeout)</li>
+								<li class="fragment">element fired the event, inside event handler</li>
+								<br>
+								<li class="fragment">this has access to all inherited properties</li>
+								<li class="fragment">use bind, call, apply to set value of this explicitly</li>
+							</ol>
 							<!-- <h4 class="hidden">graphical/ list items as summary to recap</h4> -->
 							<!-- <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JS: execution context</a> -->
 						</section>
@@ -1323,9 +1332,6 @@ a.b(); //true;
 					<section>
 						<section>
 							<h1>Day of a programmer</h1>
-						</section>
-						<section>
-							<img src="images/sucks.jpg" alt="">
 						</section>
 						<section>
 							<img src="images/lazy.jpg" alt="">
@@ -1414,6 +1420,67 @@ consoleSquare(3);
 					</section>
 					<section>
 						<section>
+							<h1>pass by</h1>
+						</section>
+						<section>
+							<h2>primitive by value</h2>
+							<pre><code>
+function foo(a){
+    a = 55;
+}
+							</code></pre>
+							<pre class="fragment"><code>
+var a = 7;
+
+foo(a);
+
+a; //7
+							</code></pre>
+							<h4 class="fragment">primitive types: boolean, string, number, null, undefined</h4>
+						</section>
+						<section>
+							<h2>object is pass by ref</h2>
+							<pre><code>
+function foo(speaker){
+    speaker.name = 'Paul Irish';
+}
+
+var speaker = {name : 'Addy Osmani'};
+
+foo(speaker);
+
+console.log(speaker);//Object {name : "Paul Irish"}
+							</code></pre>
+						</section>
+						<section>
+							<h2>replace object parameter</h2>
+							<pre><code>
+function foo(speaker){
+    speaker = {name : 'Paul Irish'};
+}
+
+var speaker = {name : 'Addy Osmani'};
+
+foo(speaker);
+
+console.log(speaker);//Object {name : "Addy Osmani"}
+							</code></pre>
+						</section>
+						<section>
+							<h2>Call by Sharing</h2>
+							<ul>
+								<li>If u change the parameter, it wont affect</li>
+								<li class="fragment">If u change INTERNALS, changes will propagate</li>
+							</ul>
+							<br>
+							<br>
+							<a href="http://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_sharing">call by sharing</a>
+							<br>
+							<a href="http://stackoverflow.com/a/3638034/1535443">by Ref</a>, <a href="http://snook.ca/archives/javascript/javascript_pass">check this one</a>
+						</section>
+					</section>
+					<section>
+						<section>
 							<h2>get out of there</h2>
 							<img src="images/shell.jpg" alt="">
 						</section>
@@ -1421,20 +1488,19 @@ consoleSquare(3);
 							<h2>Summary</h2>
 							<ol>
 								<li>two stages of function call: creation, execution</li>
-								<li class="fragment">ExecutionObject: scope, variableObj, this</li>
+								<li class="fragment">ExecutionObject: scope chain, variable Object, this</li>
 								<br>
 								<li class="fragment">Scope chain: collection of current + all parent Execution context</li>
 								<li class="fragment">Closure: Save states and create encapsulation</li>
 								<br>
 								<li class="fragment">left side of "." helps to defines values of this</li>
-								<li class="fragment"></li>
+								<li class="fragment">use bind, call, apply to set value of this explicitly</li>
 								<br>
-								<li class="fragment"></li>
 								<li class="fragment">JS Implementation: call stack, event loop, queue</li>
 							</ol>
 						</section>
 					</section>
-					<section>
+					<!-- <section>
 						<section>
 							<h1>types</h1>
 							<img src="images/types.jpg" alt="">
@@ -1715,8 +1781,8 @@ new Boolean(0); // truthy
 								<li class="fragment">double bang(!!) to check true or false</li>
 							</ol>
 						</section>
-					</section>
-					<section>
+					</section> -->
+					<!-- <section>
 						<section>
 							<h1>Number</h1>
 							<img src="images/nan.jpg" alt="">
@@ -1877,8 +1943,8 @@ function reallyNaN(x) {
 }
 							</code></pre>
 						</section>
-					</section>
-					<section>
+					</section> -->
+					<!-- <section>
 						<section>
 							<h1>Array</h1>
 						</section>
@@ -1998,8 +2064,8 @@ GFs; //['angular', 'ember', 'react', 'flight', 'moment', 'backbone', 'meteor']
 								<li class="fragment">splice can insert at the position of remove</li>
 							</ol>
 						</section>
-					</section>
-					<section>
+					</section> -->
+					<!-- <section>
 						<section>
 							<h1>+</h1>
 							<h3>Addition operator</h3>
@@ -2109,7 +2175,7 @@ var b = {};
 a + b; //"[object Object][object Object]"
 							</code></pre>
 						</section>
-						<!-- <section>
+						<section>
 							<h2>null</h2>
 							<pre><code>
 null + null; //0
@@ -2158,7 +2224,7 @@ infinity + NaN; //NaN
 isFinite(1/0); //false
 isFinite(44); //true
 							</code></pre>
-						</section> -->
+						</section>
 						<section>
 							<h3>Addition in JavaScript</h3>
 							<ol>
@@ -2181,8 +2247,8 @@ isFinite(44); //true
 								</div>
 							</ol>
 						</section>
-					</section>
-					<section>
+					</section> -->
+					<!-- <section>
 						<section>
 							<h1>Equality</h1>
 							<h2>== or ===</h2>
@@ -2404,8 +2470,8 @@ new String('dude') == new String('dude'); //false
 					        <br>
 					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
 						</section>
-					</section>
-					<section>
+					</section> -->
+					<!-- <section>
 						<section>
 							<h1>get outside</h1>
 							<img src="images/shell.jpg" alt="">
@@ -2426,7 +2492,7 @@ new String('dude') == new String('dude'); //false
 								<li class="fragment">NaN is not equal to itself</li>
 							</ol>
 						</section>
-					</section>
+					</section> -->
 					<!-- <section>
 						<section>
 							<h1>name conflict</h1>
@@ -3148,9 +3214,10 @@ in array
 							<h1>Deleted Scenes</h1>
 						</section>
 						<section>
+							<h2>only 50 min</h2>
 							<ol>
 								<li>inheritance</li>
-								<li>pass by Val or <a href="http://stackoverflow.com/a/3638034/1535443">by Ref</a> : <a href="http://snook.ca/archives/javascript/javascript_pass">check this one</a></li>
+								<li>types, boolean, array, +, equality</li>
 								<li>problem with typeof</li>
 								<li>timer</li>
 								<li>strict mode</li>
@@ -3197,6 +3264,9 @@ in array
 							<a href="http://www.wikihow.com/Look-Busy-at-Work-Without-Really-Working">Look busy</a>
 						</section>
 						<section>
+							<img src="images/filter.jpg" alt="">
+						</section>
+						<!-- <section>
 							<h2>free tip</h2>
 							<p>convert it to how to sleep in meeting</p>
 							<a href="http://physics.illinois.edu/events/sleeping.asp">how to sleep in seminar</a>
@@ -3206,13 +3276,28 @@ in array
 							<a href="http://www.wikihow.com/Sleep-in-Class">though for class but u can use it</a>
 							<a href="http://www.wikihow.com/Sleep-at-Work">not very good but check it out</a>
 							<p>search for poing pong eyes and show a process of doing it</p>
+						</section> -->
+					</section>
+					<section>
+						<section>
+							<h1>One thing</h1>
+						</section>
+						<section>
+							<h2>left side of dot (.) helps to define value of this</h2>
+							<pre class="fragment"><code>
+foo();
+//window.foo();
+							</code></pre>
+							<pre class="fragment"><code>
+a.b();
+							</code></pre>
 						</section>
 					</section>
 					<section>
 						<h1>Thank You</h1>
 						<br/>
-						<!-- <h2><a href="http://bit.ly/1gx0FRU">http://bit.ly/1gx0FRU</a> </h2> -->
-						<h2 class="fragment"><a href="http://goo.gl/dV2puW">goo.gl/dV2puW</a> </h2>
+						<br>
+						<!-- <h2 class="fragment"><a href="http://goo.gl/dV2puW">goo.gl/dV2puW</a> </h2> -->
 						<br/>
 						<br>
 						<br>
@@ -3224,7 +3309,20 @@ in array
 						</p>
 						<h4>www.thatJSdude.com</h4>
 						<small>(youtube.com/user/khanLearning)</small>
-					</section>				
+					</section>
+					<section>
+						<h2>Question?</h2>
+						<img src="images/question1.jpg" alt="">
+						<h4><a href="http://goo.gl/dV2puW">goo.gl/dV2puW</a> </h4>
+						<p>
+							<h3>
+								<a href="http://jhankarmahbub.com">MD Khan</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+
+							</h3>
+						</p>
+						<h4>www.thatJSdude.com</h4>
+						<small>(youtube.com/user/khanLearning)</small>
+					</section>
 				</div>
 			</div>
 
