@@ -14,9 +14,9 @@
 
 			<link rel="stylesheet" href="css/reveal.css">
 			<link rel="stylesheet" href="css/theme/custom.css" id="theme">
-			<!-- <link rel="stylesheet" type="text/css" href="css/print/pdf.css"> -->
+			 <link rel="stylesheet" type="text/css" href="css/print/pdf.css"> 
 
-			<!-- For syntax highlighting -->
+			 For syntax highlighting 
 			<link rel="stylesheet" href="lib/css/zenburn.css">
 			<style type="text/css">
 				.noUppercase
@@ -65,23 +65,23 @@
 				}
 				.smallerUL{font-size: }
 			</style>
-			<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+			 If the query includes 'print-pdf', use the PDF print sheet 
 			<script>
 				document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 			</script>
 
-			<!--[if lt IE 9]>
+			[if lt IE 9]>
 			<script src="lib/js/html5shiv.js"></script>
-			<![endif]-->
+			<![endif]
 		</head>
 	
 		<body>
 
 			<div class="reveal">
 
-				<!-- Any section element inside of this container is displayed as a slide -->
+				 Any section element inside of this container is displayed as a slide 
 				<div class="slides">
-<!-- start of intro -->
+ start of intro 
 					<section>
 						<h1>Are u sure!</h1>
 						<h2>You know JavaScript?</h2>
@@ -150,7 +150,7 @@
 							<h1>Function</h1>
 							<img src="images/function.jpg" alt="">
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>create a function</h2>
 							<pre><code>//declaration
 function foo(a, b){
@@ -172,7 +172,7 @@ var foo = function boo(a, b){
 var foo = new Function("a", "b", "return a * b;");
 							</code></pre>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">MDN: function</a>
-						</section> -->
+						</section> 
 						<section>
 							<h2>function in JS</h2>
 							<ol>
@@ -182,11 +182,11 @@ var foo = new Function("a", "b", "return a * b;");
 								<li class="fragment">have a length property</li>
 								<li class="fragment">length is number of parameters</li>
 								<br/>
-								<!-- <li class="fragment">always return</li>
+								 <li class="fragment">always return</li>
 								<li class="fragment">default return is <code>undefined</code></li>
 								<br/>
 								<li class="fragment">"new" for constructor returns <code>this</code></li>
-								<li class="fragment">arguments - is an array like object</li> -->
+								<li class="fragment">arguments - is an array like object</li> 
 							</ol>
 						</section>
 						<section>
@@ -331,15 +331,15 @@ ExecutionContext: {
 }
 							</code></pre>
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>scope chain</h2>
 							<li>a collection of</li>
 							<ol>
 								<li>current execution context</li>
 								<li>all parent execution context</li>
 							</ol>
-						</section> -->
-						<!--<section>
+						</section> 
+						<section>
 							<h2>Execution Context and Scope</h2>
 							<li>a concept in the language spec</li>
 							<li class="fragment">roughly an 'environment' where function executes</li>
@@ -352,10 +352,10 @@ ExecutionContext: {
 								<li class="fragment">set when function is created and never changes</li>
 								<li class="fragment">scope is a property of the function</li>
 							</div>
-							 <p>Execution context is a concept in the language spec that—in layman's terms—roughly equates to the 'environment' a function executes in; that is, variable scope (and the scope chain, variables in closures from outer scopes), function arguments, and the value of the this object.</p> -->
-							<!-- <p>JavaScript uses static scope; that is, the scope chain of a function is defined at the moment that function is created and never changes; the scope chain is a property of the function.</p> -->
-							<!-- <p>Execution context is different and separate from the scope chain</p> 
-						</section>-->
+							 <p>Execution context is a concept in the language spec that—in layman's terms—roughly equates to the 'environment' a function executes in; that is, variable scope (and the scope chain, variables in closures from outer scopes), function arguments, and the value of the this object.</p> 
+							 <p>JavaScript uses static scope; that is, the scope chain of a function is defined at the moment that function is created and never changes; the scope chain is a property of the function.</p> 
+							 <p>Execution context is different and separate from the scope chain</p> 
+						</section>
 						<section>
 							<h2>Execution stage</h2>
 							<ol>
@@ -543,9 +543,9 @@ a(); //2
 a(); //3
 a(); //4
 a(); //5</code></pre>
-							<!-- <h6 class="fragment">a and b has separate private i to remember position</h6> -->
+							 <h6 class="fragment">a and b has separate private i to remember position</h6> 
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>closure creation</h2>
 							<img src="images/closure1.png" alt="">
 							<br>
@@ -553,7 +553,7 @@ a(); //5</code></pre>
 							<span class="fragment">, save state</span>
 							<span class="fragment">, create encapsulation</span>
 							<h6 class="fragment">every assignment of counter creates new closure</h6>
-						</section> -->
+						</section> 
 						<section>
 							<h2>multiple closure</h2>
 							<pre><code>
@@ -631,7 +631,7 @@ var args = Array.prototype.slice.call(arguments);
 args.map();
 							</code></pre>
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>Give me next argument</h2>
 							<pre><code>
 function createStore(){
@@ -674,7 +674,7 @@ myStore.next(); //17
 							</code></pre>
 							<h3 class="fragment">Currently executing functions</h3>
 						</section>
-						 --><section>
+						 <section>
 							<h3>Don't mess up with names</h3>
 							<pre><code>
 function foo(a, arguments) {
@@ -693,9 +693,9 @@ foo(1, 2); //43
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2011/01/18/javascripts-arguments-object-and-beyond/">Angus Croll: aguments</a>
 						</section>
-						<!-- <section>
+						 <section>
 							<a href="http://javascript.info/tutorial/arguments">Last part caller calee and add even more</a>
-						</section> -->
+						</section> 
 					</section>
 					<section>
 						<section>
@@ -739,7 +739,7 @@ foo(1, 2); //43
 							<h1>hoisting</h1>
 							<img src="images/browser.jpg" alt="">
 						</section>
-						<!-- <section>
+						 <section>
 							<h2></h2>
 							<pre><code>
 function justLooping() {
@@ -762,7 +762,7 @@ function foo(){
 							<pre class="fragment"><code>
 foo();//undefined
 							</code></pre>
-						</section> -->
+						</section> 
 						<section>
 							<img src="images/hoist.jpg" alt="">
 							<img class="fragment" src="images/hoistBike.jpg" alt="">
@@ -862,7 +862,7 @@ function outer(){
   }  
 }</code></pre>
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>function hoisting</h2>
 							<pre><code>
 function foo(){
@@ -882,8 +882,8 @@ foo(); //?
 							<pre class="fragment"><code>
 foo(); //original;
 							</code></pre>
-						</section> -->
-						<!-- <section>
+						</section> 
+						 <section>
 							<h2>quiz</h2>							
 							<pre><code>
 var a = 1;
@@ -944,11 +944,11 @@ bar();
 console.log(a);//?
 							</code></pre>
 							<h4 class="fragment">Answer: 1</h4>
-						</section> -->
-						<!-- <section>
+						</section> 
+						 <section>
 							<h2>move this before</h2>
 							<a href="http://stackoverflow.com/questions/23889317/explain-this-javascript-name-clash">nice and simple hoisting issue</a>
-						</section> -->
+						</section> 
 					</section>
 					<section>
 						<section>
@@ -966,14 +966,14 @@ function whatIsThis() {
    return this;
 }
 whatIsThis(); //window</code></pre>
-							<!-- <pre class="fragment"><code>
+							 <pre class="fragment"><code>
 function justAddName(name) {
   this.name = name;
   return this;
 }
 
 justAddName(" Amy Farrah Fowler");//window
-console.log(window.name); //  Amy Farrah Fowler</code></pre> -->
+console.log(window.name); //  Amy Farrah Fowler</code></pre> 
 				  			<pre class="fragment"><code>
 (function(){
    return this;
@@ -986,7 +986,7 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre> -->
 })(); //undefined</code></pre>
 							<a href="http://coding.smashingmagazine.com/2009/08/01/what-you-need-to-know-about-javascript-scope/">Smashing: JS Scope</a>
 						</section>
-						<!--<section>
+						<section>
 							<h2>strict mode</h2>
 							<pre><code>
 (function(){
@@ -1006,8 +1006,8 @@ console.log(window.name); //  Amy Farrah Fowler</code></pre> -->
 }).call(this);
 //window</code></pre> 
 							<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">Spec 10.4.3</a>
-						</section>-->
-						<!--<section>
+						</section>
+						<section>
 							<h2>this of an Object</h2>
 							<pre><code>
 var buddy = {
@@ -1029,8 +1029,8 @@ var buddy = {
 };
 buddy.getContext(); // Object {getContext: function}</code></pre> 
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
-						</section>-->
-						<!-- <section>
+						</section>
+						 <section>
 							<h4>Access object propeties via "this"</h4>
 							<pre><code>
 var buddy = {
@@ -1054,7 +1054,7 @@ buddy.addLib = function(newLib){
 buddy.addLib('angular');
 buddy.libraries; //["jquery", "ember", "backbone", "angular"]
 							</code></pre>
-						</section> -->
+						</section> 
 						<section>
 							<h4>understand the context of execution</h4>
 							<pre><code>
@@ -1080,7 +1080,7 @@ d.c();//Object {c: function}
 							</code></pre>
 							<a href="http://javascriptweblog.wordpress.com/2010/08/30/understanding-javascripts-this/">Angus Croll: this</a>
 						</section>
-						<!-- <section>
+						 <section>
 							<h3>some more execution context</h3>
 							<pre><code>
 var a = {
@@ -1102,7 +1102,7 @@ var a = {
 a.b(); //window</code></pre>
 							<h4 class="fragment">strict mode will return undefined</h4>
 							<a href="http://stackoverflow.com/questions/20309236/understanding-javascript-this-with-private-function-and-self-executing-function/20309357?noredirect=1#20309357">context of this</a>
-						</section> -->
+						</section> 
 						<section>
 							<h2>constructor</h2>
 							<h4>this = {}</h4>
@@ -1125,7 +1125,7 @@ frnd2.name; //common guy
 frnd2.context;//Friend {name: "common guy", context: Friend}
                             </code></pre>
 						</section>
-						<!-- <section>
+						 <section>
 							<h3>function returning object</h3>
 							<pre><code>
 function CrazyFriend(name) {
@@ -1147,7 +1147,7 @@ var crazy21 = new CrazyFriend('Howard Wolowitz');
 crazy21.name;//Howard Wolowitz'
 crazy21.context;//CrazyFriend {name: "Howard Wolo"}
 							</code></pre>
-						</section> -->
+						</section> 
 						<section>
 							<h2>prototype chain</h2>
 							<h4>access property, methods in the prototype chain</h4>
@@ -1172,7 +1172,7 @@ Object.getPrototypeOf(child); //{fathersName: "big Dad"}
 							</code></pre>
 							<a href="http://www.sitepoint.com/what-is-this-in-javascript/">sitePoint: this</a>
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>setTimeout</h2>
 							<pre><code>
 var bigBang = {
@@ -1196,7 +1196,7 @@ var bigBang = {
 }
 bigBang.getContext();//window
 							</code></pre>
-						</section> -->
+						</section> 
 						<section>
 							<h3>setTimeout inside constructor</h3>
 							<pre><code>
@@ -1219,7 +1219,7 @@ lunch.context//Menu {item: "pizza", context: Menu}
 							</code></pre>
 							<h4>Same issues with setInterval</h4>
 						</section>
-						<!-- <section>
+						 <section>
 							<h3>How to fix this?</h3>
 							<pre><code>
 function Menu(item){
@@ -1240,7 +1240,7 @@ var earlyMorning = new Menu('starBucks');
 earlyMorning.context//Menu {item: "starBucks", context: Menu}
 							</code></pre>
 							<h4 class="fragment">Other solutions. Coming soon...</h4>
-						</section> -->
+						</section> 
 						<section>
 							<h2>"this" in arguments</h2>
 							<h4>8 ES5 function allows thisArg</h4>
@@ -1250,16 +1250,16 @@ Function.prototype.call( thisArg [ , arg1 [ , arg2, ... ] ] )
 Function.prototype.apply( thisArg, argArray )
 							</code></pre>
 							<img class="fragment" src="images/bind1.png" alt="">
-							<!-- <pre class="fragment"><code>
+							 <pre class="fragment"><code>
 Array.prototype.every( callbackfn [ , thisArg ] )
 Array.prototype.some( callbackfn [ , thisArg ] )
 Array.prototype.forEach( callbackfn [ , thisArg ] )
 Array.prototype.map( callbackfn [ , thisArg ] )
 Array.prototype.filter( callbackfn [ , thisArg ] )
 							</code></pre>
-							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES5: 5 parts</a> -->
+							<a href="http://tech.pro/tutorial/1671/thinking-about-ecmascript-5-parts">ES5: 5 parts</a> 
 						</section>
-						<!--<section>
+						<section>
 							
 							 <h2>bind, call and apply</h2>
 							<pre><code>
@@ -1283,7 +1283,7 @@ var forDev = {menu: 'pizza'};
 lunch.call(forDev, 5, 10);//pizza for 5 within 10 min.
 lunch.apply(forDev, [5, 10]);//pizza for 5 within 10 min.
 							</code></pre> 
-						</section>-->
+						</section>
 						<section>
 							<img src="images/bind3.jpg" alt="">
 						</section>
@@ -1310,7 +1310,7 @@ console.log(this);
 							<h4>same for inline element this</h4>
 							<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN: this</a>
 						</section>
-						<!-- <section>
+						 <section>
 							<h4>Eval doesn't have special context</h4>
 							<pre><code>
 console.log(eval('this==window'));//true
@@ -1324,7 +1324,7 @@ var a = {
 a.b(); //true;
 							</code></pre>
 							<a href="http://stackoverflow.com/questions/3127429/javascript-this-keyword">this-keyword</a>
-						</section> -->
+						</section> 
 						<section>
 							<h2>Now. I know this</h2>
 							<ol>
@@ -1342,8 +1342,8 @@ a.b(); //true;
 								<li class="fragment">this has access to all inherited properties</li>
 								<li class="fragment">use bind, call, apply to set value of this explicitly</li>
 							</ol>
-							<!-- <h4 class="hidden">graphical/ list items as summary to recap</h4> -->
-							<!-- <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JS: execution context</a> -->
+							 <h4 class="hidden">graphical/ list items as summary to recap</h4> 
+							 <a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">JS: execution context</a> 
 						</section>
 					</section>
 					<section>
@@ -1379,9 +1379,9 @@ a.b(); //true;
 						<section>
 							<img src="images/feature.jpg" alt="">
 						</section>
-<!-- 						<section>
+ 						<section>
 							<img src="images/sickDay.jpg" alt="">
-						</section> -->
+						</section> 
 					</section>
 					<section>
 						<section>
@@ -1522,7 +1522,7 @@ consoleSquare(3);
 							</ol>
 						</section>
 					</section>
-					<!-- <section>
+					 <section>
 						<section>
 							<h1>types</h1>
 							<img src="images/types.jpg" alt="">
@@ -1803,8 +1803,8 @@ new Boolean(0); // truthy
 								<li class="fragment">double bang(!!) to check true or false</li>
 							</ol>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Number</h1>
 							<img src="images/nan.jpg" alt="">
@@ -1965,8 +1965,8 @@ function reallyNaN(x) {
 }
 							</code></pre>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Array</h1>
 						</section>
@@ -2086,8 +2086,8 @@ GFs; //['angular', 'ember', 'react', 'flight', 'moment', 'backbone', 'meteor']
 								<li class="fragment">splice can insert at the position of remove</li>
 							</ol>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>+</h1>
 							<h3>Addition operator</h3>
@@ -2269,8 +2269,8 @@ isFinite(44); //true
 								</div>
 							</ol>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Equality</h1>
 							<h2>== or ===</h2>
@@ -2492,8 +2492,8 @@ new String('dude') == new String('dude'); //false
 					        <br>
 					        <a href="http://www.reddit.com/r/javascript/comments/1yh7vy/javascript_implicit_coercion_how_come_null_false/">JS Implicit Coercion</a>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>get outside</h1>
 							<img src="images/shell.jpg" alt="">
@@ -2514,8 +2514,8 @@ new String('dude') == new String('dude'); //false
 								<li class="fragment">NaN is not equal to itself</li>
 							</ol>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>name conflict</h1>
 							<h2>right now its, faltu. but could try to make it interesting</h2>
@@ -2610,7 +2610,7 @@ exLevel(5); //2
 							<a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">David Sharif: scope</a>
 						</section>
 					</section>
-					 --><!-- <section>
+					  <section>
 						<section>
 							<h1>Un intended closure</h1>
 						</section>
@@ -2662,8 +2662,8 @@ function looping (){
 							
 						</section>
 					</section>
-					 -->
-					<!-- <section>
+					 
+					 <section>
 						<section>
 							<h1>typeof</h1>
 							<h3>instandeof</h3>
@@ -2816,8 +2816,8 @@ Math instanceof Math;
 
 							</code></pre>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Inheritance</h1>
 							<a href="http://blogs.msdn.com/b/eternalcoding/archive/2014/08/20/simple-inheritance-with-javascript.aspx">simple inheritance, have a look</a>
@@ -2987,8 +2987,8 @@ frnd.hasOwnProperty('name');
 							<h2>getPrototypeOf, __Proto__</h2>
 							<p>source: Effective JS p-118</p>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Timer</h1>
 						</section>
@@ -3065,8 +3065,8 @@ setTimeout(myFunc, 1000, 2, 3, 5);
 							<h2>Debounce and Throttle</h2>
 							<a href="http://jhankarmahbub.com/presentations/debounce.html">click: debounce & throttle</a>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Strict Mode</h1>
 							<a href="http://restrictmode.org/">read and explore here</a>
@@ -3112,8 +3112,8 @@ function isStrictMode(){
 							</code></pre>
 							<a href="http://youtu.be/UTEqr0IlFKY?t=44m31s">Douglas Crockford: use strict</a>
 						</section>
-					</section> -->
-					<!-- <section>
+					</section> 
+					 <section>
 						<section>
 							<h1>Promise</h1>
 						</section>
@@ -3230,7 +3230,7 @@ in array
 							</code></pre>
 							<a href="http://us6.campaign-archive1.com/?u=2cc20705b76fa66ab84a6634f&id=38748d10f8">JS Drip: delete</a>
 						</section>
-					</section> -->
+					</section> 
 					<section>
 						<section>
 							<h1>Deleted Scenes</h1>
@@ -3248,9 +3248,9 @@ in array
 								<li>dating with JS</li>
 								<li>regex</li>
 							</ol>
-							<!-- <li><a href="http://bjorn.tipling.com/advanced-objects-in-javascript">Advanced Object in JavaScript</a></li>
+							 <li><a href="http://bjorn.tipling.com/advanced-objects-in-javascript">Advanced Object in JavaScript</a></li>
 							<li><a href="http://raganwald.com/2014/07/09/javascript-constructor-problem.html">JavaScript constructor 3 problems and solutions</a></li>
-							<li><a href="http://ardalis.com/javascript-date-tips">dating with js</a></li> -->
+							<li><a href="http://ardalis.com/javascript-date-tips">dating with js</a></li> 
 						</section>
 						<section>
 							<h2>Need more !!!</h2>
@@ -3292,7 +3292,7 @@ in array
 						<section>
 							<img src="images/filter.jpg" alt="">
 						</section>
-						<!-- <section>
+						 <section>
 							<h2>free tip</h2>
 							<p>convert it to how to sleep in meeting</p>
 							<a href="http://physics.illinois.edu/events/sleeping.asp">how to sleep in seminar</a>
@@ -3302,7 +3302,7 @@ in array
 							<a href="http://www.wikihow.com/Sleep-in-Class">though for class but u can use it</a>
 							<a href="http://www.wikihow.com/Sleep-at-Work">not very good but check it out</a>
 							<p>search for poing pong eyes and show a process of doing it</p>
-						</section> -->
+						</section> 
 					</section>
 					<section>
 						<section>
@@ -3323,7 +3323,7 @@ a.b();
 						<h1>Thank You</h1>
 						<br/>
 						<br>
-						<!-- <h2 class="fragment"><a href="http://goo.gl/dV2puW">goo.gl/dV2puW</a> </h2> -->
+						 <h2 class="fragment"><a href="http://goo.gl/dV2puW">goo.gl/dV2puW</a> </h2> 
 						<br/>
 						<br>
 						<br>
